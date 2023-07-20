@@ -13,13 +13,13 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <I18nextProvider i18n={i18n}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+      {/* <Provider store={store}> */}
+        {/* <PersistGate loading={null} persistor={persistor}> */}
           <BrowserRouter basename="/final-project-frontend">
             <App />
           </BrowserRouter>
-        </PersistGate>
-      </Provider>
+        {/* </PersistGate>
+      </Provider> */}
     </I18nextProvider>
   </React.StrictMode>
 );
