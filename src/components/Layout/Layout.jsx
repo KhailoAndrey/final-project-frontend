@@ -7,6 +7,7 @@ import { Container, Section } from './Layout.styled';
 const Layout = () => {
   return (
     <>
+
       <Suspense fallback={<Loader />}>
         <Section>
         <Container>
@@ -16,6 +17,7 @@ const Layout = () => {
         </Section>
        
       </Suspense>
+
     </>
   );
 };
