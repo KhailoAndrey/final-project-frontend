@@ -1,18 +1,18 @@
 import { Navigate, Route, Routes } from 'react-router';
 import { lazy } from 'react';
 
-import Layout from './Layout/Layout';
+import PrivateRoute from 'utils/PrivateRoute';
 import PublicRoute from 'utils/PublicRoute';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import { PrivateRoute } from 'utils/PrivateRoute';
-import UserPage from 'pages/UserPage/UserPage';
-import NewsPage from 'pages/NewsPage/NewsPage';
-import NoticesPage from 'pages/NoticesPage/NoticesPage';
-import FriendsPage from 'pages/FriendsPage/FriendsPage';
 
+const Layout = lazy(() => import('./Layout/Layout'));
 const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
+const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
+const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
+const FriendsPage = lazy(() => import('../pages/FriendsPage/FriendsPage'));
 
 export const App = () => {
   return (
