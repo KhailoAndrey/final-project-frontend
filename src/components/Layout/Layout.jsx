@@ -7,12 +7,12 @@ import { Container } from './Layout.styled';
 const Layout = () => {
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <Container>
-          <Header />
+      <Container>
+        <Header />
+        <Suspense fallback={<Loader />}>
           <Outlet />
-        </Container>
-      </Suspense>
+        </Suspense>
+      </Container>
     </>
   );
 };
