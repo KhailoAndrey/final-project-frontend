@@ -13,6 +13,7 @@ const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
 const FriendsPage = lazy(() => import('../pages/FriendsPage/FriendsPage'));
+const AddPetPage = lazy(() => import('../pages/AddPetPage/AddPetPage'));
 
 export const App = () => {
   return (
@@ -44,6 +45,15 @@ export const App = () => {
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="friends" element={<FriendsPage />} />
+          <Route
+            path="add-pet"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<AddPetPage />}
+              ></PrivateRoute>
+            }
+          />
           <Route
             path="user"
             element={
