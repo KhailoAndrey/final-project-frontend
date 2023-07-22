@@ -1,13 +1,13 @@
-<<<<<<< HEAD
 
-=======
 import { Wrapper, Title, Picture, Img } from './MainPage.styled';
 import * as mainImg from '../../images/Home';
->>>>>>> main
+import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
+
 
 const MainPage = () => {
   return (
     <>
+    <ModalCongrats></ModalCongrats>
       <Wrapper>
         <Title>Take good care of your small pets</Title>
         <Picture>
