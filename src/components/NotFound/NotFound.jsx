@@ -8,7 +8,7 @@ export const NotFound = () => {
         <NFText>Oops! This page not found...</NFText>
         <NFImg />
         <Button type="submit">
-          <Link to="./">To main page</Link>
+          <Link to="/">To main page</Link>
           <PawIcon />
         </Button>
       </NFDivWrap>
