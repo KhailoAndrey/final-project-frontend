@@ -4,7 +4,7 @@ const { register, logIn, logOut, refreshUser } = require('./authOperations');
 // import Notiflix from 'notiflix';
 
 const initialState = {
-  user: { name: 'Annaабракадабра', email: 'anna@email.com' },
+  user: { name: null, email: null },
   token: null,
   isLoggedIn: false, 
   isRefreshing: false,
