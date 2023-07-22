@@ -5,7 +5,7 @@ import NFbgImgMobileX1 from '../../images/404/404_mob_2x.png';
 import NFbgImgTabletX1 from '../../images/404/404_tab_2x.png';
 import NFbgImgDesktopX1 from '../../images/404/404_desk_2x.png';
 
-import PawBgImgDesctop from '../../images/BackGround/bg_desk.png';
+import PawBgImgDesktop from '../../images/BackGround/bg_desk.png';
 import PawBgImgTablet from '../../images/BackGround/bg_tab.png';
 import PawBgImgMobile from '../../images/BackGround/bg_mob.png';
 
@@ -28,7 +28,7 @@ export const NFDivWrap = styled.div`
     padding-bottom: 204px;
   }
   @media (min-width: 1280px) {
-    background-image: url(${PawBgImgDesctop});
+    background-image: url(${PawBgImgDesktop});
     background-position: bottom -150px right 100px;
   }
 `;
