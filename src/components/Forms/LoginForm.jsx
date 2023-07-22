@@ -1,11 +1,23 @@
-import { Link } from 'react-router-dom';
+import {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, Form, Field } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
+import {
+  FormContainer,
+  FormInput,
+  FormHeader,
+  FormText,
+  FormLink,
+  FormButton,
+  FormError,
+  FormEye,PasswordDiv
+} from './LoginForm.styled';
 
+import {ic_visibility_off_outline} from 'react-icons-kit/md/ic_visibility_off_outline'
+import {ic_visibility_outline} from 'react-icons-kit/md/ic_visibility_outline'
 
-const emailRegexp =/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/
+const emailRegexp = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -22,82 +34,72 @@ const validationSchema = Yup.object({
     .max(32, 'The password you entered is incorrect. Please try again'),
 });
 
-const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
-  
-
 export const LoginForm = () => {
-    const dispatch = useDispatch();
-    
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      const form = e.currentTarget;
+    const [type, setType] = useState('password');
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: async values => {
       dispatch(
         logIn({
-          email: form.elements.email.value,
-          password: form.elements.password.value,
+          email: values.email,
+          password: values.password,
         })
       );
-      form.reset();
-    };
-  
-    return (
-        <div>
-      <Formik 
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        
-        <Form>
-        <h2>Login</h2>
-        <div>
-            <label htmlFor="email" hidden>
-              Email
-            </label>
-            <Field
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-            ></Field>
-          </div>
-          <div>
-            <label htmlFor="password" hidden>
-              Password
-            </label>
-            <Field
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-            ></Field>
-          </div>
-          <div>
-            <label htmlFor="confirmPassword" hidden>
-              Confirm password
-            </label>
-            <Field
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="Confirm password"
-            ></Field>
-          </div>
-          <button type="submit">Login</button>
-          <p>
-          Don't have an account? 
-            <Link to="/register">Register</Link>
-          </p>
-        </Form>
 
-      </Formik>
-     
-      </div>
-    );
-  };
+      formik.resetForm();
+    },
+  });
+
+
+  return (
+    <FormContainer>
+      <FormHeader>Login</FormHeader>
+      <form onSubmit={formik.handleSubmit}>
+        <FormInput
+          id="email"
+          name="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          placeholder="Email"
+        />
+        {formik.touched.email && formik.errors.email && (
+          <FormError>{formik.errors.email}</FormError>
+        )}
+        <PasswordDiv>
+        <FormInput
+          id="password"
+          name="password"
+          type={type}
+          autoComplete="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          placeholder="Password"
+        />
+        
+        {type==="password"?(
+            <span onClick={()=>setType("text")}>
+              <FormEye icon={ic_visibility_off_outline} size={24}/>
+            </span >
+          ):(
+            <span   onClick={()=>setType("password")}>
+              <FormEye icon={ic_visibility_outline} size={24} />
+            </span >
+          )}
+          </PasswordDiv>
+        {formik.touched.password && formik.errors.password && (
+          <FormError>{formik.errors.password}</FormError>
+        )}
+        <FormButton type="submit">Login</FormButton>
+        <FormText>
+          Don't have an account?
+          <FormLink to="/register">Register</FormLink>
+        </FormText>
+      </form>
+    </FormContainer>
+  );
+};
