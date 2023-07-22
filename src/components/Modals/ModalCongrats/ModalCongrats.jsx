@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnClose,
   BtnCongrats,
@@ -7,14 +9,16 @@ import {
   TextCongrats,
   TitleCongrats,
 } from './ModalCongrats.styled';
-import svg from '../../../images/Icons/symbol-defs.svg';
 
 const ModalCongrats = () => {
+  const navigate = useNavigate();
+
   const [isOpenCongratsModal, setIsOpenCongratsModal] = useState(true);
 
   const onClose = useCallback(() => {
     setIsOpenCongratsModal(false);
-  }, [setIsOpenCongratsModal]);
+    navigate('/notices');
+  }, [setIsOpenCongratsModal, navigate]);
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
