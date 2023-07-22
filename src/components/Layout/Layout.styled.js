@@ -10,7 +10,8 @@ import bg_desk_retina from '../../images/BackGround/bg_desk_2x.png'; // Изоб
 export const Section = styled.section`
 
 max-width: 100%;
-  background-color: #fdf7f2;
+  background-color: var(--main-bckg-clr);
+ 
   
   margin: 0 auto;
   background-repeat: no-repeat;
