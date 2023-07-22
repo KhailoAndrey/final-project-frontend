@@ -1,24 +1,36 @@
-/*
-// @font-face {
-//   font-family: 'Oswald';
-//   src: url('../fonts/Oswald-SemiBold.ttf');
-// }
 
-// @font-face {
-//   font-family: 'Mulish';
-//   src: url('../fonts/Mulish-Bold.ttf');
-// }
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Bold.ttf');
+}
 
-// @font-face {
-//   font-family: 'Mulish';
-//   src: url('../fonts/Mulish-Regular.ttf');
-// }
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-ExtraBold.ttf');
+}
 
-// @font-face {
-//   font-family: 'Mulish';
-//   src: url('../fonts/Mulish-SemiBold.ttf');
-// }
-*/
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Light.ttf');
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Medium.ttf');
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Regular.ttf');
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-SemiBold.ttf');
+}
+
 :root {
   --main-clr-yellow: #FFC107;
   --main-bckg-clr: #FDF7F2;
