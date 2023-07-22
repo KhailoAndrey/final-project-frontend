@@ -6,7 +6,7 @@ const { register, logIn, logOut, refreshUser } = require('./authOperations');
 const initialState = {
   user: { name: null, email: null },
   token: null,
-  isLoggedIn: false,
+  isLoggedIn: false, 
   isRefreshing: false,
 };
 

@@ -1,18 +1,21 @@
-import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import Header from 'components/Header/Header';
-import { Container } from './Layout.styled';
+import { Section } from './Layout.styled';
 
 const Layout = () => {
   return (
     <>
-      <Container>
-        <Header />
-        <Suspense fallback={<Loader />}>
+
+      <Suspense fallback={<Loader />}>
+        <Section>
+          <Header />
           <Outlet />
-        </Suspense>
-      </Container>
+        </Section>
+       
+      </Suspense>
+
     </>
   );
 };
