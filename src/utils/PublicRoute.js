@@ -1,13 +1,12 @@
 // import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-// import { useAuth } from 'redux/auth/selectors';
+import { useAuth } from 'redux/auth/selectors';
 
 const PublicRoute = ({ component: Component, redirectTo = '/' }) => {
-  // const { isLoggedIn } = useAuth();
-
+  const { isLoggedIn } = useAuth();
 
   // после тестов ниже строку удалить а вверху раскомментировать
-  const isLoggedIn = true;
+  // const isLoggedIn = false;
 
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
