@@ -9,7 +9,7 @@ import bg_desk_retina from '../../images/BackGround/bg_desk_2x.png'; // Изоб
 
 export const Section = styled.section`
 position: fixed;
-  background-color: var(--form-error-red);
+  background-color: var(--main-bckg-clr);
   margin: 0;
   padding: 20px;
   width: 100vw;
