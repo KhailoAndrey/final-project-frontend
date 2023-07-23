@@ -2,7 +2,7 @@
 import { Wrapper, Title, Picture, Img } from './MainPage.styled';
 import * as mainImg from '../../images/Home';
 
-import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
+
 
 
 const MainPage = () => {
