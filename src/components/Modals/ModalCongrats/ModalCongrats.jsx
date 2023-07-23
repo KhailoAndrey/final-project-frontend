@@ -57,7 +57,7 @@ const ModalCongrats = () => {
               <svg width={24} height={24}>
                 <use
                   href={`${svg}#icon-paw`}
-                  style={{ stroke: '#fff' }}
+                  style={{ fill: '#fff' }}
                   width={24}
                   height={24}
                 />
