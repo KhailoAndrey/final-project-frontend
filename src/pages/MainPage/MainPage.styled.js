@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   margin: 0 auto;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   padding-top: 60px;
   display: flex;
   flex-direction: column;
@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
+font-family: 'Manrope';
   width: 100%;
   font-weight: 700;
   font-size: 32px;
@@ -64,7 +65,7 @@ export const Picture = styled.picture`
 export const Img = styled.img`
   min-width: 474px;
   max-height: 494px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 
   @media screen and (min-width: 768px) {

@@ -10,10 +10,11 @@ margin-left: auto;
 
 @media screen and (min-width: 768px) {
     padding: 0 16px;
-
 }
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+    margin-left: 24px;
+}
 `
 
 export const UserIcon = styled.div`
@@ -23,9 +24,7 @@ display: block;
 cursor: pointer;
 `
 export const UserName = styled.span`
-display: none;
-@media screen and (min-width: 768px) {
-display: block;
+display: ${({ showName }) => (showName ? 'block' : 'none')};
 color: var(--main-clr-yellow);
 font-family: Manrope;
 font-size: 16px;
@@ -33,6 +32,9 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 letter-spacing: 0.64px;
+
+@media screen and (min-width: 768px) {
+display: block;
 }
 
 @media screen and (min-width: 1280px) {}

@@ -1,12 +1,33 @@
-import { Button } from "./addPetBtn.styled";
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'redux/auth/selectors';
+import PropTypes from 'prop-types';
+import svg from '../../images/Icons/symbol-defs.svg';
+import { Button } from './addPetBtn.styled';
 
-export const AddPetBtn = () => {
+export const AddPetBtn = ({ setShowModal = null }) => {
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    if (isLoggedIn) {
+      navigate('/add-pet');
+    } else {
+      setShowModal(true);
+    }
+  };
+
   return (
-    <Button
-      type="button"
-      // onClick={() => onClick()}
-    >
-          Add Pet
+    <>
+      <Button type="button" onClick={() => onClick()}>
+        Add Pet
+        <svg width={24} height={24}>
+          <use href={`${svg}#icon-plus-small`} width={24} height={24} />
+        </svg>
       </Button>
+    </>
   );
+};
+
+AddPetBtn.propTypes = {
+  setShowModal: PropTypes.func,
 };

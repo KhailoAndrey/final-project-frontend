@@ -8,25 +8,21 @@ import bg_tab_retina from '../../images/BackGround/bg_tab_2x.png'; // Изобр
 import bg_desk_retina from '../../images/BackGround/bg_desk_2x.png'; // Изображение для Retina на десктопах
 
 export const Section = styled.section`
-
-max-width: 100%;
+  position: fixed;
   background-color: var(--main-bckg-clr);
- 
-  
-  margin: 0 auto;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100%;
+  margin: 0;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: repeat;
+  background-image: url(${bg_mob});
+  overflow: auto;
 
-background-image: url(${bg_mob});
-
-
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (max-width: 767px) {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${bg_mob_retina});
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) {
     padding: 24px 32px;
     background-image: url(${bg_tab});
 
@@ -43,7 +39,7 @@ background-image: url(${bg_mob});
       background-image: url(${bg_desk_retina});
     }
   }
-`
+`;
 
 export const Container = styled.div`
   margin: 0 auto;

@@ -1,29 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Button = styled.button`
   border-radius: 40px;
   background: var(--main-clr-blue);
   display: flex;
   width: 129px;
-  /* justify-content: center;
-  align-items: center; */
+  justify-content: center;
+  align-items: center;
   gap: 8px;
   border: 0;
+  outline: 0;
   text-decoration: none;
-  cursor: pointer;
-
-  padding: 8px 20px;
-  /* justify-content: center;
-  align-items: center;
-  gap: 8px; */
-  color: #fef9f9;
+  svg {
+    stroke: var(--btn-clr-fon);
+  }
+  padding: 8px 0;
+  color: var(--btn-clr-fon);
   font-family: Manrope;
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.64px;
 
   &:hover,
   &:focus {
-    background: linear-gradient(315deg, #419ef1 0%, #9bd0ff 100%);
+    background: var(--main-clr-gr_blue);
   }
 `;

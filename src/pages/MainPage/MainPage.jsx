@@ -1,3 +1,4 @@
+
 import { Wrapper, Title, Picture, Img } from './MainPage.styled';
 import * as mainImg from '../../images/Home';
 

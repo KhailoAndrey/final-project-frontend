@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ModalBackdrop = styled.div`
   width: 100vw;
   height: 100vh;
-  background: var(--modal-backdrop);
+  background: rgba(97, 97, 97, 0.6);
   backdrop-filter: blur(4px);
   position: fixed;
   top: 0;
@@ -14,9 +14,10 @@ export const ModalBackdrop = styled.div`
 `;
 export const ModalContent = styled.div`
   width: 280px;
+  /* height: 445px; */
   border-radius: 20px;
-  background-color: var(--btn-clr-fon);
-  padding: 22px 20px 40px;
+  background-color: #fff;
+  padding: 60px 20px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,41 +26,48 @@ export const ModalContent = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 608px;
-    padding: 24px 32px;
+    padding: 60px 40px;
   }
+
 `;
 
-export const ModalHeader = styled.div`
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-`
-
 export const ModalBtn = styled.button`
+  position: absolute;
   border: 0;
   text-decoration: none;
   cursor: pointer;
-  background-color: var(--btn-clr-fon);
+  background-color: #fff;
   top: 16px;
   right: 16px;
-  stroke: var(--main-clr-yellow);
-  &:hover {
-      stroke: var(--main-clr-blue);
-}
 `;
 
-export const UserBlock = styled.div`
-margin-top: 40px;
-margin-bottom: 84px;
-padding: 8px 16px;
-`
+export const ModalTitle = styled.p`
+  font-family: Manrope;
+  font-size: 24px;
+  font-weight: 500;
+
+  @media screen and (min-width: 768px) {
+    font-size: 36px;
+  }
+`;
+
+export const ModalText = styled.p`
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    margin-top: 40px;
+  }
+`;
 
 export const BtnContainer = styled.div`
   display: flex;
   gap: 12px;
   flex-direction: column;
-  margin: 40px auto;
+  margin-top: 40px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
