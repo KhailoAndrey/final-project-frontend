@@ -29,6 +29,7 @@ export const FormContainer = styled.div`
 
 export const FormInput = styled.input`
   box-sizing: border-box;
+  outline: none;
   display: flex;
   margin-bottom: 14px;
   width: 256px;

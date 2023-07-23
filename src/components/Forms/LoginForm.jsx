@@ -62,11 +62,19 @@ export const LoginForm = () => {
     formik.setTouched({ ...formik.touched, password: true });
   };
 
+  const handleEmailBlur = () => {
+    formik.setTouched({ ...formik.touched, email: true });
+  };
+
   const isEmailError =
-    formik.touched.email && formik.errors.email && formik.values.email;
+    (formik.touched.email || formik.submitCount > 0) &&
+    formik.errors.email &&
+    formik.values.email;
 
   const isPasswordError =
-    formik.touched.password && formik.errors.password && formik.values.password;
+    (formik.touched.password || formik.submitCount > 0) &&
+    formik.errors.password &&
+    formik.values.password;
 
   const showPasswordSuccess =
     formik.touched.password && !formik.errors.password && formik.values.password;
@@ -82,6 +90,7 @@ export const LoginForm = () => {
             value={formik.values.email}
             onChange={formik.handleChange}
             placeholder="Email"
+            onBlur={handleEmailBlur}
             className={
               isEmailError
                 ? 'input-error'
