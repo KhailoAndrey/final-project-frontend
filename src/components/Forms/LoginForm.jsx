@@ -10,14 +10,20 @@ import {
   FormText,
   FormLink,
   FormButton,
-  FormError,
-  FormEye,PasswordDiv
+  FormErrorPassword,
+  FormErrorEmail,
+  FormEye,PasswordDiv,EmailDiv,
+  FormSuccessPassword
 } from './LoginForm.styled';
 
+import { Icon } from 'react-icons-kit';
 import {ic_visibility_off_outline} from 'react-icons-kit/md/ic_visibility_off_outline'
 import {ic_visibility_outline} from 'react-icons-kit/md/ic_visibility_outline'
+import {iosCloseEmpty} from 'react-icons-kit/ionicons/iosCloseEmpty'
+import {androidDone} from 'react-icons-kit/ionicons/androidDone'
 
 const emailRegexp = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -36,6 +42,7 @@ const validationSchema = Yup.object({
 
 export const LoginForm = () => {
     const [type, setType] = useState('password');
+    const [isSuccess, setIsSuccess] = useState(false)
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -50,26 +57,56 @@ export const LoginForm = () => {
           password: values.password,
         })
       );
+      setIsSuccess(true)
 
-      formik.resetForm();
+      formik.resetForm()
+      ;
     },
   });
+
+  const handlePasswordBlur = () => {
+    if (
+      formik.touched.password &&
+      !formik.errors.password &&
+      formik.values.password.length >= 7
+    ) {
+      setIsSuccess(true);
+    } else {
+      setIsSuccess(false);
+    }
+  };
 
 
   return (
     <FormContainer>
       <FormHeader>Login</FormHeader>
       <form onSubmit={formik.handleSubmit}>
+        <EmailDiv>
         <FormInput
           id="email"
           name="email"
           value={formik.values.email}
           onChange={formik.handleChange}
           placeholder="Email"
+          className={formik.touched.email && formik.errors.email ? "input-error" : ""}
+         
         />
         {formik.touched.email && formik.errors.email && (
-          <FormError>{formik.errors.email}</FormError>
+          <FormErrorEmail>{formik.errors.email}</FormErrorEmail>
         )}
+        {formik.touched.email && formik.errors.email && (
+            <Icon
+              icon={iosCloseEmpty}
+              size={36}
+              style={{
+                position: 'absolute',
+                top: '6px',
+                right: '16px',
+                color: 'red',
+              }}
+            />
+          )}
+        </EmailDiv>
         <PasswordDiv>
         <FormInput
           id="password"
@@ -79,6 +116,14 @@ export const LoginForm = () => {
           value={formik.values.password}
           onChange={formik.handleChange}
           placeholder="Password"
+          onBlur={handlePasswordBlur}
+          className={
+            formik.touched.password && formik.errors.password
+              ? 'input-error'
+              : isSuccess
+              ? 'input-success'
+              : ''
+          }
         />
         
         {type==="password"?(
@@ -90,10 +135,26 @@ export const LoginForm = () => {
               <FormEye icon={ic_visibility_outline} size={24} />
             </span >
           )}
-          </PasswordDiv>
+           {isSuccess && <Icon icon={androidDone}  size={24}
+              style={{
+                position: 'absolute',
+                top: '11px',
+                right: '50px',
+                color: 'green',
+              }} />}
+       
         {formik.touched.password && formik.errors.password && (
-          <FormError>{formik.errors.password}</FormError>
+          < FormErrorPassword>{formik.errors.password}</ FormErrorPassword>
+  
         )}
+                {isSuccess && (
+          <FormSuccessPassword>
+          { " Password is secure"}
+          </FormSuccessPassword>
+        )}
+
+        </PasswordDiv>
+        
         <FormButton type="submit">Login</FormButton>
         <FormText>
           Don't have an account?

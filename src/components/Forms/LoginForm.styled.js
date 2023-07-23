@@ -16,7 +16,7 @@ export const FormContainer = styled.div`
   width: 280px;
 
   border-radius: 40px;
-  background-color: #ffffff;
+  background-color:  var(--white-bckg-clr);
 
   box-shadow: 7px 4px 14px rgba(136, 198, 253, 0.19);
 
@@ -33,7 +33,7 @@ export const FormInput = styled.input`
   margin-bottom: 14px;
   width: 256px;
   padding: 12px 16px;
-  border: 1px #54adff solid;
+  border: 1px  var( --main-clr-blue) solid;
   border-radius: 40px;
   @media screen and (min-width: 768px) {
     width: 458px;
@@ -45,6 +45,12 @@ export const FormInput = styled.input`
 
     line-height: 24px;
     font-size: 16px;
+  }
+  &.input-error {
+    border-color: red;
+  }
+  &.input-success {
+    border-color: green;
   }
 `;
 
@@ -75,7 +81,7 @@ export const FormLink = styled(Link)`
   display: inline-block;
   margin-left: 2px;
 
-  color: #54adff;
+  color: var( --main-clr-blue);
 `;
 
 export const FormButton = styled.button`
@@ -87,8 +93,8 @@ export const FormButton = styled.button`
   line-height: 27px;
   letter-spacing: 0.04em;
   font-size: 20px;
-  color: #ffffff;
-  background-color: #54adff;
+  color: var(--white-bckg-clr);
+  background-color: var( --main-clr-blue);
   border: transparent;
   @media screen and (min-width: 768px) {
     margin-top: 32px;
@@ -96,10 +102,36 @@ export const FormButton = styled.button`
   }
 `;
 
-export const FormError = styled.p``;
-
 export const PasswordDiv = styled.div`
   position: relative;
+`;
+
+
+export const EmailDiv = styled.div`
+  position: relative;
+`;
+
+export const FormErrorPassword= styled.p`
+position: absolute;
+font-size: 12px;
+color: red;
+top:44px;
+left:16px;
+`;
+export const FormErrorEmail= styled.p`
+font-size: 12px;
+position: absolute;
+color: red;
+top:44px;
+left:16px;
+`;
+
+export const FormSuccessPassword= styled.p`
+font-size: 12px;
+position: absolute;
+color: green;
+top:44px;
+left:16px;
 `;
 
 export const FormEye = styled(Icon)`
@@ -107,5 +139,7 @@ export const FormEye = styled(Icon)`
 
   top: 12px;
   right: 16px;
-  color: #54adff;
+  color: var( --main-clr-blue);
 `;
+
+
