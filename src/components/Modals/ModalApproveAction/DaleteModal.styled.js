@@ -21,7 +21,7 @@ export const ModalWindow = styled.div`
   height: 287px;
   padding: 68px 16px 60px;
   background-color: #fff;
-  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  box-shadow: 3px 8px 14px 0px var( --small-shadow);
   border-radius: 20px;
 
   @media screen and (min-width: 320px) {
@@ -61,7 +61,7 @@ export const BtnClose = styled.button`
   }
 `;
 
-export const BtnCongrats = styled.button`
+export const BtnDelete = styled.button`
   width: 100%;
   height: 40px;
   margin: 0 auto;
@@ -70,8 +70,8 @@ export const BtnCongrats = styled.button`
   justify-content: center;
   gap: 12px;
 
-  background-color: ${(props) => (props.isHovered ? '#ffffff' : 'var(--main-clr-blue)')};
-  color: ${(props) => (props.isHovered ? 'var(--main-clr-blue)' : '#ffffff')};
+  background-color: ${(props) => (props.isHovered ? 'var(--btn-clr-fon)' : 'var(--main-clr-blue)')};
+  color: ${(props) => (props.isHovered ? 'var(--main-clr-blue)' : 'var(--btn-clr-fon)')};
 
   
   border-radius: 40px;
@@ -84,8 +84,8 @@ export const BtnCongrats = styled.button`
   stroke: #fff;
 
   &:hover {
-    background-color: ${(props) => (props.isHovered ? 'var(--main-clr-blue)' : '#ffffff')};
-    color: ${(props) => (props.isHovered ? '#ffffff' : 'var(--main-clr-blue)')};
+    background-color: ${(props) => (props.isHovered ? 'var(--main-clr-blue)' : 'var(--btn-clr-fon)')};
+    color: ${(props) => (props.isHovered ? 'var(--btn-clr-fon)' : 'var(--main-clr-blue)')};
     stroke: var(--main-clr-blue);
   }
 
@@ -94,7 +94,7 @@ export const BtnCongrats = styled.button`
   }
 `;
 
-export const TitleCongrats = styled.h2`
+export const TitleDelete = styled.h2`
   margin-bottom: 24px;
   text-align: center;
   font-weight: 7 00;
@@ -109,7 +109,7 @@ export const TitleCongrats = styled.h2`
   }
 `;
 
-export const TextCongrats = styled.p`
+export const TextDelete = styled.p`
   margin-bottom: 40px;
   text-align: center;
   font-weight: 500;

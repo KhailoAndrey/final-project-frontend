@@ -2,11 +2,11 @@ import React, { useEffect} from 'react';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnClose,
-  BtnCongrats,
+  BtnDelete,
   ModalWindow,
   Overlay,
-  TextCongrats,
-  TitleCongrats,QuestioBtnWrap,
+  TextDelete,
+  TitleDelete,QuestioBtnWrap,
 } from './DaleteModal.styled';
 
 const DeleteModal = ({ onClose, handleDelete, data }) => {
@@ -39,14 +39,14 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
                 <use href={`${svg}#icon-cross`} width={24} height={24} />
               </svg>
             </BtnClose>
-            <TitleCongrats>Delete adverstiment?</TitleCongrats>
+            <TitleDelete>Delete adverstiment?</TitleDelete>
 
-            <TextCongrats>Are you sure you want to delete <b> “{"витягуєм з data."}”</b>?<br/> You can`t undo this action.</TextCongrats>
+            <TextDelete>Are you sure you want to delete <b> “{"витягуєм з data."}”</b>?<br/> You can`t undo this action.</TextDelete>
             <QuestioBtnWrap>
-            <BtnCongrats onClick={onClose} isHovered={true}>
+            <BtnDelete onClick={onClose} isHovered={true}>
               Cancel              
-            </BtnCongrats>
-            <BtnCongrats onClick={handleDelete} isHovered={false}>
+            </BtnDelete>
+            <BtnDelete onClick={handleDelete} isHovered={false}>
               Yes
               <svg width={24} height={24}>
                 <use
@@ -55,7 +55,7 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
                   height={24}
                 />
               </svg>
-            </BtnCongrats>
+            </BtnDelete>
             </QuestioBtnWrap>
            
           </ModalWindow>
