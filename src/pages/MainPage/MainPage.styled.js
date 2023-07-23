@@ -65,7 +65,7 @@ export const Picture = styled.picture`
 export const Img = styled.img`
   min-width: 474px;
   max-height: 494px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 
   @media screen and (min-width: 768px) {
