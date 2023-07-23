@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
 import PropTypes from 'prop-types';
+import svg from '../../images/Icons/symbol-defs.svg';
 import { Button } from './addPetBtn.styled';
 
 export const AddPetBtn = ({ setShowModal = null }) => {
@@ -19,6 +20,9 @@ export const AddPetBtn = ({ setShowModal = null }) => {
     <>
       <Button type="button" onClick={() => onClick()}>
         Add Pet
+        <svg width={24} height={24}>
+          <use href={`${svg}#icon-plus-small`} width={24} height={24} />
+        </svg>
       </Button>
     </>
   );

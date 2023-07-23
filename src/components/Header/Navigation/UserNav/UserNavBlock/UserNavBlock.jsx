@@ -3,7 +3,7 @@ import { useAuth } from 'redux/auth/selectors';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { UserBlock, UserIcon, UserName } from './UserNavBlock.styled';
 
-const UserNavBlock = () => {
+const UserNavBlock = ({showName}) => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const { user } = useAuth();
 
@@ -19,7 +19,7 @@ const UserNavBlock = () => {
           />
         </svg>
       </UserIcon>
-      <UserName>{user.name}</UserName>
+      <UserName showName={showName}>{user.name}</UserName>
     </UserBlock>
   );
 };

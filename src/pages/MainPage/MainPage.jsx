@@ -7,7 +7,7 @@ import * as mainImg from '../../images/Home';
 const MainPage = () => {
   return (
     <>
-   
+
       <Wrapper>
         <Title>Take good care of your small pets</Title>
         <Picture>
