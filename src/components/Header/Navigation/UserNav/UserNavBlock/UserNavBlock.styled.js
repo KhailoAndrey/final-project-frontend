@@ -6,14 +6,15 @@ align-items: center;
 justify-content: space-between;
 gap: 12px;
 margin-right: 0;
-margin-left: 24px;
+margin-left: auto;
 
 @media screen and (min-width: 768px) {
     padding: 0 16px;
-
 }
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+    margin-left: 24px;
+}
 `
 
 export const UserIcon = styled.div`
