@@ -8,17 +8,17 @@ import bg_tab_retina from '../../images/BackGround/bg_tab_2x.png'; // Изобр
 import bg_desk_retina from '../../images/BackGround/bg_desk_2x.png'; // Изображение для Retina на десктопах
 
 export const Section = styled.section`
-position: fixed;
+  position: fixed;
   background-color: var(--main-bckg-clr);
   margin: 0;
   padding: 20px;
   width: 100vw;
   height: 100vh;
-  background-repeat: repeat ;
+  background-repeat: repeat;
   background-image: url(${bg_mob});
+  overflow: auto;
 
-  @media (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${bg_mob_retina});
   }
 
