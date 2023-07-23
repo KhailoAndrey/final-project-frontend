@@ -11,6 +11,7 @@ export const LogoLink = styled(Link)`
   text-decoration: none;
   display: block;
   background-image: url(${logo_mob});
+  background-size: 116px 20px;
   width: 116px;
   height: 20px;
   &:hover {
@@ -18,19 +19,17 @@ export const LogoLink = styled(Link)`
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background-image: url(${logo_mob_2x});
-    }
+    background-image: url(${logo_mob_2x});
+  }
 
   @media screen and (min-width: 768px) {
     width: 162px;
     height: 28px;
-      background-image: url(${logo_default});
+    background-image: url(${logo_default});
+    background-size: 162px 28px;
 
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       background-image: url(${logo_default_2x});
     }
-  }
-
-  @media screen and (min-width: 1280px) {
   }
 `;
