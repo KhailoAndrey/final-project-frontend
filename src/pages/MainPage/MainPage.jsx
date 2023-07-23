@@ -1,13 +1,14 @@
 
 import { Wrapper, Title, Picture, Img } from './MainPage.styled';
 import * as mainImg from '../../images/Home';
-import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
+
+import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 
 
 const MainPage = () => {
   return (
     <>
-    <ModalCongrats></ModalCongrats>
+    
       <Wrapper>
         <Title>Take good care of your small pets</Title>
         <Picture>
