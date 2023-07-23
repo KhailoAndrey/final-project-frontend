@@ -14,12 +14,7 @@ export const LoginBtn = () => {
       <ButtonLog type="button" onClick={() => onClick()}>
         Log IN
         <svg width={24} height={24}>
-          <use
-            href={`${svg}#icon-paw`}
-            style={{ fill: '#FEF9F9' }}
-            width={24}
-            height={24}
-          />
+          <use href={`${svg}#icon-paw`} width={24} height={24} />
         </svg>
       </ButtonLog>
     </>
