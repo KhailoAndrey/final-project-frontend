@@ -74,7 +74,7 @@ export const FormText = styled.p`
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.04em;
-  color: #888888;
+  color:  var( --main-form-clr);
 `;
 
 export const FormLink = styled(Link)`
@@ -114,14 +114,14 @@ export const EmailDiv = styled.div`
 export const FormErrorPassword= styled.p`
 position: absolute;
 font-size: 12px;
-color: red;
+color: var( --red-form-clr);
 top:44px;
 left:16px;
 `;
 export const FormErrorEmail= styled.p`
 font-size: 12px;
 position: absolute;
-color: red;
+color: var( --red-form-clr);
 top:44px;
 left:16px;
 `;
@@ -129,14 +129,13 @@ left:16px;
 export const FormSuccessPassword= styled.p`
 font-size: 12px;
 position: absolute;
-color: green;
+color:var( --green-form-clr);
 top:44px;
 left:16px;
 `;
 
 export const FormEye = styled(Icon)`
   position: absolute;
-
   top: 12px;
   right: 16px;
   color: var( --main-clr-blue);
