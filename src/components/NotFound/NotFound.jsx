@@ -1,14 +1,21 @@
-import { Link } from 'react-router-dom';
-import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
 
-const NotFound = () => {
+import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
+import { useNavigate } from 'react-router-dom';
+
+ const NotFound = () => {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate('/');
+  };
+
   return (
     <>
       <NFDivWrap>
         <NFText>Oops! This page not found...</NFText>
         <NFImg />
-        <Button type="submit">
-          <Link to="/">To main page</Link>
+        <Button type="button" onClick={() => onClick()}>
+          To main page
           <PawIcon />
         </Button>
       </NFDivWrap>

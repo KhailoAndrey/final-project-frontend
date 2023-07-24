@@ -5,30 +5,27 @@ import NFbgImgMobileX1 from '../../images/404/404_mob_2x.png';
 import NFbgImgTabletX1 from '../../images/404/404_tab_2x.png';
 import NFbgImgDesktopX1 from '../../images/404/404_desk_2x.png';
 
-import PawBgImgDesktop from '../../images/BackGround/bg_desk.png';
-import PawBgImgTablet from '../../images/BackGround/bg_tab.png';
-import PawBgImgMobile from '../../images/BackGround/bg_mob.png';
+// import PawBgImgDesktop from '../../images/BackGround/bg_desk.png';
+// import PawBgImgTablet from '../../images/BackGround/bg_tab.png';
+// import PawBgImgMobile from '../../images/BackGround/bg_mob.png';
 
 export const NFDivWrap = styled.div`
   max-width: 767px;
   height: 512px;
-  padding-top: 71px;
+  padding-top: 60px;
   padding-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
 
-  background-image: url(${PawBgImgMobile});
   background-repeat: no-repeat;
   background-position: top -200px left 100px;
 
   @media (min-width: 768px) {
-    background-image: url(${PawBgImgTablet});
     background-position: bottom -150px right 100px;
     max-width: 1280px;
     padding-bottom: 204px;
   }
   @media (min-width: 1280px) {
-    background-image: url(${PawBgImgDesktop});
     background-position: bottom -150px right 100px;
   }
 `;
@@ -55,7 +52,7 @@ export const NFImg = styled.div`
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 80px;
 
   background-image: url(${NFbgImgMobileX1});
   background-repeat: no-repeat;
@@ -68,6 +65,8 @@ export const NFImg = styled.div`
   }
   @media (min-width: 1280px) {
     background-image: url(${NFbgImgDesktopX1});
+    width: 822px;
+    height: 360px;
   }
 `;
 
@@ -81,24 +80,24 @@ export const Button = styled.button`
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 0.04em;
-  color: #ffc107;
+  color: var(--main-clr-yellow);
   text-decoration: none;
   border-radius: 40px;
   border: 2px solid;
-  border-color: var(--color-blue);
+  border-color: var(--main-clr-blue);
   cursor: pointer;
 
   margin: auto;
 
-  background: var(--color-blue);
-  color: var(--color-text-btn);
+  background: var(--main-clr-blue);
+  color: var(--btn-clr-fon);
 
   span {
     margin-right: 12px;
   }
 
   svg {
-    fill: var(--color-text-btn);
+    fill: var(--btn-clr-fon);
   }
 
   transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -106,17 +105,17 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    color: var(--color-blue);
-    background-color: white;
+    color: var(--main-clr-blue);
+    background-color: var(--main-bckg-clr);
   }
   &:hover svg,
   &:focus svg {
-    fill: var(--color-blue);
+    fill: var(--main-clr-blue);
   }
 `;
 
 export const PawIcon = styled(Paw)`
-  fill: var(--color-blue);
+  fill: var(--main-clr-blue);
 
   transition: fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
