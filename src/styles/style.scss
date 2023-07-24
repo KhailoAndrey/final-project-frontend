@@ -1,4 +1,3 @@
-как
 @font-face {
   font-family: 'Manrope';
   src: url('../fonts/Manrope-Bold.ttf');
@@ -32,27 +31,38 @@
 }
 
 :root {
-  --main-clr-yellow: #FFC107;
-  --main-bckg-clr: #FDF7F2;
+  --main-clr-yellow: #ffc107;
+  --main-bckg-clr: #fdf7f2;
   --main-accent-text-clr: #111111;
-  --main-clr-blue: #54ADFF;
-  --main-clr-blue-light: #CCE4FB;
+  --main-clr-blue: #54adff;
+  --main-clr-blue-light: #cce4fb;
 
-  --btn-clr-fon: #FEF9F9;
+  --btn-clr-fon: #fef9f9;
 
-  --main-clr-gr_blue: linear-gradient(90deg, rgba(155, 208, 255, 1), rgba(65, 158, 241, 1));
-  
-  --menu-clr-green: #00C3AD;
+  --main-clr-gr_blue: linear-gradient(
+    90deg,
+    rgba(155, 208, 255, 1),
+    rgba(65, 158, 241, 1)
+  );
 
-  --form-error-red: #F43F5E;
+  --menu-clr-green: #00c3ad;
+
+  --form-error-red: #f43f5e;
 
   --small-shadow: rgba(136, 198, 253, 0.19);
   --big-shadow: rgba(116, 177, 232, 0.24);
+
+  --modal-backdrop: rgba(97, 97, 97, 0.6);
 
   --default-animation: 400ms ease-in-out;
   --fast-animation: 250ms ease-in-out;
   --slow-animation: 600ms ease-in-out;
 
+  
+  --white-bckg-clr: #ffffff;
+  --green-form-clr: green;
+  --red-form-clr: red;
+  --main-form-clr:#888888;
 }
 
 *,
@@ -65,8 +75,8 @@
 }
 
 body {
-   font-family: 'Manrope';
-   background-color: var(--main-bckg-clr);
+  font-family: 'Manrope';
+  background-color: var(--main-bckg-clr);
   overflow-x: hidden;
 }
 
@@ -77,7 +87,8 @@ img {
 }
 
 ul,
-ol {
+ol,
+li {
   padding: 0;
   margin: 0;
   list-style: none;

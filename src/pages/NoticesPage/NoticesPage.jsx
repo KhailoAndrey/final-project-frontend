@@ -1,8 +1,10 @@
+
 import { AddPetBtn } from 'helpers/AddPetButton/addPetBtn';
 import { AttentionModal } from 'components/Modals/ModalAttention/modalAttention';
 import { useEffect, useState } from 'react';
 import fetchNotices from 'fetch/notice';
 import NoticesCategoriesList from 'components/Notices/NoticesCategories/NoticesCategoriesList/NoticesCategoriesList';
+
 
 const NoticesPage = () => {
   const [showAlertModal, setAlertShowModal] = useState(false);
