@@ -34,7 +34,7 @@ const validationSchema = Yup.object({
   password: Yup.string()
     .trim()
     .required('Please enter password')
-    .min(7, 'The password you entered is incorrect. Please try again')
+    .min(6, 'The password you entered is incorrect. Please try again')
     .max(32, 'The password you entered is incorrect. Please try again'),
 });
 
