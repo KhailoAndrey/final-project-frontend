@@ -143,10 +143,14 @@ left:16px;
 `;
 
 export const FormEye = styled(Icon)`
-  position: absolute;
-  top: 12px;
-  right: 16px;
+ margin-right:12px;
+
   color: var( --main-clr-blue);
 `;
-
+export const IconsContainer = styled.div`
+  position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+`;
 
