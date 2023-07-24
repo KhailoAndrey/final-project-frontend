@@ -53,5 +53,5 @@ export const AttentionModal = ({ setAlertShowModal }) => {
 };
 
 AttentionModal.propTypes = {
-  setShowModal: PropTypes.func.isRequired,
+  setAlertShowModal: PropTypes.func.isRequired,
 };

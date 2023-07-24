@@ -3,11 +3,12 @@ import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
 const NoticesCatagoriesNav = ({ setCategory }) => {
 
-  const onClick = (e) => {
-      console.log(e.currentTarget.value);
+  const onClick = e => {
+    const category = e.currentTarget.value;
+    console.log("readed category - ", category);
+    setCategory(category);
+  };
 
-    };
-  
   return (
     <CatContainer>
       <Input
