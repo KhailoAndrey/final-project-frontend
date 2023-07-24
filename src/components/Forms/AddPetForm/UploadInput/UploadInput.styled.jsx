@@ -42,6 +42,7 @@ export const PhotoPlaceWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const PhotoWrapper = styled.span`
   display: flex;
   justify-content: center;
@@ -68,5 +69,5 @@ export const ErrWrapper = styled.span`
   font-size: 12px;
 
   line-height: 1.35;
-  color: #F43F5E;
+  color: #f43f5e;
 `;

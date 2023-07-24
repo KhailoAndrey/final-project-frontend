@@ -11,7 +11,6 @@ import { StageIndicator } from './StageIndicator/StageIndicator';
 import { SexIcon } from './Icon/Icon';
 import { addPetFormSchema } from 'components/Forms/AddPetForm/yupValidation';
 import { createPet } from './api/pets';
-// import { createNotice } from 'api/notices';
 import { Formik } from 'formik';
 import { notify } from '../AddPetForm/notification/notification';
 import {
@@ -147,15 +146,6 @@ export const AddPetForm = () => {
         if (values.category === 'sell') {
           formData.append('price', values.price);
         }
-
-      // try {
-      //   await createNotice(formData);
-      //   navigate(`/notices/${values.category}`);
-      // }
-      // catch (error) {
-      //   console.log(error);
-      //   notify('error', 'Sorry, something wrong. Please try again');
-      // }
     }
 
     localStorage.removeItem('formValues');

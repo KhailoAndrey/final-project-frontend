@@ -47,22 +47,6 @@ export const BgWrapper = styled.div`
   }
 `;
 
-// export const UserWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   gap: 40px;
-
-//   @media screen and (min-width: 768px) {
-//   }
-
-//   @media screen and (min-width: 1280px) {
-//     flex-direction: row;
-//     align-items: flex-start;
-//     gap: 32px;
-//   }
-// `;
-
 export const Wrapper = styled.div`
   position: relative;
 `;
