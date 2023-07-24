@@ -5,9 +5,10 @@ export const Button = styled.button`
   background: var(--main-clr-blue);
   display: flex;
   width: 129px;
+  height: 35px;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  /* gap: 8px; */
   border: 0;
   outline: 0;
   text-decoration: none;
@@ -17,8 +18,14 @@ export const Button = styled.button`
   padding: 8px 0;
   color: var(--btn-clr-fon);
   font-family: Manrope;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
+
+  @media screen and (min-width: 768px) {
+    gap: 8px;
+    font-size: 16px;
+    height: 40px;
+  }
 
   &:hover,
   &:focus {

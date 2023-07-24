@@ -12,22 +12,21 @@ import {
 } from './modalAttention.styled';
 import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
 
-export const AttentionModal = ({ setShowModal }) => {
-
+export const AttentionModal = ({ setAlertShowModal }) => {
   useEffect(() => {
     const handleKeyDown = e => {
-      setShowModal(false);
+      setAlertShowModal(false);
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [setShowModal]);
+  }, [setAlertShowModal]);
 
   return (
-    <ModalBackdrop onClick={() => setShowModal(false)}>
+    <ModalBackdrop onClick={() => setAlertShowModal(false)}>
       <ModalContent onClick={e => e.stopPropagation()}>
-        <ModalBtn onClick={() => setShowModal(false)}>
+        <ModalBtn onClick={() => setAlertShowModal(false)}>
           <svg width={24} height={24}>
             <use
               href={`${svg}#icon-cross`}

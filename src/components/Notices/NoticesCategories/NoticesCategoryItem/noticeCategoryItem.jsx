@@ -13,7 +13,7 @@ import {
 } from './noticeCategoryItem.styled';
 
 const NoticeItem = ({ article }) => {
-  console.log('article :>> ', article);
+  // console.log('article :>> ', article);
 
   const isFavorite = false;
   const { _id, title, category, date, file, sex, location } = article;
