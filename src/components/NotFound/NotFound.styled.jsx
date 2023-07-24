@@ -12,7 +12,7 @@ import NFbgImgDesktopX1 from '../../images/404/404_desk_2x.png';
 export const NFDivWrap = styled.div`
   max-width: 767px;
   height: 512px;
-  padding-top: 71px;
+  padding-top: 60px;
   padding-bottom: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -52,7 +52,7 @@ export const NFImg = styled.div`
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 80px;
 
   background-image: url(${NFbgImgMobileX1});
   background-repeat: no-repeat;
