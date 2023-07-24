@@ -34,7 +34,7 @@ export const App = () => {
             path="login"
             element={
               <PublicRoute
-                redirectTo="/main"
+                redirectTo="/user"
                 component={<LoginPage />}
               ></PublicRoute>
             }
@@ -63,8 +63,8 @@ export const App = () => {
               ></PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

@@ -1,14 +1,14 @@
-import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
-// import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-// import svg from '../../../images/Icons/symbol-defs.svg';
 
-export const NotFound = () => {
+import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
+import { useNavigate } from 'react-router-dom';
+
+ const NotFound = () => {
   const navigate = useNavigate();
 
   const onClick = () => {
     navigate('/');
   };
+
   return (
     <>
       <NFDivWrap>
@@ -22,3 +22,5 @@ export const NotFound = () => {
     </>
   );
 };
+
+export default NotFound;
