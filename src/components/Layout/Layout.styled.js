@@ -17,6 +17,8 @@ export const Section = styled.section`
   background-repeat: repeat;
   background-image: url(${bg_mob});
   overflow: auto;
+  display: block;
+  justify-content: center;
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${bg_mob_retina});
@@ -41,21 +43,3 @@ export const Section = styled.section`
   }
 `;
 
-export const Container = styled.div`
-  margin: 0 auto;
-  width: 320px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media screen and (min-width: 768px) {
-    width: 786px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-`;

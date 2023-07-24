@@ -25,7 +25,7 @@ export const App = () => {
             path="register"
             element={
               <PublicRoute
-                redirectTo="/main"
+                redirectTo="/user"
                 component={<RegisterPage />}
               ></PublicRoute>
             }
