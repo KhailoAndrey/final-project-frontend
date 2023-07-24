@@ -1,3 +1,4 @@
+// import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
 import { AddPetBtn } from 'helpers/AddPetButton/addPetBtn';
 import {
   UserInfo,
@@ -10,20 +11,25 @@ import {
 } from './UserPage.styled';
 
 const UserPage = () => {
+
   return (
-    <UserPageContainer>
-      <UserContainer>
-        <ProfileTitle> My information: </ProfileTitle>
-        <UserInfo />
-      </UserContainer>
-      <PetsContainer>
-        <Container>
-          <ProfileTitle>My pets:</ProfileTitle>
-          <AddPetBtn />
-        </Container>
-        <PetsInfo />
-      </PetsContainer>
-    </UserPageContainer>
+    <>
+      <UserPageContainer>
+        <UserContainer>
+          <ProfileTitle> My information: </ProfileTitle>
+          <UserInfo />
+        </UserContainer>
+        <PetsContainer>
+          <Container>
+            <ProfileTitle>My pets:</ProfileTitle>
+            <AddPetBtn />
+          </Container>
+          <PetsInfo />
+        </PetsContainer>
+      </UserPageContainer>
+      {/* {user.newUser && <ModalCongrats />} */}
+      {/* {user.newUser && <AttentionModal />} */}
+    </>
   );
 };
 
