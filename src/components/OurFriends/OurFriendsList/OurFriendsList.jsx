@@ -1,24 +1,14 @@
 import OurFriendItem from '../OurFriendItem/OurFriendItem';
 import { OFWrapper } from './OurFriendsList.styled';
-import sponsors from '../../../Temp/sponsors.json'
+import sponsors from '../../../Temp/sponsors.json';
 
 const OurFriendsList = () => {
-  // console.log(sponsors)
   return (
     <>
       <OFWrapper>
-        {sponsors.map((sponsor, index) =>          
-          // console.log(sponsor)
+        {sponsors.map((sponsor, index) => (
           <OurFriendItem sponsor={sponsor} key={index} />
-          )}
-      {/* <OurFriendItem />
-      <OurFriendItem />
-      <OurFriendItem />
-      <OurFriendItem />
-      <OurFriendItem />
-      <OurFriendItem />
-      <OurFriendItem />
-      <OurFriendItem /> */}
+        ))}
       </OFWrapper>
     </>
   );
