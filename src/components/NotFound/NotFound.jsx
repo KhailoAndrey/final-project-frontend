@@ -1,7 +1,7 @@
-import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
 import { Link } from 'react-router-dom';
+import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <>
       <NFDivWrap>
@@ -15,3 +15,5 @@ export const NotFound = () => {
     </>
   );
 };
+
+export default NotFound;

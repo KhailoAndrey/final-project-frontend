@@ -19,8 +19,8 @@ const handleLogout = () => {
           <use href={`${svg}#icon-logout`} width={24} height={24} />
         </svg>
       </LogoutBtn>
-      {/* {isModalOpen && <DeleteModal onClose={isModalOpen} />} */}
-      <DeleteModal/>
+      {isModalOpen && <DeleteModal onClose={isModalOpen} />}
+      {/* <DeleteModal/> */}
     </>
   );
 };
