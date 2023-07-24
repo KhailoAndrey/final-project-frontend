@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Logout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  console.log(isModalOpen)
 const handleLogout = () => {
   setIsModalOpen(true);
 };

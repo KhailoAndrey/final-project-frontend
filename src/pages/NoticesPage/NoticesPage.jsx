@@ -11,7 +11,7 @@ const NoticesPage = () => {
   const [noticeArticles, setNoticeArticles] = useState('');
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
-
+console.log(setCategory, setPage)
   useEffect(() => {
     foo(page, category);
     async function foo(page, category) {
