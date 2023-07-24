@@ -102,7 +102,6 @@ export const SexUploadWrapper = styled.div`
   @media screen and (min-width: 768px) {
     margin-right: 63px;
     gap: ${props => (props['data-category'] !== 'your pet' ? '40px' : '20px')};
-
     flex-direction: ${props =>
       props['data-category'] !== 'your pet' ? 'column' : 'row'};
   }
@@ -158,9 +157,7 @@ export const ErrWrapper = styled.span`
   width: 180px;
   bottom: -18px;
   text-align: center;
-
   font-size: 12px;
-
   line-height: 1.35;
   color: #f43f5e;
 `;
