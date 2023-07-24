@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import svg from '../../images/Icons/symbol-defs.svg';
 import { Button } from './addPetBtn.styled';
 
-export const AddPetBtn = ({ setShowModal = null }) => {
+export const AddPetBtn = ({ setAlertShowModal = null }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export const AddPetBtn = ({ setShowModal = null }) => {
     if (isLoggedIn) {
       navigate('/add-pet');
     } else {
-      setShowModal(true);
+      setAlertShowModal(true);
     }
   };
 

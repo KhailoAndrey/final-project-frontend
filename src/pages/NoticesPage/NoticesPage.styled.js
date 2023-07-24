@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
-export const ListContainer = styled.ul`
+export const NoticeNavContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-top: 24px;
+  width: 280px;
+  justify-content: space-between;
+  margin-top: 20px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 32px;
     margin-top: 40px;
   }
 
