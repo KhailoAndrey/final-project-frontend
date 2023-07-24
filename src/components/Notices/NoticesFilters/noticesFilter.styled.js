@@ -1,0 +1,56 @@
+import styled from 'styled-components';
+
+export const SearchForm = styled.form`
+  display: flex;
+  position: relative;
+`;
+
+export const FormInput = styled.input`
+  width: 280px;
+  height: 44px;
+  border-radius: 24px;
+  background: var(--white-bckg-clr);
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 400;
+  box-shadow: 3px 8px 14px 0px var(--small-shadow);
+  border: 0;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 608px;
+    font-size: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 3px 8px 14px 0px var(--big-shadow);
+  }
+`;
+
+export const FormButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 244px;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  svg {
+    fill: var(--main-clr-blue);
+  }
+
+  @media screen and (min-width: 768px) {
+    left: 564px;
+  }
+
+  &:hover {
+    svg {
+      fill: var(--main-clr-yellow);
+    }
+  }
+`;
