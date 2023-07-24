@@ -20,10 +20,11 @@ export const FormContainer = styled.div`
 
   box-shadow: 7px 4px 14px rgba(136, 198, 253, 0.19);
 
-  padding: 60px 75px;
+  padding: 40px 12px;
   @media screen and (min-width: 768px) {
     width: 608px;
     margin-top: 60px;
+    padding: 60px 75px;
   }
 `;
 
@@ -97,10 +98,16 @@ export const FormButton = styled.button`
   color: var(--white-bckg-clr);
   background-color: var( --main-clr-blue);
   border: transparent;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     margin-top: 32px;
     margin-bottom: 20px;
   }
+  :hover,
+  :focus {
+    background: var(--main-clr-gr_blue);
+  }
+
 `;
 
 export const PasswordDiv = styled.div`
