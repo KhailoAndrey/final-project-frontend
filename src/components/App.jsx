@@ -34,7 +34,7 @@ export const App = () => {
             path="login"
             element={
               <PublicRoute
-                redirectTo="/main"
+                redirectTo="/user"
                 component={<LoginPage />}
               ></PublicRoute>
             }
