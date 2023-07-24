@@ -5,6 +5,8 @@ export const SectionTitle = styled.h1`
   padding-top: 40px;
   font-size: 24px;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     padding-top: 80px;
