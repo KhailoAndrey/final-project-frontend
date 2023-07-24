@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 export const SearchForm = styled.form`
   display: flex;
+  justify-content: center;
   position: relative;
+  margin-top: 24px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
 `;
 
 export const FormInput = styled.input`
@@ -17,7 +23,7 @@ export const FormInput = styled.input`
   border: 0;
   outline: none;
   padding-left: 20px;
-  padding-right: 40px;
+  padding-right: 62px;
 
   @media screen and (min-width: 768px) {
     width: 608px;
@@ -30,27 +36,57 @@ export const FormInput = styled.input`
   }
 `;
 
+export const BtnContainer = styled.div`
+  background-color: blue;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  @media screen and (min-width: 768px) {
+    right: 60px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 330px;
+  }
+`;
+
 export const FormButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 10px;
   left: 244px;
   border: 0;
   outline: none;
-  background-color: transparent;
+  background: var(--white-bckg-clr);
   svg {
     fill: var(--main-clr-blue);
-  }
-
-  @media screen and (min-width: 768px) {
-    left: 564px;
   }
 
   &:hover {
     svg {
       fill: var(--main-clr-yellow);
+    }
+  }
+`;
+
+export const ClearButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 244px;
+  border: 0;
+  outline: none;
+  background: var(--white-bckg-clr);
+
+  svg {
+    stroke: var(--main-clr-yellow);
+  }
+
+  &:hover {
+    svg {
+      stroke: var(--main-clr-blue);
     }
   }
 `;
