@@ -25,23 +25,20 @@ const validationSchema = Yup.object().shape({
     .required('Email is a required field')
     .matches(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/, 'Enter a valid Email'),
   password: Yup.string()
-    .nullable()
     .required('Password is a required field')
     .min(6, 'Password must be at least 6 characters')
     .max(16, 'Password must be no more than 16 characters')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.\d)[a-zA-Z\d]{6,16}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
       'Must be at least one number, one lowercase and an uppercase letter'
     ),
-  confirmPassword: Yup.string()
-    .nullable()
-    .when('password', (password, schema) => {
-      return password
-        ? schema
-            .required('Password confirmation required')
-            .oneOf([Yup.ref('password')], 'Passwords must match')
-        : schema.notRequired();
-    }),
+  confirmPassword: Yup.string().when('password', (password, schema) => {
+    return password
+      ? schema
+          .required('Password confirmation required')
+          .oneOf([Yup.ref('password')], 'Passwords must match')
+      : schema.notRequired();
+  }),
 });
 
 const initialValues = {

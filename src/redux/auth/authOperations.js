@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import getMessage from 'utils/messages';
 
 axios.defaults.baseURL = 'https://final-project-backend-4o0r.onrender.com';
 
@@ -26,8 +27,9 @@ export const register = createAsyncThunk(
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch ({ response }) {
+      getMessage(response);
+      return thunkAPI.rejectWithValue(response);
     }
   }
 );
@@ -45,8 +47,9 @@ export const logIn = createAsyncThunk(
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch ({ response }) {
+      getMessage(response);
+      return thunkAPI.rejectWithValue(response);
     }
   }
 );
@@ -88,8 +91,9 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(persistedToken);
       const res = await axios.get('/api/users/current');
       return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch ({ response }) {
+      getMessage(response);
+      return thunkAPI.rejectWithValue(response);
     }
   }
 );
