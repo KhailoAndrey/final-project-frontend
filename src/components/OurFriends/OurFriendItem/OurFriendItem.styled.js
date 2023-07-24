@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FIWrapper = styled.div`
   width: 280px;
-  height: 240px;
+  height: 260px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -11,8 +10,9 @@ export const FIWrapper = styled.div`
   background: var(--white-bckg-clr, #fff);
   box-shadow: 3px 8px 14px 0px var(--small-shadow);
 `;
-export const FITitle = styled(Link)`
+export const FITitle = styled.a`
   text-decoration: none;
+  padding: 0 10px;
   color: var(--main-clr-blue);
   text-align: center;
   font-family: Manrope;
@@ -28,7 +28,7 @@ export const FIContainer = styled.div`
   display: flex;
   gap: 12px;
 `;
-export const FIImage = styled.div`
+export const FIImage = styled.img`
   width: 100px;
   height: 68px;
 `;
@@ -56,4 +56,13 @@ export const FITData = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+`;
+export const FITAddress = styled.a`
+  color: var(--main-accent-text-clr, #111);
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
 `;

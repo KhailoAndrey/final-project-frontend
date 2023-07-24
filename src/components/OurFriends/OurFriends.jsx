@@ -1,11 +1,11 @@
-import { FriendsContainer } from "./OurFriends.styles";
-import OurFriendsList from "./OurFriendsList/OurFriendsList";
+import { FriendsContainer } from './OurFriends.styles';
+import OurFriendsList from './OurFriendsList/OurFriendsList';
 
 const OurFriends = () => {
   return (
     <>
       <FriendsContainer>
-      <OurFriendsList />
+        <OurFriendsList />
       </FriendsContainer>
     </>
   );

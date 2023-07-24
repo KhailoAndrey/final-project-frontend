@@ -1,28 +1,46 @@
-import { FIContainer, FIImage, FIInfo, FITData, FITTitle, FIText, FITitle, FIWrapper } from './OurFriendItem.styled';
+import {
+  FIContainer,
+  FIImage,
+  FIInfo,
+  FITAddress,
+  FITData,
+  FITTitle,
+  FIText,
+  FITitle,
+  FIWrapper,
+} from './OurFriendItem.styled';
 
-const OurFriendItem = () => {
+const OurFriendItem = ({ sponsor }) => {
   return (
     <>
       <FIWrapper>
-        <FITitle>Title</FITitle>
+        <FITitle href={sponsor.url} target="_blank">
+          {sponsor.title}
+        </FITitle>
         <FIContainer>
-          <FIImage>Photo</FIImage>
+          <FIImage src={sponsor.imageUrl} />
           <FIInfo>
             <FIText>
               <FITTitle>Time:</FITTitle>
-              <FITData>8:00- 19:00</FITData>
+              <FITData>
+                {sponsor.workDays
+                  ? sponsor.workDays[0].isOpen
+                    ? `${sponsor.workDays[0].from} - ${sponsor.workDays[0].to}`
+                    : 'Close'
+                  : 'Day and Night'}
+              </FITData>
             </FIText>
             <FIText>
               <FITTitle>Address:</FITTitle>
-              <FITData>Promuslova Street, 56 </FITData>
+              <FITAddress>{sponsor.address}</FITAddress>
             </FIText>
             <FIText>
               <FITTitle>Email:</FITTitle>
-              <FITData>lkplev@gmail.com</FITData>
+              <FITData>{sponsor.email}</FITData>
             </FIText>
             <FIText>
               <FITTitle>Phone:</FITTitle>
-              <FITData>(032) 293-30-41</FITData>
+              <FITData>{sponsor.phone}</FITData>
             </FIText>
           </FIInfo>
         </FIContainer>
