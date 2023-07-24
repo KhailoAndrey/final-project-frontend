@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const AddPetTitle = styled.h2`
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-weight: 500;
   font-size: 20px;
   line-height: 1.35;
-  color: ${props => props.theme.colors.dark};
+  color: #111111;
   padding-left: 16px;
   margin-bottom: 24px;
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     font-size: 28px;
 
     text-align: ${props =>

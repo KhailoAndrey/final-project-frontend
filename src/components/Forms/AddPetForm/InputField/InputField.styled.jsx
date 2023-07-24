@@ -5,12 +5,12 @@ export const InputLabel = styled.label`
   position: relative;
   display: flex;
   flex-direction: column;
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-weight: 500;
 
   font-size: 14px;
   line-height: 1.36;
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     font-size: 20px;
     line-height: 1.3;
   }
@@ -28,10 +28,9 @@ export const Input = styled(Field)`
   outline: transparent;
 
   border: 1px solid;
-  border-color: ${props =>
-    props['data-invalid'] ? props.theme.colors.red : props.theme.colors.blue};
+  border-color: ${props => (props['data-invalid'] ? `#F43F5E` : `#54ADFF`)};
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     width: 395px;
     height: 48px;
     padding: 12px 16px;
@@ -40,10 +39,10 @@ export const Input = styled(Field)`
   }
 
   &::placeholder {
-    font-weight: ${props => props.theme.fontWeights.regular};
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: ${props => props.theme.colors.grey};
+    color: #888888;
   }
 `;
 
@@ -51,8 +50,8 @@ export const ErrWrapper = styled.span`
   position: absolute;
   bottom: -20px;
   padding-left: 16px;
-  font-weight: ${props => props.theme.fontWeights.regular};
+  font-weight: 400;
   font-size: 12px;
   line-height: 1.35;
-  color: ${props => props.theme.colors.red};
+  color: #f43f5e;
 `;

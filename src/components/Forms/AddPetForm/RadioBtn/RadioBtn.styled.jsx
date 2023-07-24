@@ -25,20 +25,14 @@ export const InputLabel = styled.label`
 
   color: ${props => {
     if (props.name === 'category') {
-      return props.selected
-        ? props.theme.colors.whity
-        : props.theme.colors.blue;
+      return props.selected ? `#FEF9F9` : `#54ADFF`;
     } else {
-      return props.selected
-        ? props.theme.colors.green
-        : props.theme.colors.grey;
+      return props.selected ? `#00C3AD` : `#888888`;
     }
   }};
   background: ${props => {
     if (props.name === 'category') {
-      return props.selected
-        ? props.theme.colors.blue
-        : props.theme.colors.blueLight;
+      return props.selected ? `#54ADFF` : `#CCE4FB`;
     }
   }};
   border-radius: ${props => {

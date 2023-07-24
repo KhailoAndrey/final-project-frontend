@@ -6,13 +6,13 @@ export const UploadFileLabel = styled.label`
   align-items: center;
   align-self: flex-start;
 
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.35;
   gap: 27px;
   cursor: pointer;
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     font-size: 20px;
     flex-direction: ${props =>
       props['data-category'] !== 'your pet' ? 'column' : 'row'};
@@ -32,7 +32,7 @@ export const Photo = styled.img`
   border: none;
   border-radius: 20px;
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     border-radius: 40px;
   }
 `;
@@ -48,10 +48,10 @@ export const PhotoWrapper = styled.span`
   align-items: center;
   width: 112px;
   height: 112px;
-  background: ${props => props.theme.colors.blueLight};
+  background: #cce4fb;
   border-radius: 20px;
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     width: 182px;
     height: 182px;
     border-radius: 40px;
@@ -68,5 +68,5 @@ export const ErrWrapper = styled.span`
   font-size: 12px;
 
   line-height: 1.35;
-  color: ${props => props.theme.colors.red};
+  color: #F43F5E;
 `;

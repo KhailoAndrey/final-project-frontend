@@ -14,10 +14,9 @@ export const CommentInput = styled.textarea`
   border-radius: 20px;
   resize: none;
 
-  border-color: ${props =>
-    props['data-invalid'] ? props.theme.colors.red : props.theme.colors.blue};
+  border-color: ${props => (props['data-invalid'] ? `#F43F5E` : `#54ADFF`)};
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     width: 393px;
     height: ${props =>
       props['data-category'] !== 'your pet' && props['data-category'] !== 'sell'
@@ -29,10 +28,10 @@ export const CommentInput = styled.textarea`
   }
 
   &::placeholder {
-    font-weight: ${props => props.theme.fontWeights.regular};
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: ${props => props.theme.colors.grey};
+    color: #888888;
   }
 `;
 
@@ -41,11 +40,11 @@ export const CommentsLabel = styled.label`
   display: flex;
   flex-direction: column;
 
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.35;
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     font-size: 20px;
     line-height: 1.3;
   }
@@ -55,8 +54,8 @@ export const ErrWrapper = styled.span`
   position: absolute;
   bottom: -20px;
   padding-left: 16px;
-  font-weight: ${props => props.theme.fontWeights.regular};
+  font-weight: 400;
   font-size: 12px;
   line-height: 1.35;
-  color: ${props => props.theme.colors.red};
+  color: #f43f5e;
 `;

@@ -7,18 +7,18 @@ export const BtnLM = styled.button`
   justify-content: center;
   padding: 8px 78px;
   border-radius: 40px;
-  border: 2px solid ${props => props.theme.colors.blue};
-  color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.white};
+  border: 2px solid #54adff;
+  color: #54adff;
+  background-color: #fdf7f2;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
   cursor: pointer;
   :hover,
   :focus {
-    color: ${props => props.theme.colors.white};
+    color: #fdf7f2;
     border: none;
-    background: ${props => props.theme.colors.blueGradient};
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
   }
   margin: 0 auto 20px;
 `;
@@ -33,18 +33,18 @@ export const BigBtnFavor = styled.button`
   border-radius: 40px;
   padding-left: auto;
   padding-right: auto;
-  border: 2px solid ${props => props.theme.colors.blue};
+  border: 2px solid #54adff;
   font-size: 16px;
-  color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.white};
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  color: #54adff;
+  background-color: #fdf7f2;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   cursor: pointer;
   padding-left: 36px;
   :hover,
   :focus {
-    background: ${props => props.theme.colors.blue};
-    color: ${props => props.theme.colors.white};
+    background: #54adff;
+    color: #fdf7f2;
     border: none;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,18 +64,18 @@ export const BtnLearnMoreStyled = styled.button`
   border-radius: 40px;
   padding-left: auto;
   padding-right: auto;
-  border: 2px solid ${props => props.theme.colors.blue};
+  border: 2px solid #54adff;
   font-size: 16px;
-  color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.white};
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  color: #54adff;
+  background-color: #fdf7f2;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   cursor: pointer;
   padding-left: 36px;
   :hover,
   :focus {
-    background: ${props => props.theme.colors.blue};
-    color: ${props => props.theme.colors.white};
+    background: #54adff;
+    color: #fdf7f2;
     border: none;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -83,10 +83,10 @@ export const BtnLearnMoreStyled = styled.button`
   position: absolute;
   bottom: 24px;
   right: 16px;
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     right: 44px;
   }
-  @media screen and (${props => props.theme.media.lg}) {
+  @media screen and (min-width: 1280px) {
     right: 20px;
   }
 `;
@@ -102,24 +102,23 @@ export const PetFormBtn = styled.button`
   border-radius: 40px;
   padding-left: auto;
   padding-right: auto;
-  border: 2px solid ${props => props.theme.colors.blue};
+  border: 2px solid #54adff;
   font-size: 16px;
-  color: ${props => props.theme.colors.clearWhite};
-  background-color: ${props => props.theme.colors.blue};
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  color: #ffffff;
+  background-color: #54adff;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   cursor: pointer;
   padding-left: 36px;
   :hover,
   :focus {
-    background: ${props => props.theme.colors.blueGradient};
-
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
     border: none;
   }
 `;
 
 export const Pawprint = styled.svg`
-  fill: ${props => props.theme.colors.white};
+  fill: #fdf7f2;
   margin-left: 12px;
 `;
 export const BtnCancelArrow = styled.button`
@@ -132,18 +131,18 @@ export const BtnCancelArrow = styled.button`
   padding-top: 6px;
   padding-bottom: 6px;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   border: none;
-  color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.transparent};
+  color: #54adff;
+  background-color: transparent;
   cursor: pointer;
   :hover {
-    box-shadow: ${props => props.theme.shadows.secondShadow};
+    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
   }
 `;
 export const ArrowLeft = styled.svg`
-  stroke: ${props => props.theme.colors.blue};
+  stroke: #54adff;
   margin-right: 12px;
 `;
 export const BtnBackArrow = styled.button`
@@ -156,14 +155,14 @@ export const BtnBackArrow = styled.button`
   padding-top: 6px;
   padding-bottom: 6px;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   border: none;
-  color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.transparent};
+  color: #54adff;
+  background-color: transparent;
   cursor: pointer;
   :hover {
-    box-shadow: ${props => props.theme.shadows.secondShadow};
+    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
   }
 `;
 export const BtnAdd = styled.button`
@@ -183,14 +182,14 @@ export const BtnAdd = styled.button`
   padding-bottom: 16px;
   border-radius: 50%;
   font-size: 12px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
   border: none;
-  background: ${props => props.theme.colors.blue};
-  color: ${props => props.theme.colors.white};
-  box-shadow: ${props => props.theme.shadows.mainShadow};
+  background: #54adff;
+  color: #fdf7f2;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     position: static;
     height: 40px;
     width: 129px;
@@ -199,13 +198,13 @@ export const BtnAdd = styled.button`
     padding-left: 16px;
     border-radius: 40px;
     font-size: 16px;
-    font-weight: ${props => props.theme.fontWeights.bold};
+    font-weight: 700;
   }
 
   cursor: pointer;
   :hover,
   :focus {
-    background: ${props => props.theme.colors.blueGradient};
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
   }
 `;
 
@@ -220,86 +219,86 @@ export const BtnAddUser = styled.button`
   padding-left: 16px;
   border-radius: 40px;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   border: none;
-  background: ${props => props.theme.colors.blue};
-  color: ${props => props.theme.colors.white};
+  background: #54adff;
+  color: #fdf7f2;
   cursor: pointer;
   :hover,
   :focus {
-    background: ${props => props.theme.colors.blueGradient};
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
   }
 `;
 
-export const Add = styled.svg`
-  stroke: ${props => props.theme.colors.white};
-`;
-export const AddCurcle = styled.svg`
-  stroke: ${props => props.theme.colors.white};
-`;
-export const BtnHeart = styled.button`
-  height: 40px;
-  width: 40px;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 13px;
-  padding-bottom: 11px;
-  padding-left: 11px;
-  padding-right: 11px;
-  background-color: ${props => props.theme.colors.blueLight};
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  :hover {
-    border: 2px solid ${props => props.theme.colors.blue};
-  }
-`;
-export const FilterCurcle = styled.button`
-  height: 40px;
-  width: 40px;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 13px;
-  padding-bottom: 11px;
-  padding-left: 11px;
-  padding-right: 11px;
-  background-color: ${props => props.theme.colors.blueLight};
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  stroke: ${props => props.theme.colors.blue};
-  fill: none;
-  :hover,
-  :focus & svg {
-    stroke: ${props => props.theme.colors.white};
-    color: ${props => props.theme.colors.white};
-    border: none;
-    background: ${props => props.theme.colors.blueGradient};
-  }
-  @media screen and (${props => props.theme.media.md}) {
-    display: none;
-  }
-`;
+// export const Add = styled.svg`
+//   stroke: #fdf7f2;
+// `;
+// export const AddCurcle = styled.svg`
+//   stroke: #fdf7f2;
+// // `;
+// export const BtnHeart = styled.button`
+//   height: 40px;
+//   width: 40px;
+//   border-radius: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding-top: 13px;
+//   padding-bottom: 11px;
+//   padding-left: 11px;
+//   padding-right: 11px;
+//   background-color: #cce4fb;
+//   border: none;
+//   cursor: pointer;
+//   position: absolute;
+//   top: 12px;
+//   right: 12px;
+//   :hover {
+//     border: 2px solid #54adff;
+//   }
+// // `;
+// export const FilterCurcle = styled.button`
+//   height: 40px;
+//   width: 40px;
+//   border-radius: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding-top: 13px;
+//   padding-bottom: 11px;
+//   padding-left: 11px;
+//   padding-right: 11px;
+//   background-color: #cce4fb;
+//   border: none;
+//   cursor: pointer;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   stroke: #54adff;
+//   fill: none;
+//   :hover,
+//   :focus & svg {
+//     stroke: #fdf7f2;
+//     color: #fdf7f2;
+//     border: none;
+//     background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+//   }
+//   @media screen and (min-width: 768px) {
+//     display: none;
+//   }
+// `;
 
-export const Heart = styled.svg`
-  fill: ${props => {
-    return props.isFavorite ? props.theme.colors.blue : 'none';
-  }};
-  stroke: ${props => props.theme.colors.blue};
-  :hover,
-  :active {
-    fill: ${props => props.theme.colors.blue};
-  }
-`;
+// export const Heart = styled.svg`
+//   fill: ${props => {
+//     return props.isFavorite ? `#54ADFF` : 'none';
+//   }};
+//   stroke: #54adff;
+//   :hover,
+//   :active {
+//     fill: #54adff;
+//   }
+// `;
 export const BtnRegLog = styled.button`
   height: 48px;
   width: 458px;
@@ -310,60 +309,61 @@ export const BtnRegLog = styled.button`
   justify-content: center;
   padding: 8px 78px;
   border-radius: 40px;
-  background-color: ${props => props.theme.colors.blue};
-  color: ${props => props.theme.colors.white};
+  background-color: #54adff;
+  color: #fdf7f2;
   font-size: 20px;
   line-height: 1, 35;
   letter-spacing: 0.04em;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.semibold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
   border: none;
   cursor: pointer;
 
   :hover,
   :focus {
-    background: ${props => props.theme.colors.blueGradient};
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
   }
+  //
 `;
-export const BtnFilter = styled.button`
-  display: none;
-  @media screen and (${props => props.theme.media.md}) {
-    height: 40px;
-    width: 129px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
-    border-radius: 40px;
-    border: 2px solid ${props => props.theme.colors.blue};
-    color: ${props => props.theme.colors.blue};
-    background-color: ${props => props.theme.colors.white};
-    font-size: 16px;
-    font-family: ${props => props.theme.fonts.main};
-    font-weight: ${props => props.theme.fontWeights.bold};
-    cursor: pointer;
-    stroke: ${props => props.theme.colors.blue};
-    fill: none;
-    :hover,
-    :focus & svg {
-      stroke: ${props => props.theme.colors.white};
-      color: ${props => props.theme.colors.white};
-      border: none;
-      background: ${props => props.theme.colors.blueGradient};
-      transition-duration: 250ms;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-  }
-`;
+// export const BtnFilter = styled.button`
+//   display: none;
+//   @media screen and (min-width: 768px) {
+//     height: 40px;
+//     width: 129px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 12px;
+//     border-radius: 40px;
+//     border: 2px solid #54adff;
+//     color: #54adff;
+//     background-color: #fdf7f2;
+//     font-size: 16px;
+//     font-family: 'Manrope', sans-serif;
+//     font-weight: 700;
+//     cursor: pointer;
+//     stroke: #54adff;
+//     fill: none;
+//     :hover,
+//     :focus & svg {
+//       stroke: #fdf7f2;
+//       color: #fdf7f2;
+//       border: none;
+//       background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+//       transition-duration: 250ms;
+//       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+//     }
+//   }
+// `;
 
 export const BtnOption = styled.button`
   height: 35px;
   border-radius: 40px;
   padding: 8px 16px;
-  background-color: ${props => props.theme.colors.blueLight};
+  background-color: #cce4fb;
   border: none;
-  color: ${props => props.theme.colors.blue};
-  font-weight: ${props => props.theme.fontWeights.medium};
+  color: #54adff;
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.35;
   letter-spacing: 0.04em;
@@ -371,39 +371,40 @@ export const BtnOption = styled.button`
   :hover,
   :focus,
   :active {
-    color: ${props => props.theme.colors.white};
-    background-color: ${props => props.theme.colors.blue};
+    color: #fdf7f2;
+    background-color: #54adff;
   }
   margin: 0 8px 8px 0;
+  //
 `;
-export const BtnToHeart = styled.button`
-  height: 40px;
-  width: 256px;
-  border-radius: 40px;
-  padding-top: 9px;
-  padding-bottom: 9px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.theme.colors.blue};
-  font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${props => props.theme.colors.white};
-  border: none;
-  cursor: pointer;
-  :hover,
-  :focus {
-    background: ${props => props.theme.colors.blueGradient};
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-`;
-export const ToHeart = styled.svg`
-  fill: ${props => (props.isFavorite ? props.theme.colors.white : 'none')};
-  stroke: ${props => props.theme.colors.white};
-  margin-left: 11px;
-`;
+// export const BtnToHeart = styled.button`
+//   height: 40px;
+//   width: 256px;
+//   border-radius: 40px;
+//   padding-top: 9px;
+//   padding-bottom: 9px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: #54adff;
+//   font-size: 16px;
+//   font-family: 'Manrope', sans-serif;
+//   font-weight: 700;
+//   color: #fdf7f2;
+//   border: none;
+//   cursor: pointer;
+//   :hover,
+//   :focus {
+//     background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+//     transition-duration: 250ms;
+//     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+//   }
+// `;
+// export const ToHeart = styled.svg`
+//   fill: ${props => (props.isFavorite ? `#FDF7F2` : 'none')};
+//   stroke: #fdf7f2;
+//   margin-left: 11px;
+// `;
 export const BtnContact = styled.a`
   height: 40px;
   width: 256px;
@@ -413,16 +414,16 @@ export const BtnContact = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.colors.white};
+  background-color: #fdf7f2;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.35;
-  color: ${props => props.theme.colors.blue};
-  border: 2px solid ${props => props.theme.colors.blue};
+  color: #54adff;
+  border: 2px solid #54adff;
   :hover {
-    box-shadow: ${props => props.theme.shadows.secondShadow};
+    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -434,9 +435,9 @@ export const PetInfoStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.colors.blueLight};
+  background-color: #cce4fb;
   border: none;
-  color: ${props => props.theme.colors.black};
+  color: #111111;
 `;
 export const PetInfoNoticesStyle = styled.div`
   height: 28px;
@@ -445,9 +446,9 @@ export const PetInfoNoticesStyle = styled.div`
   display: flex;
   padding-left: 4px;
   align-items: center;
-  background-color: ${props => props.theme.colors.blueLight};
+  background-color: #cce4fb;
   border: none;
-  color: ${props => props.theme.colors.black};
+  color: #111111;
 `;
 export const PetCategoryStyle = styled.div`
   width: 126px;
@@ -459,13 +460,13 @@ export const PetCategoryStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.colors.blueLight};
+  background-color: #cce4fb;
   border: none;
-  color: ${props => props.theme.colors.black};
+  color: #111111;
 `;
 export const City = styled.svg`
   fill: none;
-  stroke: ${props => props.theme.colors.blue};
+  stroke: #54adff;
   margin-right: 4px;
 `;
 export const TexStyletInfo = styled.p`
@@ -499,35 +500,23 @@ export const YesBtn = styled.button`
   padding-top: 8px;
   padding-bottom: 8px;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.35;
-  background-color: ${props => props.theme.colors.blue};
+  background-color: #54adff;
   border: none;
   cursor: pointer;
-  color: ${props => props.theme.colors.white};
+  color: #fdf7f2;
   :hover,
   :focus,
   :active {
-    background: ${props => props.theme.colors.blueGradient};
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
   }
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     width: 129px;
   }
-`;
-
-export const Delete = styled.svg`
-  fill: none;
-  stroke: ${props => props.theme.colors.white};
-  margin-left: 8px;
-`;
-
-export const Logout = styled.svg`
-  fill: none;
-  stroke: ${props => props.theme.colors.white};
-  margin-left: 11px;
 `;
 
 export const BtnClose = styled.button`
@@ -536,21 +525,21 @@ export const BtnClose = styled.button`
   right: 12px;
   height: 24px;
   width: 24px;
-  background-color: ${props => props.theme.colors.transparent};
-  color: ${props => props.theme.colors.blue};
+  background-color: transparent;
+  color: #54adff;
   border: none;
   cursor: pointer;
   :hover,
   :focus {
-    color: ${props => props.theme.colors.black};
+    color: #111111;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     top: 24px;
     right: 24px;
   }
-  @media screen and (${props => props.theme.media.lg}) {
+  @media screen and (min-width: 1280px) {
     top: 23px;
     right: 26px;
   }
@@ -559,8 +548,8 @@ export const Close = styled.svg`
   position: absolute;
   top: 0;
   left: 0;
-  fill: ${props => props.theme.colors.currentColor};
-  stroke: ${props => props.theme.colors.currentColor};
+  fill: currentColor;
+  stroke: currentColor;
 `;
 
 export const BtnCloseStyled = styled.button`
@@ -571,31 +560,31 @@ export const BtnCloseStyled = styled.button`
   align-items: center;
   padding: 12px;
   border-radius: 40px;
-  border: 2px solid ${props => props.theme.colors.blue};
-  color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.clearWhite};
+  border: 2px solid #54adff;
+  color: #54adff;
+  background-color: #ffffff;
   font-size: 16px;
-  font-family: ${props => props.theme.fonts.main};
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   cursor: pointer;
   :hover,
   :focus {
-    color: ${props => props.theme.colors.white};
+    color: #fdf7f2;
     border: none;
-    background: ${props => props.theme.colors.blueGradient};
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
   }
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     width: 129px;
   }
 `;
 export const Arrow = styled.svg`
-  stroke: ${props => props.theme.colors.currentColor};
-  fill: ${props => props.theme.colors.currentColor};
+  stroke: currentColor;
+  fill: currentColor;
 `;
 export const Avatar = styled.svg`
   fill: none;
-  stroke: ${props => props.theme.colors.orange};
+  stroke: #ffc107;
 `;
 
 export const StyledEditPhotoBtn = styled.button`
@@ -607,8 +596,8 @@ export const StyledEditPhotoBtn = styled.button`
   border: none;
   background-color: transparent;
   border: none;
-  color: ${props => props.theme.colors.dark};
-  font-weight: ${props => props.theme.fontWeights.regular};
+  color: #111111;
+  font-weight: 400;
   font-size: 12px;
   line-height: calc(22 / 12);
   letter-spacing: 0.04em;
@@ -640,7 +629,7 @@ export const LogOutTitle = styled.h3`
   font-weight: 500;
   font-size: 16px;
   line-height: 21.86px;
-  color: ${props => props.theme.colors.grey};
+  color: #888888;
 `;
 
 export const LogOutWrapper = styled.button`
@@ -653,27 +642,27 @@ export const LogOutWrapper = styled.button`
   padding: 2px;
   border-radius: 3px;
 
-  font-weight: ${props => props.theme.fontWeights.regular};
+  font-weight: 400;
   font-size: 16px;
   line-height: 22px;
 
-  background-color: ${props => props.theme.colors.transparent};
+  background-color: transparent;
 
   outline: none;
   border: none;
   cursor: pointer;
   :hover {
-    box-shadow: ${props => props.theme.shadows.secondShadow};
+    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  @media screen and (${props => props.theme.media.md}) {
+  @media screen and (min-width: 768px) {
     left: 20px;
     bottom: 21px;
   }
 
-  @media screen and (${props => props.theme.media.lg}) {
+  @media screen and (min-width: 1280px) {
     left: 16px;
     bottom: 20px;
   }
@@ -687,8 +676,8 @@ export const DeletePet = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
-  background-color: ${props => props.theme.colors.transparent};
+  background-color: transparent;
   :hover {
-    box-shadow: ${props => props.theme.shadows.secondShadow};
+    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
   }
 `;
