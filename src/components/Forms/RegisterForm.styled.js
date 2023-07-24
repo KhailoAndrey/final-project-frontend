@@ -15,7 +15,7 @@ export const FormContainer = styled.div`
   width: 280px;
 
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: var(--white-bckg-clr);
 
   box-shadow: 3px 8px 14px 0px var(--small-shadow);
 
@@ -73,7 +73,7 @@ export const FormInput = styled(Field)`
     font-family: Manrope, sans-serif;
     font-weight: 400;
     letter-spacing: 0.64px;
-    color: #888888;
+    color: var(--main-form-clr);
   }
 `;
 
@@ -85,7 +85,7 @@ export const FormButton = styled.button`
   font-style: normal;
   letter-spacing: 0.8px;
   font-size: 20px;
-  color: #ffffff;
+  color: var(--white-bckg-clr);
   background-color: var(--main-clr-blue);
   border: transparent;
   margin-top: 40px;
@@ -114,7 +114,7 @@ export const FormText = styled.p`
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.48px;
-  color: #888888;
+  color: var(--main-form-clr);
 `;
 
 export const FormLink = styled(Link)`
