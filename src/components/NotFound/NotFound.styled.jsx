@@ -65,6 +65,8 @@ export const NFImg = styled.div`
   }
   @media (min-width: 1280px) {
     background-image: url(${NFbgImgDesktopX1});
+    width: 822px;
+    height: 360px;
   }
 `;
 
