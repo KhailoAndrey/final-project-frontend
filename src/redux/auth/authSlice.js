@@ -7,26 +7,30 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
+  newUser: false,
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
     builder
       .addCase(register.pending, (state, action) => {
         state.error = null;
+        state.newUser = false;
       })
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.newUser = true;
       })
       .addCase(register.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(logIn.pending, state => {
         state.error = null;
+        state.newUser = false;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -38,6 +42,7 @@ export const authSlice = createSlice({
       })
       .addCase(logOut.pending, state => {
         state.error = null;
+        state.newUser = false;
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
@@ -50,6 +55,7 @@ export const authSlice = createSlice({
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
         state.error = null;
+        state.newUser = false;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
@@ -62,4 +68,4 @@ export const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export const authReducer = authSlice.reducer;

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './auth/authSlice';
+import { authReducer } from './auth/authSlice';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import {
@@ -14,9 +14,9 @@ import {
 } from 'redux-persist';
 
 const authPersistConfig = {
-  key: 'tokenStorage',
+  key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'newUser'],
 };
 
 const rootReducer = combineReducers({
