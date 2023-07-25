@@ -16,6 +16,7 @@ import {
   PasswordDiv,
   EmailDiv,
   FormSuccessPassword,
+  IconsContainer,
 } from './LoginForm.styled';
 
 import { Icon } from 'react-icons-kit';
@@ -47,7 +48,7 @@ export const LoginForm = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async values => {
       dispatch(
         logIn({
           email: values.email,
@@ -66,18 +67,23 @@ export const LoginForm = () => {
     formik.setTouched({ ...formik.touched, email: true });
   };
 
-  const isEmailError =
+  const showEmailError =
     (formik.touched.email || formik.submitCount > 0) &&
     formik.errors.email &&
     formik.values.email;
 
-  const isPasswordError =
+  const showPasswordError =
     (formik.touched.password || formik.submitCount > 0) &&
     formik.errors.password &&
     formik.values.password;
 
   const showPasswordSuccess =
-    formik.touched.password && !formik.errors.password && formik.values.password;
+    formik.touched.password &&
+    !formik.errors.password &&
+    formik.values.password;
+
+  const showEmailSuccess =
+    formik.touched.email && !formik.errors.email && formik.values.email;
 
   return (
     <FormContainer>
@@ -92,9 +98,9 @@ export const LoginForm = () => {
             placeholder="Email"
             onBlur={handleEmailBlur}
             className={
-              isEmailError
+              showEmailError
                 ? 'input-error'
-                : formik.touched.email && !formik.errors.email
+                : showEmailSuccess
                 ? 'input-success'
                 : ''
             }
@@ -102,7 +108,7 @@ export const LoginForm = () => {
           {formik.touched.email && formik.errors.email && (
             <FormErrorEmail>{formik.errors.email}</FormErrorEmail>
           )}
-          {isEmailError && (
+          {showEmailError && (
             <Icon
               icon={iosCloseEmpty}
               size={36}
@@ -111,6 +117,18 @@ export const LoginForm = () => {
                 top: '6px',
                 right: '16px',
                 color: 'red',
+              }}
+            />
+          )}
+          {showEmailSuccess && (
+            <Icon
+              icon={androidDone}
+              size={24}
+              style={{
+                position: 'absolute',
+                top: '11px',
+                right: '16px',
+                color: 'green',
               }}
             />
           )}
@@ -126,35 +144,43 @@ export const LoginForm = () => {
             placeholder="Password"
             onBlur={handlePasswordBlur}
             className={
-              isPasswordError
+              showPasswordError
                 ? 'input-error'
                 : showPasswordSuccess
                 ? 'input-success'
                 : ''
             }
           />
+          <IconsContainer>
+            {type === 'password' ? (
+              <span onClick={() => setType('text')}>
+                <FormEye icon={ic_visibility_off_outline} size={24} />
+              </span>
+            ) : (
+              <span onClick={() => setType('password')}>
+                <FormEye icon={ic_visibility_outline} size={24} />
+              </span>
+            )}
+            {showPasswordError && (
+              <Icon
+                icon={iosCloseEmpty}
+                size={36}
+                style={{
+                  color: 'red',
+                }}
+              />
+            )}
 
-          {type === 'password' ? (
-            <span onClick={() => setType('text')}>
-              <FormEye icon={ic_visibility_off_outline} size={24} />
-            </span>
-          ) : (
-            <span onClick={() => setType('password')}>
-              <FormEye icon={ic_visibility_outline} size={24} />
-            </span>
-          )}
-          {showPasswordSuccess && (
-            <Icon
-              icon={androidDone}
-              size={24}
-              style={{
-                position: 'absolute',
-                top: '11px',
-                right: '50px',
-                color: 'green',
-              }}
-            />
-          )}
+            {showPasswordSuccess && (
+              <Icon
+                icon={androidDone}
+                size={24}
+                style={{
+                  color: 'green',
+                }}
+              />
+            )}
+          </IconsContainer>
 
           {formik.touched.password && formik.errors.password && (
             <FormErrorPassword>{formik.errors.password}</FormErrorPassword>

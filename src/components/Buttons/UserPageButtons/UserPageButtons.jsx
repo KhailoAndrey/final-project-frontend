@@ -10,7 +10,7 @@ import {
 export const Logout = () => {
   return (
     <>
-      <LogoutBtn>
+      <LogoutBtn type="button" onClick={() => console.log('LogoutBtn')}>
         <LogoutIcon>
           <svg width={24} height={24}>
             <use href={`${svg}#icon-logout`} />

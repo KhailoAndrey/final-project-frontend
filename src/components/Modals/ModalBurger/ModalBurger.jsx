@@ -15,6 +15,7 @@ import Logo from 'components/Header/Logo/Logo';
 import Nav from 'components/Header/Navigation/Nav/Nav';
 import { useAuth } from 'redux/auth/selectors';
 import UserNavBlock from 'components/Header/Navigation/UserNav/UserNavBlock/UserNavBlock';
+import Logout from 'components/Header/Navigation/UserNav/Logout/Logout';
 
 const ModalBurger = ({ setShowModal = null }) => {
   const { isLoggedIn } = useAuth();
@@ -50,6 +51,7 @@ const ModalBurger = ({ setShowModal = null }) => {
           </BtnContainer>
         )}
         <Nav onClick={() => setShowModal(false)} />
+        {isLoggedIn && <Logout showButton={true}></Logout>}
       </ModalContent>
     </ModalBackdrop>
   );

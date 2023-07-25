@@ -13,14 +13,14 @@ export const NavBox = styled.div`
   }
 `;
 export const StyledNavLink = styled(Link)`
+  font-size: 32px;
+  letter-spacing: 1.28px;
   text-decoration: none;
   display: block;
   font-family: Manrope;
-  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  letter-spacing: 0.8px;
   color: var(--main-accent-text-clr);
   &:hover {
     color: var(--main-clr-yellow);
@@ -28,5 +28,13 @@ export const StyledNavLink = styled(Link)`
   }
   &.activeLink {
     color: var(--main-clr-yellow);
+  }
+  @media screen and (min-width: 768px) {
+  font-size: 48px;
+  letter-spacing: 1.92px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    letter-spacing: 0.8px;
   }
 `;

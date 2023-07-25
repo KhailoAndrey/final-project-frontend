@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { validationSchema } from './ValidationRegister';
 import { register } from 'redux/auth/authOperations';
 import {
   ErrorText,
@@ -14,34 +14,19 @@ import {
   WrapperInput,
 } from './RegisterForm.styled';
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .required('Name is a required field')
-    .min(2, 'Name must be at least 2 characters')
-    .max(16, 'Name must be at least 16 characters')
-    .matches(/^[A-Za-z]{2,16}$/, 'The name must be in English'),
-  email: Yup.string()
-    .email()
-    .required('Email is a required field')
-    .matches(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/, 'Enter a valid Email'),
-  password: Yup.string()
-    .nullable()
-    .required('Password is a required field')
-    .min(6, 'Password must be at least 6 characters')
-    .max(16, 'Password must be no more than 16 characters')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.\d)[a-zA-Z\d]{6,16}$/,
-      'Must be at least one number, one lowercase and an uppercase letter'
-    ),
-  confirmPassword: Yup.string()
-    .nullable()
-    .when('password', (password, schema) => {
-      return password
-        ? schema
-            .required('Password confirmation required')
-            .oneOf([Yup.ref('password')], 'Passwords must match')
-        : schema.notRequired();
-    }),
+import Notiflix from 'notiflix';
+
+Notiflix.Notify.init({
+  width: '280px',
+  position: 'center-top',
+  distance: '15px',
+  timeout: 5000,
+  opacity: 1,
+  warning: {
+    background: 'var(--main-clr-blue)',
+    textColor: 'var(--main-accent-text-clr)',
+    notiflixIconColor: 'var(--main-clr-yellow)',
+  },
 });
 
 const initialValues = {
@@ -63,15 +48,23 @@ const FormError = ({ name }) => {
 const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const credentials = {
       name: values.name,
       email: values.email,
       password: values.password,
     };
-    // console.log(credentials);
-    dispatch(register(credentials));
-    resetForm();
+    try {
+      // console.log(credentials);
+      const response = await dispatch(register(credentials));
+      if (response.error) {
+        Notiflix.Notify.warning(`${response.error.data.message}`);
+      } else {
+        resetForm();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
