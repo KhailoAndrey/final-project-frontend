@@ -7,9 +7,9 @@ Notiflix.Notify.init({
   timeout: 5000,
   opacity: 1,
   warning: {
-    background: '#54ADFF',
-    textColor: '#111111',
-    notiflixIconColor: '#ffc107',
+    background: 'var(--main-clr-blue)',
+    textColor: 'var(--main-accent-text-clr)',
+    notiflixIconColor: 'var(--main-clr-yellow)',
   },
 });
 

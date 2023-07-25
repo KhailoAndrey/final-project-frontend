@@ -1,8 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 
 import PrivateRoute from 'utils/PrivateRoute';
 import PublicRoute from 'utils/PublicRoute';
+import { useAuth } from 'redux/auth/selectors';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/authOperations';
+import Loader from 'components/Loader/Loader';
 
 const Layout = lazy(() => import('./Layout/Layout'));
 const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
@@ -16,56 +20,63 @@ const FriendsPage = lazy(() => import('../pages/FriendsPage/FriendsPage'));
 const AddPetPage = lazy(() => import('../pages/AddPetPage/AddPetPage'));
 
 export const App = () => {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="register"
-            element={
-              <PublicRoute
-                redirectTo="/user"
-                component={<RegisterPage />}
-              ></PublicRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute
-                redirectTo="/user"
-                component={<LoginPage />}
-              ></PublicRoute>
-            }
-          />
-          <Route path="news" element={<NewsPage />} />
-          <Route path="/notices/">
-            <Route index element={<Navigate to="/notices/sell" />} />
-            <Route path=":categoryName" element={<NoticesPage />} />
-          </Route>
-          <Route path="friends" element={<FriendsPage />} />
-          <Route
-            path="add-pet"
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<AddPetPage />}
-              ></PrivateRoute>
-            }
-          />
-          <Route
-            path="user"
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<UserPage />}
-              ></PrivateRoute>
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="register"
+          element={
+            <PublicRoute
+              redirectTo="/user"
+              component={<RegisterPage />}
+            ></PublicRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute
+              redirectTo="/user"
+              component={<LoginPage />}
+            ></PublicRoute>
+          }
+        />
+        <Route path="news" element={<NewsPage />} />
+        <Route path="/notices/">
+          <Route index element={<Navigate to="/notices/sell" />} />
+          <Route path=":categoryName" element={<NoticesPage />} />
         </Route>
-      </Routes>
-    </>
+        <Route path="friends" element={<FriendsPage />} />
+        <Route
+          path="add-pet"
+          element={
+            <PrivateRoute
+              redirectTo="/login"
+              component={<AddPetPage />}
+            ></PrivateRoute>
+          }
+        />
+        <Route
+          path="user"
+          element={
+            <PrivateRoute
+              redirectTo="/login"
+              component={<UserPage />}
+            ></PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 };
