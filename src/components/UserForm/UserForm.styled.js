@@ -63,5 +63,9 @@ export const Label = styled.label`
 // `;
 
 export const ErrorText = styled.p`
-  color: red;
+  color: var(--form-error-red);
+`;
+
+export const Div = styled.div`
+  position: relative;
 `;

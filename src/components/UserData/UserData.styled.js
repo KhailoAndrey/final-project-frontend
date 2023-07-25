@@ -18,7 +18,7 @@ export const UserTitle = styled.h3`
 
 export const UserCard = styled.div`
   position: relative;
-  background: #ffffff;
+  background: var(--white-bckg-clr);
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 40px;
   padding: 20px 8px;
@@ -126,15 +126,15 @@ export const DataField = styled.div`
 `;
 
 export const Button = styled.button`
-  bottom: 4%;
-  right: 4%;
+  bottom: 535px;
+  right: 0px;
   width: 28px;
   height: 28px;
   background-color: transparent;
   position: absolute;
   padding: 0;
-  border-radius: 20px;
-  border-color: white;
+
+  border: none;
   transition: transform 250ms linear;
   &:hover,
   :focus {
@@ -166,7 +166,7 @@ export const CloseShape = styled.img`
 
 export const InputWrapper = styled.div`
   position: absolute;
-  top: 240px;
+  top: -40px;
 `;
 
 export const InputFile = styled.input`
