@@ -15,7 +15,7 @@ const NoticesPage = () => {
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
 
-  // console.log(setPage);
+  console.log(setPage);
 
     useEffect(() => {
       console.log('query ch');

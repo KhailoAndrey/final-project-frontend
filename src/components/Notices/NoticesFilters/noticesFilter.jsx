@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnContainer,
