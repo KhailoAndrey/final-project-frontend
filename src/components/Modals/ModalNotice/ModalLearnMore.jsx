@@ -17,6 +17,7 @@ import {
   CloseButton,
 } from './ModalLearnMore.styled';
 import svg from '../../../images/Icons/symbol-defs.svg';
+import fetchNoticesById from 'fetch/noticeModalLearnMore';
 // import { useSelector } from 'react-redux';
 // import { useAuth } from  "../../../redux/auth/selectors"
 
@@ -59,22 +60,7 @@ export const ModalLearMore = ({ handler, handleAdd , id}) => {
 // ________________________________
 const [data, setNoticeData] = useState({})
 
-console.log("fetchData  data:", data.owner?.name)
-const API_URL = 'https://final-project-backend-4o0r.onrender.com';
 
-async function fetchNoticesById(id) {
-  
-  try {
-    const response = await fetch(
-      `${API_URL}/api/notices/${id}`
-    );
-    if (!response.ok) throw new Error('Sorry. Try again later :(');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
 
 useEffect(() => {
    const fetchData = async () => {
@@ -88,7 +74,7 @@ useEffect(() => {
    };
  
    fetchData();
- }, []);
+ }, [id]);
 
 
 // ________________________________
