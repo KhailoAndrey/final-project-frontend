@@ -131,6 +131,8 @@ export const LearnMoreBtn = styled.button`
   color: var(--main-clr-blue);
   font-size: 16px;
   font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
 
   &:hover,
   &:focus {

@@ -1,10 +1,10 @@
 const API_URL = 'https://final-project-backend-4o0r.onrender.com/api/notices';
 
 async function fetchNotices(page, category, query) {
-  console.log("fetch:");
-  console.log('page :>> ', page);
-  console.log('category :>> ', category);
-  console.log('query :>> ', query);
+  // console.log("fetch from sell:");
+  // console.log('page :>> ', page);
+  // console.log('category :>> ', category);
+  // console.log('query :>> ', query);
   try {
     const response = await fetch(
       `${API_URL}?category=${category}&query=${query}&page=${page}`
