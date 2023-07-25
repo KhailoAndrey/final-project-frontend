@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const LogoutBtn = styled.button`
-display: none;
-@media screen and (min-width: 1280px) {    
-    margin-left: auto;
-    display: inline-flex;
+      display: ${({ showButton }) => (showButton ? 'inline-flex' : 'none')};
+  margin-left: 0;
+  margin-right: auto;
+    margin-top: 160px;
     border-radius: 40px;
     border: 2px solid var(--main-clr-blue);
     background: var(--main-clr-blue);
@@ -14,22 +14,30 @@ display: none;
     align-items: center;
     width: 135px;
     height: 40px;
-    font-family: "Manrope";
+    font-family: 'Manrope';
     font-size: 16px;
     font-weight: 700;
     color: var(--btn-clr-fon);
     letter-spacing: 0.64px;
-  transition: all var(--default-animation);
-  svg {
-    stroke: var(--btn-clr-fon);
-  }
-  &:hover {
-    background: var(--btn-clr-fon);
-    color: var(--main-clr-blue);
+    transition: all var(--default-animation);
     svg {
-      stroke: var(--main-clr-blue);
+      stroke: var(--btn-clr-fon);
     }
-    transform: transition;
+    &:hover {
+      background: var(--btn-clr-fon);
+      color: var(--main-clr-blue);
+      svg {
+        stroke: var(--main-clr-blue);
+      }
+      transform: transition;
+    }
+    @media screen and (min-width: 768px) {
+      /* display: ${({ showButton }) => (showButton ? 'inline-flex' : 'none')}; */
   }
-}
-`
+  @media screen and (min-width: 1280px) {
+    display: inline-flex;
+    margin-left: auto;
+    margin-top: 0;
+    margin-right: 0;
+  }
+`;

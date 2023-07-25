@@ -4,16 +4,16 @@ import { LogoutBtn } from './Logout.styled';
 import { useState } from 'react';
 
 
-const Logout = () => {
+const Logout = ({ showButton }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(isModalOpen)
-const handleLogout = () => {
-  setIsModalOpen(true);
-};
-   
+  console.log(isModalOpen);
+  const handleLogout = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <>
-      <LogoutBtn type="button" onClick={handleLogout}>
+      <LogoutBtn type="button" onClick={handleLogout} showButton={showButton}>
         Log out
         <svg width={24} height={24}>
           <use href={`${svg}#icon-logout`} width={24} height={24} />
