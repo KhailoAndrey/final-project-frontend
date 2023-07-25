@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { LoginBtn } from 'components/Header/Navigation/AuthNav/Login/loginBtn';
+import { useAuth } from 'redux/auth/selectors';
+// import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg';
+import { LoginBtn } from 'components/Header/Navigation/AuthNav/Login/loginBtn';
+import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
+import Logo from 'components/Header/Logo/Logo';
+import Nav from 'components/Header/Navigation/Nav/Nav';
+import UserNavBlock from 'components/Header/Navigation/UserNav/UserNavBlock/UserNavBlock';
+import Logout from 'components/Header/Navigation/UserNav/Logout/Logout';
 import {
   ModalContent,
   ModalBackdrop,
@@ -10,31 +16,28 @@ import {
   BtnContainer,
   UserBlock,
 } from './ModalBurger.styled';
-import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
-import Logo from 'components/Header/Logo/Logo';
-import Nav from 'components/Header/Navigation/Nav/Nav';
-import { useAuth } from 'redux/auth/selectors';
-import UserNavBlock from 'components/Header/Navigation/UserNav/UserNavBlock/UserNavBlock';
-import Logout from 'components/Header/Navigation/UserNav/Logout/Logout';
 
-const ModalBurger = ({ setShowModal = null }) => {
+const ModalBurger = ({ closeModal, showModal }) => {
   const { isLoggedIn } = useAuth();
+
   useEffect(() => {
     const handleKeyDown = e => {
-      setShowModal(false);
+      if (e.key === 'Escape') {
+        closeModal();
+      }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [setShowModal]);
+  }, [closeModal]);
 
   return (
-    <ModalBackdrop onClick={() => setShowModal(false)}>
-      <ModalContent onClick={e => e.stopPropagation()}>
+    <ModalBackdrop onClick={closeModal}>
+      <ModalContent open={showModal}>
         <ModalHeader>
           <Logo />
-          <ModalBtn onClick={() => setShowModal(false)}>
+          <ModalBtn onClick={closeModal}>
             <svg width={24} height={24}>
               <use href={`${svg}#icon-cross`} width={24} height={24} />
             </svg>
@@ -46,11 +49,11 @@ const ModalBurger = ({ setShowModal = null }) => {
           </UserBlock>
         ) : (
           <BtnContainer>
-            <LoginBtn />
-            <RegistrationBtn />
+            <LoginBtn onClick={closeModal} />
+            <RegistrationBtn onClick={closeModal} />
           </BtnContainer>
         )}
-        <Nav onClick={() => setShowModal(false)} />
+        <Nav onClick={closeModal} />
         {isLoggedIn && <Logout showButton={true}></Logout>}
       </ModalContent>
     </ModalBackdrop>
@@ -59,6 +62,6 @@ const ModalBurger = ({ setShowModal = null }) => {
 
 export default ModalBurger;
 
-ModalBurger.propTypes = {
-  setShowModal: PropTypes.func.isRequired,
-};
+// ModalBurger.propTypes = {
+//   setShowModal: PropTypes.func.isRequired,
+// };

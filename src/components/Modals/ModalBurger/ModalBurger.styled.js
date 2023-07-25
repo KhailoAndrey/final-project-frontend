@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0); 
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); 
+    }
+`;
 
 export const ModalBackdrop = styled.div`
   width: 100vw;
@@ -11,11 +21,11 @@ export const ModalBackdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1;
 `;
 export const ModalContent = styled.div`
-  width: 280px;
-  border-radius: 20px;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--btn-clr-fon);
   padding: 22px 20px 40px;
   position: relative;
@@ -23,19 +33,19 @@ export const ModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  animation: ${fadeIn} 0.5s ease;
 
   @media screen and (min-width: 768px) {
-    width: 608px;
     padding: 24px 32px;
   }
 `;
 
 export const ModalHeader = styled.div`
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const ModalBtn = styled.button`
   border: 0;
@@ -46,15 +56,15 @@ export const ModalBtn = styled.button`
   right: 16px;
   stroke: var(--main-clr-yellow);
   &:hover {
-      stroke: var(--main-clr-blue);
-}
+    stroke: var(--main-clr-blue);
+  }
 `;
 
 export const UserBlock = styled.div`
-margin-top: 40px;
-margin-bottom: 84px;
-padding: 8px 16px;
-`
+  margin-top: 40px;
+  margin-bottom: 84px;
+  padding: 8px 16px;
+`;
 
 export const BtnContainer = styled.div`
   display: flex;

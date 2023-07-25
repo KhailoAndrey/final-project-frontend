@@ -11,7 +11,7 @@ import {
 } from './OurFriendItem.styled';
 
 const OurFriendItem = ({ friend }) => {
-  // console.log('32576345------',friend.workDays[0].isOpen)
+  const currentDayOfWeek = new Date().getDay();
   return (
     <>
       <FIWrapper>
@@ -24,11 +24,11 @@ const OurFriendItem = ({ friend }) => {
             <FIText>
               <FITTitle>Time:</FITTitle>
               <FITData>
-                {/* {friend.workDays
-                  ? friend.workDays[0].isOpen
-                    ? `${friend.workDays[0].from} - ${friend.workDays[0].to}`
+                {friend.workDays && friend.workDays.length > 0
+                  ? friend.workDays[currentDayOfWeek].isOpen
+                    ? `${friend.workDays[currentDayOfWeek].from} - ${friend.workDays[currentDayOfWeek].to}`
                     : 'Close'
-                  : 'Day and Night'} */}
+                  : 'Day and Night'}
               </FITData>
             </FIText>
             <FIText>

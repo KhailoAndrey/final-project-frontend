@@ -9,7 +9,16 @@ import { NavDesk } from './Navigation.styled';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Функция для закрытия модального окна
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -17,8 +26,10 @@ const Navigation = () => {
         <Nav />
       </NavDesk>
       {isLoggedIn ? <UserNav /> : <AuthNav />}
-      <BurgerMenu setShowModal={setShowModal} />
-      {showModal && <ModalBurger setShowModal={setShowModal} />}
+      <BurgerMenu openModal={openModal} />
+      {showModal && (
+        <ModalBurger closeModal={closeModal} showModal={showModal} />
+      )}
     </>
   );
 };
