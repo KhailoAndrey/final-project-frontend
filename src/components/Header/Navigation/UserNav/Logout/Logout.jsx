@@ -3,6 +3,11 @@ import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { LogoutBtn } from './Logout.styled';
 import { useState } from 'react';
 
+const data = {
+  title: 'Already leaving?',
+  text: '',
+  icon: 'icon-logout',
+};
 
 const Logout = ({ showButton }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +24,7 @@ const Logout = ({ showButton }) => {
           <use href={`${svg}#icon-logout`} width={24} height={24} />
         </svg>
       </LogoutBtn>
-      {isModalOpen && <DeleteModal onClose={setIsModalOpen} />}
+      {isModalOpen && <DeleteModal onClose={setIsModalOpen} data={data} />}
       {/* <DeleteModal/> */}
     </>
   );

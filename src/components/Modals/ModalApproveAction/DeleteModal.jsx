@@ -39,11 +39,9 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
               <use href={`${svg}#icon-cross`} width={24} height={24} />
             </svg>
           </BtnClose>
-          <TitleDelete>Delete adverstiment?</TitleDelete>
+          <TitleDelete>{data.title}</TitleDelete>
 
-          <TextDelete>
-            Are you sure you want to delete <b> “{'витягуєм з data.'}”</b>?
-            <br /> You can`t undo this action.
+          <TextDelete>{data.text}
           </TextDelete>
           <QuestioBtnWrap>
             <BtnDelete onClick={() => onClose(false)} isHovered={true}>
@@ -52,7 +50,7 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
             <BtnDelete onClick={handleDelete} isHovered={false}>
               Yes
               <svg width={24} height={24}>
-                <use href={`${svg}#icon-trash`} width={24} height={24} />
+                <use href={`${svg}#${data.icon}`} width={24} height={24} />
               </svg>
             </BtnDelete>
           </QuestioBtnWrap>
