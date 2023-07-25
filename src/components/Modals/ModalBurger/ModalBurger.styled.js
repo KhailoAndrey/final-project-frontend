@@ -27,7 +27,7 @@ export const ModalContent = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: var(--btn-clr-fon);
-  padding: 22px 20px 40px;
+  padding: 20px 20px 40px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,10 @@ export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 28px;
+  @media screen and (min-width: 768px) {
+    height: 44px;
+  }
 `;
 
 export const ModalBtn = styled.button`
