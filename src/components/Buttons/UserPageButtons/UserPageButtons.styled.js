@@ -7,7 +7,7 @@ export const LogoutBtn = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
-  color: #888888;
+  color: var(--main-form-clr);
   width: fit-content;
   margin-top: 25px;
   transition: transform var(--fast-animation);
@@ -27,19 +27,19 @@ export const LogoutIcon = styled.div`
   padding-right: 12px;
 `;
 
-export const Button = styled.button`
-  position: absolute;
-  border: none;
-  background-color: transparent;
-  top: 14px;
-  right: 14px;
-  transition: transform var(--fast-animation);
+// export const Button = styled.button`
+//   position: absolute;
+//   border: none;
+//   background-color: transparent;
+//   top: 200px;
+//   right: 14px;
+//   transition: transform var(--fast-animation);
 
-  &:focus,
-  &:hover {
-    transform: scale(1.3);
-  }
-`;
+//   &:focus,
+//   &:hover {
+//     transform: scale(1.3);
+//   }
+// `;
 
 export const SaveBtn = styled.button`
   border: none;
@@ -64,7 +64,7 @@ export const EditFotoBtn = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
-  color: #888888;
+  color: var(--main-form-clr);
   width: fit-content;
 
   &:focus,
