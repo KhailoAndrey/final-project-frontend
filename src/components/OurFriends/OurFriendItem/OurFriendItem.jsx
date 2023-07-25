@@ -10,37 +10,38 @@ import {
   FIWrapper,
 } from './OurFriendItem.styled';
 
-const OurFriendItem = ({ sponsor }) => {
+const OurFriendItem = ({ friend }) => {
+  // console.log('32576345------',friend.workDays[0].isOpen)
   return (
     <>
       <FIWrapper>
-        <FITitle href={sponsor.url} target="_blank">
-          {sponsor.title}
+        <FITitle href={friend.url} target="_blank">
+          {friend.title}
         </FITitle>
         <FIContainer>
-          <FIImage src={sponsor.imageUrl} />
+          <FIImage src={friend.imageUrl} />
           <FIInfo>
             <FIText>
               <FITTitle>Time:</FITTitle>
               <FITData>
-                {sponsor.workDays
-                  ? sponsor.workDays[0].isOpen
-                    ? `${sponsor.workDays[0].from} - ${sponsor.workDays[0].to}`
+                {/* {friend.workDays
+                  ? friend.workDays[0].isOpen
+                    ? `${friend.workDays[0].from} - ${friend.workDays[0].to}`
                     : 'Close'
-                  : 'Day and Night'}
+                  : 'Day and Night'} */}
               </FITData>
             </FIText>
             <FIText>
               <FITTitle>Address:</FITTitle>
-              <FITAddress>{sponsor.address}</FITAddress>
+              <FITAddress>{friend.address}</FITAddress>
             </FIText>
             <FIText>
               <FITTitle>Email:</FITTitle>
-              <FITData>{sponsor.email}</FITData>
+              <FITData>{friend.email}</FITData>
             </FIText>
             <FIText>
               <FITTitle>Phone:</FITTitle>
-              <FITData>{sponsor.phone}</FITData>
+              <FITData>{friend.phone}</FITData>
             </FIText>
           </FIInfo>
         </FIContainer>
