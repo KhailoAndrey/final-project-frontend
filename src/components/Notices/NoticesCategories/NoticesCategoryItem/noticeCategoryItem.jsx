@@ -13,10 +13,12 @@ import {
   LearnMoreBtn,
   BottomContainer,
 } from './noticeCategoryItem.styled';
+import { ModalLearMore } from 'components/Modals/ModalNotice/ModalLearnMore';
+import { useState } from 'react';
 
 const NoticeItem = ({ article }) => {
   // console.log('article :>> ', article);
-
+  const [showLearMore, setShowLearMore] = useState(false);
   const { _id, title, category, date, file, sex, location } = article;
 
   const age = calculateAge(date);
@@ -102,8 +104,9 @@ const NoticeItem = ({ article }) => {
       </ImgContainer>
       <BottomContainer>
         <Title>{title}</Title>
-        <LearnMoreBtn type="button">Learn more</LearnMoreBtn>
+        <LearnMoreBtn type="button" onClick={() => setShowLearMore(true)}>Learn more</LearnMoreBtn>
       </BottomContainer>
+      {showLearMore && <ModalLearMore handler={setShowLearMore} id={article._id}/>}
     </Card>
   );
 };

@@ -17,10 +17,11 @@ import {
   CloseButton,
 } from './ModalLearnMore.styled';
 import svg from '../../../images/Icons/symbol-defs.svg';
-import { useSelector } from 'react-redux';
-import { useAuth } from  "../../../redux/auth/selectors"
+// import { useSelector } from 'react-redux';
+// import { useAuth } from  "../../../redux/auth/selectors"
 
-export const ModalLearMore = ({ handler, handleAdd }) => {
+export const ModalLearMore = ({ handler, handleAdd , id}) => {
+ console.log("ModalLearMore  id:", id)
  
    // const { isLoggedIn, getUser } = useAuth();
 
@@ -78,7 +79,7 @@ async function fetchNoticesById(id) {
 useEffect(() => {
    const fetchData = async () => {
      try {
-       const data = await fetchNoticesById('64bd8b3616d78dc14eaadec4');
+       const data = await fetchNoticesById(id);
        
        setNoticeData(data);
      } catch (error) {

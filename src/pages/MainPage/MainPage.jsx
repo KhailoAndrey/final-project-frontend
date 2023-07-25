@@ -1,14 +1,13 @@
 
 import { Wrapper, Title, Picture, Img } from './MainPage.styled';
 import * as mainImg from '../../images/Home';
-import { ModalLearMore } from 'components/Modals/ModalNotice/ModalLearnMore';
+
 
 
 
 const MainPage = () => {
   return (
     <>
-{/* <ModalLearMore></ModalLearMore> */}
       <Wrapper>
         <Title>Take good care of your small pets</Title>
         <Picture>
