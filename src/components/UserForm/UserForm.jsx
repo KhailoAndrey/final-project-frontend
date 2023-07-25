@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
@@ -15,7 +16,7 @@ import {
   Logout,
 } from 'components/Buttons/UserPageButtons/UserPageButtons.jsx';
 import { SaveBtn } from 'components/Buttons/UserPageButtons/UserPageButtons.styled.js';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 const initialValues = {
   name: '',
@@ -80,44 +81,44 @@ const imageExtensions = [
 ];
 
 export const UserForm = ({ user }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // Стани для зміни форми
   // Можливість редагування форми
   const [isEdit, setIsEdit] = useState(false);
   console.log(`isEdit=${isEdit}`);
   // Можливість зміни зображення
-  const [isImgChangeable, setIsImgChangeable] = useState(true);
+  // const [isImgChangeable, setIsImgChangeable] = useState(true);
 
   // Стани полів форми
-  const [avatar, setAvatar] = useState('');
-  const [previewURL, setPreviewURL] = useState(undefined);
-  const [values, setValues] = useState({
-    name: '',
-    email: '',
-    birthday: '',
-    phone: '',
-    city: '',
-  });
+  // const [avatar, setAvatar] = useState('');
+  // const [previewURL, setPreviewURL] = useState(undefined);
+  // const [values, setValues] = useState({
+  //   name: '',
+  //   email: '',
+  //   birthday: '',
+  //   phone: '',
+  //   city: '',
+  // });
   // Рендер аватару
-  useEffect(() => {
-    if (avatar === '') {
-      return;
-    }
-  }, [avatar]);
+  // useEffect(() => {
+  //   if (avatar === '') {
+  //     return;
+  //   }
+  // }, [avatar]);
   // Рендер даних користувача
-  useEffect(() => {
-    if (user === null) {
-      return;
-    }
-    setValues({
-      name: user && user.name ? user.name : '',
-      email: user && user.email ? user.email : '',
-      birthday: user ? user.birthday : '',
-      phone: user ? user.phone : '',
-      city: user ? user.city : '',
-    });
-    setPreviewURL(user && user.avatarURL);
-  }, [user]);
+  // useEffect(() => {
+  //   if (user === null) {
+  //     return;
+  //   }
+  //   setValues({
+  //     name: user && user.name ? user.name : '',
+  //     email: user && user.email ? user.email : '',
+  //     birthday: user ? user.birthday : '',
+  //     phone: user ? user.phone : '',
+  //     city: user ? user.city : '',
+  //   });
+  //   setPreviewURL(user && user.avatarURL);
+  // }, [user]);
 
   const handleSubmit = (values, actions) => {
     setIsEdit(false);
