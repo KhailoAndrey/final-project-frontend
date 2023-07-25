@@ -1,0 +1,16 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { getNews } from 'fetch/news-api';
+
+export const fetchNews = createAsyncThunk(
+  'news/fetchNews',
+  async (credential, thunkAPI) => {
+    try {
+      const data = await getNews(credential);
+
+      return data;
+    } catch ({ response }) {
+      return thunkAPI.rejectWithValue(response.data);
+    }
+  }
+);
