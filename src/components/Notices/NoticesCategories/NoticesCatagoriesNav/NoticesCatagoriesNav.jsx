@@ -1,11 +1,12 @@
-// import { useEffect } from 'react';
+import { useAuth } from 'redux/auth/selectors';
 import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
 const NoticesCatagoriesNav = ({ setCategory }) => {
+  const { isLoggedIn } = useAuth();
 
   const onClick = e => {
     const category = e.currentTarget.value;
-    console.log("readed category - ", category);
+    // console.log('readed category - ', category);
     setCategory(category);
   };
 
@@ -38,6 +39,28 @@ const NoticesCatagoriesNav = ({ setCategory }) => {
         value="for-free"
       ></Input>
       <Label htmlFor="radio3">in good hands</Label>
+
+      {isLoggedIn && (
+        <>
+          <Input
+            onClick={e => onClick(e)}
+            type="radio"
+            id="radio4"
+            name="radios"
+            value="favorite"
+          ></Input>
+          <Label htmlFor="radio4">favorite ads</Label>
+
+          <Input
+            onClick={e => onClick(e)}
+            type="radio"
+            id="radio5"
+            name="radios"
+            value="my-ads"
+          ></Input>
+          <Label htmlFor="radio5">my ads</Label>
+        </>
+      )}
     </CatContainer>
   );
 };
