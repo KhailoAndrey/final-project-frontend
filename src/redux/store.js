@@ -14,9 +14,9 @@ import {
 } from 'redux-persist';
 
 const authPersistConfig = {
-  key: 'tokenStorage',
+  key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'newUser'],
 };
 
 const rootReducer = combineReducers({

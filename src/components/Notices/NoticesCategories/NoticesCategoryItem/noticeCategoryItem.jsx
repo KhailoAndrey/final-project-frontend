@@ -1,3 +1,5 @@
+import { useAuth } from 'redux/auth/selectors';
+import { calculateAge, cutSity } from './noticeItemUtils';
 import svg from '../../../../images/Icons/symbol-defs.svg';
 import {
   Card,
@@ -13,10 +15,16 @@ import {
 } from './noticeCategoryItem.styled';
 
 const NoticeItem = ({ article }) => {
-  console.log('article :>> ', article);
+  // console.log('article :>> ', article);
 
-  const isFavorite = false;
   const { _id, title, category, date, file, sex, location } = article;
+
+  const age = calculateAge(date);
+  const sity = cutSity(location);
+
+  const { user, isLoggedIn } = useAuth();
+
+  const isFavorite =  isLoggedIn ? user.favorite.includes(_id) : false;
 
   return (
     <Card id={_id}>
@@ -51,7 +59,7 @@ const NoticeItem = ({ article }) => {
                 style={{ stroke: 'var(--main-clr-blue)' }}
               />
             </svg>
-            <p>{location}</p>
+            <p>{sity}</p>
           </Information>
           <Information>
             <svg width={24} height={24}>
@@ -62,7 +70,11 @@ const NoticeItem = ({ article }) => {
                 style={{ stroke: 'var(--main-clr-blue)' }}
               />
             </svg>
-            <p>{date}</p>
+            <p>
+              {age < 1 && '<1 year'}
+              {age === 1 && '1 year'}
+              {age > 1 && `${age} years`}
+            </p>
           </Information>
           <Information>
             {sex === 'male' ? (

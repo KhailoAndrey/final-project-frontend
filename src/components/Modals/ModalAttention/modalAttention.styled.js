@@ -14,7 +14,6 @@ export const ModalBackdrop = styled.div`
 `;
 export const ModalContent = styled.div`
   width: 280px;
-  /* height: 445px; */
   border-radius: 20px;
   background-color: #fff;
   padding: 60px 20px;
@@ -39,6 +38,13 @@ export const ModalBtn = styled.button`
   background-color: #fff;
   top: 16px;
   right: 16px;
+
+  &:hover,
+  &:focus {
+    svg {
+      stroke: var(--main-clr-yellow);
+    }
+  }
 `;
 
 export const ModalTitle = styled.p`
