@@ -32,35 +32,32 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
 
   return (
     <>
-        <Overlay onClick={handleBackdropClick}>
-          <ModalWindow>
-            <BtnClose onClick={onClose}>
-              <svg width={24} height={24}>
-                <use href={`${svg}#icon-cross`} width={24} height={24} />
-              </svg>
-            </BtnClose>
-            <TitleDelete>Delete adverstiment?</TitleDelete>
+      <Overlay onClick={handleBackdropClick}>
+        <ModalWindow>
+          <BtnClose onClick={() => onClose(false)}>
+            <svg width={24} height={24}>
+              <use href={`${svg}#icon-cross`} width={24} height={24} />
+            </svg>
+          </BtnClose>
+          <TitleDelete>Delete adverstiment?</TitleDelete>
 
-            <TextDelete>Are you sure you want to delete <b> “{"витягуєм з data."}”</b>?<br/> You can`t undo this action.</TextDelete>
-            <QuestioBtnWrap>
-            <BtnDelete onClick={onClose} isHovered={true}>
-              Cancel              
+          <TextDelete>
+            Are you sure you want to delete <b> “{'витягуєм з data.'}”</b>?
+            <br /> You can`t undo this action.
+          </TextDelete>
+          <QuestioBtnWrap>
+            <BtnDelete onClick={() => onClose(false)} isHovered={true}>
+              Cancel
             </BtnDelete>
             <BtnDelete onClick={handleDelete} isHovered={false}>
               Yes
               <svg width={24} height={24}>
-                <use
-                  href={`${svg}#icon-trash`}
-                  width={24}
-                  height={24}
-                />
+                <use href={`${svg}#icon-trash`} width={24} height={24} />
               </svg>
             </BtnDelete>
-            </QuestioBtnWrap>
-           
-          </ModalWindow>
-        </Overlay>
-      
+          </QuestioBtnWrap>
+        </ModalWindow>
+      </Overlay>
     </>
   );
 };
