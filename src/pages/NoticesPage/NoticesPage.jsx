@@ -6,6 +6,7 @@ const NoticesPage = () => {
     <NoticePageContainer>
       <Notices />
     </NoticePageContainer>
+    
   );
 };
 

@@ -10,6 +10,7 @@ import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCa
 import NoticesFilter from 'components/Notices/NoticesFilters/noticesFilter';
 import { Title } from 'components/Title/title';
 import { NoticeNavContainer } from './notices.styled';
+import AppPagination from 'components/Pagination/Pagination';
 
 const Notices = () => {
   const [showAlertModal, setAlertShowModal] = useState(false);
@@ -17,6 +18,7 @@ const Notices = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
+  const [totalPageCount, setTotalPageCount] = useState(0)
 
   console.log(setPage);
   const { token } = useAuth();
@@ -29,14 +31,19 @@ const Notices = () => {
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
         //  console.log(' fetch result favor:>> ', result);
+        setTotalPageCount(Math.ceil(result.total / 12));
       } else if (category === 'my-ads') {
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
+        setTotalPageCount(Math.ceil(result.total / 12));
         // console.log(' fetch result own:>> ', result);
       } else if (category === 'sell' || 'lost-found' || 'for-free') {
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
-        // console.log(' fetch result sell/lost/free:>> ', result);
+        // console.log(' fetch result sell/lost/free:>> ', result)
+        setTotalPageCount(Math.ceil(result.total / 12));;
+        // console.log(result.total)
+       
       }
     }
   }, [page, category, query, token]);
@@ -55,7 +62,9 @@ const Notices = () => {
 
       {showAlertModal && (
         <AttentionModal setAlertShowModal={setAlertShowModal} />
+      
       )}
+       <AppPagination setPage={setPage} page={page} totalPageCount={totalPageCount} />
     </>
   );
 };
