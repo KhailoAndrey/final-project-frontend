@@ -76,7 +76,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
-        console.log("added to favorite");
+        // console.log("added to favorite");
         state.user.favorite = action.payload;
       })
       .addCase(addToFavorite.rejected, (state, action) => {
