@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import fetchNoticesById from 'fetch/noticeModalLearnMore';
+import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   ModalContainer,
   ModalWindow,
@@ -16,11 +18,6 @@ import {
   Category,
   CloseButton,
 } from './ModalLearnMore.styled';
-import svg from '../../../images/Icons/symbol-defs.svg';
-import fetchNoticesById from 'fetch/noticeModalLearnMore';
-// import { useAuth } from 'redux/auth/selectors';
-// import { useSelector } from 'react-redux';
-// import { useAuth } from  "../../../redux/auth/selectors"
 
 export const ModalLearMore = ({
   handler,
