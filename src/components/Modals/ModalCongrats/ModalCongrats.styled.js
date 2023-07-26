@@ -10,6 +10,7 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(39, 39, 39, 0.6);
+  z-index: 10;
 `;
 
 export const ModalWindow = styled.div`

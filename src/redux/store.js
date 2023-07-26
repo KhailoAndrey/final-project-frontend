@@ -16,7 +16,7 @@ import {
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'newUser'],
+  whitelist: ['token'],
 };
 
 const rootReducer = combineReducers({
