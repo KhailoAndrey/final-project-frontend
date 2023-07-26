@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { UserBlock, UserIcon, UserName } from './UserNavBlock.styled';
 
-const UserNavBlock = ({showName}) => {
-  const [isModalOpen, setisModalOpen] = useState(false);
+const UserNavBlock = ({ showName }) => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <UserBlock>
-      <UserIcon onClick={() => setisModalOpen(isModalOpen)}>
+      <UserIcon onClick={() => navigate('/user')}>
         <svg width={28} height={28}>
           <use
             href={`${svg}#icon-user`}
