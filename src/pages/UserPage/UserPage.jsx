@@ -11,7 +11,6 @@ import {
 } from './UserPage.styled';
 
 const UserPage = () => {
-
   return (
     <>
       <UserPageContainer>
