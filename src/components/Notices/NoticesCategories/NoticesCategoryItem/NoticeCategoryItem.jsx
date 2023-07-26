@@ -1,5 +1,5 @@
 import { useAuth } from 'redux/auth/selectors';
-import { calculateAge, cutSity, correctCategory } from './noticeItemUtils';
+import { calculateAge, cutSity, correctCategory } from './NoticeItemUtils';
 import svg from '../../../../images/Icons/symbol-defs.svg';
 import {
   Card,
