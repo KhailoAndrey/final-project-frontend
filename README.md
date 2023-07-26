@@ -8,4 +8,4 @@ _This project was bootstrapped with
 <h3><a href="https://final-project-backend-4o0r.onrender.com/api-docs/#/" target="_blank" rel="noreferrer">Final-project-backend 🙃</a>
   👉 <a href="https://github.com/TaitanB/final-project-backend" target="_blank" rel="noreferrer">github-link</a></h3>
 
-![picture](src/images/Home/home_mob.png)
+![picture](src/images/Home/home_tab.png)
