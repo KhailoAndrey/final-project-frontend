@@ -12,14 +12,14 @@ import {
 import { UserData } from 'components/UserData/UserData';
 
 const UserPage = () => {
-
   return (
-<<<<<<< Updated upstream
     <>
       <UserPageContainer>
         <UserContainer>
           <ProfileTitle> My information: </ProfileTitle>
-          <UserInfo />
+          <UserInfo>
+            <UserData />
+          </UserInfo>
         </UserContainer>
         <PetsContainer>
           <Container>
@@ -32,22 +32,6 @@ const UserPage = () => {
       {/* {user.newUser && <ModalCongrats />} */}
       {/* {user.newUser && <AttentionModal />} */}
     </>
-=======
-    <UserPageContainer>
-      <UserContainer>
-        <ProfileTitle> My information: </ProfileTitle>
-        <UserInfo />
-        <UserData />
-      </UserContainer>
-      <PetsContainer>
-        <Container>
-          <ProfileTitle>My pets:</ProfileTitle>
-          <AddPetBtn />
-        </Container>
-        <PetsInfo />
-      </PetsContainer>
-    </UserPageContainer>
->>>>>>> Stashed changes
   );
 };
 

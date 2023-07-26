@@ -68,4 +68,14 @@ export const ErrorText = styled.p`
 
 export const Div = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    padding: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+  }
 `;

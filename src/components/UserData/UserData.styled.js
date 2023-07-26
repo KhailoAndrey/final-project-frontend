@@ -42,27 +42,6 @@ export const UserCard = styled.div`
   }
 `;
 
-export const ImgContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const ImgWrapper = styled.div`
-  position: relative;
-  width: 182px;
-  height: 182px;
-  border-radius: 40px;
-  overflow: hidden;
-  margin-bottom: 60px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 0px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 64px;
-  }
-`;
-
 export const Img = styled.img`
   width: 182px;
   height: 182px;
@@ -126,12 +105,12 @@ export const DataField = styled.div`
 `;
 
 export const Button = styled.button`
-  bottom: 535px;
+  position: absolute;
+  bottom: 490px;
   right: 0px;
   width: 28px;
   height: 28px;
   background-color: transparent;
-  position: absolute;
   padding: 0;
 
   border: none;
@@ -139,6 +118,15 @@ export const Button = styled.button`
   &:hover,
   :focus {
     transform: scale(1.2);
+  }
+  @media screen and (min-width: 768px) {
+    bottom: 280px;
+    right: 0px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    bottom: 540px;
+    right: 0px;
   }
 `;
 
