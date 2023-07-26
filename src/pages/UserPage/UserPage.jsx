@@ -1,5 +1,5 @@
 // import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
-import { AddPetBtn } from 'helpers/AddPetButton/AddPetBtn';
+import { AddPetBtn } from '../../helpers/AddPetButton/AddPetBtn';
 import {
   UserInfo,
   PetsInfo,
