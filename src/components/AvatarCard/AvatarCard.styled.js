@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-import bg_mob from '../../images/BackGround/bg_mob.png';
-import bg_tab from '../../images/BackGround/bg_tab.png';
-import bg_desk from '../../images/BackGround/bg_desk.png';
-import bg_mob_retina from '../../images/BackGround/bg_mob_2x.png'; // Изображение для Retina на мобильных устройствах
-import bg_tab_retina from '../../images/BackGround/bg_tab_2x.png'; // Изображение для Retina на планшетных устройствах
-import bg_desk_retina from '../../images/BackGround/bg_desk_2x.png'; // Изображение для Retina на десктопах
 import temp from '../../images/UserPageImg/userPhotoDefault.png';
 
 export const PhotoWrapper = styled.div`
