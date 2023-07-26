@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import svg from '../../images/Icons/symbol-defs.svg';
 import { Button } from './AddPetBtn.styled';
 
-export const AddPetBtn = ({ setAlertShowModal = null }) => {
+const AddPetBtn = ({ setAlertShowModal = null }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -28,6 +28,8 @@ export const AddPetBtn = ({ setAlertShowModal = null }) => {
   );
 };
 
-AddPetBtn.propTypes = {
-  setShowModal: PropTypes.func,
-};
+export default AddPetBtn;
+
+// AddPetBtn.propTypes = {
+//   setAlertShowModal: PropTypes.func,
+// };
