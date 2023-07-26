@@ -2,29 +2,18 @@
 import { useState } from 'react';
 import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast, ToastContainer } from 'react-toastify';
+// import { toast, ToastContainer } from 'react-toastify';
 import { Container, Input, Label, ErrorText, Div } from './UserForm.styled.js';
-import {
-  Button,
-  InputFile,
-  InputWrapper,
-} from 'components/UserData/UserData.styled.js';
+import { Button } from 'components/UserData/UserData.styled.js';
 import {
   CloseIcon,
-  EditFoto,
   EditIcon,
   Logout,
 } from 'components/Buttons/UserPageButtons/UserPageButtons.jsx';
 import { SaveBtn } from 'components/Buttons/UserPageButtons/UserPageButtons.styled.js';
+import { useSelector } from 'react-redux';
+import AvatarCard from 'components/AvatarCard/AvatarCard.jsx';
 // import { useDispatch } from 'react-redux';
-
-const initialValues = {
-  name: '',
-  email: '',
-  birthday: '',
-  phone: '',
-  city: '',
-};
 
 const schema = yup.object().shape({
   name: yup
@@ -46,12 +35,11 @@ const schema = yup.object().shape({
     .max(70, 'Maximum 70 characters')
     .min(6, 'Minimum 6 characters')
     .email('Please, enter a valid email'),
-  birthday: yup
-    .string()
-    .matches(
-      /^(0[1-9]|[1-2]\d|3[0-1])\.(0[1-9]|1[0-2])\.\d{4}$/,
-      'Please enter a valid date: dd.mm.yyyy'
-    ),
+  birthday: yup.string().matches(
+    // eslint-disable-next-line
+    /^(0?[1-9]|[12][0-9]|3[01])[./\-](0?[1-9]|1[012])[./\-]\d{4}$/,
+    'Please enter a valid date: dd.mm.yyyy'
+  ),
   phone: yup
     .string()
     .matches(/^\+\d{12}$/, 'Phone should be in format +380441234567'),
@@ -65,29 +53,13 @@ const schema = yup.object().shape({
     ),
 });
 
-const imageExtensions = [
-  'jpg',
-  'jpeg',
-  'png',
-  'svg',
-  'gif',
-  'webp',
-  'JPG',
-  'GPEG',
-  'PNG',
-  'SVG',
-  'GIF',
-  'WEBP',
-];
-
-export const UserForm = ({ user }) => {
+export const UserForm = () => {
+  const user = useSelector(state => state.auth.user);
   // const dispatch = useDispatch();
-  // Стани для зміни форми
+
   // Можливість редагування форми
   const [isEdit, setIsEdit] = useState(false);
   console.log(`isEdit=${isEdit}`);
-  // Можливість зміни зображення
-  // const [isImgChangeable, setIsImgChangeable] = useState(true);
 
   // Стани полів форми
   // const [avatar, setAvatar] = useState('');
@@ -99,6 +71,13 @@ export const UserForm = ({ user }) => {
   //   phone: '',
   //   city: '',
   // });
+  const initialValues = {
+    name: user && user.name ? user.name : '',
+    email: user && user.email ? user.email : '',
+    birthday: user ? user.birthday : '',
+    phone: user ? user.phone : '',
+    city: user ? user.city : '',
+  };
   // Рендер аватару
   // useEffect(() => {
   //   if (avatar === '') {
@@ -111,11 +90,11 @@ export const UserForm = ({ user }) => {
   //     return;
   //   }
   //   setValues({
-  //     name: user && user.name ? user.name : '',
-  //     email: user && user.email ? user.email : '',
-  //     birthday: user ? user.birthday : '',
-  //     phone: user ? user.phone : '',
-  //     city: user ? user.city : '',
+  // name: user && user.name ? user.name : '',
+  // email: user && user.email ? user.email : '',
+  // birthday: user ? user.birthday : '',
+  // phone: user ? user.phone : '',
+  // city: user ? user.city : '',
   //   });
   //   setPreviewURL(user && user.avatarURL);
   // }, [user]);
@@ -125,42 +104,18 @@ export const UserForm = ({ user }) => {
     console.log(values);
   };
 
-  const handleClick = (values, actions) => {
+  const handleClick = () => {
     setIsEdit(!isEdit);
   };
 
-  // const changeImgClick = (values, actions) => {
-  //   setIsImgChangeable(!isImgChangeable);
-  // };
-
-  const handleChangePhoto = async e => {
-    const file = e.currentTarget.value;
-    const findExtension = e.currentTarget.value.split('.');
-    const extension = findExtension[findExtension.length - 1];
-
-    if (!imageExtensions.includes(extension)) {
-      toast.error(
-        'Avatar must be an image file with extention jpg, jpeg, png, svg, gif, webp'
-      );
-      return;
-    }
-    return console.log(file);
-
-    // <img src={URL.createObjectURL(file)} alt="avatar" height={182} />;
+  const removeChanges = () => {
+    setIsEdit(!isEdit);
+    // resetForm();
   };
 
   return (
     <Div>
-      {isEdit ? (
-        <InputWrapper>
-          <EditFoto />
-          <InputFile
-            type="file"
-            accept="image/*"
-            onChange={handleChangePhoto}
-          />
-        </InputWrapper>
-      ) : null}
+      <AvatarCard isEdit={isEdit} />
 
       <Formik
         validationSchema={schema}
@@ -174,15 +129,10 @@ export const UserForm = ({ user }) => {
               <EditIcon />
             </Button>
           ) : (
-            <Button type="button" onClick={handleClick}>
-              <CloseIcon />
+            <Button type="button" onClick={removeChanges}>
+              <CloseIcon /> X
             </Button>
           )}
-          <Container>
-            <Label htmlFor="avatar">EDIT PHOTO</Label>
-            <Input id="avatar" autoComplete="off" name="avatar" type="file" />
-            <ErrorMessage name="avatar" component={ErrorText} />
-          </Container>
 
           <Container>
             <Label htmlFor="name">Name:</Label>
@@ -197,12 +147,7 @@ export const UserForm = ({ user }) => {
 
           <Container>
             <Label htmlFor="email">Email:</Label>
-            <Input
-              id="email"
-              autoComplete="off"
-              name="email"
-              disabled={!isEdit}
-            />
+            <Input id="email" autoComplete="off" name="email" disabled={true} />
             <ErrorMessage name="email" component={ErrorText} />
           </Container>
 
@@ -245,12 +190,12 @@ export const UserForm = ({ user }) => {
           {!isEdit ? <Logout /> : <SaveBtn type="submit">Save</SaveBtn>}
         </Form>
       </Formik>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-center"
         autoClose={5000}
         closeOnClick
         pauseOnHover
-      />
+      /> */}
     </Div>
   );
 };
