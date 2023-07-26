@@ -50,8 +50,8 @@ const ModalBurger = ({ closeModal, showModal }) => {
           </UserBlock>
         ) : (
           <BtnContainer>
-            <LoginBtn onClick={closeModal} />
-            <RegistrationBtn onClick={closeModal} />
+            <LoginBtn closeModal={closeModal} />
+            <RegistrationBtn closeModal={closeModal} />
           </BtnContainer>
         )}
         <Nav onClick={closeModal} />

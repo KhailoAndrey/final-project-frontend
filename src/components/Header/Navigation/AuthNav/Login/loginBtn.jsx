@@ -2,11 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { ButtonLog } from './loginBth.styled';
 
-export const LoginBtn = () => {
+export const LoginBtn = ({ closeModal }) => {
   const navigate = useNavigate();
 
   const onClick = () => {
     navigate('/login');
+    closeModal();
   };
 
   return (
