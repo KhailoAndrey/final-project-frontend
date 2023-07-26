@@ -1,5 +1,4 @@
-// import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
-import { AddPetBtn } from 'helpers/AddPetButton/addPetBtn';
+import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
 import {
   UserInfo,
   PetsInfo,
@@ -11,7 +10,6 @@ import {
 } from './UserPage.styled';
 
 const UserPage = () => {
-
   return (
     <>
       <UserPageContainer>

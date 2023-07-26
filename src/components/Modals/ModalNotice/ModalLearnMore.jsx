@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import fetchNoticesById from 'fetch/noticeModalLearnMore';
+import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   ModalContainer,
   ModalWindow,
@@ -16,79 +18,78 @@ import {
   Category,
   CloseButton,
 } from './ModalLearnMore.styled';
-import svg from '../../../images/Icons/symbol-defs.svg';
-import fetchNoticesById from 'fetch/noticeModalLearnMore';
-// import { useSelector } from 'react-redux';
-// import { useAuth } from  "../../../redux/auth/selectors"
 
-export const ModalLearMore = ({ handler, handleAdd , id}) => {
- console.log("ModalLearMore  id:", id)
- 
-   // const { isLoggedIn, getUser } = useAuth();
+export const ModalLearMore = ({
+  handler,
+  handleAdd,
+  id,
+  isFavorite,
+  onFavBtnClick,
+}) => {
+  console.log('ModalLearMore  id:', id);
 
-   // const dispatch = useDispatch();
-   // const user = useSelector(getUser);
-   // const isLogin = useSelector(isLoggedIn);
+  // const { isLoggedIn, getUser } = useAuth();
 
-   // const [favorite, setFavorite] = useState(() => {
-   //    if (isLogin && user && user.favorite && user.favorite.length > 0) {
-   //      if (user.favorite.includes(_id)) {
-   //        return true;
-   //      } else {
-   //        return false;
-   //      }
-   //    }
-   //    return false;
-   //  });
+  // const dispatch = useDispatch();
+  // const user = useSelector(getUser);
+  // const isLogin = useSelector(isLoggedIn);
 
-   // const handleFavoriteClick = () => {
-   //    if (!isLogin) {
-   //      console.log('You must be registered or logged in to continue the operation')
-      
-   //      return;
-   //    }
-  
-   //    if (!favorite) {
-   //      dispatch(fetchAddToFavorite(_id));
-   //      setFavorite(true);
-   //    } else {
-   //      dispatch(fetchDeleteFavorite(_id));
-   //      setFavorite(false);
-   //    }
-   //  };
+  // const [favorite, setFavorite] = useState(() => {
+  //    if (isLogin && user && user.favorite && user.favorite.length > 0) {
+  //      if (user.favorite.includes(_id)) {
+  //        return true;
+  //      } else {
+  //        return false;
+  //      }
+  //    }
+  //    return false;
+  //  });
 
-// ________________________________
-const [data, setNoticeData] = useState({})
+  // const handleFavoriteClick = () => {
+  //    if (!isLogin) {
+  //      console.log('You must be registered or logged in to continue the operation')
 
+  //      return;
+  //    }
 
+  //    if (!favorite) {
+  //      dispatch(fetchAddToFavorite(_id));
+  //      setFavorite(true);
+  //    } else {
+  //      dispatch(fetchDeleteFavorite(_id));
+  //      setFavorite(false);
+  //    }
+  //  };
 
-useEffect(() => {
-   const fetchData = async () => {
-     try {
-       const data = await fetchNoticesById(id);
-       
-       setNoticeData(data);
-     } catch (error) {
-       console.error('Error fetching notice:', error);
-     }
-   };
- 
-   fetchData();
- }, [id]);
+  // ________________________________
+  const [data, setNoticeData] = useState({});
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchNoticesById(id);
 
-// ________________________________
+        setNoticeData(data);
+      } catch (error) {
+        console.error('Error fetching notice:', error);
+      }
+    };
 
-const handleContactClick = phoneNumber => {
-   if (!phoneNumber) return;
-   window.location.href = `tel:${phoneNumber}`;
- };
+    fetchData();
+  }, [id]);
 
-const handleBackdropClick = event => {
-   if (event.target === event.currentTarget) {
+  // ________________________________
+
+  const handleContactClick = phoneNumber => {
+    if (!phoneNumber) return;
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
+  const handleBackdropClick = event => {
+    if (event.target === event.currentTarget) {
       handler(false);
-   }
- };
+    }
+  };
 
   useEffect(() => {
     const handleEsc = event => {
@@ -104,19 +105,21 @@ const handleBackdropClick = event => {
   }, [handler]);
 
   return (
-    <ModalContainer  onClick={handleBackdropClick}>
+    <ModalContainer onClick={handleBackdropClick}>
       <ModalWindow>
         <CloseButton onClick={() => handler(false)}>
-        <svg width={24} height={24}>
-                <use href={`${svg}#icon-cross`} width={24} height={24} />
-              </svg>
+          <svg width={24} height={24}>
+            <use href={`${svg}#icon-cross`} width={24} height={24} />
+          </svg>
         </CloseButton>
         <Info>
           <Image img={data.file}>
             <Category> {[data.category]}</Category>
           </Image>
           <ContactInfo>
-            <Description>{data.description || 'Cute dog looking for a home'}</Description>
+            <Description>
+              {data.description || 'Cute dog looking for a home'}
+            </Description>
             <Contact>
               <Contactheader>
                 <div>Name:</div>
@@ -145,13 +148,20 @@ const handleBackdropClick = event => {
           <b>Comments:</b> {data.comments}
         </Comment>
         <ContactButtons>
-          <ContactButtonAdd  >
-            <span>Add to</span>
+          <ContactButtonAdd onClick={() => onFavBtnClick()}>
+            {isFavorite ? <span>Remove</span> : <span>Add to</span>}
+
             <svg width="24" height="24">
-            <use href={`${svg}#icon-heart`} width={24} height={24} />
+              <use href={`${svg}#icon-heart`} width={24} height={24} />
             </svg>
           </ContactButtonAdd>
-          {data.owner?.phone && <ContactButtonContact  onClick={() => handleContactClick(data.owner.phone)}>Contact</ContactButtonContact>}
+          {data.owner?.phone && (
+            <ContactButtonContact
+              onClick={() => handleContactClick(data.owner.phone)}
+            >
+              Contact
+            </ContactButtonContact>
+          )}
         </ContactButtons>
       </ModalWindow>
     </ModalContainer>

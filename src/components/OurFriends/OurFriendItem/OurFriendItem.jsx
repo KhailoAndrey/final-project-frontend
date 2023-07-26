@@ -8,9 +8,15 @@ import {
   FIText,
   FITitle,
   FIWrapper,
+  WorkDayItem,
+  WorkDays,
+  WorkDaysList,
+  WorkTime,
 } from './OurFriendItem.styled';
 
-const OurFriendItem = ({ friend }) => {
+const weekDays = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+
+const OurFriendItem = ({ friend, handleTimeHover, hoveredTime }) => {
   const currentDayOfWeek = new Date().getDay();
   return (
     <>
@@ -21,7 +27,10 @@ const OurFriendItem = ({ friend }) => {
         <FIContainer>
           <FIImage src={friend.imageUrl} />
           <FIInfo>
-            <FIText>
+            <FIText
+              onMouseEnter={() => handleTimeHover(friend.imageUrl)}
+              onMouseLeave={() => handleTimeHover('')}
+            >
               <FITTitle>Time:</FITTitle>
               <FITData>
                 {friend.workDays && friend.workDays.length > 0
@@ -30,18 +39,39 @@ const OurFriendItem = ({ friend }) => {
                     : 'Close'
                   : 'Day and Night'}
               </FITData>
+              {hoveredTime === friend.imageUrl && (
+                <WorkDaysList>
+                  {friend.workDays && friend.workDays.length > 0
+                    ? friend.workDays.map(
+                        (workDay, index) =>
+                          workDay && (
+                            <WorkDayItem key={index}>
+                              <WorkDays>{weekDays[index]}: </WorkDays>
+                              <WorkTime>
+                                {workDay.isOpen
+                                  ? `${workDay.from} - ${workDay.to}`
+                                  : 'Closed'}
+                              </WorkTime>
+                            </WorkDayItem>
+                          )
+                      )
+                    : 'Day and Night'}
+                </WorkDaysList>
+              )}
             </FIText>
             <FIText>
               <FITTitle>Address:</FITTitle>
-              <FITAddress>{friend.address}</FITAddress>
+              <FITAddress href={friend.addressUrl} target="_blank">
+                {friend.address}
+              </FITAddress>
             </FIText>
             <FIText>
               <FITTitle>Email:</FITTitle>
-              <FITData>{friend.email}</FITData>
+              <FITData href={`mailto:${friend.email}`}>{friend.email}</FITData>
             </FIText>
             <FIText>
               <FITTitle>Phone:</FITTitle>
-              <FITData>{friend.phone}</FITData>
+              <FITData href={`tel:${friend.phone}`}>{friend.phone}</FITData>
             </FIText>
           </FIInfo>
         </FIContainer>

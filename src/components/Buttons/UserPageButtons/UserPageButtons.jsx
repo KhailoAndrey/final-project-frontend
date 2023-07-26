@@ -1,7 +1,7 @@
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   CameraIcon,
-  Edit,
+  // Edit,
   EditFotoBtn,
   LogoutBtn,
   LogoutIcon,

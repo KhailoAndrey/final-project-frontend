@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import OurFriendItem from '../OurFriendItem/OurFriendItem';
 import { OFWrapper } from './OurFriendsList.styled';
-// import sponsors from '../../../Temp/sponsors.json';
 
-const OurFriendsList = ({friends}) => {
+const OurFriendsList = ({ friends }) => {
+  const [hoveredTime, setHoveredTime] = useState('');
+
+  const handleTimeHover = index => {
+    setHoveredTime(index);
+  };
   return (
     <>
       <OFWrapper>
         {friends.map((friend, _id) => (
-          <OurFriendItem friend={friend} key={_id} />
+          <OurFriendItem
+            friend={friend}
+            key={_id}
+            handleTimeHover={handleTimeHover}
+            hoveredTime={hoveredTime}
+          />
         ))}
       </OFWrapper>
     </>

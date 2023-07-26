@@ -37,7 +37,6 @@ export const FormInput = styled.input`
 `;
 
 export const BtnContainer = styled.div`
-  background-color: blue;
   display: flex;
   position: absolute;
   top: 10px;
@@ -59,7 +58,7 @@ export const FormButton = styled.button`
   left: 244px;
   border: 0;
   outline: none;
-  background: var(--white-bckg-clr);
+  background: inherit;
   svg {
     fill: var(--main-clr-blue);
   }
@@ -78,7 +77,7 @@ export const ClearButton = styled.button`
   left: 244px;
   border: 0;
   outline: none;
-  background: var(--white-bckg-clr);
+  background: inherit;
 
   svg {
     stroke: var(--main-clr-yellow);

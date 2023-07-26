@@ -96,3 +96,29 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const addToFavorite = createAsyncThunk(
+  'auth/addToFavorite',
+  async (_id, thunkAPI) => {
+    try {
+      const res = await axios.patch(`/api/notices/favorite/add/${_id}`);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);
+
+export const delFromFavorite = createAsyncThunk(
+  'auth/delFromFavorite',
+  async (_id, thunkAPI) => {
+    try {
+      const res = await axios.patch(`/api/notices/favorite/delete/${_id}`);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);
