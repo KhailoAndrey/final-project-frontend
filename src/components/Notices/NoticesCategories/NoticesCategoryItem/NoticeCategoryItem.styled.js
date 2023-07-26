@@ -72,6 +72,33 @@ export const FavBtn = styled.button`
   align-items: center;
 `;
 
+export const DelBtn = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--main-clr-blue-light);
+  border: 0;
+  outline: 0;
+  position: absolute;
+  top: 68px;
+  right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    stroke: var(--main-clr-blue);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--main-clr-blue);
+
+    svg {
+      stroke: var(--main-clr-blue-light);
+    }
+  }
+`;
+
 export const InfoContainer = styled.div`
   width: 280px;
   height: 28px;

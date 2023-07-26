@@ -8,9 +8,8 @@ const NoticesCatagoriesNav = ({ setCategory }) => {
 
   const onClick = e => {
     const category = e.currentTarget.value;
-    // console.log('readed category - ', category);
     setCategory(category);
-    navigate(`/notices/${category}`)
+    navigate(`/notices/${category}`);
   };
 
   return (

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 // import { useDispatch } from 'react-redux';
 // import {
@@ -18,43 +18,37 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // import { useAuth } from '../../hooks/useAuth';
 
-import {
-  UserTitle,
-  UserCard,
-  ImgContainer,
-  Img,
-  ImgWrapper,
-  DataWrapper,
-} from './UserData.styled';
+import { UserCard, DataWrapper } from './UserData.styled';
 import { UserForm } from 'components/UserForm/UserForm';
 // import {
 //   Button,
 //   SaveBtn,
 // } from 'components/Buttons/UserPageButtons/UserPageButtons.styled';
-import userPhotoDefault from '../../images/userPhotoDefault.png';
+
 export const UserData = () => {
-  const [user, setUser] = useState(null);
-  axios.defaults.baseURL =
-    'https://final-project-backend-4o0r.onrender.com/api/';
-  const getCurrentUser = async () => {
-    try {
-      const res = await axios(`/users/current`);
-      const { user } = await res.data;
-      setUser(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const [user, setUser] = useState(null);
+  // axios.defaults.baseURL =
+  //   'https://final-project-backend-4o0r.onrender.com/api/';
+  // const getCurrentUser = async () => {
+  //   try {
+  //     const res = await axios(`/users`);
+  //     const { user } = await res.data;
+  //     setUser(user);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
   // Початкове отримання даних користувача
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
+  // useEffect(() => {
+  //   getCurrentUser();
+  // }, []);
   // Оновлення при зміні даних
-  useEffect(() => {
-    if (user === null) {
-      return;
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user === null) {
+  //     return;
+  //   }
+  // }, [user]);
 
   // const [isEdit, setIsEdit] = useState(false);
 
@@ -72,26 +66,9 @@ export const UserData = () => {
 
   return (
     <>
-      {/* <UserTitle>My information:</UserTitle> */}
       <UserCard>
-        <ImgContainer>
-          <ImgWrapper>
-            <Img alt="user photo" src={userPhotoDefault} />
-
-            {/*{avatarURL && (
-              <CloseBtnWrapper
-                onClick={async () => {
-                  await dispatch(deleteUsersAvatar());
-                }}
-              >
-                <CloseShape alt="close" src={closeShape} />
-              </CloseBtnWrapper>
-            )} */}
-          </ImgWrapper>
-        </ImgContainer>
-
         <DataWrapper>
-          <UserForm user={user} />
+          <UserForm />
         </DataWrapper>
       </UserCard>
     </>

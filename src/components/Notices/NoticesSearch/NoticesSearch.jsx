@@ -6,7 +6,7 @@ import {
   FormInput,
   SearchForm,
   ClearButton,
-} from './noticesFilter.styled';
+} from './NoticesSearch.styled';
 
 const NoticesFilter = ({ setQuery }) => {
   const [localInput, setLocalInput] = useState('');

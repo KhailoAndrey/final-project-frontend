@@ -3,22 +3,17 @@ import { useSelector } from 'react-redux';
 // import { useState } from 'react';
 import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast, ToastContainer } from 'react-toastify';
+// import { toast, ToastContainer } from 'react-toastify';
 import { Container, Input, Label, ErrorText, Div } from './UserForm.styled.js';
-import {
-  Button,
-  InputFile,
-  InputWrapper,
-} from 'components/UserData/UserData.styled.js';
+import { Button } from 'components/UserData/UserData.styled.js';
 import {
   CloseIcon,
-  EditFoto,
   EditIcon,
   Logout,
 } from 'components/Buttons/UserPageButtons/UserPageButtons.jsx';
 import { SaveBtn } from 'components/Buttons/UserPageButtons/UserPageButtons.styled.js';
-import axios from 'axios';
-
+import { useSelector } from 'react-redux';
+import AvatarCard from 'components/AvatarCard/AvatarCard.jsx';
 // import { useDispatch } from 'react-redux';
 
 const schema = yup.object().shape({
@@ -41,12 +36,11 @@ const schema = yup.object().shape({
     .max(70, 'Maximum 70 characters')
     .min(6, 'Minimum 6 characters')
     .email('Please, enter a valid email'),
-  birthday: yup
-    .string()
-    .matches(
-      /^(0?[1-9]|[12][0-9]|3[01])[./\-](0?[1-9]|1[012])[./\-]\d{4}$/,
-      'Please enter a valid date: dd.mm.yyyy'
-    ),
+  birthday: yup.string().matches(
+    // eslint-disable-next-line
+    /^(0?[1-9]|[12][0-9]|3[01])[./\-](0?[1-9]|1[012])[./\-]\d{4}$/,
+    'Please enter a valid date: dd.mm.yyyy'
+  ),
   phone: yup
     .string()
     .matches(/^\+\d{12}$/, 'Phone should be in format +380441234567'),
@@ -60,53 +54,13 @@ const schema = yup.object().shape({
     ),
 });
 
-const imageExtensions = [
-  'jpg',
-  'jpeg',
-  'png',
-  'svg',
-  'gif',
-  'webp',
-  'JPG',
-  'GPEG',
-  'PNG',
-  'SVG',
-  'GIF',
-  'WEBP',
-];
-
 export const UserForm = () => {
   const user = useSelector(state => state.auth.user);
-  console.log(user);
-  const initialValues = {
-    name: user && user.name ? user.name : '',
-    email: user && user.email ? user.email : '',
-    birthday: user ? user.birthday : '',
-    phone: user ? user.phone : '',
-    city: user ? user.city : '',
-  };
-
-  // axios.defaults.baseURL =
-  //   'https://final-project-backend-4o0r.onrender.com/api/';
-  // const putUserData = async () => {
-  //   try {
-  //     const res = await axios.put(`/users/`);
-  //     const { user } = await res.data;
-  //     console.log(user);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-  // useEffect(() => {
-  //   putUserData();
-  // }, [user]);
   // const dispatch = useDispatch();
-  // Стани для зміни форми
+
   // Можливість редагування форми
   const [isEdit, setIsEdit] = useState(false);
   console.log(`isEdit=${isEdit}`);
-  // Можливість зміни зображення
-  // const [isImgChangeable, setIsImgChangeable] = useState(true);
 
   // Стани полів форми
   const [avatar, setAvatar] = useState('');
@@ -118,6 +72,13 @@ export const UserForm = () => {
   //   phone: '',
   //   city: '',
   // });
+  const initialValues = {
+    name: user && user.name ? user.name : '',
+    email: user && user.email ? user.email : '',
+    birthday: user ? user.birthday : '',
+    phone: user ? user.phone : '',
+    city: user ? user.city : '',
+  };
   // Рендер аватару
   useEffect(() => {
     if (avatar === '') {
@@ -125,48 +86,32 @@ export const UserForm = () => {
     }
   }, [avatar]);
   // Рендер даних користувача
-  useEffect(() => {
-    if (user === null) {
-      return;
-    }
-    // setValues({
-    //   name: user && user.name ? user.name : '',
-    //   email: user && user.email ? user.email : '',
-    //   birthday: user ? user.birthday : '',
-    //   phone: user ? user.phone : '',
-    //   city: user ? user.city : '',
-    // });
-
-    setPreviewURL(user && user.avatarURL);
-  }, [user]);
+  // useEffect(() => {
+  //   if (user === null) {
+  //     return;
+  //   }
+  //   setValues({
+  // name: user && user.name ? user.name : '',
+  // email: user && user.email ? user.email : '',
+  // birthday: user ? user.birthday : '',
+  // phone: user ? user.phone : '',
+  // city: user ? user.city : '',
+  //   });
+  //   setPreviewURL(user && user.avatarURL);
+  // }, [user]);
 
   const handleSubmit = (values, actions) => {
     setIsEdit(false);
     console.log(values);
   };
 
-  const handleClick = (values, actions) => {
+  const handleClick = () => {
     setIsEdit(!isEdit);
   };
 
-  // const changeImgClick = (values, actions) => {
-  //   setIsImgChangeable(!isImgChangeable);
-  // };
-  const fileInputRef = useRef(null);
-  const [fileInput, setFileInput] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
-
-  const handleFileChange = e => {
-    const fileList = e.target.files;
-    const file = fileList[0];
-
-    if (!file) {
-      // Handle case when no file is selected
-      return;
-    }
-
-    const imageUrl = URL.createObjectURL(file);
-    setImageUrl(imageUrl);
+  const removeChanges = () => {
+    setIsEdit(!isEdit);
+    // resetForm();
   };
 
   // const handleSelectFile = () => {
@@ -200,16 +145,7 @@ export const UserForm = () => {
 
   return (
     <Div>
-      {/* {isEdit ? (
-        <InputWrapper>
-          <EditFoto />
-          <InputFile
-            type="file"
-            accept="image/*"
-            onChange={handleChangePhoto}
-          />
-        </InputWrapper>
-      ) : null} */}
+      <AvatarCard isEdit={isEdit} />
 
       <Formik
         validationSchema={schema}
@@ -223,45 +159,10 @@ export const UserForm = () => {
               <EditIcon />
             </Button>
           ) : (
-            <Button type="button" onClick={handleClick}>
-              <CloseIcon />
+            <Button type="button" onClick={removeChanges}>
+              <CloseIcon /> X
             </Button>
           )}
-          <Container>
-            {isEdit ? (
-              <>
-                <Label htmlFor="avatar">EDIT PHOTO</Label>
-                <Input
-                  id="avatar"
-                  autoComplete="off"
-                  name="avatar"
-                  type="file"
-                  disabled={!isEdit}
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  ref={input => setFileInput(input)}
-                  // ref={fileInputRef}
-                  onChange={handleFileChange}
-                />
-              </>
-            ) : null}
-            {
-              imageUrl ? (
-                <div>
-                  <img src={imageUrl} alt="Selected" height="60" />
-                  <button type="button" onClick={handleRemoveImage}>
-                    Remove
-                  </button>
-                </div>
-              ) : null
-              // <Label htmlFor="avatar">
-              //   <button type="button" onClick={handleSelectFile}>
-              //     Select a file
-              //   </button>
-              // </Label>
-            }
-            <ErrorMessage name="avatar" component={ErrorText} />
-          </Container>
 
           <Container>
             <Label htmlFor="name">Name:</Label>
@@ -276,12 +177,7 @@ export const UserForm = () => {
 
           <Container>
             <Label htmlFor="email">Email:</Label>
-            <Input
-              id="email"
-              autoComplete="off"
-              name="email"
-              disabled={!isEdit}
-            />
+            <Input id="email" autoComplete="off" name="email" disabled={true} />
             <ErrorMessage name="email" component={ErrorText} />
           </Container>
 
@@ -324,12 +220,12 @@ export const UserForm = () => {
           {!isEdit ? <Logout /> : <SaveBtn type="submit">Save</SaveBtn>}
         </Form>
       </Formik>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-center"
         autoClose={5000}
         closeOnClick
         pauseOnHover
-      />
+      /> */}
     </Div>
   );
 };
