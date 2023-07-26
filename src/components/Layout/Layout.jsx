@@ -7,15 +7,12 @@ import { Section } from './Layout.styled';
 const Layout = () => {
   return (
     <>
-
       <Suspense fallback={<Loader />}>
+        <Header />
         <Section>
-          <Header />
           <Outlet />
         </Section>
-       
       </Suspense>
-
     </>
   );
 };
