@@ -8,7 +8,6 @@ const OurFriendsList = ({ friends }) => {
   const handleTimeHover = index => {
     setHoveredTime(index);
   };
-  console.log(friends)
   return (
     <>
       <OFWrapper>
