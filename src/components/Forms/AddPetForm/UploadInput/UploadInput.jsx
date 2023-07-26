@@ -37,7 +37,7 @@ export const UploadInput = ({ errors, touched, category }) => {
       <PhotoPlaceWrapper>
         <PhotoWrapper>
           {photoPreview && <Photo src={photoPreview} />}
-          {!photoPreview && <PlusIcon iconName="#icon-plus" />}
+          {!photoPreview && <PlusIcon iconName="#plus" />}
         </PhotoWrapper>
         {isFieldInvalid && <ErrWrapper>{errors.file}</ErrWrapper>}
       </PhotoPlaceWrapper>

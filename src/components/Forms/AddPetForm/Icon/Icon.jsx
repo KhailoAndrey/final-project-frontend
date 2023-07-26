@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 export const SexIcon = ({ iconName, index, selected, sex }) => {
   return (
     <SvgSexIcon
-      width={20}
-      height={20}
+      width={22}
+      height={22}
       index={index}
       selected={selected}
       sex={sex}
@@ -18,8 +18,8 @@ export const SexIcon = ({ iconName, index, selected, sex }) => {
 
 export const PlusIcon = ({ iconName }) => {
   return (
-    <SvgPlusIcon width={30} height={30}>
-      <use href={icons + `${iconName}`}></use>
+    <SvgPlusIcon width={50} height={50}>
+      <use href={icons + `${iconName}`} width="50px" height="50px"></use>
     </SvgPlusIcon>
   );
 };
