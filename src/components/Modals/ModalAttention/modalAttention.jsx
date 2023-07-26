@@ -9,7 +9,7 @@ import {
   ModalTitle,
   ModalText,
   BtnContainer,
-} from './modalAttention.styled';
+} from './ModalAttention.styled';
 import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
 
 export const AttentionModal = ({ setAlertShowModal }) => {

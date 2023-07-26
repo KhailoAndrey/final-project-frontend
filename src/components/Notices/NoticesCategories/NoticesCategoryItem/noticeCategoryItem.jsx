@@ -1,5 +1,5 @@
 import { useAuth } from 'redux/auth/selectors';
-import { calculateAge, cutSity } from './noticeItemUtils';
+import { calculateAge, cutSity, correctCategory } from './noticeItemUtils';
 import svg from '../../../../images/Icons/symbol-defs.svg';
 import {
   Card,
@@ -12,30 +12,49 @@ import {
   Title,
   LearnMoreBtn,
   BottomContainer,
-} from './noticeCategoryItem.styled';
+  DelBtn,
+} from './NoticeCategoryItem.styled';
 import { ModalLearMore } from 'components/Modals/ModalNotice/ModalLearnMore';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToFavorite, delFromFavorite } from 'redux/auth/authOperations';
 
-const NoticeItem = ({ article }) => {
+const NoticeItem = ({ article, urlCategory, setAlertShowModal }) => {
   // console.log('article :>> ', article);
   const [showLearMore, setShowLearMore] = useState(false);
+  const dispatch = useDispatch();
+
+
+  const { user, isLoggedIn } = useAuth();
   const { _id, title, category, date, file, sex, location } = article;
 
   const age = calculateAge(date);
   const sity = cutSity(location);
+  const rightCategory = correctCategory(category);
+  const isFavorite = isLoggedIn ? user.favorite.includes(_id) : false;
 
-  const { user, isLoggedIn } = useAuth();
-
-  const isFavorite =  isLoggedIn ? user.favorite.includes(_id) : false;
+  const onFavBtnClick = () => {
+    console.log('horey!');
+    if (!isLoggedIn) {
+      setAlertShowModal(true);
+    } else {
+      if (!isFavorite) {
+        dispatch(addToFavorite(_id));
+      };
+      if (isFavorite) {
+        dispatch(delFromFavorite(_id));
+      };
+    }
+  };
 
   return (
     <Card id={_id}>
       <ImgContainer>
         <PetPhoto src={`${file}`} alt="pretty pet" />
         <Category>
-          <p>{category}</p>
+          <p>{rightCategory}</p>
         </Category>
-        <FavBtn type="button">
+        <FavBtn type="button" onClick={() => onFavBtnClick()}>
           {isFavorite ? (
             <svg width={24} height={24}>
               <use href={`${svg}#icon-heart-fill`} width={24} height={24} />
@@ -51,6 +70,15 @@ const NoticeItem = ({ article }) => {
             </svg>
           )}
         </FavBtn>
+        <div>
+          {urlCategory === 'my-ads' && (
+            <DelBtn type="button">
+              <svg width={24} height={24}>
+                <use href={`${svg}#icon-trash`} width={24} height={24} />
+              </svg>
+            </DelBtn>
+          )}
+        </div>
         <InfoContainer>
           <Information>
             <svg width={24} height={24}>
@@ -104,9 +132,18 @@ const NoticeItem = ({ article }) => {
       </ImgContainer>
       <BottomContainer>
         <Title>{title}</Title>
-        <LearnMoreBtn type="button" onClick={() => setShowLearMore(true)}>Learn more</LearnMoreBtn>
+        <LearnMoreBtn type="button" onClick={() => setShowLearMore(true)}>
+          Learn more
+        </LearnMoreBtn>
       </BottomContainer>
-      {showLearMore && <ModalLearMore handler={setShowLearMore} id={article._id}/>}
+      {showLearMore && (
+        <ModalLearMore
+          handler={setShowLearMore}
+          id={article._id}
+          isFavorite={isFavorite}
+          onFavBtnClick={onFavBtnClick}
+        />
+      )}
     </Card>
   );
 };
