@@ -25,7 +25,7 @@ const Navigation = () => {
       <NavDesk>
         <Nav />
       </NavDesk>
-      {isLoggedIn ? <UserNav /> : <AuthNav />}
+      {isLoggedIn ? <UserNav /> : <AuthNav closeModal={closeModal} />}
       <BurgerMenu openModal={openModal} />
       {showModal && (
         <ModalBurger closeModal={closeModal} showModal={showModal} />
