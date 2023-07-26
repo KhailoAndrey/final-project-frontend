@@ -25,8 +25,9 @@ export const ModalLearMore = ({
   id,
   isFavorite,
   onFavBtnClick,
+  setRerender,
 }) => {
-  console.log('ModalLearMore  id:', id);
+  // console.log('ModalLearMore  id:', id);
 
   // const { isLoggedIn, getUser } = useAuth();
 
@@ -87,6 +88,7 @@ export const ModalLearMore = ({
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
+      setRerender(true);
       handler(false);
     }
   };
@@ -94,6 +96,7 @@ export const ModalLearMore = ({
   useEffect(() => {
     const handleEsc = event => {
       if (event.keyCode === 27) {
+        setRerender(true);
         handler(false);
       }
     };
@@ -102,12 +105,12 @@ export const ModalLearMore = ({
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
-  }, [handler]);
+  }, [handler, setRerender]);
 
   return (
     <ModalContainer onClick={handleBackdropClick}>
       <ModalWindow>
-        <CloseButton onClick={() => handler(false)}>
+        <CloseButton onClick={() => { handler(false); setRerender(true) }}>
           <svg width={24} height={24}>
             <use href={`${svg}#icon-cross`} width={24} height={24} />
           </svg>

@@ -18,13 +18,32 @@ const Notices = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
-  const [totalPageCount, setTotalPageCount] = useState(0)
+  const [totalPageCount, setTotalPageCount] = useState(0);
+  const [rerender, setRerender] = useState(false);
 
-  console.log(setPage);
-  const { token, user } = useAuth();
+
+  const { token, isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    console.log('rerender :>> ', rerender);
+
+    if (!rerender || !isLoggedIn) return;
+
+    // console.log('rerender :>> ', rerender);
+    async function foo(page, query, token) {
+        const result = await fetchFavoriteNotices(page, query, token);
+        setNoticeArticles(result.notices);
+        //  console.log(' fetch result favor:>> ', result);
+      setRerender(false);
+        setTotalPageCount(Math.ceil(result.total / 12));
+    }
+    foo(page, query, token);
+
+  }, [isLoggedIn, page, query, rerender, token]);
 
   useEffect(() => {
     foo(page, category, query, token);
+
 
     async function foo(page, category, query, token) {
       if (category === 'favorite') {
@@ -47,31 +66,34 @@ const Notices = () => {
        
       }
     }
-  }, [page, category, query, token, user.favorite]);
+  }, [page, category, query, token]);
 
   return (
     <>
       <div>
         <Title text={'Find your favorite pet'} />
-        <NoticesFilter setQuery={setQuery} />
+        <NoticesFilter setQuery={setQuery} setPage={setPage} />
         <NoticeNavContainer>
-          <NoticesCatagoriesNav setCategory={setCategory} />
+          <NoticesCatagoriesNav setCategory={setCategory} setPage={setPage} />
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
       </div>
       {noticeArticles && (
         <NoticesCategoriesList
           articles={noticeArticles}
-          urlCategory={category}
           setAlertShowModal={setAlertShowModal}
+          setRerender={setRerender}
         />
       )}
 
       {showAlertModal && (
         <AttentionModal setAlertShowModal={setAlertShowModal} />
-      
       )}
-       <AppPagination setPage={setPage} page={page} totalPageCount={totalPageCount} />
+      <AppPagination
+        setPage={setPage}
+        page={page}
+        totalPageCount={totalPageCount}
+      />
     </>
   );
 };

@@ -15,7 +15,7 @@ export const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  z-index: 999;
+  z-index: 100;
 `;
 
 export const ModalWindow = styled.div`
