@@ -18,7 +18,7 @@ import {
 } from './ModalLearnMore.styled';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import fetchNoticesById from 'fetch/noticeModalLearnMore';
-import { useAuth } from 'redux/auth/selectors';
+// import { useAuth } from 'redux/auth/selectors';
 // import { useSelector } from 'react-redux';
 // import { useAuth } from  "../../../redux/auth/selectors"
 

@@ -1,10 +1,10 @@
-import { AddPetBtn } from 'helpers/AddPetButton/AddPetBtn';
-import { AttentionModal } from 'components/Modals/ModalAttention/ModalAttention';
 import { useEffect, useState } from 'react';
 import { useAuth } from 'redux/auth/selectors';
 import fetchOwnNotices from 'fetch/noticeOwn';
+import { AddPetBtn } from 'helpers/AddPetButton/AddPetBtn';
 import fetchFavoriteNotices from 'fetch/noticeFavorite';
 import fetchNotices from 'fetch/noticeCategory';
+import { AttentionModal } from 'components/Modals/ModalAttention/ModalAttention';
 import NoticesCategoriesList from 'components/Notices/NoticesCategories/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCatagoriesNav/NoticesCatagoriesNav';
 import NoticesFilter from 'components/Notices/NoticesSearch/NoticesSearch';

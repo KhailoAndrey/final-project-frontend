@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { FriendsContainer } from './OurFriends.styles';
-import OurFriendsList from './OurFriendsList/OurFriendsList';
 import fetchFriends from 'fetch/friends';
+import OurFriendsList from './OurFriendsList/OurFriendsList';
+import { FriendsContainer } from './OurFriends.styled';
 
 const OurFriends = () => {
   const [friends, setFriends] = useState([]);
