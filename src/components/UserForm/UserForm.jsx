@@ -1,5 +1,6 @@
-// import { useEffect, useState } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+// import { useState } from 'react';
 import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
@@ -16,15 +17,9 @@ import {
   Logout,
 } from 'components/Buttons/UserPageButtons/UserPageButtons.jsx';
 import { SaveBtn } from 'components/Buttons/UserPageButtons/UserPageButtons.styled.js';
-// import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
-const initialValues = {
-  name: '',
-  email: '',
-  birthday: '',
-  phone: '',
-  city: '',
-};
+// import { useDispatch } from 'react-redux';
 
 const schema = yup.object().shape({
   name: yup
@@ -49,7 +44,7 @@ const schema = yup.object().shape({
   birthday: yup
     .string()
     .matches(
-      /^(0[1-9]|[1-2]\d|3[0-1])\.(0[1-9]|1[0-2])\.\d{4}$/,
+      /^(0?[1-9]|[12][0-9]|3[01])[./\-](0?[1-9]|1[012])[./\-]\d{4}$/,
       'Please enter a valid date: dd.mm.yyyy'
     ),
   phone: yup
@@ -80,7 +75,31 @@ const imageExtensions = [
   'WEBP',
 ];
 
-export const UserForm = ({ user }) => {
+export const UserForm = () => {
+  const user = useSelector(state => state.auth.user);
+  console.log(user);
+  const initialValues = {
+    name: user && user.name ? user.name : '',
+    email: user && user.email ? user.email : '',
+    birthday: user ? user.birthday : '',
+    phone: user ? user.phone : '',
+    city: user ? user.city : '',
+  };
+
+  // axios.defaults.baseURL =
+  //   'https://final-project-backend-4o0r.onrender.com/api/';
+  // const putUserData = async () => {
+  //   try {
+  //     const res = await axios.put(`/users/`);
+  //     const { user } = await res.data;
+  //     console.log(user);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+  // useEffect(() => {
+  //   putUserData();
+  // }, [user]);
   // const dispatch = useDispatch();
   // Стани для зміни форми
   // Можливість редагування форми
@@ -90,8 +109,8 @@ export const UserForm = ({ user }) => {
   // const [isImgChangeable, setIsImgChangeable] = useState(true);
 
   // Стани полів форми
-  // const [avatar, setAvatar] = useState('');
-  // const [previewURL, setPreviewURL] = useState(undefined);
+  const [avatar, setAvatar] = useState('');
+  const [previewURL, setPreviewURL] = useState(undefined);
   // const [values, setValues] = useState({
   //   name: '',
   //   email: '',
@@ -100,25 +119,26 @@ export const UserForm = ({ user }) => {
   //   city: '',
   // });
   // Рендер аватару
-  // useEffect(() => {
-  //   if (avatar === '') {
-  //     return;
-  //   }
-  // }, [avatar]);
+  useEffect(() => {
+    if (avatar === '') {
+      return;
+    }
+  }, [avatar]);
   // Рендер даних користувача
-  // useEffect(() => {
-  //   if (user === null) {
-  //     return;
-  //   }
-  //   setValues({
-  //     name: user && user.name ? user.name : '',
-  //     email: user && user.email ? user.email : '',
-  //     birthday: user ? user.birthday : '',
-  //     phone: user ? user.phone : '',
-  //     city: user ? user.city : '',
-  //   });
-  //   setPreviewURL(user && user.avatarURL);
-  // }, [user]);
+  useEffect(() => {
+    if (user === null) {
+      return;
+    }
+    // setValues({
+    //   name: user && user.name ? user.name : '',
+    //   email: user && user.email ? user.email : '',
+    //   birthday: user ? user.birthday : '',
+    //   phone: user ? user.phone : '',
+    //   city: user ? user.city : '',
+    // });
+
+    setPreviewURL(user && user.avatarURL);
+  }, [user]);
 
   const handleSubmit = (values, actions) => {
     setIsEdit(false);
@@ -132,26 +152,55 @@ export const UserForm = ({ user }) => {
   // const changeImgClick = (values, actions) => {
   //   setIsImgChangeable(!isImgChangeable);
   // };
+  const fileInputRef = useRef(null);
+  const [fileInput, setFileInput] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
-  const handleChangePhoto = async e => {
-    const file = e.currentTarget.value;
-    const findExtension = e.currentTarget.value.split('.');
-    const extension = findExtension[findExtension.length - 1];
+  const handleFileChange = e => {
+    const fileList = e.target.files;
+    const file = fileList[0];
 
-    if (!imageExtensions.includes(extension)) {
-      toast.error(
-        'Avatar must be an image file with extention jpg, jpeg, png, svg, gif, webp'
-      );
+    if (!file) {
+      // Handle case when no file is selected
       return;
     }
-    return console.log(file);
 
-    // <img src={URL.createObjectURL(file)} alt="avatar" height={182} />;
+    const imageUrl = URL.createObjectURL(file);
+    setImageUrl(imageUrl);
   };
+
+  // const handleSelectFile = () => {
+  //   if (fileInputRef.current) {
+  //     fileInputRef.current.click();
+  //   }
+  // };
+
+  const handleRemoveImage = () => {
+    if (fileInputRef.current) {
+      console.log(fileInputRef.current.value);
+      fileInputRef.current.value = null;
+    }
+    setImageUrl(null);
+    fileInputRef.current.value = null;
+  };
+
+  // const handleChangePhoto = async e => {
+  //   const file = e.currentTarget.value;
+  //   const findExtension = e.currentTarget.value.split('.');
+  //   const extension = findExtension[findExtension.length - 1];
+
+  //   if (!imageExtensions.includes(extension)) {
+  //     toast.error(
+  //       'Avatar must be an image file with extention jpg, jpeg, png, svg, gif, webp'
+  //     );
+  //     return;
+  //   }
+  //   return <img src={URL.createObjectURL(file)} alt="avatar" height={182} />;
+  // };
 
   return (
     <Div>
-      {isEdit ? (
+      {/* {isEdit ? (
         <InputWrapper>
           <EditFoto />
           <InputFile
@@ -160,7 +209,7 @@ export const UserForm = ({ user }) => {
             onChange={handleChangePhoto}
           />
         </InputWrapper>
-      ) : null}
+      ) : null} */}
 
       <Formik
         validationSchema={schema}
@@ -179,8 +228,38 @@ export const UserForm = ({ user }) => {
             </Button>
           )}
           <Container>
-            <Label htmlFor="avatar">EDIT PHOTO</Label>
-            <Input id="avatar" autoComplete="off" name="avatar" type="file" />
+            {isEdit ? (
+              <>
+                <Label htmlFor="avatar">EDIT PHOTO</Label>
+                <Input
+                  id="avatar"
+                  autoComplete="off"
+                  name="avatar"
+                  type="file"
+                  disabled={!isEdit}
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                  ref={input => setFileInput(input)}
+                  // ref={fileInputRef}
+                  onChange={handleFileChange}
+                />
+              </>
+            ) : null}
+            {
+              imageUrl ? (
+                <div>
+                  <img src={imageUrl} alt="Selected" height="60" />
+                  <button type="button" onClick={handleRemoveImage}>
+                    Remove
+                  </button>
+                </div>
+              ) : null
+              // <Label htmlFor="avatar">
+              //   <button type="button" onClick={handleSelectFile}>
+              //     Select a file
+              //   </button>
+              // </Label>
+            }
             <ErrorMessage name="avatar" component={ErrorText} />
           </Container>
 

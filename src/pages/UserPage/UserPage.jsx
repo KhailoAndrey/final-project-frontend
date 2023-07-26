@@ -9,16 +9,19 @@ import {
   PetsContainer,
   UserPageContainer,
 } from './UserPage.styled';
+import { UserData } from 'components/UserData/UserData';
 
 const UserPage = () => {
-
   return (
     <>
       <UserPageContainer>
         <UserContainer>
           <ProfileTitle> My information: </ProfileTitle>
-          <UserInfo />
+          <UserInfo>
+            <UserData />
+          </UserInfo>
         </UserContainer>
+
         <PetsContainer>
           <Container>
             <ProfileTitle>My pets:</ProfileTitle>

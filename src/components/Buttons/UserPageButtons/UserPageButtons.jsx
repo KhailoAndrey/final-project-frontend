@@ -37,6 +37,22 @@ export const EditFoto = () => {
   );
 };
 
+export const LogoutIcon1 = () => {
+  return (
+    <svg width={24} height={24}>
+      <use href={`${svg}#icon-logout`} />
+    </svg>
+  );
+};
+
+export const CameraIcon1 = () => {
+  return (
+    <svg width={24} height={24}>
+      <use href={`${svg}#icon-camera`} />
+    </svg>
+  );
+};
+
 export const EditIcon = () => {
   return (
     <svg width={24} height={24}>
@@ -48,7 +64,7 @@ export const EditIcon = () => {
 export const CloseIcon = () => {
   return (
     <svg width={24} height={24}>
-      <use href={`${svg}#icon-cross-small`} />
+      <use href={`${svg}#icon-cross`} />
     </svg>
   );
 };

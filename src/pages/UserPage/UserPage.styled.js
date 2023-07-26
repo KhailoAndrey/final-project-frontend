@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const UserInfo = styled.div`
   width: 280px;
   height: 517px;
-  border-radius: 20px;
+  border-radius: 40px;
   background-color: lightseagreen;
   margin-top: 18px;
 

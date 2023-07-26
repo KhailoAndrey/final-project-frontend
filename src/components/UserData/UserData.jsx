@@ -38,7 +38,7 @@ export const UserData = () => {
     'https://final-project-backend-4o0r.onrender.com/api/';
   const getCurrentUser = async () => {
     try {
-      const res = await axios(`/users`);
+      const res = await axios(`/users/current`);
       const { user } = await res.data;
       setUser(user);
     } catch (error) {
@@ -72,7 +72,7 @@ export const UserData = () => {
 
   return (
     <>
-      <UserTitle>My information:</UserTitle>
+      {/* <UserTitle>My information:</UserTitle> */}
       <UserCard>
         <ImgContainer>
           <ImgWrapper>
