@@ -1,5 +1,12 @@
 const { createSlice } = require('@reduxjs/toolkit');
-const { register, logIn, logOut, refreshUser } = require('./authOperations');
+const {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  addToFavorite,
+  delFromFavorite,
+} = require('./authOperations');
 
 const initialState = {
   user: { name: null, email: null },
@@ -64,6 +71,33 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
+      })
+      .addCase(addToFavorite.pending, state => {
+        state.error = null;
+      })
+      .addCase(addToFavorite.fulfilled, (state, action) => {
+        console.log("added to favorite");
+        state.user.favorite.push(...action.payload);
+      })
+      .addCase(addToFavorite.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(delFromFavorite.pending, state => {
+        state.error = null;
+      })
+      .addCase(delFromFavorite.fulfilled, (state, action) => {
+        console.log(
+          'action.payload.deletedNoticeId :>> ',
+          action.payload.deletedNoticeId
+        );
+        const index = state.user.favorite.findIndex(
+          article => article === action.payload.deletedNoticeId
+        );
+        console.log("deleting index ->", index);
+        state.user.favorite.splice(index, 1);
+      })
+      .addCase(delFromFavorite.rejected, (state, action) => {
+        state.error = action.payload;
       });
   },
 });

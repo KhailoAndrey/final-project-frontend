@@ -1,5 +1,5 @@
-import { AddPetBtn } from 'helpers/AddPetButton/addPetBtn';
-import { AttentionModal } from 'components/Modals/ModalAttention/modalAttention';
+import { AddPetBtn } from 'helpers/AddPetButton/AddPetBtn';
+import { AttentionModal } from 'components/Modals/ModalAttention/ModalAttention';
 import { useEffect, useState } from 'react';
 import { useAuth } from 'redux/auth/selectors';
 import fetchOwnNotices from 'fetch/noticeOwn';
@@ -7,9 +7,9 @@ import fetchFavoriteNotices from 'fetch/noticeFavorite';
 import fetchNotices from 'fetch/noticeCategory';
 import NoticesCategoriesList from 'components/Notices/NoticesCategories/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCatagoriesNav/NoticesCatagoriesNav';
-import NoticesFilter from 'components/Notices/NoticesFilters/noticesFilter';
+import NoticesFilter from 'components/Notices/NoticesSearch/NoticesSearch';
 import { Title } from 'components/Title/title';
-import { NoticeNavContainer } from './notices.styled';
+import { NoticeNavContainer } from './Notices.styled';
 
 const Notices = () => {
   const [showAlertModal, setAlertShowModal] = useState(false);
@@ -19,7 +19,7 @@ const Notices = () => {
   const [page, setPage] = useState(1);
 
   console.log(setPage);
-  const { token } = useAuth();
+  const { token, user } = useAuth();
 
   useEffect(() => {
     foo(page, category, query, token);
@@ -30,6 +30,7 @@ const Notices = () => {
         setNoticeArticles(result.notices);
         //  console.log(' fetch result favor:>> ', result);
       } else if (category === 'my-ads') {
+        // console.log(' category my-ads:>> ', category);
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
         // console.log(' fetch result own:>> ', result);
@@ -39,7 +40,7 @@ const Notices = () => {
         // console.log(' fetch result sell/lost/free:>> ', result);
       }
     }
-  }, [page, category, query, token]);
+  }, [page, category, query, token, user.favorite]);
 
   return (
     <>
@@ -51,7 +52,13 @@ const Notices = () => {
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
       </div>
-      {noticeArticles && <NoticesCategoriesList articles={noticeArticles} />}
+      {noticeArticles && (
+        <NoticesCategoriesList
+          articles={noticeArticles}
+          urlCategory={category}
+          setAlertShowModal={setAlertShowModal}
+        />
+      )}
 
       {showAlertModal && (
         <AttentionModal setAlertShowModal={setAlertShowModal} />

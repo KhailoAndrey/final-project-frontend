@@ -10,11 +10,30 @@ export const calculateAge = birthdateString => {
   return age;
 };
 
+export const cutSity = location => {
+  if (location.length > 5) {
+    const sity = location.slice(0, 4) + '...';
+    return sity;
+  } else return location;
+};
 
-export const cutSity = (location) => {
-    if (location.length > 5) {
-        const sity = location.slice(0, 4) + "...";
-        return sity;
-    } else return location;
-}
+export const correctCategory = bendCategory => {
+  let category;
+  switch (bendCategory) {
+    case 'sell':
+      category = 'sell';
+      break;
 
+    case 'lost-found':
+      category = 'lost/found';
+      break;
+
+    case 'for-free':
+      category = 'in good hands';
+      break;
+
+    default:
+      category = bendCategory;
+  }
+  return category;
+};
