@@ -2,13 +2,14 @@ import { useAuth } from 'redux/auth/selectors';
 import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 import { useNavigate } from 'react-router-dom';
 
-const NoticesCatagoriesNav = ({ setCategory }) => {
+const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
   const onClick = e => {
     const category = e.currentTarget.value;
     setCategory(category);
+    setPage(1);
     navigate(`/notices/${category}`);
   };
 

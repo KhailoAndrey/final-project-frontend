@@ -8,7 +8,7 @@ import {
   ClearButton,
 } from './NoticesSearch.styled';
 
-const NoticesFilter = ({ setQuery }) => {
+const NoticesFilter = ({ setQuery, setPage }) => {
   const [localInput, setLocalInput] = useState('');
 
   const inputChange = ({ target: { value } }) => {
@@ -22,6 +22,7 @@ const NoticesFilter = ({ setQuery }) => {
       console.log('Enter correct query');
     } else {
       console.log('query :>> ', query);
+      setPage(1);
       setQuery(query);
     }
   };
