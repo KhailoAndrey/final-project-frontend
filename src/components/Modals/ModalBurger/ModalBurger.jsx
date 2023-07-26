@@ -33,7 +33,7 @@ const ModalBurger = ({ closeModal, showModal }) => {
   }, [closeModal]);
 
   return (
-    <ModalBackdrop onClick={closeModal}>
+    <ModalBackdrop>
       <ModalContent open={showModal}>
         <ModalHeader>
           <Logo />
