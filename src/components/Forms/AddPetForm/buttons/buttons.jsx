@@ -12,6 +12,8 @@ import {
   PetCategoryStyle,
   TexCategoyInfo,
   PetInfoNoticesStyle,
+  StyledEditPhotoBtn,
+  SVG,
 } from '../buttons/buttons.styled';
 
 export const SvgPawprint = () => {
@@ -19,6 +21,29 @@ export const SvgPawprint = () => {
     <Pawprint width={24} height={24}>
       <use href={icons + '#pawprint 1'}></use>
     </Pawprint>
+  );
+};
+
+const EditPhotoIcon = props => {
+  return (
+    <SVG width={24} height={24} stroke={`#54adff`} {...props}>
+      <use href={icons + '#camera'}></use>
+    </SVG>
+  );
+};
+
+export const EditPhotoBtn = ({ onClick, isEditingBlocked }) => {
+  return (
+    <>
+      <StyledEditPhotoBtn
+        type="button"
+        onClick={onClick}
+        disabled={isEditingBlocked}
+      >
+        <EditPhotoIcon />
+        Edit Photo
+      </StyledEditPhotoBtn>
+    </>
   );
 };
 
@@ -37,6 +62,7 @@ export const SvgLocation = () => {
     </City>
   );
 };
+
 export const SvgClock = () => {
   return (
     <City width={24} height={24}>
@@ -46,14 +72,14 @@ export const SvgClock = () => {
 };
 export const SvgMale = () => {
   return (
-    <City width={24} height={24}>
+    <City width={22} height={22}>
       <use href={icons + '#male'}></use>
     </City>
   );
 };
 export const SvgFemale = () => {
   return (
-    <City width={24} height={24}>
+    <City width={22} height={22}>
       <use href={icons + '#female'}></use>
     </City>
   );

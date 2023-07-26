@@ -147,6 +147,7 @@ export const AddPetForm = () => {
           formData.append('price', values.price);
         }
     }
+    console.log(formData);
 
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
@@ -203,7 +204,7 @@ export const AddPetForm = () => {
                           <SexWrapper>
                             {sexes.map((option, index) => {
                               const iconLabel =
-                                index === 0 ? '#icon-female' : '#icon-male';
+                                index === 0 ? '#female' : '#male';
                               const selected = option[1] === sex;
 
                               return (
@@ -335,7 +336,7 @@ export const AddPetForm = () => {
                 )}
                 {stage === 3 && (
                   <BtnWrapper>
-                    <BtnDone />
+                    <BtnDone onSubmit={handleOnSubmit} />
                     <BtnBack onClick={handleOnBackClick} />
                   </BtnWrapper>
                 )}
