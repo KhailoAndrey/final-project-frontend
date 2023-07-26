@@ -44,8 +44,8 @@ export const AttentionModal = ({ setAlertShowModal }) => {
           register to access these features.
         </ModalText>
         <BtnContainer>
-          <LoginBtn />
-          <RegistrationBtn />
+          <LoginBtn closeModal={setAlertShowModal} />
+          <RegistrationBtn closeModal={setAlertShowModal} />
         </BtnContainer>
       </ModalContent>
     </ModalBackdrop>
