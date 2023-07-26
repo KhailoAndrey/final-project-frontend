@@ -20,6 +20,7 @@ const FriendsPage = lazy(() => import('../pages/FriendsPage/FriendsPage'));
 const AddPetPage = lazy(() => import('../pages/AddPetPage/AddPetPage'));
 
 export const App = () => {
+<<<<<<< Updated upstream
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -55,6 +56,56 @@ export const App = () => {
         <Route path="/notices/">
           <Route index element={<Navigate to="/notices/sell" />} />
           <Route path=":categoryName" element={<NoticesPage />} />
+=======
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="register"
+            element={
+              <PublicRoute
+                redirectTo="/main"
+                component={<RegisterPage />}
+              ></PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute
+                redirectTo="/main"
+                component={<LoginPage />}
+              ></PublicRoute>
+            }
+          />
+          <Route path="news" element={<NewsPage />} />
+          <Route path="/notices/">
+            <Route index element={<Navigate to="/notices/sell" />} />
+            <Route path=":categoryName" element={<NoticesPage />} />
+          </Route>
+          <Route path="friends" element={<FriendsPage />} />
+          <Route
+            path="add-pet"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<AddPetPage />}
+              ></PrivateRoute>
+            }
+          />
+          {/* <Route
+            path="user"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<UserPage />}
+              ></PrivateRoute>
+            }
+          /> */}
+          <Route path="user" element={<UserPage />} />
+>>>>>>> Stashed changes
         </Route>
         <Route path="friends" element={<FriendsPage />} />
         <Route

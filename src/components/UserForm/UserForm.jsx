@@ -179,7 +179,14 @@ export const UserForm = ({ user }) => {
             </Button>
           )}
           <Container>
-            <Label htmlFor="avatar">EDIT PHOTO</Label>
+            <Label htmlFor="avatar">
+              <button
+                type="button"
+                onClick={() => console.log('click on edit foto')}
+              >
+                EDIT PHOTO
+              </button>
+            </Label>
             <Input id="avatar" autoComplete="off" name="avatar" type="file" />
             <ErrorMessage name="avatar" component={ErrorText} />
           </Container>
