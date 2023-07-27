@@ -1,4 +1,5 @@
 import React, { useEffect} from 'react';
+import { useTranslation } from 'react-i18next';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnClose,
@@ -10,6 +11,8 @@ import {
 } from './DaleteModal.styled';
 
 const DeleteModal = ({ onClose, handleDelete, data }) => {
+  const { t } = useTranslation();
+
   
    const handleBackdropClick = event => {
       if (event.target === event.currentTarget) {
@@ -45,10 +48,10 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
           </TextDelete>
           <QuestioBtnWrap>
             <BtnDelete onClick={() => onClose(false)} isHovered={true}>
-              Cancel
+              {t('cancel')}
             </BtnDelete>
             <BtnDelete onClick={handleDelete} isHovered={false}>
-              Yes
+              {t('yes')}
               <svg width={24} height={24}>
                 <use href={`${svg}#${data.icon}`} width={24} height={24} />
               </svg>
