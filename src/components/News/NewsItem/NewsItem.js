@@ -4,7 +4,6 @@ import {
   NDate,
   NImg,
   NImgWrapper,
-  NItem,
   NText,
   NTitle,
   NUrl,
@@ -28,7 +27,7 @@ const NewsItem = ({ news }) => {
   const formatedDate = formatDate(date);
 
   return (
-    <NItem>
+    <>
       <NImgWrapper>
         <NImg src={imgUrl} alt="news" />
       </NImgWrapper>
@@ -44,7 +43,7 @@ const NewsItem = ({ news }) => {
           </NUrl>
         </NflexContainer>
       </NContent>
-    </NItem>
+    </>
   );
 };
 
