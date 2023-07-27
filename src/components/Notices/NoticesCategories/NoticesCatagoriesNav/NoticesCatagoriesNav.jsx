@@ -1,10 +1,12 @@
 import { useAuth } from 'redux/auth/selectors';
-import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
 const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onClick = e => {
     const category = e.currentTarget.value;
@@ -23,7 +25,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
         value="sell"
         defaultChecked
       ></Input>
-      <Label htmlFor="radio1">sell</Label>
+      <Label htmlFor="radio1">{t('sell')}</Label>
 
       <Input
         onClick={e => onClick(e)}
@@ -32,7 +34,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
         name="radios"
         value="lost-found"
       ></Input>
-      <Label htmlFor="radio2">lost/found</Label>
+      <Label htmlFor="radio2">{t('lost_found')}</Label>
 
       <Input
         onClick={e => onClick(e)}
@@ -41,7 +43,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
         name="radios"
         value="for-free"
       ></Input>
-      <Label htmlFor="radio3">in good hands</Label>
+      <Label htmlFor="radio3">{t('in_good_hands')}</Label>
 
       {isLoggedIn && (
         <>
@@ -52,7 +54,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
             name="radios"
             value="favorite"
           ></Input>
-          <Label htmlFor="radio4">favorite ads</Label>
+          <Label htmlFor="radio4">{t('favorite_ads')}</Label>
 
           <Input
             onClick={e => onClick(e)}
@@ -61,7 +63,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
             name="radios"
             value="my-ads"
           ></Input>
-          <Label htmlFor="radio5">my ads</Label>
+          <Label htmlFor="radio5">{t('my_ads')}</Label>
         </>
       )}
     </CatContainer>

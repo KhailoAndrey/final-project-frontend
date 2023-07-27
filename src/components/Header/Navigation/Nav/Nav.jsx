@@ -1,9 +1,10 @@
 import { useLocation } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import { NavBox, StyledNavLink } from './Nav.styled';
 
 const Nav = ({ onClick }) => {
   const location = useLocation();
-
+const { t } = useTranslation();
   return (
     <>
       <NavBox>
@@ -12,7 +13,7 @@ const Nav = ({ onClick }) => {
           to={'/news'}
           className={location.pathname.startsWith('/news') ? 'activeLink' : ''}
         >
-          News
+          {t('header_news')}
         </StyledNavLink>
         <StyledNavLink
           onClick={onClick}
@@ -21,7 +22,7 @@ const Nav = ({ onClick }) => {
             location.pathname.startsWith('/notices') ? 'activeLink' : ''
           }
         >
-          Find pet
+          {t('header_find')}
         </StyledNavLink>
         <StyledNavLink
           onClick={onClick}
@@ -30,7 +31,7 @@ const Nav = ({ onClick }) => {
             location.pathname.startsWith('/friends') ? 'activeLink' : ''
           }
         >
-          Our friends
+          {t('header_sponsors')}
         </StyledNavLink>
       </NavBox>
     </>

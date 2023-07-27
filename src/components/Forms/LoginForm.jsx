@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { Icon } from 'react-icons-kit';
+import { ic_visibility_off_outline } from 'react-icons-kit/md/ic_visibility_off_outline';
+import { ic_visibility_outline } from 'react-icons-kit/md/ic_visibility_outline';
+import { iosCloseEmpty } from 'react-icons-kit/ionicons/iosCloseEmpty';
+import { androidDone } from 'react-icons-kit/ionicons/androidDone';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
@@ -19,12 +25,6 @@ import {
   IconsContainer,
 } from './LoginForm.styled';
 
-import { Icon } from 'react-icons-kit';
-import { ic_visibility_off_outline } from 'react-icons-kit/md/ic_visibility_off_outline';
-import { ic_visibility_outline } from 'react-icons-kit/md/ic_visibility_outline';
-import { iosCloseEmpty } from 'react-icons-kit/ionicons/iosCloseEmpty';
-import { androidDone } from 'react-icons-kit/ionicons/androidDone';
-
 const emailRegexp = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 
 const validationSchema = Yup.object({
@@ -40,6 +40,7 @@ const validationSchema = Yup.object({
 });
 
 export const LoginForm = () => {
+  const { t } = useTranslation();
   const [type, setType] = useState('password');
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -87,7 +88,7 @@ export const LoginForm = () => {
 
   return (
     <FormContainer>
-      <FormHeader>Login</FormHeader>
+      <FormHeader>{t('login_form')}</FormHeader>
       <form onSubmit={formik.handleSubmit}>
         <EmailDiv>
           <FormInput
@@ -95,7 +96,7 @@ export const LoginForm = () => {
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
-            placeholder="Email"
+            placeholder={t('email')}
             onBlur={handleEmailBlur}
             className={
               showEmailError
@@ -141,7 +142,7 @@ export const LoginForm = () => {
             autoComplete="password"
             value={formik.values.password}
             onChange={formik.handleChange}
-            placeholder="Password"
+            placeholder={t('password')}
             onBlur={handlePasswordBlur}
             className={
               showPasswordError
@@ -190,10 +191,10 @@ export const LoginForm = () => {
           )}
         </PasswordDiv>
 
-        <FormButton type="submit">Login</FormButton>
+        <FormButton type="submit">{t('login')}</FormButton>
         <FormText>
-          Don't have an account?
-          <FormLink to="/register">Register</FormLink>
+          {t('login_form_text')}
+          <FormLink to="/register">{t('registration')}</FormLink>
         </FormText>
       </form>
     </FormContainer>

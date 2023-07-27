@@ -1,6 +1,11 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
 import { calculateAge, cutSity, correctCategory } from './NoticeItemUtils';
 import svg from '../../../../images/Icons/symbol-defs.svg';
+import { ModalLearMore } from 'components/Modals/ModalNotice/ModalLearnMore';
+import { addToFavorite, delFromFavorite } from 'redux/auth/authOperations';
 import {
   Card,
   ImgContainer,
@@ -14,16 +19,13 @@ import {
   BottomContainer,
   DelBtn,
 } from './NoticeCategoryItem.styled';
-import { ModalLearMore } from 'components/Modals/ModalNotice/ModalLearnMore';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addToFavorite, delFromFavorite } from 'redux/auth/authOperations';
 
-const NoticeItem = ({ article, setAlertShowModal ,setRerender}) => {
+const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   // console.log('article :>> ', article);
   const [showLearMore, setShowLearMore] = useState(false);
   // const [rerender, setRerender] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const { user, isLoggedIn } = useAuth();
   const { _id, title, category, date, file, sex, location, owner } = article;
@@ -113,9 +115,10 @@ const NoticeItem = ({ article, setAlertShowModal ,setRerender}) => {
               />
             </svg>
             <p>
-              {age < 1 && '<1 year'}
-              {age === 1 && '1 year'}
-              {age > 1 && `${age} years`}
+              {age < 1 && `<1 ${t('min_year')} `}
+              {age === 1 && `1 ${t('year')}`}
+              {age > 1 && age < 5 && `${age} ${t('years')}`}
+              {age >= 5 && `${age} ${t('big_years')}`}
             </p>
           </Information>
           <Information>
@@ -145,7 +148,7 @@ const NoticeItem = ({ article, setAlertShowModal ,setRerender}) => {
       <BottomContainer>
         <Title>{title}</Title>
         <LearnMoreBtn type="button" onClick={() => setShowLearMore(true)}>
-          Learn more
+          {t('learn_more')}
         </LearnMoreBtn>
       </BottomContainer>
       {showLearMore && (
