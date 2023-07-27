@@ -147,7 +147,6 @@ export const AddPetForm = () => {
           formData.append('price', values.price);
         }
     }
-    console.log(formData);
 
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
@@ -173,6 +172,7 @@ export const AddPetForm = () => {
         }) => {
           const { category, sex } = values;
           const isFieldInvalid = errors.sex && touched.sex;
+
           return (
             <Wrapper data-category={category}>
               <Title picked={category} stage={stage} />
@@ -238,6 +238,7 @@ export const AddPetForm = () => {
                       />
                     </SexUploadWrapper>
                   )}
+
                   <InputWrapper>
                     {stage === 2 && category !== 'my pet' && (
                       <InputField
@@ -310,6 +311,7 @@ export const AddPetForm = () => {
                         emulTouch={emulTouch}
                       />
                     )}
+
                     {stage === 3 && (
                       <CommentField
                         errors={errors}
