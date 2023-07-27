@@ -112,7 +112,7 @@ export const AddPetForm = () => {
 
   const handleOnSubmit = async (values, { resetForm }) => {
     const formData = new FormData();
-    // console.log(values);
+
     switch (values.category) {
       case 'my pet':
         formData.append('name', values.name);
@@ -238,6 +238,7 @@ export const AddPetForm = () => {
                       />
                     </SexUploadWrapper>
                   )}
+
                   <InputWrapper>
                     {stage === 2 && category !== 'my pet' && (
                       <InputField
@@ -310,6 +311,7 @@ export const AddPetForm = () => {
                         emulTouch={emulTouch}
                       />
                     )}
+
                     {stage === 3 && (
                       <CommentField
                         errors={errors}
