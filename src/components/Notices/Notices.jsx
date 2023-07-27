@@ -49,19 +49,19 @@ const Notices = () => {
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
         //  console.log(' fetch result favor:>> ', result);
-        setTotalPageCount(Math.ceil(result.total / 12));
+        setTotalPageCount(result.totalPages);
       } else if (category === 'my-ads') {
         // console.log(' category my-ads:>> ', category);
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
-        setTotalPageCount(Math.ceil(result.total / 12));
+        setTotalPageCount(result.totalPages);
         // console.log(' fetch result own:>> ', result);
       } else if (category === 'sell' || 'lost-found' || 'for-free') {
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
         // console.log(' fetch result sell/lost/free:>> ', result)
-        setTotalPageCount(Math.ceil(result.total / 12));
-        // console.log(result.total)
+        setTotalPageCount(result.totalPages);
+        console.log(result)
       }
     }
   }, [page, category, query, token]);
