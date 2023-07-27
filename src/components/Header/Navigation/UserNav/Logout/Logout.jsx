@@ -6,15 +6,15 @@ import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { LogoutBtn } from './Logout.styled';
 
-const data = {
-  title: 'Already leaving?',
-  text: '',
-  icon: 'icon-logout',
-};
-
 const Logout = ({ showButton }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+
+  const data = {
+    title: t('leaving'),
+    text: '',
+    icon: 'icon-logout',
+  };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log(isModalOpen);

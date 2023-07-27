@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { LoginBtn } from 'components/Header/Navigation/AuthNav/Login/loginBtn';
+import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   ModalContent,
@@ -10,9 +12,10 @@ import {
   ModalText,
   BtnContainer,
 } from './ModalAttention.styled';
-import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
 
 export const AttentionModal = ({ setAlertShowModal }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const handleKeyDown = e => {
       setAlertShowModal(false);
@@ -36,13 +39,8 @@ export const AttentionModal = ({ setAlertShowModal }) => {
             />
           </svg>
         </ModalBtn>
-        <ModalTitle>Attention</ModalTitle>
-        <ModalText>
-          We would like to remind you that certain functionality is available
-          only to authorized users.If you have an account, please log in with
-          your credentials. If you do not already have an account, you must
-          register to access these features.
-        </ModalText>
+        <ModalTitle>{t('attention')}</ModalTitle>
+        <ModalText>{t('attention_text')}</ModalText>
         <BtnContainer>
           <LoginBtn closeModal={setAlertShowModal} />
           <RegistrationBtn closeModal={setAlertShowModal} />
