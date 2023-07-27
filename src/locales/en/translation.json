@@ -39,5 +39,21 @@
   "cancel": "Cancel",
   "leaving": "Already leaving?",
   "attention": "Attention",
-  "attention_text": "We would like to remind you that certain functionality is available only to authorized users.If you have an account, please log in with your credentials. If you do not already have an account, you must register to access these features."
+  "attention_text": "We would like to remind you that certain functionality is available only to authorized users.If you have an account, please log in with your credentials. If you do not already have an account, you must register to access these features.",
+  "add_to": "Add to",
+  "contact": "Contact",
+  "comment": "Comments",
+  "remove": "Remove",
+  "name": "Name",
+  "birthday": "Birthday",
+  "type": "Type",
+  "place": "Place",
+  "sex": "The sex",
+  "owner": "Owner",
+  "female": "Female",
+  "male": "Male",
+  "Dog": "Dog",
+  "dog_m": "Dog",
+  "Cat": "Cat",
+  "cat_m": "Cat"
 }
