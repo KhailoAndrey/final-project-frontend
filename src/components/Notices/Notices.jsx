@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from 'redux/auth/selectors';
+import { useTranslation } from 'react-i18next';
 import fetchOwnNotices from 'fetch/noticeOwn';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
 import fetchFavoriteNotices from 'fetch/noticeFavorite';
@@ -20,7 +21,7 @@ const Notices = () => {
   const [page, setPage] = useState(1);
   const [totalPageCount, setTotalPageCount] = useState(0);
   const [rerender, setRerender] = useState(false);
-
+  const { t } = useTranslation();
 
   const { token, isLoggedIn } = useAuth();
 
@@ -31,19 +32,17 @@ const Notices = () => {
 
     // console.log('rerender :>> ', rerender);
     async function foo(page, query, token) {
-        const result = await fetchFavoriteNotices(page, query, token);
-        setNoticeArticles(result.notices);
-        //  console.log(' fetch result favor:>> ', result);
+      const result = await fetchFavoriteNotices(page, query, token);
+      setNoticeArticles(result.notices);
+      //  console.log(' fetch result favor:>> ', result);
       setRerender(false);
-        setTotalPageCount(Math.ceil(result.total / 12));
+      setTotalPageCount(Math.ceil(result.total / 12));
     }
     foo(page, query, token);
-
   }, [isLoggedIn, page, query, rerender, token]);
 
   useEffect(() => {
     foo(page, category, query, token);
-
 
     async function foo(page, category, query, token) {
       if (category === 'favorite') {
@@ -61,9 +60,8 @@ const Notices = () => {
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
         // console.log(' fetch result sell/lost/free:>> ', result)
-        setTotalPageCount(Math.ceil(result.total / 12));;
+        setTotalPageCount(Math.ceil(result.total / 12));
         // console.log(result.total)
-       
       }
     }
   }, [page, category, query, token]);
@@ -71,7 +69,7 @@ const Notices = () => {
   return (
     <>
       <div>
-        <Title text={'Find your favorite pet'} />
+        <Title text={t('notice_page_title')} />
         <NoticesFilter setQuery={setQuery} setPage={setPage} />
         <NoticeNavContainer>
           <NoticesCatagoriesNav setCategory={setCategory} setPage={setPage} />

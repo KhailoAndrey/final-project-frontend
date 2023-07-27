@@ -13,13 +13,13 @@ export const Section = styled.section`
   margin: 0;
   padding: 0 20px 20px;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background-repeat: repeat;
   background-image: url(${bg_mob});
   overflow: auto;
   display: block;
   justify-content: center;
-
+  
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${bg_mob_retina});
   }
