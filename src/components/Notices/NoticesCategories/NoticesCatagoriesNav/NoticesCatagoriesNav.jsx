@@ -20,7 +20,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
     }
   }, [params.categoryName]);
 
-  const handleRadioChange = event => {
+  const handleRadioChange = () => {
     setSelectedValue(params.categoryName);
   };
 
