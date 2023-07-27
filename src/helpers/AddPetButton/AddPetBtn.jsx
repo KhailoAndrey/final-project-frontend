@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
 // import PropTypes from 'prop-types';
 import svg from '../../images/Icons/symbol-defs.svg';
@@ -7,6 +8,7 @@ import { Button } from './AddPetBtn.styled';
 const AddPetBtn = ({ setAlertShowModal = null }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onClick = () => {
     if (isLoggedIn) {
@@ -19,7 +21,7 @@ const AddPetBtn = ({ setAlertShowModal = null }) => {
   return (
     <>
       <Button type="button" onClick={() => onClick()}>
-        Add Pet
+        {t('add_pet')}
         <svg width={24} height={24}>
           <use href={`${svg}#icon-plus-small`} width={24} height={24} />
         </svg>

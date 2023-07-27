@@ -39,7 +39,7 @@ export const LogoutBtn = styled.button`
   @media screen and (min-width: 1280px) {
     position: static;
     display: inline-flex;
-    margin-left: auto;
+    /* margin-left: auto; */
     margin-top: 0;
     margin-right: 0;
   }

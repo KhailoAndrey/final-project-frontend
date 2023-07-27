@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
 
 export const FormContainer = styled.div`
   position: relative;
@@ -62,7 +61,7 @@ export const FormHeader = styled.h2`
   margin-bottom: 20px;
   line-height: 24px;
   letter-spacing: 0.04em;
-  font-size: 32.78px;
+  font-size: 24px;
   @media screen and (min-width: 768px) {
     line-height: 49px;
     font-size: 36px;
@@ -142,15 +141,20 @@ top:44px;
 left:16px;
 `;
 
-export const FormEye = styled(Icon)`
- margin-right:12px;
 
-  color: var( --main-clr-blue);
-`;
 export const IconsContainer = styled.div`
   position: absolute;
+  display:flex;
+  gap:12px;
     top: 50%;
     right: 16px;
     transform: translateY(-50%);
 `;
 
+
+export const EmailIcon = styled.div`
+  position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+`;

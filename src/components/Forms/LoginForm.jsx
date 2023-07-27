@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import svg from '../../images/Icons/symbol-defs.svg';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
@@ -12,20 +14,15 @@ import {
   FormButton,
   FormErrorPassword,
   FormErrorEmail,
-  FormEye,
+  
   PasswordDiv,
   EmailDiv,
   FormSuccessPassword,
   IconsContainer,
+  EmailIcon
 } from './LoginForm.styled';
 
-import { Icon } from 'react-icons-kit';
-import { ic_visibility_off_outline } from 'react-icons-kit/md/ic_visibility_off_outline';
-import { ic_visibility_outline } from 'react-icons-kit/md/ic_visibility_outline';
-import { iosCloseEmpty } from 'react-icons-kit/ionicons/iosCloseEmpty';
-import { androidDone } from 'react-icons-kit/ionicons/androidDone';
-
-const emailRegexp = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-z.-]+.[a-z]{2,}$/;
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -40,6 +37,7 @@ const validationSchema = Yup.object({
 });
 
 export const LoginForm = () => {
+  const { t } = useTranslation();
   const [type, setType] = useState('password');
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -87,7 +85,7 @@ export const LoginForm = () => {
 
   return (
     <FormContainer>
-      <FormHeader>Login</FormHeader>
+      <FormHeader>{t('login_form')}</FormHeader>
       <form onSubmit={formik.handleSubmit}>
         <EmailDiv>
           <FormInput
@@ -95,7 +93,7 @@ export const LoginForm = () => {
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
-            placeholder="Email"
+            placeholder={t('email')}
             onBlur={handleEmailBlur}
             className={
               showEmailError
@@ -108,29 +106,21 @@ export const LoginForm = () => {
           {formik.touched.email && formik.errors.email && (
             <FormErrorEmail>{formik.errors.email}</FormErrorEmail>
           )}
-          {showEmailError && (
-            <Icon
-              icon={iosCloseEmpty}
-              size={36}
-              style={{
-                position: 'absolute',
-                top: '6px',
-                right: '16px',
-                color: 'red',
-              }}
-            />
+           {showEmailError && (
+            <EmailIcon>
+       <svg width={24} height={24}>
+              <use href={`${svg}#icon-cross`} width={24} height={24}
+               style={{ stroke: 'var( --red-form-clr)' }} />
+            </svg>
+            </EmailIcon>
           )}
           {showEmailSuccess && (
-            <Icon
-              icon={androidDone}
-              size={24}
-              style={{
-                position: 'absolute',
-                top: '11px',
-                right: '16px',
-                color: 'green',
-              }}
-            />
+         <EmailIcon>
+           <svg width={24} height={24}>
+              <use href={`${svg}#icon-check`} width={24} height={24}
+               style={{ stroke: 'var( --green-form-clr)' }} />
+            </svg>
+         </EmailIcon>
           )}
         </EmailDiv>
         <PasswordDiv>
@@ -141,7 +131,7 @@ export const LoginForm = () => {
             autoComplete="password"
             value={formik.values.password}
             onChange={formik.handleChange}
-            placeholder="Password"
+            placeholder={t('password')}
             onBlur={handlePasswordBlur}
             className={
               showPasswordError
@@ -151,36 +141,41 @@ export const LoginForm = () => {
                 : ''
             }
           />
-          <IconsContainer>
+           <IconsContainer>
             {type === 'password' ? (
               <span onClick={() => setType('text')}>
-                <FormEye icon={ic_visibility_off_outline} size={24} />
+              <svg width={24} height={24}>
+                     <use href={`${svg}#icon-close-eye`} width={24} height={24}
+                      style={{ stroke: 'var( --main-clr-blue)' }} />
+                   </svg>
               </span>
             ) : (
               <span onClick={() => setType('password')}>
-                <FormEye icon={ic_visibility_outline} size={24} />
+              <svg width={24} height={24}>
+                     <use href={`${svg}#icon-eye`} width={24} height={24}
+                      style={{ stroke: 'var( --main-clr-blue)' }} />
+                   </svg>
               </span>
             )}
             {showPasswordError && (
-              <Icon
-                icon={iosCloseEmpty}
-                size={36}
-                style={{
-                  color: 'red',
-                }}
-              />
+             
+              <svg width={24} height={24}>
+                     <use href={`${svg}#icon-cross`} width={24} height={24}
+                      style={{ stroke: 'var( --red-form-clr)' }} />
+                   </svg>
+                  
             )}
 
             {showPasswordSuccess && (
-              <Icon
-                icon={androidDone}
-                size={24}
-                style={{
-                  color: 'green',
-                }}
-              />
+             
+              <svg width={24} height={24}>
+                 <use href={`${svg}#icon-check`} width={24} height={24}
+                  style={{ stroke: 'var( --green-form-clr)' }} />
+               </svg>
+           
             )}
           </IconsContainer>
+     
 
           {formik.touched.password && formik.errors.password && (
             <FormErrorPassword>{formik.errors.password}</FormErrorPassword>
@@ -190,10 +185,10 @@ export const LoginForm = () => {
           )}
         </PasswordDiv>
 
-        <FormButton type="submit">Login</FormButton>
+        <FormButton type="submit">{t('login')}</FormButton>
         <FormText>
-          Don't have an account?
-          <FormLink to="/register">Register</FormLink>
+          {t('login_form_text')}
+          <FormLink to="/register">{t('registration')}</FormLink>
         </FormText>
       </form>
     </FormContainer>
