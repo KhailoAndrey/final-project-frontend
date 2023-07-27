@@ -2,8 +2,7 @@ import NewsItem from '../NewsItem/NewsItem';
 import { nanoid } from 'nanoid';
 import { Container, List, Notification, NItem } from './NewsList.styled';
 
-const NewsList = ({ news, currentPage, itemsPerPage }) => {
-  console.log(news);
+const NewsList = ({ news }) => {
   if (!news || news.length === 0) {
     return (
       <Container>
@@ -14,8 +13,6 @@ const NewsList = ({ news, currentPage, itemsPerPage }) => {
     );
   }
 
-  // const startIndex = (currentPage - 1) * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
   const currentNews = news.slice(0, 12);
 
   return (
