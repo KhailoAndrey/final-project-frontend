@@ -23,48 +23,42 @@ const Notices = () => {
   const [rerender, setRerender] = useState(false);
   const { t } = useTranslation();
 
-  const { token, isLoggedIn } = useAuth();
+  const { token } = useAuth();
 
-  useEffect(() => {
-    console.log('rerender :>> ', rerender);
-
-    if (!rerender || !isLoggedIn) return;
-
-    // console.log('rerender :>> ', rerender);
-    async function foo(page, query, token) {
-      const result = await fetchFavoriteNotices(page, query, token);
-      setNoticeArticles(result.notices);
-      //  console.log(' fetch result favor:>> ', result);
-      setRerender(false);
-      setTotalPageCount(Math.ceil(result.total / 12));
-    }
-    foo(page, query, token);
-  }, [isLoggedIn, page, query, rerender, token]);
+  // useEffect(() => {
+  //   console.log('rerender in notices:>> ', rerender);
+  // }, [rerender]);
 
   useEffect(() => {
     foo(page, category, query, token);
 
     async function foo(page, category, query, token) {
-      if (category === 'favorite') {
+      if (category === 'favorite' || rerender) {
+        console.log('rerender in fetch favor:>> ', rerender);
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
+        setRerender(false);
         //  console.log(' fetch result favor:>> ', result);
-        setTotalPageCount(Math.ceil(result.total / 12));
+        setTotalPageCount(result.totalPages);
       } else if (category === 'my-ads') {
+        console.log('rerender in fetch my-ads:>> ', rerender);
+
         // console.log(' category my-ads:>> ', category);
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
-        setTotalPageCount(Math.ceil(result.total / 12));
+        setTotalPageCount(result.totalPages);
         // console.log(' fetch result own:>> ', result);
       } else if (category === 'sell' || 'lost-found' || 'for-free') {
+        console.log('rerender in fetch s/l/f:>> ', rerender);
+
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
         // console.log(' fetch result sell/lost/free:>> ', result)
-        setTotalPageCount(Math.ceil(result.total / 12));
-        // console.log(result.total)
+        setTotalPageCount(result.totalPages);
+        // console.log(result);
       }
     }
-  }, [page, category, query, token]);
+  }, [page, category, query, token, rerender]);
 
   return (
     <>

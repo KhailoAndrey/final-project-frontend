@@ -20,7 +20,11 @@ import {
   DelBtn,
 } from './NoticeCategoryItem.styled';
 
-const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
+const NoticeItem = ({
+  article,
+  setAlertShowModal,
+  setRerender,
+}) => {
   // console.log('article :>> ', article);
   const [showLearMore, setShowLearMore] = useState(false);
   // const [rerender, setRerender] = useState(false);

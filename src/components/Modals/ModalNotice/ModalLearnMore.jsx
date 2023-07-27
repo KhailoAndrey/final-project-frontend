@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useAuth } from 'redux/auth/selectors';
 import fetchNoticesById from 'fetch/noticeModalLearnMore';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
@@ -21,50 +23,19 @@ import {
 
 export const ModalLearMore = ({
   handler,
-  handleAdd,
   id,
   isFavorite,
   onFavBtnClick,
   setRerender,
 }) => {
-  // console.log('ModalLearMore  id:', id);
-
-  // const { isLoggedIn, getUser } = useAuth();
-
-  // const dispatch = useDispatch();
-  // const user = useSelector(getUser);
-  // const isLogin = useSelector(isLoggedIn);
-
-  // const [favorite, setFavorite] = useState(() => {
-  //    if (isLogin && user && user.favorite && user.favorite.length > 0) {
-  //      if (user.favorite.includes(_id)) {
-  //        return true;
-  //      } else {
-  //        return false;
-  //      }
-  //    }
-  //    return false;
-  //  });
-
-  // const handleFavoriteClick = () => {
-  //    if (!isLogin) {
-  //      console.log('You must be registered or logged in to continue the operation')
-
-  //      return;
-  //    }
-
-  //    if (!favorite) {
-  //      dispatch(fetchAddToFavorite(_id));
-  //      setFavorite(true);
-  //    } else {
-  //      dispatch(fetchDeleteFavorite(_id));
-  //      setFavorite(false);
-  //    }
-  //  };
-
   // ________________________________
   const [data, setNoticeData] = useState({});
+  const [favChange, setFavChange] = useState(false);
 
+  const { isLoggedIn } = useAuth();
+  const location = useLocation();
+
+  // запит за даними
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -79,24 +50,39 @@ export const ModalLearMore = ({
     fetchData();
   }, [id]);
 
-  // ________________________________
-
+  // перехід на телефон для дзвінка
   const handleContactClick = phoneNumber => {
     if (!phoneNumber) return;
     window.location.href = `tel:${phoneNumber}`;
   };
 
+  // закриття при кліку на бекдроп
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      setRerender(true);
+      if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
+        console.log('тре перерендер');
+        setRerender(true);
+      }
+
       handler(false);
     }
   };
-
+  // закриття по хрестику
+  const onClick = () => {
+    if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
+      console.log('тре перерендер');
+      setRerender(true);
+    }
+    handler(false);
+  };
+  // розмонтування і відміна слухача
   useEffect(() => {
     const handleEsc = event => {
       if (event.keyCode === 27) {
-        setRerender(true);
+        if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
+          console.log('тре перерендер');
+          setRerender(true);
+        }
         handler(false);
       }
     };
@@ -105,12 +91,12 @@ export const ModalLearMore = ({
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
-  }, [handler, setRerender]);
+  }, [favChange, handler, isLoggedIn, location.pathname, setRerender]);
 
   return (
     <ModalContainer onClick={handleBackdropClick}>
       <ModalWindow>
-        <CloseButton onClick={() => { handler(false); setRerender(true) }}>
+        <CloseButton onClick={() => onClick()}>
           <svg width={24} height={24}>
             <use href={`${svg}#icon-cross`} width={24} height={24} />
           </svg>
@@ -151,7 +137,12 @@ export const ModalLearMore = ({
           <b>Comments:</b> {data.comments}
         </Comment>
         <ContactButtons>
-          <ContactButtonAdd onClick={() => onFavBtnClick()}>
+          <ContactButtonAdd
+            onClick={() => {
+              onFavBtnClick();
+              setFavChange(true);
+            }}
+          >
             {isFavorite ? <span>Remove</span> : <span>Add to</span>}
 
             <svg width="24" height="24">
