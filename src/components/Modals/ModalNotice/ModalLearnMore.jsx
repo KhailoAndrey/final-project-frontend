@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
+import { useTranslation } from 'react-i18next';
 import fetchNoticesById from 'fetch/noticeModalLearnMore';
+import { correctCategory } from 'components/Notices/NoticesCategories/NoticesCategoryItem/NoticeItemUtils';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   ModalContainer,
@@ -29,6 +31,8 @@ export const ModalLearMore = ({
   setRerender,
 }) => {
   // ________________________________
+  const { t } = useTranslation();
+
   const [data, setNoticeData] = useState({});
   const [favChange, setFavChange] = useState(false);
 
@@ -97,13 +101,14 @@ export const ModalLearMore = ({
     <ModalContainer onClick={handleBackdropClick}>
       <ModalWindow>
         <CloseButton onClick={() => onClick()}>
+
           <svg width={24} height={24}>
             <use href={`${svg}#icon-cross`} width={24} height={24} />
           </svg>
         </CloseButton>
         <Info>
           <Image img={data.file}>
-            <Category> {[data.category]}</Category>
+            <Category> {correctCategory(data.category, t)}</Category>
           </Image>
           <ContactInfo>
             <Description>
@@ -111,21 +116,29 @@ export const ModalLearMore = ({
             </Description>
             <Contact>
               <Contactheader>
-                <div>Name:</div>
-                <div>Birthday:</div>
-                <div>Type:</div>
-                <div>Place:</div>
-                <div>The sex:</div>
-                <div>Owner:</div>
-                {data.owner?.email && <div>Email:</div>}
-                {data.owner?.phone && <div>Phone:</div>}
+                <div>{t('name')}:</div>
+                <div>{t('birthday')}:</div>
+                <div>{t('type')}:</div>
+                <div>{t('place')}:</div>
+                <div>{t('sex')}:</div>
+                <div>{t('owner')}:</div>
+                {data.owner?.email && <div>{t('email')}:</div>}
+                {data.owner?.phone && <div>{t('phone')}:</div>}
               </Contactheader>
               <ContactContent>
                 <div>{data.name || data.title}</div>
                 <div>{data.date}</div>
-                <div>{data.type}</div>
+                <div>
+                  {data.sex === 'male'
+                    ? data.type === 'Cat'
+                      ? t(`${'cat_m'}`)
+                      : t(`${'dog_m'}`)
+                    : data.type === 'Cat'
+                    ? t(`${data.type}`)
+                    : t(`${data.type}`)}
+                </div>
                 <div>{data.location}</div>
-                <div>{data.sex}</div>
+                <div>{t(`${data.sex}`)}</div>
                 <div>{data.owner?.name}</div>
                 {data.owner?.email && <div>{data.owner?.email}</div>}
                 {data.owner?.phone && <div>{data.owner?.phone}</div>}
@@ -134,16 +147,12 @@ export const ModalLearMore = ({
           </ContactInfo>
         </Info>
         <Comment>
-          <b>Comments:</b> {data.comments}
+          <b>{t('comment')}:</b> {data.comments}
         </Comment>
         <ContactButtons>
-          <ContactButtonAdd
-            onClick={() => {
-              onFavBtnClick();
-              setFavChange(true);
-            }}
-          >
-            {isFavorite ? <span>Remove</span> : <span>Add to</span>}
+          <ContactButtonAdd onClick={() => {onFavBtnClick(); setFavChange(true);}}>
+            
+            {isFavorite ? (<span>{t('remove')}</span>) : (<span>{t('add_to')}</span>)}
 
             <svg width="24" height="24">
               <use href={`${svg}#icon-heart`} width={24} height={24} />
@@ -153,7 +162,7 @@ export const ModalLearMore = ({
             <ContactButtonContact
               onClick={() => handleContactClick(data.owner.phone)}
             >
-              Contact
+              {t('contact')}
             </ContactButtonContact>
           )}
         </ContactButtons>

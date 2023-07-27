@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
@@ -7,18 +7,18 @@ import {
   ModalWindow,
   Overlay,
   TextDelete,
-  TitleDelete,QuestioBtnWrap,
+  TitleDelete,
+  QuestioBtnWrap,
 } from './DaleteModal.styled';
 
 const DeleteModal = ({ onClose, handleDelete, data }) => {
   const { t } = useTranslation();
 
-  
-   const handleBackdropClick = event => {
-      if (event.target === event.currentTarget) {
-        onClose(false);
-      }
-    };
+  const handleBackdropClick = event => {
+    if (event.target === event.currentTarget) {
+      onClose(false);
+    }
+  };
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.keyCode === 27) {
@@ -44,8 +44,7 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
           </BtnClose>
           <TitleDelete>{data.title}</TitleDelete>
 
-          <TextDelete>{data.text}
-          </TextDelete>
+          <TextDelete>{data.text}</TextDelete>
           <QuestioBtnWrap>
             <BtnDelete onClick={() => onClose(false)} isHovered={true}>
               {t('cancel')}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from 'redux/auth/selectors';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from 'redux/auth/selectors';
 import fetchOwnNotices from 'fetch/noticeOwn';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
 import fetchFavoriteNotices from 'fetch/noticeFavorite';
@@ -22,48 +23,48 @@ const Notices = () => {
   const [totalPageCount, setTotalPageCount] = useState(0);
   const [rerender, setRerender] = useState(false);
   const { t } = useTranslation();
+  const params = useParams();
 
   const { token } = useAuth();
 
   useEffect(() => {
     setRerender(true);
-    console.log('first render n');
   }, []);
+  
+    useEffect(() => {
+    if (params.categoryName) {
+      setCategory(params.categoryName);
+    } else {
+      setCategory('sell');
+    }
+  }, [params.categoryName]);
 
-  // useEffect(() => {
-  //   console.log('rerender in notices:>> ', rerender);
-  // }, [rerender]);
+ 
 
   useEffect(() => {
     foo(page, category, query, token);
 
     async function foo(page, category, query, token) {
       if (category === 'favorite' && rerender) {
-        console.log('rerender in fetch favor:>> ', rerender);
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
         setRerender(false);
-        //  console.log(' fetch result favor:>> ', result);
         setTotalPageCount(result.totalPages);
       } else if (category === 'my-ads' && rerender) {
-        console.log('rerender in fetch my-ads:>> ', rerender);
-        // console.log(' category my-ads:>> ', category);
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
         setRerender(false);
+
         setTotalPageCount(result.totalPages);
-        // console.log(' fetch result own:>> ', result);
       } else if (
         (category === 'sell' || 'lost-found' || 'for-free') &&
         rerender
       ) {
-        console.log('rerender in fetch s/l/f:>> ', rerender);
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
         setRerender(false);
-        // console.log(' fetch result sell/lost/free:>> ', result)
         setTotalPageCount(result.totalPages);
-        // console.log(result);
+
       }
     }
   }, [page, category, query, token, rerender, noticeArticles]);

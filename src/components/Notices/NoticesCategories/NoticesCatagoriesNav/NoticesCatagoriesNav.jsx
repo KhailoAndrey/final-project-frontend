@@ -1,15 +1,31 @@
-import { useAuth } from 'redux/auth/selectors';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from 'redux/auth/selectors';
 import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
 const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [selectedValue, setSelectedValue] = useState('sell');
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.categoryName) {
+      setSelectedValue(params.categoryName);
+    } else {
+      setSelectedValue('sell');
+    }
+  }, [params.categoryName]);
+
+  const handleRadioChange = () => {
+    setSelectedValue(params.categoryName);
+  };
 
   const onClick = e => {
-    const category = e.currentTarget.value;
+    const category = e.target.value;
     setCategory(category);
     setPage(1);
     setRerender(true);
@@ -24,7 +40,8 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
         id="radio1"
         name="radios"
         value="sell"
-        defaultChecked
+        checked={selectedValue === 'sell'}
+        onChange={handleRadioChange}
       ></Input>
       <Label htmlFor="radio1">{t('sell')}</Label>
 
@@ -34,6 +51,8 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
         id="radio2"
         name="radios"
         value="lost-found"
+        checked={selectedValue === 'lost-found'}
+        onChange={handleRadioChange}
       ></Input>
       <Label htmlFor="radio2">{t('lost_found')}</Label>
 
@@ -43,6 +62,8 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
         id="radio3"
         name="radios"
         value="for-free"
+        checked={selectedValue === 'for-free'}
+        onChange={handleRadioChange}
       ></Input>
       <Label htmlFor="radio3">{t('in_good_hands')}</Label>
 
