@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from 'redux/auth/selectors';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from 'redux/auth/selectors';
 import fetchOwnNotices from 'fetch/noticeOwn';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
 import fetchFavoriteNotices from 'fetch/noticeFavorite';
@@ -22,8 +23,17 @@ const Notices = () => {
   const [totalPageCount, setTotalPageCount] = useState(0);
   const [rerender, setRerender] = useState(false);
   const { t } = useTranslation();
+  const params = useParams();
 
   const { token, isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (params.categoryName) {
+      setCategory(params.categoryName);
+    } else {
+      setCategory('sell');
+    }
+  }, [params.categoryName]);
 
   useEffect(() => {
     console.log('rerender :>> ', rerender);
@@ -61,7 +71,7 @@ const Notices = () => {
         setNoticeArticles(result.notices);
         // console.log(' fetch result sell/lost/free:>> ', result)
         setTotalPageCount(result.totalPages);
-        console.log(result)
+        console.log(result);
       }
     }
   }, [page, category, query, token]);
