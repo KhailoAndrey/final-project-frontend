@@ -32,7 +32,7 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
 
   const age = calculateAge(date);
   const sity = cutSity(location);
-  const rightCategory = correctCategory(category);
+  const rightCategory = correctCategory(category, t);
   const isFavorite = isLoggedIn ? user.favorite.includes(_id) : false;
   const isOwner = user._id === owner;
   // console.log('user._id :>> ', user._id);
