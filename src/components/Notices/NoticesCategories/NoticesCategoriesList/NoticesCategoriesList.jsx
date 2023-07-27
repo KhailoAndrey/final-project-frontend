@@ -9,7 +9,9 @@ const NoticesCategoriesList = ({
 }) => {
   // console.log('articles :>> ', articles);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("first render list");
+  }, []);
 
   return (
     <>

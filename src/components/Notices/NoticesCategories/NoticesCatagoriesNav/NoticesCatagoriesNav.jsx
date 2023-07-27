@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
-const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
+const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -12,6 +12,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
     const category = e.currentTarget.value;
     setCategory(category);
     setPage(1);
+    setRerender(true);
     navigate(`/notices/${category}`);
   };
 
