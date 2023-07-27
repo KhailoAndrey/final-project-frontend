@@ -19,15 +19,17 @@ import {
   BottomContainer,
   DelBtn,
 } from './NoticeCategoryItem.styled';
+import fetchDeleteNotices from 'fetch/noticeDelete';
+import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 
 const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   // console.log('article :>> ', article);
   const [showLearMore, setShowLearMore] = useState(false);
-  // const [rerender, setRerender] = useState(false);
+  const [showDelModal, setShowDelModal] = useState(false);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const { user, isLoggedIn } = useAuth();
+  const { user, isLoggedIn, token } = useAuth();
   const { _id, title, category, date, file, sex, location, owner } = article;
 
   const age = calculateAge(date);
@@ -39,12 +41,11 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   // console.log('owner :>> ', owner);
   // console.log(isOwner);
 
-  // useEffect(() => {
-  //   if (rerender === true) {
-
-  //     console.log('should rerender');
-  //   }
-  // }, [rerender]);
+  const data = {
+    title: 'Delete advertisment?',
+    text: `Are you sure you want to delete "${title}"? You can't undo this action.`,
+    icon: 'icon-trash',
+  };
 
   const onFavBtnClick = () => {
     console.log('horey!');
@@ -58,6 +59,15 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
         dispatch(delFromFavorite(_id));
       }
     }
+  };
+
+  const onDelBtnClick = () => {
+    async function foo(_id, token) {
+      await fetchDeleteNotices(_id, token);
+      console.log('delete');
+      setRerender(true);
+    }
+    foo(_id, token);
   };
 
   return (
@@ -86,7 +96,7 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
             )}
           </FavBtn>
           {isOwner && (
-            <DelBtn type="button">
+            <DelBtn type="button" onClick={() => setShowDelModal(true)}>
               <svg width={24} height={24}>
                 <use href={`${svg}#icon-trash`} width={24} height={24} />
               </svg>
@@ -158,6 +168,13 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
           isFavorite={isFavorite}
           onFavBtnClick={onFavBtnClick}
           setRerender={setRerender}
+        />
+      )}
+      {showDelModal && (
+        <DeleteModal
+          onClose={setShowDelModal}
+          handleDelete={onDelBtnClick}
+          data={data}
         />
       )}
     </Card>

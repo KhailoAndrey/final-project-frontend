@@ -25,9 +25,13 @@ const Notices = () => {
   const { t } = useTranslation();
   const params = useParams();
 
-  const { token, isLoggedIn } = useAuth();
+  const { token } = useAuth();
 
   useEffect(() => {
+    setRerender(true);
+  }, []);
+  
+    useEffect(() => {
     if (params.categoryName) {
       setCategory(params.categoryName);
     } else {
@@ -35,46 +39,35 @@ const Notices = () => {
     }
   }, [params.categoryName]);
 
-  useEffect(() => {
-    console.log('rerender :>> ', rerender);
-
-    if (!rerender || !isLoggedIn) return;
-
-    // console.log('rerender :>> ', rerender);
-    async function foo(page, query, token) {
-      const result = await fetchFavoriteNotices(page, query, token);
-      setNoticeArticles(result.notices);
-      //  console.log(' fetch result favor:>> ', result);
-      setRerender(false);
-      setTotalPageCount(Math.ceil(result.total / 12));
-    }
-    foo(page, query, token);
-  }, [isLoggedIn, page, query, rerender, token]);
+ 
 
   useEffect(() => {
     foo(page, category, query, token);
 
     async function foo(page, category, query, token) {
-      if (category === 'favorite') {
+      if (category === 'favorite' && rerender) {
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
-        //  console.log(' fetch result favor:>> ', result);
+        setRerender(false);
         setTotalPageCount(result.totalPages);
-      } else if (category === 'my-ads') {
-        // console.log(' category my-ads:>> ', category);
+      } else if (category === 'my-ads' && rerender) {
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
+        setRerender(false);
+
         setTotalPageCount(result.totalPages);
-        // console.log(' fetch result own:>> ', result);
-      } else if (category === 'sell' || 'lost-found' || 'for-free') {
+      } else if (
+        (category === 'sell' || 'lost-found' || 'for-free') &&
+        rerender
+      ) {
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
-        // console.log(' fetch result sell/lost/free:>> ', result)
+        setRerender(false);
         setTotalPageCount(result.totalPages);
-        console.log(result);
+
       }
     }
-  }, [page, category, query, token]);
+  }, [page, category, query, token, rerender, noticeArticles]);
 
   return (
     <>
@@ -82,7 +75,11 @@ const Notices = () => {
         <Title text={t('notice_page_title')} />
         <NoticesFilter setQuery={setQuery} setPage={setPage} />
         <NoticeNavContainer>
-          <NoticesCatagoriesNav setCategory={setCategory} setPage={setPage} />
+          <NoticesCatagoriesNav
+            setCategory={setCategory}
+            setPage={setPage}
+            setRerender={setRerender}
+          />
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
       </div>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
 import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
-const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
+const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -28,6 +28,7 @@ const NoticesCatagoriesNav = ({ setCategory, setPage }) => {
     const category = e.target.value;
     setCategory(category);
     setPage(1);
+    setRerender(true);
     navigate(`/notices/${category}`);
   };
 
