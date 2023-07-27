@@ -34,5 +34,7 @@
   "min_year": "year",
   "big_years": "years",
   "learn_more": "Learn more",
-  "add_pet": "Add Pet"
+  "add_pet": "Add Pet",
+  "yes": "Так",
+  "cancel": "Відмінити"
 }

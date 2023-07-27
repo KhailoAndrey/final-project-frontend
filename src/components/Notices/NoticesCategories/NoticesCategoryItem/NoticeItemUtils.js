@@ -1,5 +1,3 @@
-import { useTranslation } from "react-i18next";
-
 export const calculateAge = birthdateString => {
   const [day, month, year] = birthdateString.split('-');
   const monthIndex = parseInt(month, 10) - 1;
