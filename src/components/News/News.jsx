@@ -1,0 +1,38 @@
+import { useEffect, useState } from 'react';
+// import fetchNews from 'fetch/news';
+// import NewsList from './NewsList/NewsList';
+import { NContainer } from './News.styled';
+import NewsFilter from 'components/News/NewsSearch/NewsSearch';
+import AppPagination from 'components/Pagination/Pagination';
+
+const News = () => {
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [totalPageCount, setTotalPageCount] = useState(0);
+
+  // const [news, setNews] = useState([]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await fetchNews();
+  //       setNews(data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+  return (
+    <>
+      <NewsFilter setQuery={setQuery} setPage={setPage} />
+      {/* <NewsList news={news} /> */}
+      <AppPagination
+        setPage={setPage}
+        page={page}
+        totalPageCount={totalPageCount}
+      />
+    </>
+  );
+};
+export default News;
