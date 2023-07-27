@@ -112,7 +112,7 @@ export const AddPetForm = () => {
 
   const handleOnSubmit = async (values, { resetForm }) => {
     const formData = new FormData();
-
+    // console.log(values);
     switch (values.category) {
       case 'my pet':
         formData.append('name', values.name);
@@ -147,7 +147,6 @@ export const AddPetForm = () => {
           formData.append('price', values.price);
         }
     }
-    console.log(formData);
 
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
@@ -173,6 +172,7 @@ export const AddPetForm = () => {
         }) => {
           const { category, sex } = values;
           const isFieldInvalid = errors.sex && touched.sex;
+
           return (
             <Wrapper data-category={category}>
               <Title picked={category} stage={stage} />
