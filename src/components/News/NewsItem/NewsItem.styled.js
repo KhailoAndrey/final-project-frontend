@@ -31,8 +31,8 @@ export const NImg = styled.img`
 export const NTitle = styled.h2`
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* start showing ellipsis when 2rd line is reached */
-  white-space: pre-wrap; /* let the text wrap preserving spaces */
+  -webkit-line-clamp: 2; 
+  white-space: pre-wrap; 
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: 'Manrope';

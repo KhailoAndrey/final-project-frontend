@@ -25,7 +25,6 @@ export const List = styled.ul`
   display: flex;
   gap: 24px;
   flex-direction: column;
-  /* justify-content: center; */
   justify-content: flex-start;
   align-items: center;
 
@@ -71,23 +70,22 @@ export const NItem = styled.li`
     height: 534px;
     flex-basis: calc((100% - 62px) / 3);
   }
-
+  animation: moveOut var(--slow-animation) forwards ;
   :hover:before {
-    animation-name: move;
-    animation-duration: 600ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 2;
+    animation: moveIn var(--slow-animation) forwards;
+    animation-iteration-count: 1;
     animation-direction: alternate;
   }
-
+  
   ::before {
+    animation: moveOut var(--slow-animation) forwards ;
     position: absolute;
     content: '';
     top: -20px;
     display: block;
     height: 8px;
     width: 100%;
-    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    background: var(--main-clr-gr_blue);
     border-radius: 40px;
     opacity: 1;
 
@@ -96,14 +94,24 @@ export const NItem = styled.li`
     }
   }
 
-  @keyframes move {
+  @keyframes moveIn {
     0% {
       opacity: 1;
-      transform: translate(0%, 0%);
+      transform: scaleX(1);
     }
     100% {
       opacity: 0;
-      transform: translate(0%, -40%);
+      transform: scaleX(0);
+    }    
+  }
+  @keyframes moveOut {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
     }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }    
   }
 `;

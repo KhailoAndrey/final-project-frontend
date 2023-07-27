@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
   NContent,
@@ -11,6 +12,8 @@ import {
 } from './NewsItem.styled';
 
 const NewsItem = ({ news }) => {
+  const { t } = useTranslation();
+
   const { url = '', text, title, imgUrl, date } = news;
 
   const formatDate = dateString => {
@@ -39,7 +42,7 @@ const NewsItem = ({ news }) => {
         <NflexContainer>
           <NDate>{formatedDate}</NDate>
           <NUrl target="_blank" rel="noreferrer" href={url}>
-            Read more
+            {t('read_more')}
           </NUrl>
         </NflexContainer>
       </NContent>

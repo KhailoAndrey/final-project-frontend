@@ -8,7 +8,7 @@ const NewsPage = () => {
 
   return (
     <NewsPageContainer>
-      <Title text={`${t('News')}`} />
+      <Title text={`${t('header_news')}`} />
       <News />
     </NewsPageContainer>
   );
