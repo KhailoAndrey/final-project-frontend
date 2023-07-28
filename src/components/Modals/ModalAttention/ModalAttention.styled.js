@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ModalBackdrop = styled.div`
-z-index: 200;
+  z-index: 200;
   width: 100vw;
   height: 100vh;
   background: rgba(97, 97, 97, 0.6);

@@ -70,6 +70,11 @@ export const FavBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* &:hover,
+  &:focus {
+
+  } */
 `;
 
 export const DelBtn = styled.button`
