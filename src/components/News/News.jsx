@@ -27,11 +27,13 @@ const News = () => {
     <>
       <NewsFilter setQuery={setQuery} setPage={setPage} />
       <NewsList news={newsArr} />
-      <AppPagination
-        setPage={setPage}
-        page={page}
-        totalPageCount={totalPageCount}
-      />
+      {newsArr.length > 0  &&
+        <AppPagination
+          setPage={setPage}
+          page={page}
+          totalPageCount={totalPageCount}
+        />
+      }
     </>
   );
 };

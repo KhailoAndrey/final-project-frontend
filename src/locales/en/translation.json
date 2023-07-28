@@ -55,5 +55,10 @@
   "Dog": "Dog",
   "Cat": "Cat",
   "read_more": "Read more",
-  "main": "Take good care of your small pets"
+  "main": "Take good care of your small pets",
+  "title_404": "Oops! This page not found...",
+  "to_mane": "To main page",
+  "congrasts": "Congrats!",
+  "success": "Your registration is success",
+  "to_profile": "Go to profile"
 }
