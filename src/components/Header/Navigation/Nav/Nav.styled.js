@@ -25,6 +25,7 @@ export const StyledNavLink = styled(Link)`
   &:hover {
     color: var(--main-clr-yellow);
     box-shadow: var(--big-shadow);
+    scale: 1.1;
   }
   &.activeLink {
     color: var(--main-clr-yellow);
