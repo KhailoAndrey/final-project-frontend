@@ -11,22 +11,24 @@ export const Section = styled.section`
   position: fixed;
   background-color: var(--main-bckg-clr);
   margin: 0;
-  padding: 20px;
+  padding: 0 20px 20px;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background-repeat: repeat;
   background-image: url(${bg_mob});
   overflow: auto;
   display: block;
   justify-content: center;
-
+  
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${bg_mob_retina});
   }
 
   @media screen and (min-width: 768px) {
-    padding: 24px 32px;
+    padding: 0 32px 24px;
     background-image: url(${bg_tab});
+      
+
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       background-image: url(${bg_tab_retina});
@@ -34,7 +36,8 @@ export const Section = styled.section`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 20px 16px;
+    padding: 0 16px 20px;
+
     background-image: url(${bg_desk});
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {

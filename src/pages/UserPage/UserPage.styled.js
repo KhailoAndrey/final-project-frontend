@@ -52,6 +52,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 821px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -80,6 +81,7 @@ export const UserPageContainer = styled.div`
     display: flex;
     gap: 32px;
     margin-top: 62px;
+    justify-content: center;
   }
 `;
 

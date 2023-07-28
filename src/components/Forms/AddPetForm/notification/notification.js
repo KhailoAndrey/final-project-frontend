@@ -1,9 +1,6 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import, set type ('error', 'warning', 'success', 'info')
-// and text: notify('success', 'You have successfully logged in');
-
 export const notify = (type, text) => {
   const toastConfig = {
     position: 'top-left',

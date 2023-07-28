@@ -1,15 +1,18 @@
 
-import { Wrapper, Title, Picture, Img } from './MainPage.styled';
+import { useTranslation } from 'react-i18next';
 import * as mainImg from '../../images/Home';
+import { Wrapper, Title, Picture, Img } from './MainPage.styled';
 
 
 
 
 const MainPage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Wrapper>
-        <Title>Take good care of your small pets</Title>
+        <Title>{t('main')}</Title>
         <Picture>
           <source
             srcSet={`${mainImg.home_mobile_1x} 1x, ${mainImg.home_mobile_2x} 2x`}

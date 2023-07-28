@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useAuth } from 'redux/auth/selectors';
+import { useTranslation } from 'react-i18next';
 import fetchNoticesById from 'fetch/noticeModalLearnMore';
+import { correctCategory } from 'components/Notices/NoticesCategories/NoticesCategoryItem/NoticeItemUtils';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   ModalContainer,
@@ -21,49 +25,21 @@ import {
 
 export const ModalLearMore = ({
   handler,
-  handleAdd,
   id,
   isFavorite,
   onFavBtnClick,
+  setRerender,
 }) => {
-  console.log('ModalLearMore  id:', id);
-
-  // const { isLoggedIn, getUser } = useAuth();
-
-  // const dispatch = useDispatch();
-  // const user = useSelector(getUser);
-  // const isLogin = useSelector(isLoggedIn);
-
-  // const [favorite, setFavorite] = useState(() => {
-  //    if (isLogin && user && user.favorite && user.favorite.length > 0) {
-  //      if (user.favorite.includes(_id)) {
-  //        return true;
-  //      } else {
-  //        return false;
-  //      }
-  //    }
-  //    return false;
-  //  });
-
-  // const handleFavoriteClick = () => {
-  //    if (!isLogin) {
-  //      console.log('You must be registered or logged in to continue the operation')
-
-  //      return;
-  //    }
-
-  //    if (!favorite) {
-  //      dispatch(fetchAddToFavorite(_id));
-  //      setFavorite(true);
-  //    } else {
-  //      dispatch(fetchDeleteFavorite(_id));
-  //      setFavorite(false);
-  //    }
-  //  };
-
   // ________________________________
-  const [data, setNoticeData] = useState({});
+  const { t } = useTranslation();
 
+  const [data, setNoticeData] = useState({});
+  const [favChange, setFavChange] = useState(false);
+
+  const { isLoggedIn } = useAuth();
+  const location = useLocation();
+
+  // запит за даними
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -78,22 +54,39 @@ export const ModalLearMore = ({
     fetchData();
   }, [id]);
 
-  // ________________________________
-
+  // перехід на телефон для дзвінка
   const handleContactClick = phoneNumber => {
     if (!phoneNumber) return;
     window.location.href = `tel:${phoneNumber}`;
   };
 
+  // закриття при кліку на бекдроп
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
+      if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
+        console.log('тре перерендер');
+        setRerender(true);
+      }
+
       handler(false);
     }
   };
-
+  // закриття по хрестику
+  const onClick = () => {
+    if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
+      console.log('тре перерендер');
+      setRerender(true);
+    }
+    handler(false);
+  };
+  // розмонтування і відміна слухача
   useEffect(() => {
     const handleEsc = event => {
       if (event.keyCode === 27) {
+        if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
+          console.log('тре перерендер');
+          setRerender(true);
+        }
         handler(false);
       }
     };
@@ -102,19 +95,20 @@ export const ModalLearMore = ({
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
-  }, [handler]);
+  }, [favChange, handler, isLoggedIn, location.pathname, setRerender]);
 
   return (
     <ModalContainer onClick={handleBackdropClick}>
       <ModalWindow>
-        <CloseButton onClick={() => handler(false)}>
+        <CloseButton onClick={() => onClick()}>
+
           <svg width={24} height={24}>
             <use href={`${svg}#icon-cross`} width={24} height={24} />
           </svg>
         </CloseButton>
         <Info>
           <Image img={data.file}>
-            <Category> {[data.category]}</Category>
+            <Category> {correctCategory(data.category, t)}</Category>
           </Image>
           <ContactInfo>
             <Description>
@@ -122,21 +116,29 @@ export const ModalLearMore = ({
             </Description>
             <Contact>
               <Contactheader>
-                <div>Name:</div>
-                <div>Birthday:</div>
-                <div>Type:</div>
-                <div>Place:</div>
-                <div>The sex:</div>
-                <div>Owner:</div>
-                {data.owner?.email && <div>Email:</div>}
-                {data.owner?.phone && <div>Phone:</div>}
+                <div>{t('name')}:</div>
+                <div>{t('birthday')}:</div>
+                <div>{t('type')}:</div>
+                <div>{t('place')}:</div>
+                <div>{t('sex')}:</div>
+                <div>{t('owner')}:</div>
+                {data.owner?.email && <div>{t('email')}:</div>}
+                {data.owner?.phone && <div>{t('phone')}:</div>}
               </Contactheader>
               <ContactContent>
                 <div>{data.name || data.title}</div>
                 <div>{data.date}</div>
-                <div>{data.type}</div>
+                <div>
+                  {data.sex === 'male'
+                    ? data.type === 'Cat'
+                      ? t(`${'cat_m'}`)
+                      : t(`${'dog_m'}`)
+                    : data.type === 'Cat'
+                    ? t(`${data.type}`)
+                    : t(`${data.type}`)}
+                </div>
                 <div>{data.location}</div>
-                <div>{data.sex}</div>
+                <div>{t(`${data.sex}`)}</div>
                 <div>{data.owner?.name}</div>
                 {data.owner?.email && <div>{data.owner?.email}</div>}
                 {data.owner?.phone && <div>{data.owner?.phone}</div>}
@@ -145,11 +147,12 @@ export const ModalLearMore = ({
           </ContactInfo>
         </Info>
         <Comment>
-          <b>Comments:</b> {data.comments}
+          <b>{t('comment')}:</b> {data.comments}
         </Comment>
         <ContactButtons>
-          <ContactButtonAdd onClick={() => onFavBtnClick()}>
-            {isFavorite ? <span>Remove</span> : <span>Add to</span>}
+          <ContactButtonAdd onClick={() => {onFavBtnClick(); setFavChange(true);}}>
+            
+            {isFavorite ? (<span>{t('remove')}</span>) : (<span>{t('add_to')}</span>)}
 
             <svg width="24" height="24">
               <use href={`${svg}#icon-heart`} width={24} height={24} />
@@ -159,7 +162,7 @@ export const ModalLearMore = ({
             <ContactButtonContact
               onClick={() => handleContactClick(data.owner.phone)}
             >
-              Contact
+              {t('contact')}
             </ContactButtonContact>
           )}
         </ContactButtons>

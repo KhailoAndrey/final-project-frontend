@@ -6,7 +6,8 @@ align-items: center;
 justify-content: space-between;
 gap: 12px;
 margin-right: 0;
-margin-left: auto;
+/* margin-left: auto; */
+/* margin-left: 10px; */
 
 @media screen and (min-width: 768px) {
     padding: 0 16px;

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
 import fetchOwnNotices from 'fetch/noticeOwn';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
@@ -18,60 +20,85 @@ const Notices = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
-  const [totalPageCount, setTotalPageCount] = useState(0)
+  const [totalPageCount, setTotalPageCount] = useState(0);
+  const [rerender, setRerender] = useState(false);
+  const { t } = useTranslation();
+  const params = useParams();
 
-  console.log(setPage);
-  const { token, user } = useAuth();
+  const { token } = useAuth();
+
+  useEffect(() => {
+    setRerender(true);
+  }, []);
+  
+    useEffect(() => {
+    if (params.categoryName) {
+      setCategory(params.categoryName);
+    } else {
+      setCategory('sell');
+    }
+  }, [params.categoryName]);
+
+ 
 
   useEffect(() => {
     foo(page, category, query, token);
 
     async function foo(page, category, query, token) {
-      if (category === 'favorite') {
+      if (category === 'favorite' && rerender) {
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
-        //  console.log(' fetch result favor:>> ', result);
-        setTotalPageCount(Math.ceil(result.total / 12));
-      } else if (category === 'my-ads') {
-        // console.log(' category my-ads:>> ', category);
+        setRerender(false);
+        setTotalPageCount(result.totalPages);
+      } else if (category === 'my-ads' && rerender) {
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
-        setTotalPageCount(Math.ceil(result.total / 12));
-        // console.log(' fetch result own:>> ', result);
-      } else if (category === 'sell' || 'lost-found' || 'for-free') {
+        setRerender(false);
+
+        setTotalPageCount(result.totalPages);
+      } else if (
+        (category === 'sell' || 'lost-found' || 'for-free') &&
+        rerender
+      ) {
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
-        // console.log(' fetch result sell/lost/free:>> ', result)
-        setTotalPageCount(Math.ceil(result.total / 12));;
-        // console.log(result.total)
-       
+        setRerender(false);
+        setTotalPageCount(result.totalPages);
+
       }
     }
-  }, [page, category, query, token, user.favorite]);
+  }, [page, category, query, token, rerender, noticeArticles]);
 
   return (
     <>
       <div>
-        <Title text={'Find your favorite pet'} />
-        <NoticesFilter setQuery={setQuery} />
+        <Title text={t('notice_page_title')} />
+        <NoticesFilter setQuery={setQuery} setPage={setPage} />
         <NoticeNavContainer>
-          <NoticesCatagoriesNav setCategory={setCategory} />
+          <NoticesCatagoriesNav
+            setCategory={setCategory}
+            setPage={setPage}
+            setRerender={setRerender}
+          />
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
       </div>
       {noticeArticles && (
         <NoticesCategoriesList
           articles={noticeArticles}
-          urlCategory={category}
           setAlertShowModal={setAlertShowModal}
+          setRerender={setRerender}
         />
       )}
 
       {showAlertModal && (
         <AttentionModal setAlertShowModal={setAlertShowModal} />
-      
       )}
-       <AppPagination setPage={setPage} page={page} totalPageCount={totalPageCount} />
+      <AppPagination
+        setPage={setPage}
+        page={page}
+        totalPageCount={totalPageCount}
+      />
     </>
   );
 };

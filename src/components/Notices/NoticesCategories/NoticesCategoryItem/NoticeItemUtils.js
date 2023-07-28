@@ -17,19 +17,20 @@ export const cutSity = location => {
   } else return location;
 };
 
-export const correctCategory = bendCategory => {
+export const correctCategory = (bendCategory, t) => {
+
   let category;
   switch (bendCategory) {
     case 'sell':
-      category = 'sell';
+      category = t('sell');
       break;
 
     case 'lost-found':
-      category = 'lost/found';
+      category = t('lost_found');
       break;
 
     case 'for-free':
-      category = 'in good hands';
+      category = t('in_good_hands');
       break;
 
     default:

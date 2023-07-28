@@ -172,6 +172,7 @@ export const AddPetForm = () => {
         }) => {
           const { category, sex } = values;
           const isFieldInvalid = errors.sex && touched.sex;
+
           return (
             <Wrapper data-category={category}>
               <Title picked={category} stage={stage} />
@@ -203,7 +204,7 @@ export const AddPetForm = () => {
                           <SexWrapper>
                             {sexes.map((option, index) => {
                               const iconLabel =
-                                index === 0 ? '#icon-female' : '#icon-male';
+                                index === 0 ? '#female' : '#male';
                               const selected = option[1] === sex;
 
                               return (
@@ -237,6 +238,7 @@ export const AddPetForm = () => {
                       />
                     </SexUploadWrapper>
                   )}
+
                   <InputWrapper>
                     {stage === 2 && category !== 'my pet' && (
                       <InputField
@@ -309,6 +311,7 @@ export const AddPetForm = () => {
                         emulTouch={emulTouch}
                       />
                     )}
+
                     {stage === 3 && (
                       <CommentField
                         errors={errors}
@@ -335,7 +338,7 @@ export const AddPetForm = () => {
                 )}
                 {stage === 3 && (
                   <BtnWrapper>
-                    <BtnDone />
+                    <BtnDone onSubmit={handleOnSubmit} />
                     <BtnBack onClick={handleOnBackClick} />
                   </BtnWrapper>
                 )}

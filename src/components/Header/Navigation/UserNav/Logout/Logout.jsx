@@ -1,18 +1,20 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { logOut } from 'redux/auth/authOperations';
 import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { LogoutBtn } from './Logout.styled';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/auth/authOperations';
-
-const data = {
-  title: 'Already leaving?',
-  text: '',
-  icon: 'icon-logout',
-};
 
 const Logout = ({ showButton }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  const data = {
+    title: t('leaving'),
+    text: '',
+    icon: 'icon-logout',
+  };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log(isModalOpen);
@@ -27,7 +29,7 @@ const Logout = ({ showButton }) => {
   return (
     <>
       <LogoutBtn type="button" onClick={handleLogout} showButton={showButton}>
-        Log out
+        {t('logout')}
         <svg width={24} height={24}>
           <use href={`${svg}#icon-logout`} width={24} height={24} />
         </svg>

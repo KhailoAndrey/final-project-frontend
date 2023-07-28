@@ -5,6 +5,7 @@ import Nav from './Nav/Nav';
 import UserNav from './UserNav/UserNav';
 import BurgerMenu from 'helpers/BurgerMenu/BurgerMenu';
 import ModalBurger from 'components/Modals/ModalBurger/ModalBurger';
+import LangBtn from 'helpers/LangButton/LangBtn';
 import { NavDesk } from './Navigation.styled';
 
 const Navigation = () => {
@@ -25,7 +26,8 @@ const Navigation = () => {
       <NavDesk>
         <Nav />
       </NavDesk>
-      {isLoggedIn ? <UserNav /> : <AuthNav />}
+      <LangBtn />
+      {isLoggedIn ? <UserNav /> : <AuthNav closeModal={closeModal} />}
       <BurgerMenu openModal={openModal} />
       {showModal && (
         <ModalBurger closeModal={closeModal} showModal={showModal} />

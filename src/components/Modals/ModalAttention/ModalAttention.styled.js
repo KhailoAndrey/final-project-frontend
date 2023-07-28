@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ModalBackdrop = styled.div`
+z-index: 200;
   width: 100vw;
   height: 100vh;
   background: rgba(97, 97, 97, 0.6);
@@ -13,6 +14,7 @@ export const ModalBackdrop = styled.div`
   align-items: center;
 `;
 export const ModalContent = styled.div`
+  z-index: 200;
   width: 280px;
   border-radius: 20px;
   background-color: #fff;
@@ -27,7 +29,6 @@ export const ModalContent = styled.div`
     width: 608px;
     padding: 60px 40px;
   }
-
 `;
 
 export const ModalBtn = styled.button`

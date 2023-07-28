@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   FIContainer,
   FIImage,
@@ -14,10 +15,19 @@ import {
   WorkTime,
 } from './OurFriendItem.styled';
 
-const weekDays = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
-
 const OurFriendItem = ({ friend, handleTimeHover, hoveredTime }) => {
   const currentDayOfWeek = new Date().getDay();
+  const { t } = useTranslation();
+  const weekDays = [
+    t('mn'),
+    t('tu'),
+    t('we'),
+    t('th'),
+    t('fr'),
+    t('sa'),
+    t('su'),
+  ];
+
   return (
     <>
       <FIWrapper>
@@ -31,13 +41,13 @@ const OurFriendItem = ({ friend, handleTimeHover, hoveredTime }) => {
               onMouseEnter={() => handleTimeHover(friend.imageUrl)}
               onMouseLeave={() => handleTimeHover('')}
             >
-              <FITTitle>Time:</FITTitle>
+              <FITTitle>{t('time')}:</FITTitle>
               <FITData>
                 {friend.workDays && friend.workDays.length > 0
                   ? friend.workDays[currentDayOfWeek].isOpen
                     ? `${friend.workDays[currentDayOfWeek].from} - ${friend.workDays[currentDayOfWeek].to}`
-                    : 'Close'
-                  : 'Day and Night'}
+                    : t('close')
+                  : t('d&n')}
               </FITData>
               {hoveredTime === friend.imageUrl && (
                 <WorkDaysList>
@@ -50,27 +60,27 @@ const OurFriendItem = ({ friend, handleTimeHover, hoveredTime }) => {
                               <WorkTime>
                                 {workDay.isOpen
                                   ? `${workDay.from} - ${workDay.to}`
-                                  : 'Closed'}
+                                  : t('close')}
                               </WorkTime>
                             </WorkDayItem>
                           )
                       )
-                    : 'Day and Night'}
+                    : t('d&n')}
                 </WorkDaysList>
               )}
             </FIText>
             <FIText>
-              <FITTitle>Address:</FITTitle>
+              <FITTitle>{t('address')}:</FITTitle>
               <FITAddress href={friend.addressUrl} target="_blank">
                 {friend.address}
               </FITAddress>
             </FIText>
             <FIText>
-              <FITTitle>Email:</FITTitle>
+              <FITTitle>{t('email')}:</FITTitle>
               <FITData href={`mailto:${friend.email}`}>{friend.email}</FITData>
             </FIText>
             <FIText>
-              <FITTitle>Phone:</FITTitle>
+              <FITTitle>{t('phone')}:</FITTitle>
               <FITData href={`tel:${friend.phone}`}>{friend.phone}</FITData>
             </FIText>
           </FIInfo>

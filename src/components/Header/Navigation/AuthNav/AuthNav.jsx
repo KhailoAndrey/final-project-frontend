@@ -2,12 +2,12 @@ import { AuthBox } from './AuthNav.styled';
 import { LoginBtn } from './Login/loginBtn';
 import { RegistrationBtn } from './Registration/registrBtn';
 
-const AuthNav = () => {
+const AuthNav = ({ closeModal }) => {
   return (
     <>
       <AuthBox>
-        <LoginBtn></LoginBtn>
-        <RegistrationBtn></RegistrationBtn>
+        <LoginBtn closeModal={closeModal}></LoginBtn>
+        <RegistrationBtn closeModal={closeModal}></RegistrationBtn>
       </AuthBox>
     </>
   );

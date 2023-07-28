@@ -4,12 +4,14 @@ import { useEffect } from 'react';
 
 const NoticesCategoriesList = ({
   articles,
-  urlCategory,
   setAlertShowModal,
+  setRerender,
 }) => {
   // console.log('articles :>> ', articles);
 
-  useEffect(() => { }, []);
+  useEffect(() => {
+    console.log("first render list");
+  }, []);
 
   return (
     <>
@@ -19,8 +21,8 @@ const NoticesCategoriesList = ({
             <NoticeItem
               key={article._id}
               article={article}
-              urlCategory={urlCategory}
               setAlertShowModal={setAlertShowModal}
+              setRerender={setRerender}
             />
           ))}
       </ListContainer>

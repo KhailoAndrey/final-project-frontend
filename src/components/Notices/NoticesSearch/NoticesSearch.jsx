@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnContainer,
@@ -8,8 +9,9 @@ import {
   ClearButton,
 } from './NoticesSearch.styled';
 
-const NoticesFilter = ({ setQuery }) => {
+const NoticesFilter = ({ setQuery, setPage }) => {
   const [localInput, setLocalInput] = useState('');
+  const { t } = useTranslation();
 
   const inputChange = ({ target: { value } }) => {
     setLocalInput(value);
@@ -22,6 +24,7 @@ const NoticesFilter = ({ setQuery }) => {
       console.log('Enter correct query');
     } else {
       console.log('query :>> ', query);
+      setPage(1);
       setQuery(query);
     }
   };
@@ -40,7 +43,7 @@ const NoticesFilter = ({ setQuery }) => {
           name="localInput"
           value={localInput}
           onChange={inputChange}
-          placeholder="Search"
+          placeholder={t('search')}
         />
         <BtnContainer>
           <FormButton type="submit">

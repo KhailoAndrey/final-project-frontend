@@ -7,6 +7,7 @@ import { useAuth } from 'redux/auth/selectors';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperations';
 import Loader from 'components/Loader/Loader';
+import { LanguageProvider } from 'utils/LanguageContext';
 
 const Layout = lazy(() => import('./Layout/Layout'));
 const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
@@ -30,54 +31,55 @@ export const App = () => {
   return isRefreshing ? (
     <Loader />
   ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route
-          path="register"
-          element={
-            <PublicRoute
-              redirectTo="/user"
-              component={<RegisterPage />}
-            ></PublicRoute>
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <PublicRoute
-              redirectTo="/user"
-              component={<LoginPage />}
-            ></PublicRoute>
-          }
-        />
-        <Route path="news" element={<NewsPage />} />
-        <Route path="/notices/">
-          <Route index element={<Navigate to="/notices/sell" />} />
-          <Route path=":categoryName" element={<NoticesPage />} />
-
+    <LanguageProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="register"
+            element={
+              <PublicRoute
+                redirectTo="/user"
+                component={<RegisterPage />}
+              ></PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute
+                redirectTo="/user"
+                component={<LoginPage />}
+              ></PublicRoute>
+            }
+          />
+          <Route path="news" element={<NewsPage />} />
+          <Route path="/notices/">
+            <Route index element={<Navigate to="/notices/sell" />} />
+            <Route path=":categoryName" element={<NoticesPage />} />
+          </Route>
+          <Route path="friends" element={<FriendsPage />} />
+          <Route
+            path="add-pet"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<AddPetPage />}
+              ></PrivateRoute>
+            }
+          />
+          <Route
+            path="user"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<UserPage />}
+              ></PrivateRoute>
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="friends" element={<FriendsPage />} />
-        <Route
-          path="add-pet"
-          element={
-            <PrivateRoute
-              redirectTo="/login"
-              component={<AddPetPage />}
-            ></PrivateRoute>
-          }
-        />
-        <Route
-          path="user"
-          element={
-            <PrivateRoute
-              redirectTo="/login"
-              component={<UserPage />}
-            ></PrivateRoute>
-          }
-        />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </LanguageProvider>
   );
 };

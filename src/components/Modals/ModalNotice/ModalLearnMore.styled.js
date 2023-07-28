@@ -15,7 +15,7 @@ export const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  z-index: 999;
+  z-index: 100;
 `;
 
 export const ModalWindow = styled.div`
@@ -124,7 +124,7 @@ export const ContactButtons = styled.div`
 `;
 
 export const ContactButtonAdd = styled.button`
- width: 129px;
+ /* min-width: 129px; */
   padding: 6px 20px;
   color: var(--btn-clr-fon);
   background-color: var(--main-clr-blue);
@@ -151,7 +151,7 @@ export const ContactButtonAdd = styled.button`
 `;
 
 export const ContactButtonContact = styled.button`
-width: 129px;
+/* min-width: 129px; */
   padding: 8px 20px;
   background-color:  var(--btn-clr-fon);
   color: #54adff;
