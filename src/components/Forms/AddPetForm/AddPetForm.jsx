@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'redux/auth/selectors';
 
 import { RadioBtn } from './RadioBtn/RadioBtn';
 import { InputField } from './InputField/InputField';
@@ -10,9 +11,8 @@ import { Title } from './Title/Title';
 import { StageIndicator } from './StageIndicator/StageIndicator';
 import { SexIcon } from './Icon/Icon';
 import { addPetFormSchema } from 'components/Forms/AddPetForm/yupValidation';
-import { createNotice, createPet } from './api/pets';
 import { Formik } from 'formik';
-import { notify } from '../AddPetForm/notification/notification';
+// import { notify } from '../AddPetForm/notification/notification';
 import {
   FormWrapper,
   Wrapper,
@@ -27,17 +27,19 @@ import {
   FlexWrapper,
   ErrWrapper,
 } from './AddPetForm.styled';
+import fetchAddNotices from 'fetch/noticeAdd';
 
 const initialsValues = {
   title: '',
   date: '',
-  breed: '',
+  type: '',
   name: '',
   location: '',
   price: '',
   comments: '',
   sex: '',
   category: 'my pet',
+  // notice: '',
   file: '',
 };
 const statuses = [
@@ -64,6 +66,8 @@ export const AddPetForm = () => {
   const [emulTouch, SetEmulTouch] = useState([]);
   const navigate = useNavigate();
 
+  const { token } = useAuth();
+
   const handleOnNextClick = async (values, errors, validateForm) => {
     let formIsValid;
     validateForm(values);
@@ -74,8 +78,8 @@ export const AddPetForm = () => {
     }
 
     if (stage === 2 && category === 'your pet') {
-      SetEmulTouch(['breed', 'name', 'date']);
-      if (errors.breed || errors.name || errors.date) {
+      SetEmulTouch(['type', 'name', 'date']);
+      if (errors.type || errors.name || errors.date) {
         formIsValid = false;
       } else {
         formIsValid = true;
@@ -83,8 +87,8 @@ export const AddPetForm = () => {
     }
 
     if (stage === 2 && category !== 'your pet') {
-      SetEmulTouch(['breed', 'name', 'date', 'title']);
-      if (errors.breed || errors.name || errors.date || errors.title) {
+      SetEmulTouch(['type', 'name', 'date', 'title']);
+      if (errors.type || errors.name || errors.date || errors.title) {
         formIsValid = false;
       } else {
         formIsValid = true;
@@ -100,62 +104,90 @@ export const AddPetForm = () => {
     }
   };
 
+  // кнопка назад
   const handleOnBackClick = () => {
     SetStage(prevStage => prevStage - 1);
     localStorage.setItem('stage', JSON.stringify(stage - 1));
     SetEmulTouch([]);
   };
 
+  // кнопка відміна
   const handleOnCancelClick = () => {
     navigate(-1);
   };
 
-  const handleOnSubmit = async (values, { resetForm }) => {
+  // фетч-запит для створення оголошення
+  async function foo(formData, token) {
+    await fetchAddNotices(formData, token);
+  }
+
+  // кнопка сабміт
+  const handleOnSubmit = (values, { resetForm }) => {
+    console.log('values.category - ', values.category);
+
     const formData = new FormData();
-    console.log(values);
-    switch (values.category) {
-      case 'my pet':
-        formData.append('name', values.name);
-        formData.append('date', values.date);
-        formData.append('breed', values.breed);
-        formData.append('file', values.file, 'Pet`s photo');
-        if (values.comments) {
-          formData.append('comments', values.comments);
-        }
 
-        try {
-          await createPet(formData);
-          // navigate('/users');
-        } catch (error) {
-          console.log(error);
-          notify('error', 'Sorry, something wrong. Please try again');
-        }
+    if (values.category === 'my pet') {
+      console.log('in my pet before formData');
+      formData.append('name', values.name);
+      formData.append('date', values.date);
+      // formData.append('type', values.type);
+      const rowDate = values.date;
+      // console.log('rowDate :>> ', rowDate);
+      const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
+        5,
+        7
+      )}-${rowDate.slice(0, 4)}`;
+      // console.log('newDate', newDate);
+      formData.append('date', newDate);
 
-        break;
-      default:
-        formData.append('category', values.category);
-        formData.append('title', values.title);
-        formData.append('name', values.name);
-        formData.append('breed', values.breed);
-        formData.append('date', values.date);
-        formData.append('location', values.location);
-        formData.append('file', values.file, 'Pet`s photo');
-        formData.append('sex', values.sex);
-        if (values.comments) {
-          formData.append('comments', values.comments);
-        }
-        if (values.category === 'sell') {
-          formData.append('price', values.price);
-        }
-
+      formData.append('notice', values.file, 'Pet`s photo');
+      if (values.comments) {
+        formData.append('comments', values.comments);
+        console.log('values.comments - ', values.comments);
+      }
       // try {
-      //   await createNotice(formData);
-      //   navigate(`/notices/${values.category}`);
+      //   await createPet(formData);
+      //   // navigate('/users');
       // } catch (error) {
       //   console.log(error);
       //   notify('error', 'Sorry, something wrong. Please try again');
       // }
+      console.log('category = my pet ends');
+    } else {
+      formData.append('title', values.title);
+      formData.append('category', values.category);
+      formData.append('name', values.name);
+      const rowDate = values.date;
+      // console.log('rowDate :>> ', rowDate);
+      const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
+        5,
+        7
+      )}-${rowDate.slice(0, 4)}`;
+      // console.log('newDate', newDate);
+      formData.append('date', newDate);
+      formData.append('type', values.type);
+      formData.append('notice', values.file, 'Pet`s photo');
+      formData.append('sex', values.sex);
+      formData.append('location', values.location);
+
+      if (values.comments) {
+        formData.append('comments', values.comments);
+      }
+      if (values.category === 'sell') {
+        formData.append('price', values.price);
+      }
+
+      foo(formData, token);
     }
+
+    // try {
+    //   await createNotice(formData);
+    //   navigate(`/notices/${values.category}`);
+    // } catch (error) {
+    //   console.log(error);
+    //   notify('error', 'Sorry, something wrong. Please try again');
+    // }
 
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
@@ -288,9 +320,9 @@ export const AddPetForm = () => {
                     {stage === 2 && (
                       <InputField
                         type="text"
-                        name="breed"
-                        label={'Breed'}
-                        placeholder={'Type breed'}
+                        name="type"
+                        label={'Type'}
+                        placeholder={'Type type'}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}
