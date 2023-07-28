@@ -8,8 +8,9 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [selectedValue, setSelectedValue] = useState('sell');
 
+
+  const [selectedValue, setSelectedValue] = useState('sell');
   const params = useParams();
 
   useEffect(() => {
@@ -75,6 +76,8 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
             id="radio4"
             name="radios"
             value="favorite"
+            checked={selectedValue === 'favorite'}
+            onChange={handleRadioChange}
           ></Input>
           <Label htmlFor="radio4">{t('favorite_ads')}</Label>
 
@@ -84,6 +87,8 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
             id="radio5"
             name="radios"
             value="my-ads"
+            checked={selectedValue === 'my-ads'}
+            onChange={handleRadioChange}
           ></Input>
           <Label htmlFor="radio5">{t('my_ads')}</Label>
         </>

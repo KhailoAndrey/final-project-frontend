@@ -15,7 +15,6 @@ async function fetchFavoriteNotices(page, query, token ) {
     },
   };
   try {
-    // console.log('fetch from favor:');
     const response = await fetch(
       `${API_URL}?page=${page}&query=${query}`,
       options

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Field } from 'formik';
+// import { Field } from 'formik';
 
 export const FormContainer = styled.div`
   display: flex;
@@ -33,6 +33,10 @@ export const FormInputWrapper = styled.div`
   flex-direction: column;
   gap: 14px;
 
+  &.error .form-input {
+    border-color: red;
+  }
+
   @media screen and (min-width: 768px) {
     gap: 32px;
   }
@@ -56,9 +60,11 @@ export const FormHeader = styled.h2`
   }
 `;
 
-export const FormInput = styled(Field)`
-  /* display: flex; */
-  padding: 12px 16px;
+export const FormInput = styled.input`
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 85px;
   width: 256px;
   font-size: 16px;
   align-items: center;
@@ -66,6 +72,15 @@ export const FormInput = styled(Field)`
   border-radius: 40px;
   line-height: 1.4;
   font-style: normal;
+  outline: none;
+
+  &.input-error {
+    border: 1px solid var(--form-error-red);
+  }
+  &.input-success {
+    border: 1px solid var(--menu-clr-green);
+  }
+
   @media screen and (min-width: 768px) {
     width: 458px;
   }
@@ -131,11 +146,42 @@ export const WrapperInput = styled.div`
 export const ErrorText = styled.p`
   position: absolute;
   left: 16px;
-  top: 50px;
+  top: 48px;
   font-family: Manrope, sans-serif;
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 400;
   font-style: normal;
   line-height: normal;
   color: var(--form-error-red);
+
+  @media screen and (min-width: 768px) {
+    top: 50px;
+    font-size: 12px;
+  }
+`;
+
+export const SuccessText = styled.p`
+  position: absolute;
+  left: 16px;
+  top: 48px;
+  font-family: Manrope, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  color: var(--menu-clr-green);
+
+  @media screen and (min-width: 768px) {
+    top: 50px;
+    font-size: 12px;
+  }
+`;
+
+export const IconForInput = styled.div`
+  display: flex;
+  gap: 12px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
 `;

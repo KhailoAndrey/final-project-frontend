@@ -23,7 +23,6 @@ import fetchDeleteNotices from 'fetch/noticeDelete';
 import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 
 const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
-  // console.log('article :>> ', article);
   const [showLearMore, setShowLearMore] = useState(false);
   const [showDelModal, setShowDelModal] = useState(false);
   const dispatch = useDispatch();
@@ -37,9 +36,6 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   const rightCategory = correctCategory(category, t);
   const isFavorite = isLoggedIn ? user.favorite.includes(_id) : false;
   const isOwner = user._id === owner;
-  // console.log('user._id :>> ', user._id);
-  // console.log('owner :>> ', owner);
-  // console.log(isOwner);
 
   const data = {
     title: 'Delete advertisment?',
@@ -48,7 +44,6 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   };
 
   const onFavBtnClick = () => {
-    console.log('horey!');
     if (!isLoggedIn) {
       setAlertShowModal(true);
     } else {
@@ -64,7 +59,6 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   const onDelBtnClick = () => {
     async function foo(_id, token) {
       await fetchDeleteNotices(_id, token);
-      console.log('delete');
       setRerender(true);
     }
     foo(_id, token);
