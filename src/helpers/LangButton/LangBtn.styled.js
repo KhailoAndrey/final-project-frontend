@@ -35,6 +35,7 @@ export const LangBox = styled.div`
       background-color: var(--btn-clr-fon);
       color: var(--main-clr-blue);
       box-shadow: var(--big-shadow);
+      scale: 1.2;
     }
 
     @media screen and (min-width: 768px) {
