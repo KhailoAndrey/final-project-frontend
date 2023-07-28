@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import svg from '../../images/Icons/symbol-defs.svg';
+import svg from '../../../images/Icons/symbol-defs.svg';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
@@ -83,6 +83,10 @@ export const LoginForm = () => {
   const showEmailSuccess =
     formik.touched.email && !formik.errors.email && formik.values.email;
 
+
+    const handleClear = (field) => {
+      formik.setFieldValue(field, '');
+    };
   return (
     <FormContainer>
       <FormHeader>{t('login_form')}</FormHeader>
@@ -107,15 +111,15 @@ export const LoginForm = () => {
             <FormErrorEmail>{formik.errors.email}</FormErrorEmail>
           )}
            {showEmailError && (
-            <EmailIcon>
-       <svg width={24} height={24}>
+            <EmailIcon >
+       <svg width={24} height={24} onClick={() => handleClear('email')}>
               <use href={`${svg}#icon-cross`} width={24} height={24}
                style={{ stroke: 'var( --red-form-clr)' }} />
             </svg>
             </EmailIcon>
           )}
           {showEmailSuccess && (
-         <EmailIcon>
+         <EmailIcon >
            <svg width={24} height={24}>
               <use href={`${svg}#icon-check`} width={24} height={24}
                style={{ stroke: 'var( --green-form-clr)' }} />
@@ -159,7 +163,7 @@ export const LoginForm = () => {
             )}
             {showPasswordError && (
              
-              <svg width={24} height={24}>
+              <svg width={24} height={24}  onClick={() => handleClear('password')}>
                      <use href={`${svg}#icon-cross`} width={24} height={24}
                       style={{ stroke: 'var( --red-form-clr)' }} />
                    </svg>
