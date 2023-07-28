@@ -6,6 +6,7 @@ const {
   refreshUser,
   addToFavorite,
   delFromFavorite,
+  addOwnPet,
 } = require('./authOperations');
 
 const initialState = {
@@ -76,7 +77,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
-        // console.log("added to favorite");
         state.user.favorite = action.payload;
       })
       .addCase(addToFavorite.rejected, (state, action) => {
@@ -86,17 +86,21 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(delFromFavorite.fulfilled, (state, action) => {
-        console.log(
-          'action.payload.deletedNoticeId :>> ',
-          action.payload.deletedNoticeId
-        );
         const index = state.user.favorite.findIndex(
           article => article === action.payload.deletedNoticeId
         );
-        console.log("deleting index ->", index);
         state.user.favorite.splice(index, 1);
       })
       .addCase(delFromFavorite.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(addOwnPet.pending, state => {
+        state.error = null;
+      })
+      .addCase(addOwnPet.fulfilled, (state, action) => {
+        state.user.pets=action.payload;
+      })
+      .addCase(addOwnPet.rejected, (state, action) => {
         state.error = action.payload;
       });
   },
