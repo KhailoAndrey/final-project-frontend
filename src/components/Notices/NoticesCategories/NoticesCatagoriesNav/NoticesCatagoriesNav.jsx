@@ -41,7 +41,6 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
         id="radio1"
         name="radios"
         value="sell"
-        defaultChecked
         checked={selectedValue === 'sell'}
         onChange={handleRadioChange}
       ></Input>
