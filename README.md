@@ -19,7 +19,7 @@ _This project was bootstrapped with
 # Критерії виконання
 <ul>
 <li>Реалізована семантична верстка з трьома переломами (для мобільних девайсів, планшетів та десктопу) 
-  і відповідає технічному завданню та [дизайн-макету](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0?node-id=65%3A664&mode=dev).</li>
+    і відповідає технічному завданню та <a href="https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0?node-id=65%3A664&mode=dev">дизайн-макету</a>.</li>
 <li>Підключений modern-normalize.</li>
 <li>Шрифти підключені за допомогою `font-face`.</li>
 <li>Всі статичні зображення попередньо оптимізовані, в т.ч. під ретіну.</li>
