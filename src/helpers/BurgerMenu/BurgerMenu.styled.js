@@ -6,6 +6,9 @@ height: 24px;
 display: block;
 margin-left: 8px;
 cursor: pointer;
+&:hover{
+    scale: 1.3;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
 margin-left: 22px;

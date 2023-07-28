@@ -16,6 +16,7 @@ export const LogoLink = styled(Link)`
   height: 20px;
   &:hover {
     box-shadow: var(--big-shadow);
+    scale: 1.1;
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
