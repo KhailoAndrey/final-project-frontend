@@ -5,10 +5,10 @@ export const LangBox = styled.div`
   display: flex;
   margin-left: auto;
   color: var(--main-accent-text-clr);
+  margin-right: 10px;
   
   @media screen and (min-width: 768px) {
     gap: 0;
-    margin-right: 10px;
    }
   
   @media screen and (min-width: 1280px) {
