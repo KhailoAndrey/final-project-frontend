@@ -3,6 +3,7 @@ import axios from 'axios';
 const API_URL = `https://final-project-backend-4o0r.onrender.com/api/users/pets`;
 
 export const createPet = async (body, token) => {
+  console.log('Pets fetch :>> ');
   const response = await axios.patch(`${API_URL}`, body, {
     headers: {
       'Content-Type': 'multipart/form-data',
