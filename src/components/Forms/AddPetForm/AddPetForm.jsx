@@ -10,7 +10,7 @@ import { Title } from './Title/Title';
 import { StageIndicator } from './StageIndicator/StageIndicator';
 import { SexIcon } from './Icon/Icon';
 import { addPetFormSchema } from 'components/Forms/AddPetForm/yupValidation';
-import { createPet } from './api/pets';
+import { createNotice, createPet } from './api/pets';
 import { Formik } from 'formik';
 import { notify } from '../AddPetForm/notification/notification';
 import {
@@ -112,7 +112,7 @@ export const AddPetForm = () => {
 
   const handleOnSubmit = async (values, { resetForm }) => {
     const formData = new FormData();
-
+    console.log(values);
     switch (values.category) {
       case 'my pet':
         formData.append('name', values.name);
@@ -125,8 +125,9 @@ export const AddPetForm = () => {
 
         try {
           await createPet(formData);
-          navigate('/user');
+          // navigate('/users');
         } catch (error) {
+          console.log(error);
           notify('error', 'Sorry, something wrong. Please try again');
         }
 
@@ -146,6 +147,14 @@ export const AddPetForm = () => {
         if (values.category === 'sell') {
           formData.append('price', values.price);
         }
+
+      // try {
+      //   await createNotice(formData);
+      //   navigate(`/notices/${values.category}`);
+      // } catch (error) {
+      //   console.log(error);
+      //   notify('error', 'Sorry, something wrong. Please try again');
+      // }
     }
 
     localStorage.removeItem('formValues');
