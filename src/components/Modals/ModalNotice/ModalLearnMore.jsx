@@ -128,15 +128,7 @@ export const ModalLearMore = ({
               <ContactContent>
                 <div>{data.name || data.title}</div>
                 <div>{data.date}</div>
-                <div>
-                  {data.sex === 'male'
-                    ? data.type === 'Cat'
-                      ? t(`${'cat_m'}`)
-                      : t(`${'dog_m'}`)
-                    : data.type === 'Cat'
-                    ? t(`${data.type}`)
-                    : t(`${data.type}`)}
-                </div>
+                <div>{t(`${data.type}`)}</div>
                 <div>{data.location}</div>
                 <div>{t(`${data.sex}`)}</div>
                 <div>{data.owner?.name}</div>
