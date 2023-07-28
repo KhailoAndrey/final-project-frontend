@@ -1,22 +1,29 @@
-import React from "react";
-import { Container , CustomPagination } from "./Pagination.styled";
+import { Container, CustomPagination } from './Pagination.styled';
 
+const AppPagination = ({
+  setPage,
+  totalPageCount,
+  page,
+  setRerender = null,
+}) => {
 
-
-const AppPagination = ({ setPage, totalPageCount, page })=> {
-   
-    return(
-        <Container>
-            <div>
-                <CustomPagination 
-                onChange={(e, value) => setPage(value)}
-                count={totalPageCount}
+  return (
+    <Container>
+      <div>
+        <CustomPagination
+          onChange={(e, value) => {
+            setPage(value);
+            if (setRerender) {
+              setRerender(true);
+            }
+          }}
+          count={totalPageCount}
           page={page}
-           variant="outlined" />
-            </div>
-
-        </Container>
-    )
-}
+          variant="outlined"
+        />
+      </div>
+    </Container>
+  );
+};
 
 export default AppPagination;

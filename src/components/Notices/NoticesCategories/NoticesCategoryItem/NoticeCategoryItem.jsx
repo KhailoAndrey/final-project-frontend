@@ -76,7 +76,12 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
           <FavBtn type="button" onClick={() => onFavBtnClick()}>
             {isFavorite ? (
               <svg width={24} height={24}>
-                <use href={`${svg}#icon-heart-fill`} width={24} height={24} />
+                <use
+                  href={`${svg}#icon-heart-fill`}
+                  width={24}
+                  height={24}
+                  id="heart"
+                />
               </svg>
             ) : (
               <svg width={24} height={24}>
@@ -85,6 +90,7 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
                   width={24}
                   height={24}
                   style={{ stroke: 'var(--main-clr-blue)' }}
+                  id="heart"
                 />
               </svg>
             )}

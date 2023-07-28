@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ListContainer = styled.ul`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 24px;
   margin-top: 24px;
 

@@ -7,7 +7,6 @@ export const CatContainer = styled.div`
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
- 
 `;
 
 export const Label = styled.label`

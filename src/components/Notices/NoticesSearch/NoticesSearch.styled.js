@@ -2,11 +2,15 @@ import styled from 'styled-components';
 
 export const SearchForm = styled.form`
   display: flex;
+  width: 280px;
   justify-content: center;
   position: relative;
   margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
+    width: 608px;
     margin-top: 40px;
   }
 `;
@@ -42,13 +46,13 @@ export const BtnContainer = styled.div`
   top: 10px;
   right: 10px;
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     right: 60px;
   }
 
   @media screen and (min-width: 1280px) {
     right: 330px;
-  }
+  } */
 `;
 
 export const FormButton = styled.button`

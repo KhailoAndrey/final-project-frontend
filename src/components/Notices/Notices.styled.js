@@ -5,6 +5,8 @@ export const NoticeNavContainer = styled.div`
   width: 280px;
   justify-content: space-between;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
     width: 704px;
