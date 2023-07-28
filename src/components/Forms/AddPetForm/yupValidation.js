@@ -58,9 +58,7 @@ export const addPetFormSchema = yup.object().shape({
     .string()
     .oneOf(['my pet', 'sell', 'lost-found', 'for-free'])
     .required(),
-  // notice: yup
-      file: yup
-
+  file: yup
     .mixed()
     .required('Upload pet`s photo')
     .test(

@@ -122,3 +122,17 @@ export const delFromFavorite = createAsyncThunk(
     }
   }
 );
+
+export const addOwnPet = createAsyncThunk(
+  'auth/addOwnPet',
+  async (credentials, thunkAPI) => {
+    try {
+      // console.log('from add thunk', credentials);
+      const res = await axios.patch(`/api/users/pets`, credentials);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);

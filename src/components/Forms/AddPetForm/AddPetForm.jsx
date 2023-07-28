@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
+import { useDispatch } from 'react-redux';
 
 import { RadioBtn } from './RadioBtn/RadioBtn';
 import { InputField } from './InputField/InputField';
@@ -12,7 +13,6 @@ import { StageIndicator } from './StageIndicator/StageIndicator';
 import { SexIcon } from './Icon/Icon';
 import { addPetFormSchema } from 'components/Forms/AddPetForm/yupValidation';
 import { Formik } from 'formik';
-// import { notify } from '../AddPetForm/notification/notification';
 import {
   FormWrapper,
   Wrapper,
@@ -28,6 +28,7 @@ import {
   ErrWrapper,
 } from './AddPetForm.styled';
 import fetchAddNotices from 'fetch/noticeAdd';
+import { addOwnPet } from 'redux/auth/authOperations';
 
 const initialsValues = {
   title: '',
@@ -67,6 +68,7 @@ export const AddPetForm = () => {
   const navigate = useNavigate();
 
   const { token } = useAuth();
+  const dispatch = useDispatch();
 
   const handleOnNextClick = async (values, errors, validateForm) => {
     let formIsValid;
@@ -123,48 +125,42 @@ export const AddPetForm = () => {
 
   // кнопка сабміт
   const handleOnSubmit = (values, { resetForm }) => {
-    console.log('values.category - ', values.category);
+    // console.log('values.category - ', values.category);
 
     const formData = new FormData();
 
+    // якщо категорія - власна тварина
     if (values.category === 'my pet') {
       console.log('in my pet before formData');
-      formData.append('name', values.name);
-      formData.append('date', values.date);
-      // formData.append('type', values.type);
+
+      // переводимо дату у формат беку
       const rowDate = values.date;
-      // console.log('rowDate :>> ', rowDate);
       const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
         5,
         7
       )}-${rowDate.slice(0, 4)}`;
-      // console.log('newDate', newDate);
-      formData.append('date', newDate);
 
-      formData.append('notice', values.file, 'Pet`s photo');
-      if (values.comments) {
-        formData.append('comments', values.comments);
-        console.log('values.comments - ', values.comments);
-      }
-      // try {
-      //   await createPet(formData);
-      //   // navigate('/users');
-      // } catch (error) {
-      //   console.log(error);
-      //   notify('error', 'Sorry, something wrong. Please try again');
-      // }
-      console.log('category = my pet ends');
+
+      formData.append('name', values.name);
+      formData.append('date', newDate);
+      formData.append('type', values.type);
+      formData.append('pet', values.file, 'Pet`s photo');
+
+      // відправляємо дані на сервер і оновлюємо стор редаксу
+      dispatch(addOwnPet(formData));
+
+      // якщо б.я. інша категорія
     } else {
+
+      // формуємо форм-дату з правильними полями
       formData.append('title', values.title);
       formData.append('category', values.category);
       formData.append('name', values.name);
       const rowDate = values.date;
-      // console.log('rowDate :>> ', rowDate);
       const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
         5,
         7
       )}-${rowDate.slice(0, 4)}`;
-      // console.log('newDate', newDate);
       formData.append('date', newDate);
       formData.append('type', values.type);
       formData.append('notice', values.file, 'Pet`s photo');
@@ -178,17 +174,11 @@ export const AddPetForm = () => {
         formData.append('price', values.price);
       }
 
+      // викликаємо функцію фетч-запиту
       foo(formData, token);
     }
 
-    // try {
-    //   await createNotice(formData);
-    //   navigate(`/notices/${values.category}`);
-    // } catch (error) {
-    //   console.log(error);
-    //   notify('error', 'Sorry, something wrong. Please try again');
-    // }
-
+    // загальні процеси після запиту
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
     resetForm({});
