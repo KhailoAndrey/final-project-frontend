@@ -1,9 +1,10 @@
-
+import { useTranslation } from 'react-i18next';
 import { NFText, NFImg, NFDivWrap, Button, PawIcon } from './NotFound.styled';
 import { useNavigate } from 'react-router-dom';
 
- const NotFound = () => {
+const NotFound = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const onClick = () => {
     navigate('/');
@@ -12,10 +13,10 @@ import { useNavigate } from 'react-router-dom';
   return (
     <>
       <NFDivWrap>
-        <NFText>Oops! This page not found...</NFText>
+        <NFText>{t('title_404')}</NFText>
         <NFImg />
         <Button type="button" onClick={() => onClick()}>
-          To main page
+          {t('to_mane')}
           <PawIcon />
         </Button>
       </NFDivWrap>
