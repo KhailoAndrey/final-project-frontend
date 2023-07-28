@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
 // import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg';
@@ -19,6 +20,7 @@ import {
 
 const ModalBurger = ({ closeModal, showModal }) => {
   const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -45,7 +47,7 @@ const ModalBurger = ({ closeModal, showModal }) => {
           </ModalBtn>
         </ModalHeader>
         {isLoggedIn ? (
-          <UserBlock>
+          <UserBlock onClick={(() => navigate('/user'), closeModal)}>
             <UserNavBlock showName={true} />
           </UserBlock>
         ) : (
