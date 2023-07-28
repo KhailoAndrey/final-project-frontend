@@ -15,7 +15,6 @@ async function fetchDeleteNotices(id, token) {
     },
   };
   try {
-    // console.log('fetch from own:');
     const response = await fetch(
       `${API_URL}/${id}`,
       options

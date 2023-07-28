@@ -64,7 +64,6 @@ export const ModalLearMore = ({
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
       if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
-        console.log('тре перерендер');
         setRerender(true);
       }
 
@@ -74,7 +73,6 @@ export const ModalLearMore = ({
   // закриття по хрестику
   const onClick = () => {
     if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
-      console.log('тре перерендер');
       setRerender(true);
     }
     handler(false);
@@ -84,7 +82,6 @@ export const ModalLearMore = ({
     const handleEsc = event => {
       if (event.keyCode === 27) {
         if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
-          console.log('тре перерендер');
           setRerender(true);
         }
         handler(false);

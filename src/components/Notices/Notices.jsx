@@ -88,6 +88,7 @@ const Notices = () => {
           articles={noticeArticles}
           setAlertShowModal={setAlertShowModal}
           setRerender={setRerender}
+          category={category}
         />
       )}
 
