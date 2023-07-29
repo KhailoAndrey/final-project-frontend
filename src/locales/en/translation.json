@@ -77,5 +77,9 @@
   "to_mane": "To main page",
   "congrasts": "Congrats!",
   "success": "Your registration is success",
-  "to_profile": "Go to profile"
+  "to_profile": "Go to profile",
+  "delete": "Delete advertisment?",
+  "del_text_1": "Are you sure you want to delete ",
+  "del_text_2": "? You can't undo this action.",
+  "": ""
 }

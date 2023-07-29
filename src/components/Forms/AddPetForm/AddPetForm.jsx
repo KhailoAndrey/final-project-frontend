@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addOwnPet } from 'redux/auth/authOperations';
 import { useAuth } from 'redux/auth/selectors';
 import { useDispatch } from 'react-redux';
-
+import fetchAddNotices from 'fetch/noticeAdd';
+import { Formik } from 'formik';
 import { RadioBtn } from './RadioBtn/RadioBtn';
 import { InputField } from './InputField/InputField';
 import { CommentField } from './CommentField/CommentField';
@@ -12,7 +14,6 @@ import { Title } from './Title/Title';
 import { StageIndicator } from './StageIndicator/StageIndicator';
 import { SexIcon } from './Icon/Icon';
 import { addPetFormSchema } from 'components/Forms/AddPetForm/yupValidation';
-import { Formik } from 'formik';
 import {
   FormWrapper,
   Wrapper,
@@ -27,8 +28,6 @@ import {
   FlexWrapper,
   ErrWrapper,
 } from './AddPetForm.styled';
-import fetchAddNotices from 'fetch/noticeAdd';
-import { addOwnPet } from 'redux/auth/authOperations';
 
 const initialsValues = {
   title: '',

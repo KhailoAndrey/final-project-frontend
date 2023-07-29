@@ -1,3 +1,9 @@
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteOwnPet } from 'redux/auth/authOperations';
+import svg from '../../../images/Icons/symbol-defs.svg';
+import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 import {
   PetItem,
   ImgContainer,
@@ -8,23 +14,19 @@ import {
   PetPhoto,
   Span,
 } from './PetItem.styled';
-
-import svg from '../../../images/Icons/symbol-defs.svg';
-import { useDispatch } from 'react-redux';
-import { deleteOwnPet } from 'redux/auth/authOperations';
-import { useState } from 'react';
-import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 // import { deletePet } from 'redux/pets/operations';
 
 const PetsItem = ({ pet }) => {
   const [showDelModal, setShowDelModal] = useState(false);
+  const { t } = useTranslation();
+
 
   const dispatch = useDispatch();
   const { _id, file, name, date, type, comments } = pet;
 
   const data = {
-    title: 'Delete advertisment?',
-    text: `Are you sure you want to delete "${name}"? You can't undo this action.`,
+    title: t('delete'),
+    text: `${t('del_text_1')}"${name}"${t('del_text_2')}`,
     icon: 'icon-trash',
   };
   // console.log('the pet :>> ', pet);
