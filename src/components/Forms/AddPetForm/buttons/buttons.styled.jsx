@@ -12,14 +12,9 @@ export const PetFormBtn = styled.button`
   padding-left: auto;
   padding-right: auto;
   border: 2px solid var(--main-clr-blue);
-  #54adff;
   font-size: 16px;
   color: var(--white-bckg-clr);
-
-  // #ffffff;
-
   background-color: var(--main-clr-blue);
-  // #54adff;
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   cursor: pointer;
@@ -29,20 +24,9 @@ export const PetFormBtn = styled.button`
     border: none;
   }
 `;
-// background-color: var(--main-lcr-blue);
-// margin-top: 21px;
-// transition: background-color var(--fast-animation);
-// @media screen and (min-width: 768px) {
-//   margin-top: 15px;
-// }
-
-// &:focus,
-// &:hover {
-//   background-color: var(--main-clr-gr_blue);
 
 export const Pawprint = styled.svg`
-  stroke: var(--main-bckg-clr);
-  //  #fdf7f2;
+  fill: var(--main-bckg-clr);
   margin-left: 12px;
 `;
 export const BtnCancelArrow = styled.button`

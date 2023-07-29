@@ -1,4 +1,5 @@
 import icons from '../../../../images/Icons/sprite.svg';
+import paw from '../../../../images/Icons/symbol-defs.svg';
 
 import {
   ArrowLeft,
@@ -19,7 +20,7 @@ import {
 export const SvgPawprint = () => {
   return (
     <Pawprint width={24} height={24}>
-      <use href={icons + '#pawprint 1'}></use>
+      <use href={paw + '#icon-paw'}></use>
     </Pawprint>
   );
 };
