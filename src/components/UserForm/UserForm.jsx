@@ -21,14 +21,14 @@ import {
   PhotoWrapper,
 } from 'components/AvatarCard/AvatarCard.styled.js';
 
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { getCurrentUser, updateUser } from 'fetch/user.js';
 
 export const UserForm = () => {
   const { user } = useAuth();
   // const [user, setUser] = useState(null);
   // const { token } = useAuth();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // Можливість редагування форми
   const [isEdit, setIsEdit] = useState(false);

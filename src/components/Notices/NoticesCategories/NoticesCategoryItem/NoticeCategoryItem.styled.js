@@ -30,15 +30,12 @@ export const Card = styled.li`
   @keyframes moveRotate {
     0% {
       opacity: 0;
-      transform: scale(0) rotate(0);
+      transform: scale(0);
     }
-    50% {
-      opacity: 0.5;
-      transform: scale(0.5) rotate(-90deg);
-    }
+    
     100% {
       opacity: 1;
-      transform: scale(1) rotate(360deg);
+      transform: scale(1);
     }    
   }
 `;
