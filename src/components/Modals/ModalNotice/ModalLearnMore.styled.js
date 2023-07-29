@@ -48,10 +48,10 @@ export const Info = styled.div`
 
 export const Contact = styled.div`
   display: flex;
-  position: relative;
+  position: relative;  
   align-items: center;
-  gap: 50px;
-
+  gap: 10px;
+  
   font-size: 16px;
   line-height: 22px;
 
@@ -80,15 +80,15 @@ export const Contactheader = styled.div`
   flex-direction: column;
   align-items: left;
   gap: 5px;
-
+  
   font-weight: 600;
 `;
 
 export const ContactContent = styled.div`
   display: flex;
-  position: absolute;
+  /* position: absolute;
   right: 0;
-  top: 0;
+  top: 0; */
   flex-direction: column;
   align-items: left;
   gap: 5px;
@@ -172,6 +172,7 @@ export const Image = styled.div`
   border-radius: 0 0 40px 40px;
   background-image: url(${({ img }) => img});
   background-size: cover;
+  background-position: center;
 
   @media (max-width: 767px) {
     width: 240px;

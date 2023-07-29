@@ -16,4 +16,17 @@ export const NoticeNavContainer = styled.div`
   @media screen and (min-width: 1280px) {
     width: 1248px;
   }
+  animation: moveRotate var(--slow-animation) forwards ;
+
+  @keyframes moveRotate {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }    
+  }
 `;
