@@ -1,6 +1,6 @@
 import NoticeItem from 'components/Notices/NoticesCategories/NoticesCategoryItem/NoticeCategoryItem';
 import { ListContainer } from 'components/Notices/NoticesCategories/NoticesCategoriesList/NoticesCategoriesList.styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from 'redux/auth/selectors';
 
 
@@ -12,11 +12,13 @@ const NoticesCategoriesList = ({
 }) => {
   // console.log('articles :>> ', articles);
   const { user } = useAuth();
+  const [crutch, setCrutch] = useState(false);
 
   useEffect(() => {
-    if (category === 'favorite') {
-      setRerender(true);    }
-  }, [user.favorite, category, setRerender]);
+    if (category === 'favorite' && !crutch) {
+      setRerender(true);
+    }
+  }, [user.favorite, category, setRerender, crutch]);
 
   return (
     <>
@@ -28,6 +30,7 @@ const NoticesCategoriesList = ({
               article={article}
               setAlertShowModal={setAlertShowModal}
               setRerender={setRerender}
+              setCrutch={setCrutch}
             />
           ))}
       </ListContainer>

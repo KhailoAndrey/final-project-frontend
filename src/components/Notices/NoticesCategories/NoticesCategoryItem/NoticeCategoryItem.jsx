@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
@@ -22,7 +22,7 @@ import {
 import fetchDeleteNotices from 'fetch/noticeDelete';
 import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 
-const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
+const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
   const [showLearMore, setShowLearMore] = useState(false);
   const [showDelModal, setShowDelModal] = useState(false);
   const dispatch = useDispatch();
@@ -42,6 +42,11 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
     text: `Are you sure you want to delete "${title}"? You can't undo this action.`,
     icon: 'icon-trash',
   };
+
+  useEffect(() => {
+    console.log('showLearMore', showLearMore);
+    setCrutch(showLearMore);
+  }, [showLearMore, setCrutch]);
 
   const onFavBtnClick = () => {
     if (!isLoggedIn) {
