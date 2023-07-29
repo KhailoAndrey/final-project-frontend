@@ -39,7 +39,9 @@ const ModalBurger = ({ closeModal, showModal }) => {
       <ModalContent open={showModal}>
         <ModalHeader>
           <Logo />
-          {isLoggedIn && <Logout showButton={true}></Logout>}
+          {isLoggedIn && (
+            <Logout showButton={true} closeModal={closeModal}></Logout>
+          )}
           <ModalBtn onClick={closeModal}>
             <svg width={24} height={24}>
               <use href={`${svg}#icon-cross`} width={24} height={24} />
