@@ -4,7 +4,7 @@ export const AddPetTitle = styled.h2`
   font-weight: 500;
   font-size: 20px;
   line-height: 1.35;
-  color: #111111;
+  color: var(--main-accent-text-clr);
   padding-left: 16px;
   margin-bottom: 24px;
 

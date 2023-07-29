@@ -2,19 +2,21 @@ import styled from 'styled-components';
 import { Form } from 'formik';
 
 export const SvgPlusIcon = styled.svg`
-  fill: #54adff;
-  stroke: #54adff;
+  fill: var(--main-clr-blue);
+  stroke: var(--main-clr-blue);
 `;
 
 export const SvgSexIcon = styled.svg`
-  fill: #ffffff;
+  fill: var(--white-bckg-clr);
   stroke: ${props => {
     if (props.sex === '') {
-      return props.index === 0 ? `#F43F5E` : `#54ADFF`;
+      return props.index === 0
+        ? `var(--form-error-red)`
+        : `var(--main-clr-blue)`;
     } else if (props.index === 0) {
-      return props.selected ? `#F43F5E` : `#888888`;
+      return props.selected ? `var(--form-error-red)` : `var(--main-form-clr)`;
     } else if (props.index === 1) {
-      return props.selected ? `#54ADFF` : `#888888`;
+      return props.selected ? `var(--main-clr-blue)` : `var(--main-form-clr)`;
     }
   }};
 `;
@@ -30,8 +32,8 @@ export const Wrapper = styled.div`
   padding: 20px 8px 16px;
   font-family: 500;
   font-weight: 500;
-  background: #ffffff;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  background: var(--white-bckg-clr);
+  box-shadow: 3px 8px 14px var(--small-shadow);
   border-radius: 40px;
   font-style: normal;
 
@@ -51,7 +53,7 @@ export const SexWrapper = styled.div`
 export const GroupTitle = styled.p`
   font-size: 14px;
   line-height: 1.35;
-  color: #111111;
+  color: var(--main-accent-text-clr);
 
   @media screen and (min-width: 768px) {
     font-size: 20px;
@@ -159,5 +161,5 @@ export const ErrWrapper = styled.span`
   text-align: center;
   font-size: 12px;
   line-height: 1.35;
-  color: #f43f5e;
+  color: var(--form-error-red);
 `;

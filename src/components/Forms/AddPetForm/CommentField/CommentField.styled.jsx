@@ -14,7 +14,8 @@ export const CommentInput = styled.textarea`
   border-radius: 20px;
   resize: none;
 
-  border-color: ${props => (props['data-invalid'] ? `#F43F5E` : `#54ADFF`)};
+  border-color: ${props =>
+    props['data-invalid'] ? `var(--form-error-red)` : `var(--main-clr-blue)`};
 
   @media screen and (min-width: 768px) {
     width: 393px;
@@ -31,7 +32,7 @@ export const CommentInput = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: #888888;
+    color: var(--main-form-clr);
   }
 `;
 
@@ -57,5 +58,5 @@ export const ErrWrapper = styled.span`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.35;
-  color: #f43f5e;
+  color: var(--form-error-red);
 `;

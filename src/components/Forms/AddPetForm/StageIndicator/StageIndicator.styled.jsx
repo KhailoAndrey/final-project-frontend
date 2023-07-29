@@ -5,11 +5,11 @@ export const Stage = styled.span`
   line-height: 14px;
   color: ${props => {
     if (props.stage < props.datastage) {
-      return `#888888`;
+      return `var(--main-form-clr)`;
     } else if (props.stage === props.datastage) {
-      return `#54ADFF`;
+      return `var(--main-clr-blue)`;
     } else {
-      return `#00C3AD`;
+      return `var(--menu-clr-green)`;
     }
   }};
 
@@ -24,11 +24,11 @@ export const Indicator = styled.span`
   height: 8px;
   background: ${props => {
     if (props.stage < props.datastage) {
-      return `#CCE4FB`;
+      return `var(--main-clr-blue-light)`;
     } else if (props.stage === props.datastage) {
-      return `#54ADFF`;
+      return `var(--main-clr-blue)`;
     } else {
-      return `#00C3AD`;
+      return `var(--menu-clr-green)`;
     }
   }};
   border-radius: 8px;
