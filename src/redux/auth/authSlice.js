@@ -7,6 +7,7 @@ const {
   addToFavorite,
   delFromFavorite,
   addOwnPet,
+  deleteOwnPet,
 } = require('./authOperations');
 
 const initialState = {
@@ -98,9 +99,21 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(addOwnPet.fulfilled, (state, action) => {
-        state.user.pets=action.payload;
+        state.user.pets = action.payload;
       })
       .addCase(addOwnPet.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(deleteOwnPet.pending, state => {
+        state.error = null;
+      })
+      .addCase(deleteOwnPet.fulfilled, (state, action) => {
+        const index = state.user.pets.findIndex(
+          pet => pet._id === action.payload.deletedNoticeId
+        );
+        state.user.pets.splice(index, 1)
+      })
+      .addCase(deleteOwnPet.rejected, (state, action) => {
         state.error = action.payload;
       });
   },

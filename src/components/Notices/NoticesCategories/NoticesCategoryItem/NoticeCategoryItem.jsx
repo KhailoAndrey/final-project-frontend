@@ -44,7 +44,7 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
   };
 
   useEffect(() => {
-    console.log('showLearMore', showLearMore);
+    // console.log('showLearMore', showLearMore);
     setCrutch(showLearMore);
   }, [showLearMore, setCrutch]);
 
