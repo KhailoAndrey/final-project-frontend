@@ -46,7 +46,7 @@ export const addPetFormSchema = yup.object().shape({
   comments: yup
     .string()
     .min(8, 'Minimum 8 characters')
-    .max(350, 'Maximum 350 characters'),
+    .max(120, 'Maximum 120 characters'),
   sex: yup.string().when('category', {
     is: value =>
       value === 'sell' || value === 'lost-found' || value === 'for-free',
