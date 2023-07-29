@@ -12,8 +12,13 @@ export const ModalBackdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 export const ModalContent = styled.div`
+overflow: auto;
+height: auto;
+  max-height: calc(100vh - 40px);
+
   z-index: 200;
   width: 280px;
   border-radius: 20px;
