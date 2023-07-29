@@ -1,88 +1,98 @@
 import styled from 'styled-components';
 
 export const PetItem = styled.li`
-  width: 100%;
-  padding-top: 16px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 40px;
+  /* width: 280px; */
+  padding: 16px 20px 40px 20px;
   box-shadow: 3px 8px 14px var(--small-shadow);
   background-color: var(--white-bckg-clr);
   border-radius: 20px;
-  @media (min-width: 768px) {
-    padding: 20px;
+
+  @media screen and (min-width: 768px) {
+    height: 100%;
+    max-width: 704px;
     display: flex;
-    align-items: center;
-    gap: 30px;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
     border-radius: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    /* width: 821px; */
+    padding: 20px;
+    gap: 32px;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 3px 8px 14px 0px var(--big-shadow);
   }
 `;
-export const PetImage = styled.div`
-  background-color: lightgrey;
-  background-image: url(${props => props.src});
-  background-size: cover;
-  background-repeat: no-repeat;
 
+export const ImgContainer = styled.div`
   width: 240px;
   height: 240px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 128px;
+    max-height: 128px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 161px;
+    max-height: 161px;
+  }
+`;
+
+export const PetPhoto = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 20px;
-
-  @media (min-width: 768px) {
-    width: 128px;
-    height: 128px;
-  }
-
-  @media (min-width: 1280px) {
-    width: 160px;
-    /* height: 160px; */
-    border-radius: 40px;
-  }
 `;
 
 export const DeleteButton = styled.button`
   position: absolute;
-  top: 16px;
+  top: 0;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   background-color: transparent;
-
-  @media (min-width: 768px) {
-    top: 4px;
-    right: 4px;
-  }
 `;
+
 export const ListPets = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: start;
-
   gap: 12px;
+
+  @media screen and (min-width: 1280px) {
+  }
 `;
 
-export const Title = styled.div`
-  font-family: 'Manrope';
+export const Title = styled.p`
+  font-family: Manrope;
+  font-weight: 700;
+  font-size: 14px;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    font-weight: 600;
+  }
+`;
+export const Span = styled.span`
+  font-family: Manrope;
+  font-size: 14px;
   font-weight: 400;
 
-  font-size: 14px;
-  line-height: 1.57;
-
-  @media (min-width: 768px) {
-    font-size: 14px;
-    line-height: 1.28;
-    color: var(--main-accent-text-clr);
-  }
-  @media (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     font-size: 16px;
-    line-height: 1.375;
   }
 `;
 
 export const Content = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
-  padding-top: 20px;
 `;

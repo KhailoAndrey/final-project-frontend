@@ -27,8 +27,4 @@ export const ButtonLog = styled.button`
     }
     transform: transition;
   }
-
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-  }
 `;

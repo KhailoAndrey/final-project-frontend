@@ -88,17 +88,21 @@ const Notices = () => {
           articles={noticeArticles}
           setAlertShowModal={setAlertShowModal}
           setRerender={setRerender}
+          category={category}
         />
       )}
 
       {showAlertModal && (
         <AttentionModal setAlertShowModal={setAlertShowModal} />
       )}
-      <AppPagination
+
+      {totalPageCount>1 && <AppPagination
         setPage={setPage}
         page={page}
         totalPageCount={totalPageCount}
-      />
+        setRerender={setRerender}
+      />}
+      
     </>
   );
 };

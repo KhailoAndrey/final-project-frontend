@@ -1,10 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const NoticeNavContainer = styled.div`
   display: flex;
   width: 280px;
   justify-content: space-between;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
     width: 704px;

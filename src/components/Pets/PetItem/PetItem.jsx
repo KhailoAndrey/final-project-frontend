@@ -1,36 +1,41 @@
 import {
   PetItem,
-  PetImage,
+  ImgContainer,
   ListPets,
   Title,
   Content,
   DeleteButton,
+  PetPhoto,
+  Span,
 } from './PetItem.styled';
 
 import svg from '../../../images/Icons/symbol-defs.svg';
 // import { useDispatch } from 'react-redux';
 // import { deletePet } from 'redux/pets/operations';
 
-const PetsItem = ({ _id, photo, name, birthday, breed, comments }) => {
+const PetsItem = ({ pet }) => {
   //   const dispatch = useDispatch();
-
+  console.log('the pet :>> ', pet);
+  const { _id, file, name, date, type, comments } = pet;
   return (
     <>
       <PetItem key={_id}>
-        <PetImage src={photo} />
+        <ImgContainer>
+          <PetPhoto src={`${file}`} alt="pretty pet" />
+        </ImgContainer>
         <Content>
           <ListPets>
             <Title>
-              <b>Name:</b> {name}
+              Name: <Span>{name}</Span>
             </Title>
             <Title>
-              <b>Date of birth:</b> {birthday}
+              Date of birth: <Span> {date} </Span>
             </Title>
             <Title>
-              <b>Breed:</b> {breed}
+              Breed:<Span> {type} </Span>
             </Title>
             <Title>
-              <b>Comments:</b> {comments}
+              Comments: <Span>{comments} </Span>
             </Title>
           </ListPets>
 

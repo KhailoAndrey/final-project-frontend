@@ -78,6 +78,6 @@ export const NUrl = styled.a`
 
   &:hover,
   &:focus {
-    color: var(--main-accent-text-clr);
+    color: var(--main-clr-yellow);
   }
 `;

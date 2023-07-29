@@ -4,8 +4,17 @@ export const LangBox = styled.div`
   gap: 8px;
   display: flex;
   margin-left: auto;
-  margin-right: 10px;
   color: var(--main-accent-text-clr);
+  margin-right: 10px;
+  
+  @media screen and (min-width: 768px) {
+    gap: 0;
+   }
+  
+  @media screen and (min-width: 1280px) {
+    margin-right: 30px;
+    gap: 8px;
+  }
 
   button {
     cursor: pointer;
@@ -16,7 +25,7 @@ export const LangBox = styled.div`
     border-radius: 50%;
     gap: 8px;
     font-family: Manrope;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -26,18 +35,19 @@ export const LangBox = styled.div`
       background-color: var(--btn-clr-fon);
       color: var(--main-clr-blue);
       box-shadow: var(--big-shadow);
+      scale: 1.2;
     }
 
     @media screen and (min-width: 768px) {
       width: 40px;
       height: 40px;
-      font-size: 24px;
+      font-size: 20px;
     }
+    @media screen and (min-width: 1280px) {
+         font-size: 22px;
+  }
   }
   .active {
     color: var(--main-clr-yellow);
-  }
-  @media screen and (min-width: 1280px) {
-    margin-right: 40px;
   }
 `;

@@ -15,11 +15,11 @@ export const addPetFormSchema = yup.object().shape({
     .date()
     .max(new Date(), 'Must be less than "now"')
     .required('Choose a date of birth'),
-  breed: yup
+  type: yup
     .string('Must be a string')
     .min(2, 'Minimum 2 characters')
     .max(16, 'Maximum 16 characters')
-    .required('Enter a pet`s breed '),
+    .required('Enter a pet`s type '),
   name: yup
     .string()
     .min(2, 'Minimum 2 characters')

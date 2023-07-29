@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
@@ -22,8 +22,7 @@ import {
 import fetchDeleteNotices from 'fetch/noticeDelete';
 import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 
-const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
-  // console.log('article :>> ', article);
+const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
   const [showLearMore, setShowLearMore] = useState(false);
   const [showDelModal, setShowDelModal] = useState(false);
   const dispatch = useDispatch();
@@ -37,9 +36,6 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   const rightCategory = correctCategory(category, t);
   const isFavorite = isLoggedIn ? user.favorite.includes(_id) : false;
   const isOwner = user._id === owner;
-  // console.log('user._id :>> ', user._id);
-  // console.log('owner :>> ', owner);
-  // console.log(isOwner);
 
   const data = {
     title: 'Delete advertisment?',
@@ -47,8 +43,12 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
     icon: 'icon-trash',
   };
 
+  useEffect(() => {
+    console.log('showLearMore', showLearMore);
+    setCrutch(showLearMore);
+  }, [showLearMore, setCrutch]);
+
   const onFavBtnClick = () => {
-    console.log('horey!');
     if (!isLoggedIn) {
       setAlertShowModal(true);
     } else {
@@ -64,7 +64,6 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
   const onDelBtnClick = () => {
     async function foo(_id, token) {
       await fetchDeleteNotices(_id, token);
-      console.log('delete');
       setRerender(true);
     }
     foo(_id, token);
@@ -82,7 +81,12 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
           <FavBtn type="button" onClick={() => onFavBtnClick()}>
             {isFavorite ? (
               <svg width={24} height={24}>
-                <use href={`${svg}#icon-heart-fill`} width={24} height={24} />
+                <use
+                  href={`${svg}#icon-heart-fill`}
+                  width={24}
+                  height={24}
+                  id="heart"
+                />
               </svg>
             ) : (
               <svg width={24} height={24}>
@@ -91,6 +95,7 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender }) => {
                   width={24}
                   height={24}
                   style={{ stroke: 'var(--main-clr-blue)' }}
+                  id="heart"
                 />
               </svg>
             )}

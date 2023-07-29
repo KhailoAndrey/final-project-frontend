@@ -6,7 +6,7 @@ import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { LogoutBtn } from './Logout.styled';
 
-const Logout = ({ showButton }) => {
+const Logout = ({ showButton, closeModal }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -24,6 +24,7 @@ const Logout = ({ showButton }) => {
 
   const handleLogoutUser = () => {
     dispatch(logOut());
+    closeModal();
   };
 
   return (

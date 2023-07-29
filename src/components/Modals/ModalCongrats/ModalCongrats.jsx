@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 // import { useNavigate } from 'react-router-dom';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
@@ -11,6 +12,8 @@ import {
 } from './ModalCongrats.styled';
 
 const ModalCongrats = () => {
+  const { t } = useTranslation();
+
   // const navigate = useNavigate();
 
   const [isOpenCongratsModal, setIsOpenCongratsModal] = useState(true);
@@ -50,10 +53,10 @@ const ModalCongrats = () => {
                 <use href={`${svg}#icon-cross`} width={24} height={24} />
               </svg>
             </BtnClose>
-            <TitleCongrats>Congrats!</TitleCongrats>
-            <TextCongrats>Your registration is success</TextCongrats>
+            <TitleCongrats>{t('congrasts')}</TitleCongrats>
+            <TextCongrats>{t('success')}</TextCongrats>
             <BtnCongrats onClick={onClose}>
-              Go to profile
+              {t('to_profile')}
               <svg width={24} height={24}>
                 <use
                   href={`${svg}#icon-paw`}
