@@ -24,7 +24,7 @@ export const Card = styled.li`
   &:focus {
     box-shadow: 3px 8px 14px 0px var(--big-shadow);
   }
-    animation: moveRotate var(--slow-animation) forwards ;
+    /* animation: moveRotate var(--slow-animation) forwards ; */
 
 
   @keyframes moveRotate {
