@@ -140,7 +140,6 @@ export const AddPetForm = () => {
         7
       )}-${rowDate.slice(0, 4)}`;
 
-
       formData.append('name', values.name);
       formData.append('date', newDate);
       formData.append('type', values.type);
@@ -148,10 +147,10 @@ export const AddPetForm = () => {
 
       // відправляємо дані на сервер і оновлюємо стор редаксу
       dispatch(addOwnPet(formData));
+      navigate(`/user`);
 
       // якщо б.я. інша категорія
     } else {
-
       // формуємо форм-дату з правильними полями
       formData.append('title', values.title);
       formData.append('category', values.category);
@@ -176,6 +175,7 @@ export const AddPetForm = () => {
 
       // викликаємо функцію фетч-запиту
       foo(formData, token);
+      navigate(`/notices/${values.category}`);
     }
 
     // загальні процеси після запиту
