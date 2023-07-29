@@ -4,25 +4,24 @@ export const ModalContainer = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-
   width: 100vw;
   height: 100vh;
-
   background: rgba(97, 97, 97, 0.6);
   backdrop-filter: blur(4px);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
+  overflow: hidden;
   z-index: 100;
 `;
 
 export const ModalWindow = styled.div`
+  overflow: auto;
   width: 680px;
   position: relative;
   padding: 32px;
-
+  height: auto;
+  max-height: calc(100vh - 40px);
   background-color: #fff;
   border-radius: 40px;
 
@@ -101,7 +100,6 @@ export const Comment = styled.div`
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
-  
 
   @media (max-width: 767px) {
     font-size: 14px;
@@ -124,7 +122,7 @@ export const ContactButtons = styled.div`
 `;
 
 export const ContactButtonAdd = styled.button`
- /* min-width: 129px; */
+  /* min-width: 129px; */
   padding: 6px 20px;
   color: var(--btn-clr-fon);
   background-color: var(--main-clr-blue);
@@ -151,9 +149,9 @@ export const ContactButtonAdd = styled.button`
 `;
 
 export const ContactButtonContact = styled.button`
-/* min-width: 129px; */
+  /* min-width: 129px; */
   padding: 8px 20px;
-  background-color:  var(--btn-clr-fon);
+  background-color: var(--btn-clr-fon);
   color: #54adff;
   border-radius: 40px;
   border: 1px solid #54adff;
@@ -213,7 +211,7 @@ export const CloseButton = styled.button`
   color: var(--main-clr-blue);
   border: none;
   stroke: currentColor;
-  
+
   &:hover {
     stroke: var(--main-clr-yellow);
   }
