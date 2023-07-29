@@ -15,6 +15,19 @@ export const FIWrapper = styled.div`
   @media screen and (min-width: 1280px) {
     width: 394px;
   }
+  animation: moveIn var(--slow-animation) forwards ;
+
+
+  @keyframes moveIn {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+    }    
+  }
 `;
 export const FITitle = styled.a`
   text-decoration: none;
