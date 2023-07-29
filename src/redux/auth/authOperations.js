@@ -136,3 +136,33 @@ export const addOwnPet = createAsyncThunk(
     }
   }
 );
+
+export const deletePet = createAsyncThunk(
+  'auth/deletePet',
+  async (_id, thunkAPI) => {
+    try {
+      // console.log('from add thunk', credentials);
+      const res = await axios.patch(`/api/users/pets/${_id}`);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);
+
+// update user data
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (credentials, thunkAPI) => {
+    try {
+      // console.log('from add thunk', credentials);
+      const res = await axios.put(`/api/users`, credentials);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);

@@ -11,10 +11,21 @@ import { UserData } from 'components/UserData/UserData';
 import { useAuth } from 'redux/auth/selectors';
 import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
 import PetsList from 'components/Pets/PetList/PetList';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { refreshUser } from 'redux/auth/authOperations';
 
 const UserPage = () => {
   const { newUser, user } = useAuth();
   const pets = user.pets;
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (!user) {
+  //     return;
+  //   }
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
+
   // const pets = [
   //   {
   //     _id: '64c275b0f60jj99962e6c91359',

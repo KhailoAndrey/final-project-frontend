@@ -10,13 +10,19 @@ import {
 } from './PetItem.styled';
 
 import svg from '../../../images/Icons/symbol-defs.svg';
-// import { useDispatch } from 'react-redux';
-// import { deletePet } from 'redux/pets/operations';
+import { useDispatch } from 'react-redux';
+import { deletePet } from 'redux/auth/authOperations';
 
 const PetsItem = ({ pet }) => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   console.log('the pet :>> ', pet);
   const { _id, file, name, date, type, comments } = pet;
+
+  const handleClick = () => {
+    dispatch(deletePet(_id));
+  };
+
   return (
     <>
       <PetItem key={_id}>
@@ -39,7 +45,7 @@ const PetsItem = ({ pet }) => {
             </Title>
           </ListPets>
 
-          <DeleteButton>
+          <DeleteButton onClick={handleClick}>
             <svg width={24} height={24}>
               <use
                 href={`${svg}#icon-trash`}
