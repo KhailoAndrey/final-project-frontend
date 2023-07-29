@@ -5,7 +5,7 @@ const PetsList = ({ pets }) => {
   return (
     <>
       <List>
-        {pets.length > 1 &&
+        {pets.length > 0 &&
           pets.map(pet => <PetsItem key={pet._id} pet={pet} />)}
       </List>
     </>

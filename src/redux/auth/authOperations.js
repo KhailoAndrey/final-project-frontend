@@ -127,8 +127,21 @@ export const addOwnPet = createAsyncThunk(
   'auth/addOwnPet',
   async (credentials, thunkAPI) => {
     try {
-      // console.log('from add thunk', credentials);
       const res = await axios.patch(`/api/users/pets`, credentials);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);
+
+export const deleteOwnPet = createAsyncThunk(
+  'auth/deleteOwnPet',
+  async (_id, thunkAPI) => {
+    try {
+      console.log('from delete thunk', _id);
+      const res = await axios.patch(`/api/users/pets/${_id}`);
       return res.data;
     } catch ({ response }) {
       // getMessage(response);
