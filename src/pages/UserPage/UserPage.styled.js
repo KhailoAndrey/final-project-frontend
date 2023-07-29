@@ -22,20 +22,20 @@ export const UserInfo = styled.div`
 export const PetsInfo = styled.div`
   width: 280px;
   height: 517px;
-  border-radius: 20px;
-  background-color: lightseagreen;
+  /* border-radius: 20px;
+  background-color: lightseagreen; */
   margin-top: 31px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 268px;
+    /* height: 268px; */
     margin-top: 24px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 821px;
     height: 520px;
-    margin-top: 22px;
+    margin-top: 24px;
   }
 `;
 
