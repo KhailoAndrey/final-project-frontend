@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Card = styled.li`
   width: 280px;
   height: 456px;
@@ -10,7 +11,7 @@ export const Card = styled.li`
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
-
+  transition: var(--default-animation);
   @media screen and (min-width: 768px) {
     width: 336px;
   }
@@ -22,6 +23,28 @@ export const Card = styled.li`
   &:hover,
   &:focus {
     box-shadow: 3px 8px 14px 0px var(--big-shadow);
+  }
+    animation: moveOut var(--slow-animation) forwards ;
+
+@keyframes moveIn {
+    0% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scaleX(0);
+    }    
+  }
+  @keyframes moveOut {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }    
   }
 `;
 
@@ -173,3 +196,5 @@ export const LearnMoreBtn = styled.button`
     border: 0;
   }
 `;
+
+ 
