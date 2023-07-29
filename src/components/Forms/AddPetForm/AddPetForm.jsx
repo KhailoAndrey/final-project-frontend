@@ -144,6 +144,9 @@ export const AddPetForm = () => {
       formData.append('date', newDate);
       formData.append('type', values.type);
       formData.append('pet', values.file, 'Pet`s photo');
+      if (values.comments) {
+        formData.append('comments', values.comments);
+      }
 
       // відправляємо дані на сервер і оновлюємо стор редаксу
       dispatch(addOwnPet(formData));
