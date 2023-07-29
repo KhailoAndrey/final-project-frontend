@@ -20,14 +20,14 @@ import {
   ImgWrapper,
   PhotoWrapper,
 } from 'components/AvatarCard/AvatarCard.styled.js';
-import { updateUser } from 'redux/auth/authOperations.js';
+
 import { useDispatch } from 'react-redux';
 // import { getCurrentUser, updateUser } from 'fetch/user.js';
 
 export const UserForm = () => {
   const { user } = useAuth();
   // const [user, setUser] = useState(null);
-  const { token } = useAuth();
+  // const { token } = useAuth();
   const dispatch = useDispatch();
 
   // Можливість редагування форми
@@ -114,7 +114,7 @@ export const UserForm = () => {
       formData.append('phone', values.phone);
       formData.append('city', values.city);
       console.log(values);
-      dispatch(updateUser(formData));
+      // dispatch(updateUser(formData));
 
       //   const formDataObject = {
       //   avatar: fileInputElement.files[0],
