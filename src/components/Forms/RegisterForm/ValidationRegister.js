@@ -1,28 +1,27 @@
 import * as Yup from 'yup';
+import { t } from 'i18next';
+// const { t } = useTranslation();
 
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .required('Name is a required field')
-    .min(2, 'Name must be at least 2 characters')
-    .max(16, 'Name must be at least 16 characters')
-    .matches(/^[A-Za-z]{2,16}$/, 'The name must be in English'),
+    .required(t('requried_name_field'))
+    .min(2, t('name_min'))
+    .max(16, t('name_max'))
+    .matches(/^[A-Za-z]{2,16}$/, t('name_regexp')),
   email: Yup.string()
-    .email()
-    .required('Email is a required field')
-    .matches(/^[a-zA-Z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/, 'Enter a valid Email'),
+    .email(t('email_description'))
+    .required(t('requried_email_field'))
+    .matches(/^[a-zA-Z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/, t('email_regexp')),
   password: Yup.string()
-    .required('Password is a required field')
-    .min(6, 'Password must be at least 6 characters')
-    .max(16, 'Password must be no more than 16 characters')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-      'At least one number, one lowercase and an uppercase letter'
-    ),
+    .required(t('requried_password_field'))
+    .min(6, t('password_min'))
+    .max(16, t('password_max'))
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, t('password_regexp')),
   confirmPassword: Yup.string().when('password', (password, schema) => {
     return password
       ? schema
-          .required('Password confirmation required')
-          .oneOf([Yup.ref('password')], 'Passwords must match')
+          .required(t('requried_confirm_pas_field'))
+          .oneOf([Yup.ref('password')], t('confirm_password_regexp'))
       : schema.notRequired();
   }),
 });

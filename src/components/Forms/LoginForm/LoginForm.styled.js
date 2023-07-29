@@ -130,25 +130,38 @@ export const EmailDiv = styled.div`
 
 export const FormErrorPassword = styled.p`
   position: absolute;
-  font-size: 12px;
+  font-size: 9px;
   color: var(--red-form-clr);
   top: 44px;
   left: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 `;
+
 export const FormErrorEmail = styled.p`
-  font-size: 12px;
+  font-size: 9px;
   position: absolute;
   color: var(--red-form-clr);
   top: 44px;
   left: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const FormSuccessPassword = styled.p`
-  font-size: 12px;
+  font-size: 9px;
   position: absolute;
   color: var(--green-form-clr);
   top: 44px;
   left: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const IconsContainer = styled.div`

@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-// import { useTranslation } from 'react-i18next';
-import Notiflix from 'notiflix';
+import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { register } from 'redux/auth/authOperations';
+import getMessage from 'utils/messages';
 import { validationSchema } from './ValidationRegister';
 
 import svg from '../../../images/Icons/symbol-defs.svg';
@@ -14,6 +14,7 @@ import {
   FormContainer,
   FormHeader,
   FormInput,
+  FormInputNameEmail,
   FormInputWrapper,
   FormLink,
   FormText,
@@ -21,19 +22,6 @@ import {
   SuccessText,
   WrapperInput,
 } from './RegisterForm.styled';
-
-Notiflix.Notify.init({
-  width: '280px',
-  position: 'center-top',
-  distance: '15px',
-  timeout: 5000,
-  opacity: 1,
-  warning: {
-    background: 'var(--main-clr-blue)',
-    textColor: 'var(--main-accent-text-clr)',
-    notiflixIconColor: 'var(--main-clr-yellow)',
-  },
-});
 
 const IconSvgClose = () => {
   return (
@@ -65,22 +53,7 @@ const IconSvgOpen = () => {
   );
 };
 
-const NameIconError = () => {
-  return (
-    <svg width={24} height={24}>
-      <use
-        href={`${svg}#icon-cross`}
-        style={{
-          stroke: 'var(--form-error-red)',
-        }}
-        width={24}
-        height={24}
-      />
-    </svg>
-  );
-};
-
-const NameIconSuccess = () => {
+const IconSvgSuccess = () => {
   return (
     <svg width={24} height={24}>
       <use
@@ -96,7 +69,7 @@ const NameIconSuccess = () => {
 };
 
 const RegisterForm = () => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const [typeForPassword, setTypeForPassword] = useState('password');
@@ -120,10 +93,9 @@ const RegisterForm = () => {
         password: values.password,
       };
       try {
-        // console.log(credentials);
         const response = await dispatch(register(credentials));
         if (response.error) {
-          Notiflix.Notify.warning(`${response.error.data.message}`);
+          getMessage(response.error.data.message);
         } else {
           resetForm();
         }
@@ -184,22 +156,26 @@ const RegisterForm = () => {
     !formik.errors.confirmPassword &&
     formik.values.confirmPassword;
 
+  const handleClear = field => {
+    formik.setFieldValue(field, '');
+  };
+
   return (
     <FormContainer>
       <form onSubmit={formik.handleSubmit}>
-        <FormHeader>Registration</FormHeader>
+        <FormHeader>{t('registration')}</FormHeader>
         <FormInputWrapper>
           <div>
             <label htmlFor="name" hidden>
               Name
             </label>
             <WrapperInput>
-              <FormInput
+              <FormInputNameEmail
                 id="name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 name="name"
-                placeholder="Name"
+                placeholder={t('name')}
                 onBlur={handleNameBlur}
                 className={
                   showNameError
@@ -213,8 +189,23 @@ const RegisterForm = () => {
                 <ErrorText>{formik.errors.name}</ErrorText>
               )}
               <IconForInput>
-                {showNameError && <NameIconError />}
-                {showNameSuccess && <NameIconSuccess />}
+                {showNameError && (
+                  <svg
+                    width={24}
+                    height={24}
+                    onClick={() => handleClear('name')}
+                  >
+                    <use
+                      href={`${svg}#icon-cross`}
+                      style={{
+                        stroke: 'var(--form-error-red)',
+                      }}
+                      width={24}
+                      height={24}
+                    />
+                  </svg>
+                )}
+                {showNameSuccess && <IconSvgSuccess />}
               </IconForInput>
             </WrapperInput>
           </div>
@@ -223,12 +214,12 @@ const RegisterForm = () => {
               Email
             </label>
             <WrapperInput>
-              <FormInput
+              <FormInputNameEmail
                 id="email"
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
-                placeholder="Email"
+                placeholder={t('email')}
                 onBlur={handleEmailBlur}
                 className={
                   showEmailError
@@ -242,8 +233,23 @@ const RegisterForm = () => {
                 <ErrorText>{formik.errors.email}</ErrorText>
               )}
               <IconForInput>
-                {showEmailError && <NameIconError />}
-                {showEmailSuccess && <NameIconSuccess />}
+                {showEmailError && (
+                  <svg
+                    width={24}
+                    height={24}
+                    onClick={() => handleClear('email')}
+                  >
+                    <use
+                      href={`${svg}#icon-cross`}
+                      style={{
+                        stroke: 'var(--form-error-red)',
+                      }}
+                      width={24}
+                      height={24}
+                    />
+                  </svg>
+                )}
+                {showEmailSuccess && <IconSvgSuccess />}
               </IconForInput>
             </WrapperInput>
           </div>
@@ -258,7 +264,7 @@ const RegisterForm = () => {
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
-                placeholder="Password"
+                placeholder={t('password')}
                 onBlur={handlePasswordBlur}
                 className={
                   showPasswordError
@@ -278,14 +284,29 @@ const RegisterForm = () => {
                     <IconSvgOpen />
                   </span>
                 )}
-                {showPasswordError && <NameIconError />}
-                {showPasswordSuccess && <NameIconSuccess />}
+                {showPasswordError && (
+                  <svg
+                    width={24}
+                    height={24}
+                    onClick={() => handleClear('password')}
+                  >
+                    <use
+                      href={`${svg}#icon-cross`}
+                      style={{
+                        stroke: 'var(--form-error-red)',
+                      }}
+                      width={24}
+                      height={24}
+                    />
+                  </svg>
+                )}
+                {showPasswordSuccess && <IconSvgSuccess />}
               </IconForInput>
               {formik.touched.password && formik.errors.password && (
                 <ErrorText>{formik.errors.password}</ErrorText>
               )}
               {showPasswordSuccess && (
-                <SuccessText>Password is secure</SuccessText>
+                <SuccessText>{t('password_is_secure')}</SuccessText>
               )}
             </WrapperInput>
           </div>
@@ -300,7 +321,7 @@ const RegisterForm = () => {
                 name="confirmPassword"
                 value={formik.values.confirmPassword}
                 onChange={formik.handleChange}
-                placeholder="Confirm password"
+                placeholder={t('confirm_password')}
                 onBlur={handleConfirmPasswordBlur}
                 className={
                   showConfirmPasswordError
@@ -320,8 +341,23 @@ const RegisterForm = () => {
                     <IconSvgOpen />
                   </span>
                 )}
-                {showConfirmPasswordError && <NameIconError />}
-                {showConfirmPasswordSuccess && <NameIconSuccess />}
+                {showConfirmPasswordError && (
+                  <svg
+                    width={24}
+                    height={24}
+                    onClick={() => handleClear('confirmPassword')}
+                  >
+                    <use
+                      href={`${svg}#icon-cross`}
+                      style={{
+                        stroke: 'var(--form-error-red)',
+                      }}
+                      width={24}
+                      height={24}
+                    />
+                  </svg>
+                )}
+                {showConfirmPasswordSuccess && <IconSvgSuccess />}
               </IconForInput>
               {formik.touched.confirmPassword &&
                 formik.errors.confirmPassword && (
@@ -330,10 +366,10 @@ const RegisterForm = () => {
             </WrapperInput>
           </div>
         </FormInputWrapper>
-        <FormButton type="submit">Registration</FormButton>
+        <FormButton type="submit">{t('registration')}</FormButton>
         <FormText>
-          Already have an account?
-          <FormLink to="/login">Login</FormLink>
+          {t('registration_form_text')}
+          <FormLink to="/login">{t('login_form')}</FormLink>
         </FormText>
       </form>
     </FormContainer>
