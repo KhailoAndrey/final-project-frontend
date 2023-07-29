@@ -4,7 +4,6 @@ export const UserInfo = styled.div`
   width: 280px;
   height: 517px;
   border-radius: 20px;
-  background-color: lightseagreen;
   margin-top: 18px;
 
   @media screen and (min-width: 768px) {
