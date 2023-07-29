@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-// import { useNavigate } from 'react-router-dom';
+import { updateNewUserStatus } from 'redux/auth/authSlice';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnClose,
@@ -13,15 +14,14 @@ import {
 
 const ModalCongrats = () => {
   const { t } = useTranslation();
-
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [isOpenCongratsModal, setIsOpenCongratsModal] = useState(true);
 
   const onClose = useCallback(() => {
     setIsOpenCongratsModal(false);
-    // navigate('/notices');
-  }, [setIsOpenCongratsModal]);
+    dispatch(updateNewUserStatus(false));
+  }, [setIsOpenCongratsModal, dispatch]);
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {

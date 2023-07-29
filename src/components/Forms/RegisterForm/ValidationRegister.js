@@ -7,7 +7,7 @@ export const validationSchema = Yup.object().shape({
     .required(t('requried_name_field'))
     .min(2, t('name_min'))
     .max(16, t('name_max'))
-    .matches(/^[A-Za-z]{2,16}$/, t('name_regexp')),
+    .matches(/^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,16}$/, t('name_regexp')),
   email: Yup.string()
     .email(t('email_description'))
     .required(t('requried_email_field'))
