@@ -11,10 +11,15 @@ export const PetFormBtn = styled.button`
   border-radius: 40px;
   padding-left: auto;
   padding-right: auto;
-  border: 2px solid #54adff;
+  border: 2px solid var(--main-clr-blue);
+  #54adff;
   font-size: 16px;
-  color: #ffffff;
-  background-color: #54adff;
+  color: var(--white-bckg-clr);
+
+  // #ffffff;
+
+  background-color: var(--main-clr-blue);
+  // #54adff;
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   cursor: pointer;
@@ -24,9 +29,20 @@ export const PetFormBtn = styled.button`
     border: none;
   }
 `;
+// background-color: var(--main-lcr-blue);
+// margin-top: 21px;
+// transition: background-color var(--fast-animation);
+// @media screen and (min-width: 768px) {
+//   margin-top: 15px;
+// }
+
+// &:focus,
+// &:hover {
+//   background-color: var(--main-clr-gr_blue);
 
 export const Pawprint = styled.svg`
-  stroke: #fdf7f2;
+  stroke: var(--main-bckg-clr);
+  //  #fdf7f2;
   margin-left: 12px;
 `;
 export const BtnCancelArrow = styled.button`
@@ -39,17 +55,17 @@ export const BtnCancelArrow = styled.button`
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   border: none;
-  color: #54adff;
+  color: var(--main-clr-blue);
   background-color: transparent;
   cursor: pointer;
   :hover {
-    border: solid 2px #54adff;
+    border: solid 2px var(--main-clr-blue);
     border-radius: 40px;
-    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
+    box-shadow: 7px 13px 14px var(--big-shadow);
   }
 `;
 export const ArrowLeft = styled.svg`
-  stroke: #54adff;
+  stroke: var(--main-clr-blue);
   margin-right: 12px;
 `;
 export const BtnBackArrow = styled.button`
@@ -62,13 +78,13 @@ export const BtnBackArrow = styled.button`
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   border: none;
-  color: #54adff;
+  color: var(--main-clr-blue);
   background-color: transparent;
   cursor: pointer;
   :hover {
-    border: solid 2px #54adff;
+    border: solid 2px var(--main-clr-blue);
     border-radius: 40px;
-    box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
+    box-shadow: 7px 13px 14px var(--big-shadow);
   }
 `;
 export const BtnAdd = styled.button`
@@ -91,9 +107,9 @@ export const BtnAdd = styled.button`
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
   border: none;
-  background: #54adff;
-  color: #fdf7f2;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  background: var(--main-clr-blue);
+  color: var(--main-bckg-clr);
+  box-shadow: 3px 8px 14px var(--small-shadow);
 
   @media screen and (min-width: 768px) {
     position: static;
@@ -120,9 +136,9 @@ export const PetInfoStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #cce4fb;
+  background-color: var(--main-clr-blue-light);
   border: none;
-  color: #111111;
+  color: var(--main-accent-text-clr);
 `;
 export const PetInfoNoticesStyle = styled.div`
   height: 28px;
@@ -131,9 +147,9 @@ export const PetInfoNoticesStyle = styled.div`
   display: flex;
   padding-left: 4px;
   align-items: center;
-  background-color: #cce4fb;
+  background-color: var(--main-clr-blue-light);
   border: none;
-  color: #111111;
+  color: var(--main-accent-text-clr);
 `;
 export const PetCategoryStyle = styled.div`
   width: 126px;
@@ -145,13 +161,13 @@ export const PetCategoryStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #cce4fb;
+  background-color: var(--main-clr-blue-light);
   border: none;
-  color: #111111;
+  color: var(--main-accent-text-clr);
 `;
 export const City = styled.svg`
   fill: none;
-  stroke: #54adff;
+  stroke: var(--main-clr-blue);
   margin-right: 4px;
 `;
 export const TexStyletInfo = styled.p`
@@ -184,7 +200,7 @@ export const StyledEditPhotoBtn = styled.button`
   border: none;
   background-color: transparent;
   border: none;
-  color: #111111;
+  color: var(--main-accent-text-clr);
   font-weight: 400;
   font-size: 12px;
   line-height: calc(22 / 12);

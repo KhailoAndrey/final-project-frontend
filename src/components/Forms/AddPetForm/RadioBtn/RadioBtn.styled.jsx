@@ -25,14 +25,16 @@ export const InputLabel = styled.label`
 
   color: ${props => {
     if (props.name === 'category') {
-      return props.selected ? `#FEF9F9` : `#54ADFF`;
+      return props.selected ? `var(--btn-clr-fon)` : `var(--main-clr-blue)`;
     } else {
-      return props.selected ? `#00C3AD` : `#888888`;
+      return props.selected ? `var(--menu-clr-green)` : `var(--main-form-clr)`;
     }
   }};
   background: ${props => {
     if (props.name === 'category') {
-      return props.selected ? `#54ADFF` : `#CCE4FB`;
+      return props.selected
+        ? `var(--main-clr-blue)`
+        : `var(--main-clr-blue-light)`;
     }
   }};
   border-radius: ${props => {

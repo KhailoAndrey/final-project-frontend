@@ -42,7 +42,7 @@ export const Input = styled(Field)`
     font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: #888888;
+    color: var(--main-form-clr);
   }
 `;
 
@@ -53,5 +53,5 @@ export const ErrWrapper = styled.span`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.35;
-  color: #f43f5e;
+  color: var(--form-error-red);
 `;
