@@ -111,7 +111,7 @@ const authSlice = createSlice({
         const index = state.user.pets.findIndex(
           pet => pet._id === action.payload.deletedNoticeId
         );
-        state.user.pets.splice(index, 1)
+        state.user.pets.splice(index, 1);
       })
       .addCase(deleteOwnPet.rejected, (state, action) => {
         state.error = action.payload;

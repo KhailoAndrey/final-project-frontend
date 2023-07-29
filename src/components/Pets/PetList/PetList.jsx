@@ -1,7 +1,12 @@
 import PetsItem from '../PetItem/PetItem';
 import { List } from './PetList.styled';
+import { useAuth } from 'redux/auth/selectors';
 
-const PetsList = ({ pets }) => {
+const PetsList = () => {
+  const { user } = useAuth();
+
+  const { pets } = user;
+  console.log(pets);
   return (
     <>
       <List>

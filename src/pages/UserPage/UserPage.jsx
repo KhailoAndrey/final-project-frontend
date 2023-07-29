@@ -32,6 +32,7 @@ const UserPage = () => {
             <UserData />
           </UserInfo>
         </UserContainer>
+
         <PetsContainer>
           <Container>
             <ProfileTitle>My pets:</ProfileTitle>
