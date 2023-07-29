@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const LogoutBtn = styled.button`
   display: ${({ showButton }) => (showButton ? 'inline-flex' : 'none')};
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   left: 20px;
   border-radius: 40px;

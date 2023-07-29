@@ -49,7 +49,7 @@ export const PhotoWrapper = styled.span`
   align-items: center;
   width: 112px;
   height: 112px;
-  background: #cce4fb;
+  background: var(--main-clr-blue-light);
   border-radius: 20px;
 
   @media screen and (min-width: 768px) {
@@ -69,5 +69,5 @@ export const ErrWrapper = styled.span`
   font-size: 12px;
 
   line-height: 1.35;
-  color: #f43f5e;
+  color: var(--form-error-red);
 `;

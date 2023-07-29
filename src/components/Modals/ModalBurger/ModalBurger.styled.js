@@ -21,11 +21,14 @@ export const ModalBackdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   z-index: 1;
 `;
 export const ModalContent = styled.div`
+  overflow: auto;
   width: 100vw;
   height: 100vh;
+  max-height: calc(100vh);
   background-color: var(--btn-clr-fon);
   padding: 20px 20px 40px;
   position: relative;

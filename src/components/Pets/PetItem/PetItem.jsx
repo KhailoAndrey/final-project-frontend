@@ -11,16 +11,27 @@ import {
 
 import svg from '../../../images/Icons/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
-import { deletePet } from 'redux/auth/authOperations';
+import { deleteOwnPet } from 'redux/auth/authOperations';
+import { useState } from 'react';
+import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
+// import { deletePet } from 'redux/pets/operations';
 
 const PetsItem = ({ pet }) => {
-  const dispatch = useDispatch();
+  const [showDelModal, setShowDelModal] = useState(false);
 
-  console.log('the pet :>> ', pet);
+  const dispatch = useDispatch();
   const { _id, file, name, date, type, comments } = pet;
 
-  const handleClick = () => {
-    dispatch(deletePet(_id));
+  const data = {
+    title: 'Delete advertisment?',
+    text: `Are you sure you want to delete "${name}"? You can't undo this action.`,
+    icon: 'icon-trash',
+  };
+  // console.log('the pet :>> ', pet);
+
+  const onDelBtnClick = () => {
+    dispatch(deleteOwnPet(_id));
+    setShowDelModal(false);
   };
 
   return (
@@ -45,7 +56,7 @@ const PetsItem = ({ pet }) => {
             </Title>
           </ListPets>
 
-          <DeleteButton onClick={handleClick}>
+          <DeleteButton type="button" onClick={() => setShowDelModal(true)}>
             <svg width={24} height={24}>
               <use
                 href={`${svg}#icon-trash`}
@@ -56,6 +67,13 @@ const PetsItem = ({ pet }) => {
             </svg>
           </DeleteButton>
         </Content>
+        {showDelModal && (
+          <DeleteModal
+            onClose={setShowDelModal}
+            handleDelete={onDelBtnClick}
+            data={data}
+          />
+        )}
       </PetItem>
     </>
   );
