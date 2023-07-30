@@ -8,15 +8,15 @@ import { Container, Input, Label, ErrorText, Div } from './UserForm.styled.js';
 import {
   CameraIcon1,
   CloseIcon,
-  EditFoto,
+  // EditFoto,
   EditIcon,
   LogoutB,
 } from 'components/UserButtons/UserButtons.jsx';
 import {
   AvatarBtn,
   Button,
-  LogoutButton,
-  SaveBtn,
+  // LogoutButton,
+  // SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
 
@@ -26,16 +26,16 @@ import {
   PhotoWrapper,
 } from '../UserForm/UserForm.styled.js';
 
-import { useDispatch } from 'react-redux';
-import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
-import { updateUser } from 'redux/auth/authOperations.js';
+// import { useDispatch } from 'react-redux';
+// import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
+// import { updateUser } from 'redux/auth/authOperations.js';
 // import { getCurrentUser, updateUser } from 'fetch/user.js';
 
 export const UserForm = () => {
   const { user } = useAuth();
   // const [user, setUser] = useState(null);
-  const { token } = useAuth();
-  const dispatch = useDispatch();
+  // const { token } = useAuth();
+  // const dispatch = useDispatch();
 
   // Можливість редагування форми
   const [isFormEdit, setIsFormEdit] = useState(false);
