@@ -24,9 +24,9 @@ const UserPage = () => {
     // console.log('оновлення петсів у сторі');
   }, [pets]);
 
-  // useEffect(() => {
-  //   console.log('оновлення юзера у сторі');
-  // }, [user]);
+  useEffect(() => {
+    // console.log('оновлення юзера у сторі');
+  }, [user]);
 
   return (
     <>

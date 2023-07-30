@@ -10,9 +10,10 @@ const PetsList = () => {
 
   return (
     <>
-      {isLoading && <LoaderPaws/>}
+      {isLoading && <LoaderPaws />}
       <List>
-        {pets.length > 0 &&
+        {pets &&
+          pets.length > 0 &&
           pets.map(pet => <PetsItem key={pet._id} pet={pet} />)}
       </List>
     </>

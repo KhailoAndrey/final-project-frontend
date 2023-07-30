@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
 import { Form, Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import { useAuth } from 'redux/auth/selectors';
@@ -12,34 +14,32 @@ import {
   AvatarContainer,
   ImgWrapper,
   PhotoWrapper,
+  AvatarLabel,
 } from './UserForm.styled.js';
 
 import {
   CameraIcon1,
+  CheckIcon,
   CloseIcon,
   // EditFoto,
   EditIcon,
   LogoutB,
+  RemoveIcon,
 } from 'components/UserButtons/UserButtons.jsx';
 import {
   AvatarBtn,
   Button,
   // LogoutButton,
-  // SaveBtn,
+  SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { updateUser } from 'redux/auth/authOperations.js';
 
 // import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
-import { updateUser } from 'redux/auth/authOperations.js';
-// import { getCurrentUser, updateUser } from 'fetch/user.js';
 
 export const UserForm = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
-  // const [user, setUser] = useState(null);
-  // const { token } = useAuth();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Можливість редагування форми
@@ -60,28 +60,6 @@ export const UserForm = () => {
     phone: user ? user.phone : '',
     city: user ? user.city : '',
   });
-
-  //   const initialValues = {
-  //     avatar: '',
-  // name: user && user.name ? user.name : '',
-  // email: user && user.email ? user.email : '',
-  // birthday: user ? user.birthday : '',
-  // phone: user ? user.phone : '',
-  // city: user ? user.city : '',
-  //   };
-  // useEffect(() => {
-  //   getCurrentUser()
-  //     .then(user => {
-  //       setUser(user);
-  //     })
-  //     .catch(error => console.log(error));
-  // }, []);
-
-  // useEffect(() => {
-  //   if (user === null) {
-  //     return;
-  //   }
-  // }, [user]);
 
   useEffect(() => {
     if (user === null) {
@@ -113,6 +91,9 @@ export const UserForm = () => {
       formData.append('avatar', values.imgUrl);
     }
 
+    if (values.name) {
+      formData.append('name', values.name);
+    }
     // переводимо дату у формат беку
     const rowDate = values.birthday;
     const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
@@ -120,18 +101,10 @@ export const UserForm = () => {
       7
     )}-${rowDate.slice(0, 4)}`;
 
-    if (values.name) {
-      formData.append('name', values.name);
-    }
-
     if (values.birthday) {
       formData.append('birthday', newDate);
     }
-    // =========Старий варіант дати==>>>>>
-    // if (values.birthday) {
-    //   formData.append('birthday', values.birthday);
-    // }
-    // <<<<<<=================================
+
     if (values.phone) {
       formData.append('phone', values.phone);
     }
@@ -139,10 +112,9 @@ export const UserForm = () => {
       formData.append('city', values.city);
     }
 
-    console.log(`formData:${{ formData }}`);
     dispatch(updateUser(formData));
     toast.success('Changes saved successfully');
-    navigate(`/user`);
+    // navigate(`/user`);
   };
 
   const handleClick = () => {
@@ -155,7 +127,7 @@ export const UserForm = () => {
     setIsAvatarEdit(false);
   };
 
-  // >>>>>>=============== для Aватару====================
+  // >>>>>>============ дії з Аватаром ====================
 
   const handleFileChange = evt => {
     const fileSize = 3000000;
@@ -180,19 +152,19 @@ export const UserForm = () => {
   const handleConfirm = () => {
     setValues({ ...values, avatar: file });
     console.log(`values after confirm ${values}`);
-    setIsFormEdit(true);
+    // setIsFormEdit(true);
     setIsAvatarEdit(false);
     console.log('Image saved:', values.imageUrl);
   };
 
   const handleRemove = () => {
     setImageURL('imageUrl', '');
-    setIsFormEdit(true);
+    // setIsFormEdit(true);
     setIsAvatarEdit(false);
     console.log(`editing: ${isAvatarEdit}`);
     setFile(null);
   };
-  // <<<<<<=============== для аватару====================
+  // <<<<<<============= дії з Аватаром ====================
   return (
     <>
       <Formik
@@ -213,7 +185,7 @@ export const UserForm = () => {
           )}
           <Div>
             <AvatarContainer>
-              {isFormEdit && !isAvatarEdit ? (
+              {isFormEdit ? (
                 <AvatarBtn>
                   <input
                     type="file"
@@ -224,10 +196,10 @@ export const UserForm = () => {
                     onChange={handleFileChange}
                   />
 
-                  <label htmlFor="fileInput">
+                  <AvatarLabel htmlFor="fileInput">
                     <CameraIcon1 />
                     Edit foto
-                  </label>
+                  </AvatarLabel>
                 </AvatarBtn>
               ) : null}
               <ImgWrapper>
@@ -258,10 +230,11 @@ export const UserForm = () => {
                 {isFormEdit && isAvatarEdit ? (
                   <AvatarBtn>
                     <button type="button" onClick={handleConfirm}>
-                      Confirm
+                      <CheckIcon />
+                      <span>Confirm</span>
                     </button>
                     <button type="button" onClick={handleRemove}>
-                      Remove
+                      <RemoveIcon />
                     </button>
                   </AvatarBtn>
                 ) : null}
@@ -327,7 +300,11 @@ export const UserForm = () => {
               </InputWrap>
               <ErrorMessage name="city" component={ErrorText} />
 
-              {!isFormEdit ? <LogoutB /> : <button type="submit">Save</button>}
+              {!isFormEdit ? (
+                <LogoutB />
+              ) : (
+                <SaveBtn type="submit">Save</SaveBtn>
+              )}
 
               {/* <Logout /> */}
             </div>
@@ -336,7 +313,7 @@ export const UserForm = () => {
       </Formik>
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={3000}
         closeOnClick
         pauseOnHover
       />
