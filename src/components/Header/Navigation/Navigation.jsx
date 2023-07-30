@@ -27,7 +27,11 @@ const Navigation = () => {
         <Nav />
       </NavDesk>
       <LangBtn />
-      {isLoggedIn ? <UserNav /> : <AuthNav closeModal={closeModal} />}
+      {isLoggedIn ? (
+        <UserNav closeModal={closeModal} />
+      ) : (
+        <AuthNav closeModal={closeModal} />
+      )}
       <BurgerMenu openModal={openModal} />
       {showModal && (
         <ModalBurger closeModal={closeModal} showModal={showModal} />
