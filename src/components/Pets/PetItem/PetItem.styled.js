@@ -60,6 +60,12 @@ export const DeleteButton = styled.button`
   justify-content: center;
   border: none;
   background-color: transparent;
+  transition: transform var(--fast-animation);
+
+  &:focus,
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const ListPets = styled.ul`

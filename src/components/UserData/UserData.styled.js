@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-
+// position: relative;
 export const UserCard = styled.div`
-  position: relative;
   background: var(--white-bckg-clr);
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 40px;
@@ -16,13 +15,18 @@ export const UserCard = styled.div`
     justify-content: space-between;
     width: 704px;
     margin-top: 24px;
-    padding: 20px 21px;
+    padding: 20px 76px 20px 20px;
   }
 
   @media screen and (min-width: 1280px) {
     padding: 20px 24px 20px 16px;
     flex-direction: column;
     width: 395px;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 3px 8px 14px 0px var(--big-shadow);
   }
 `;
 

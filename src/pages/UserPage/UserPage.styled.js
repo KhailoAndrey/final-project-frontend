@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
 export const UserInfo = styled.div`
+  position: relative;
   width: 280px;
-  height: 517px;
   border-radius: 20px;
   margin-top: 18px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 268px;
     margin-top: 24px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 395px;
-    height: 520px;
   }
 `;
 
 export const Container = styled.div`
   display: flex;
   width: 280px;
+  margin: 0 auto;
   justify-content: space-between;
   align-items: center;
 

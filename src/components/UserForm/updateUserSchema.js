@@ -3,7 +3,7 @@ import * as yup from 'yup';
 export const updateUserSchema = yup.object().shape({
   file: yup
     .mixed()
-    .required('Upload your avatar')
+    // .required('Upload your avatar')
     .test(
       'fileType',
       'Only image files are allowed',
@@ -30,11 +30,16 @@ export const updateUserSchema = yup.object().shape({
     .max(70, 'Maximum 70 characters')
     .min(6, 'Minimum 6 characters')
     .email('Please, enter a valid email'),
-  birthday: yup.string().matches(
-    // eslint-disable-next-line
-    /^(0?[1-9]|[12][0-9]|3[01])[./\-](0?[1-9]|1[012])[./\-]\d{4}$/,
-    'Please enter a valid date: dd.mm.yyyy'
-  ),
+  // birthday: yup.string().matches(
+  //   // eslint-disable-next-line
+  //   /^(0?[1-9]|[12][0-9]|3[01])[./\-](0?[1-9]|1[012])[./\-]\d{4}$/,
+  //   'Please enter a valid date: dd.mm.yyyy'
+  // ),
+  birthday: yup.date().max(new Date(), 'Must be less than "now"'),
+  // .matches(
+  //   /^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.\d{4}$/,
+  //   'Please enter a valid date: dd.mm.yyyy'
+  // ),
   phone: yup
     .string()
     .matches(/^\+\d{12}$/, 'Phone should be in format +380441234567'),

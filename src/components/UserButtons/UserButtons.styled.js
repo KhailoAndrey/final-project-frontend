@@ -3,27 +3,22 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   position: absolute;
-  bottom: 490px;
-  right: 0px;
+  top: 14px;
+  right: 14px;
   width: 28px;
   height: 28px;
   background-color: transparent;
   padding: 0;
   border: none;
 
-  transition: transform 250ms linear;
+  transition: transform var(--fast-animation);
   &:hover,
   :focus {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
   @media screen and (min-width: 768px) {
-    bottom: 280px;
-    right: 0px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    bottom: 540px;
-    right: 0px;
+    top: 18px;
+    right: 18px;
   }
 `;
 
@@ -39,14 +34,14 @@ export const LogoutButton = styled.button`
   margin-top: 25px;
   transition: transform var(--fast-animation);
   @media screen and (min-width: 768px) {
-    margin-top: 3px;
+    margin-top: 15px;
   }
   @media screen and (min-width: 1280px) {
     margin-top: 23px;
   }
   &:focus,
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
 
