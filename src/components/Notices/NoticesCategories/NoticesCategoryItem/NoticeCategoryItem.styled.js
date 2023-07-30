@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Card = styled.li`
   width: 280px;
   height: 456px;
@@ -23,21 +22,7 @@ export const Card = styled.li`
   &:hover,
   &:focus {
     box-shadow: 3px 8px 14px 0px var(--big-shadow);
-  }
-    /* animation: moveRotate var(--slow-animation) forwards ; */
-
-
-  /* @keyframes moveRotate {
-    0% {
-      opacity: 0;
-      transform: scale(0);
-    }
-    
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }    
-  } */
+  }  
 `;
 
 export const ImgContainer = styled.div`
@@ -86,10 +71,9 @@ export const FavBtn = styled.button`
   justify-content: center;
   align-items: center;
 
-  /* &:hover,
-  &:focus {
-
-  } */
+  &:hover {
+    scale: 1.1;
+  }
 `;
 
 export const DelBtn = styled.button`
@@ -105,7 +89,7 @@ export const DelBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   svg {
     stroke: var(--main-clr-blue);
   }
@@ -144,7 +128,6 @@ export const Information = styled.div`
   background-color: var(--main-clr-blue-light);
   border-radius: 16px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   padding-left: 5px;
   padding-right: 4px;
@@ -177,7 +160,7 @@ export const LearnMoreBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:10px;
+  gap: 10px;
   border-radius: 40px;
   border: 2px solid var(--main-clr-blue);
   color: var(--main-clr-blue);
@@ -202,5 +185,3 @@ export const LearnMoreBtn = styled.button`
     }
   }
 `;
-
- 
