@@ -12,7 +12,7 @@ import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCa
 import NoticesFilter from 'components/Notices/NoticesSearch/NoticesSearch';
 import { Title } from 'components/Title/title';
 import AppPagination from 'components/Pagination/Pagination';
-import { NoticeNavContainer, NoNotice } from './Notices.styled';
+import { NoticeNavContainer, NoNotice, LoaderDiv } from './Notices.styled';
 import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
 // import overview from '../../images/NoNotice/overview.gif'
@@ -27,6 +27,7 @@ const Notices = () => {
   const [rerender, setRerender] = useState(false);
   const { t } = useTranslation();
   const params = useParams();
+  const [notiseLoading, setNoticeLoading] = useState(false);
 
   const { token } = useAuth();
 
@@ -47,27 +48,40 @@ const Notices = () => {
 
     async function foo(page, category, query, token) {
       if (category === 'favorite' && rerender) {
+        setNoticeLoading(true);
         const result = await fetchFavoriteNotices(page, query, token);
         setNoticeArticles(result.notices);
         setRerender(false);
         setTotalPageCount(result.totalPages);
+        setNoticeLoading(false);
       } else if (category === 'my-ads' && rerender) {
+        setNoticeLoading(true);
         const result = await fetchOwnNotices(page, query, token);
         setNoticeArticles(result.notices);
         setRerender(false);
-
         setTotalPageCount(result.totalPages);
+        setNoticeLoading(false);
       } else if (
         (category === 'sell' || 'lost-found' || 'for-free') &&
         rerender
       ) {
+        setNoticeLoading(true);
         const result = await fetchNotices(page, category, query);
         setNoticeArticles(result.notices);
         setRerender(false);
         setTotalPageCount(result.totalPages);
+        setNoticeLoading(false);
       }
     }
-  }, [page, category, query, token, rerender, noticeArticles]);
+  }, [
+    page,
+    category,
+    query,
+    token,
+    rerender,
+    noticeArticles,
+    setNoticeLoading,
+  ]);
 
   return (
     <>
@@ -86,6 +100,7 @@ const Notices = () => {
           />
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
+        <LoaderDiv>{notiseLoading && <LoaderPaws />}</LoaderDiv>
 
         {noticeArticles && (
           <NoticesCategoriesList
@@ -105,11 +120,9 @@ const Notices = () => {
           />
         )}
 
-        <LoaderPaws />
-
-        {noticeArticles.length === 0 && (
+        {!notiseLoading && noticeArticles.length === 0 && (
           <NoNotice>
-            <p>No notices (there will be a pretty pet soon...)</p>
+            {/* <p>No notices (there will be a pretty pet soon...)</p> */}
             <img src={pets} alt="" styled={'background: transparent'} />
           </NoNotice>
         )}

@@ -6,6 +6,9 @@ const selectToken = state => state.auth.token;
 const selectError = state => state.auth.error;
 const selectUser = state => state.auth.user;
 const selectNewUser = state => state.auth.newUser;
+const selectIsLoading = state => state.auth.isLoading;
+;
+
 
 export const useAuth = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -14,6 +17,7 @@ export const useAuth = () => {
   const token = useSelector(selectToken);
   const error = useSelector(selectError);
   const newUser = useSelector(selectNewUser);
+  const isLoading = useSelector(selectIsLoading);
   return {
     isLoggedIn,
     isRefreshing,
@@ -21,5 +25,6 @@ export const useAuth = () => {
     token,
     error,
     newUser,
+    isLoading,
   };
 };

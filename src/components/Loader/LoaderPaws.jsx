@@ -24,24 +24,31 @@ const Container = styled.div`
 
 const LoaderContainer = styled.div`
   position: relative;
-  width: 300px;
-  height: 100px; /* Встановлюємо висоту, що дозволить нам розмістити лапки в два ряди */
+  width: 150px;
+  height: 70px;
   display: flex;
-  flex-wrap: wrap; /* Підтримка упаковки лапок в два ряди */
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+    height: 100px;
+  }
 `;
 
 const Paw = styled.div`
-  /* position: relative; */
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   opacity: 0;
   animation: ${spinAnimation} 2050ms ease-in-out infinite;
   fill: var(--main-clr-blue);
-  transform-origin: 50% 50%; /* Задаємо точку, навколо якої будуть обертатись лапки */
-  transform: rotate(
-    ${props => props.rotation || '0'}deg
-  ); /* Використовуємо властивість rotation для повороту */
+  transform-origin: 50% 50%;
+  transform: rotate(${props => props.rotation || '0'}deg);
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const LoaderPaws = () => {
