@@ -16,8 +16,6 @@ export const Div = styled.div`
   }
 `;
 
-// export const DataWrap = styled.div``;
-
 export const InputWrap = styled.div`
   display: flex;
   align-items: center;
@@ -92,6 +90,12 @@ export const AvatarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const AvatarLabel = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ImgWrapper = styled.div`

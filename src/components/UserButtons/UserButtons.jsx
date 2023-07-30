@@ -71,8 +71,16 @@ export const CloseIcon = () => {
 
 export const CheckIcon = () => {
   return (
-    <svg width={24} height={24}>
+    <svg width={24} height={24} stroke={'var(--menu-clr-green)'}>
       <use href={`${svg}#icon-check`} />
+    </svg>
+  );
+};
+
+export const RemoveIcon = () => {
+  return (
+    <svg width={24} height={24} stroke={'var(--form-error-red)'}>
+      <use href={`${svg}#icon-cross-small`} width={24} height={24} />
     </svg>
   );
 };

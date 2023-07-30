@@ -47,7 +47,19 @@ export const LogoutButton = styled.button`
 
 export const AvatarBtn = styled.div`
   position: absolute;
-  top: 200px;
+  top: 216px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 28px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 216;
+  }
 `;
 
 export const LogoutIcon = styled.div`
@@ -68,18 +80,52 @@ export const LogoutIcon = styled.div`
 //   }
 // `;
 
+//  border: none;
+//   background-color: var(--main-clr-yellow);
+//   margin-top: 21px;
+//   transition: background-color var(--fast-animation);
+//   @media screen and (min-width: 768px) {
+//     margin-top: 15px;
+//   }
+
+//   &:focus,
+//   &:hover {
+//     background-color: var(--main-clr-blue);
+//   }
+
+// display: flex;
+//   justify-content: center;
+//   align-items: center;
+
 export const SaveBtn = styled.button`
-  border: none;
-  background-color: var(--main-clr-yellow);
-  margin-top: 21px;
-  transition: background-color var(--fast-animation);
+  width: 248px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 40px;
+  padding-left: auto;
+  padding-right: auto;
+  border: 2px solid var(--main-clr-blue);
+  font-size: 16px;
+  color: var(--white-bckg-clr);
+  background-color: var(--main-clr-blue);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
-    margin-top: 15px;
+    margin-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 255px;
   }
 
-  &:focus,
-  &:hover {
-    background-color: var(--main-clr-blue);
+  :hover,
+  :focus {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    border: none;
   }
 `;
 

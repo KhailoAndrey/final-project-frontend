@@ -39,7 +39,6 @@ export const DataWrapper = styled.div`
     margin: 0;
   }
   @media screen and (min-width: 1280px) {
-    margin-top: 25px;
   }
 `;
 // Перенести в buttons?
