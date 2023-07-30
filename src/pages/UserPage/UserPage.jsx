@@ -4,7 +4,7 @@ import { useAuth } from 'redux/auth/selectors';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
 import { UserData } from 'components/UserData/UserData';
 import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
-import PetsList from 'components/Pets/PetList/PetList';
+// import PetsList from 'components/Pets/PetList/PetList';
 import {
   UserInfo,
   Container,
