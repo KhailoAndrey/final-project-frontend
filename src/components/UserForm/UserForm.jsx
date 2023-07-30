@@ -34,12 +34,12 @@ import {
 } from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
 import { updateUser } from 'redux/auth/authOperations.js';
-import { formatPhoneNumber } from 'helpers/phoneInput.js';
+// import { formatPhoneNumber } from 'helpers/phoneInput.js';
 
 // import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
 
 export const UserForm = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  // const [phoneNumber, setPhoneNumber] = useState('');
 
   const { user } = useAuth();
   // const navigate = useNavigate();
@@ -68,6 +68,7 @@ export const UserForm = () => {
     if (user === null) {
       return;
     }
+
     setValues({
       name: user && user.name ? user.name : '',
       email: user && user.email ? user.email : '',
@@ -114,7 +115,7 @@ export const UserForm = () => {
     if (values.city) {
       formData.append('city', values.city);
     }
-
+    console.log(formData);
     dispatch(updateUser(formData));
     toast.success('Changes saved successfully');
     // navigate(`/user`);
@@ -168,15 +169,15 @@ export const UserForm = () => {
     setFile(null);
   };
   // <<<<<<============= дії з Аватаром ====================
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    if (name === 'phone') {
-      // Устанавливаем предзаполненное значение поля телефона
-      const formattedValue = formatPhoneNumber(value);
-      setValues({ ...values, phone: value });
-      setPhoneNumber(formattedValue);
-    } 
-  };
+  // const handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   if (name === 'phone') {
+  //     // Устанавливаем предзаполненное значение поля телефона
+  //     const formattedValue = formatPhoneNumber(value);
+  //     setValues({ ...values, phone: value });
+  //     setPhoneNumber(formattedValue);
+  //   }
+  // };
   return (
     <>
       <Formik
@@ -294,10 +295,10 @@ export const UserForm = () => {
                   id="phone"
                   autoComplete="off"
                   name="phone"
-                  placeholder="+38 (XXX) XXX-XX-XX"
+                  placeholder="+380441234567"
                   disabled={!isFormEdit}
-                  value={phoneNumber} // Добавьте это свойство для предзаполнения поля телефона
-                  onChange={handleInputChange}
+                  // value={phoneNumber} // Добавьте это свойство для предзаполнения поля телефона
+                  // onChange={handleInputChange}
                 />
               </InputWrap>
               <ErrorMessage name="phone" component={ErrorText} />
