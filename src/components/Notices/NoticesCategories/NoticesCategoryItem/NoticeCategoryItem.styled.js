@@ -105,6 +105,7 @@ export const DelBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  
   svg {
     stroke: var(--main-clr-blue);
   }
@@ -173,6 +174,10 @@ export const Title = styled.h2`
 export const LearnMoreBtn = styled.button`
   width: 248px;
   height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
   border-radius: 40px;
   border: 2px solid var(--main-clr-blue);
   color: var(--main-clr-blue);
@@ -182,11 +187,19 @@ export const LearnMoreBtn = styled.button`
   margin-right: auto;
   outline: 0;
 
+  svg {
+    fill: var(--main-clr-blue);
+  }
+
   &:hover,
   &:focus {
     background: var(--main-clr-gr_blue);
     color: var(--btn-clr-fon);
     border: 0;
+
+    svg {
+      fill: var(--btn-clr-fon);
+    }
   }
 `;
 
