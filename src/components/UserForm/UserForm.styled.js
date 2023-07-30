@@ -2,12 +2,29 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 // import temp from '../../images/UserPageImg/userPhotoDefault.png';
 
-export const Container = styled.div`
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    gap: 71px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+    gap: 0px;
+  }
+`;
+
+// export const DataWrap = styled.div``;
+
+export const InputWrap = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 12px;
   justify-content: space-between;
   position: relative;
+  width: 264px;
 
   @media screen and (min-width: 768px) {
     width: 355px;
@@ -23,11 +40,11 @@ export const Input = styled(Field)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 14px;
+  padding: 4px 12px;
   height: 32px;
   border: 1px solid #54adff;
   border-radius: 20px;
-  min-width: 190px;
+  width: 190px;
 
   @media screen and (min-width: 768px) {
     min-width: 255px;
@@ -57,20 +74,6 @@ export const Label = styled.label`
 
 export const ErrorText = styled.p`
   color: var(--form-error-red);
-`;
-
-export const Div = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
-    padding: 20px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    flex-direction: column;
-  }
 `;
 
 export const PhotoWrapper = styled.div`

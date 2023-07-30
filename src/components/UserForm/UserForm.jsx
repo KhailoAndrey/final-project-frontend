@@ -3,7 +3,17 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import { useAuth } from 'redux/auth/selectors';
 
-import { Container, Input, Label, ErrorText, Div } from './UserForm.styled.js';
+import {
+  InputWrap,
+  Input,
+  Label,
+  ErrorText,
+  Div,
+  DataWrap,
+  AvatarContainer,
+  ImgWrapper,
+  PhotoWrapper,
+} from './UserForm.styled.js';
 
 import {
   CameraIcon1,
@@ -19,12 +29,6 @@ import {
   // SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
-
-import {
-  AvatarContainer,
-  ImgWrapper,
-  PhotoWrapper,
-} from '../UserForm/UserForm.styled.js';
 
 // import { useDispatch } from 'react-redux';
 // import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
@@ -107,12 +111,26 @@ export const UserForm = () => {
     // if (values.imgUrl) {
     //   formData.append('avatar', values.imgUrl);
     // }
+
+    // переводимо дату у формат беку
+    const rowDate = values.birthday;
+    const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
+      5,
+      7
+    )}-${rowDate.slice(0, 4)}`;
+
     // if (values.name) {
     //   formData.append('name', values.name);
     // }
+
+    // if (values.birthday) {
+    //   formData.append('birthday', newDate);
+    // }
+    // =========Старий варіант дати==>>>>>
     // if (values.birthday) {
     //   formData.append('birthday', values.birthday);
     // }
+    // <<<<<<=================================
     // if (values.phone) {
     //   formData.append('phone', values.phone);
     // }
@@ -123,6 +141,7 @@ export const UserForm = () => {
     // console.log(`formData:${{ formData }}`);
     // dispatch(updateUser(formData));
     // toast.success('Changes saved successfully');
+    // navigate(`/user`);
   };
 
   const handleClick = () => {
@@ -174,7 +193,7 @@ export const UserForm = () => {
   };
   // <<<<<<=============== для аватару====================
   return (
-    <Div>
+    <>
       <Formik
         validationSchema={updateUserSchema}
         initialValues={values}
@@ -191,33 +210,8 @@ export const UserForm = () => {
               <CloseIcon />
             </Button>
           )}
-
-          <AvatarContainer>
-            <ImgWrapper>
-              <PhotoWrapper>
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt="Avatar"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={user.avatarURL}
-                    alt="Avatar"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                )}
-              </PhotoWrapper>
-
+          <Div>
+            <AvatarContainer>
               {isFormEdit && !isAvatarEdit ? (
                 <AvatarBtn>
                   <input
@@ -235,76 +229,108 @@ export const UserForm = () => {
                   </label>
                 </AvatarBtn>
               ) : null}
+              <ImgWrapper>
+                <PhotoWrapper>
+                  {imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt="Avatar"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={user.avatarURL}
+                      alt="Avatar"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  )}
+                </PhotoWrapper>
 
-              {isFormEdit && isAvatarEdit ? (
-                <AvatarBtn>
-                  <button type="button" onClick={handleConfirm}>
-                    Confirm
-                  </button>
-                  <button type="button" onClick={handleRemove}>
-                    Remove
-                  </button>
-                </AvatarBtn>
-              ) : null}
-            </ImgWrapper>
-          </AvatarContainer>
+                {isFormEdit && isAvatarEdit ? (
+                  <AvatarBtn>
+                    <button type="button" onClick={handleConfirm}>
+                      Confirm
+                    </button>
+                    <button type="button" onClick={handleRemove}>
+                      Remove
+                    </button>
+                  </AvatarBtn>
+                ) : null}
+              </ImgWrapper>
+            </AvatarContainer>
+            <div>
+              <InputWrap>
+                <Label htmlFor="name">Name:</Label>
+                <Input
+                  id="name"
+                  autoComplete="off"
+                  name="name"
+                  disabled={!isFormEdit}
+                />
+              </InputWrap>
+              <ErrorMessage name="name" component={ErrorText} />
 
-          <Container>
-            <Label htmlFor="name">Name:</Label>
-            <Input
-              id="name"
-              autoComplete="off"
-              name="name"
-              disabled={!isFormEdit}
-            />
-          </Container>
-          <ErrorMessage name="name" component={ErrorText} />
+              <InputWrap>
+                <Label htmlFor="email">Email:</Label>
+                <Input
+                  id="email"
+                  autoComplete="off"
+                  name="email"
+                  disabled={true}
+                />
+              </InputWrap>
+              <ErrorMessage name="email" component={ErrorText} />
 
-          <Container>
-            <Label htmlFor="email">Email:</Label>
-            <Input id="email" autoComplete="off" name="email" disabled={true} />
-          </Container>
-          <ErrorMessage name="email" component={ErrorText} />
+              <InputWrap>
+                <Label htmlFor="birthday">Birthday:</Label>
+                <Input
+                  id="birthday"
+                  type="date"
+                  autoComplete="off"
+                  name="birthday"
+                  placeholder="00.00.0000"
+                  disabled={!isFormEdit}
+                />
+              </InputWrap>
+              <ErrorMessage name="birthday" component={ErrorText} />
 
-          <Container>
-            <Label htmlFor="birthday">Birthday:</Label>
-            <Input
-              id="birthday"
-              autoComplete="off"
-              name="birthday"
-              placeholder="00-00-0000"
-              disabled={!isFormEdit}
-            />
-          </Container>
-          <ErrorMessage name="birthday" component={ErrorText} />
+              <InputWrap>
+                <Label htmlFor="phone">Phone:</Label>
+                <Input
+                  id="phone"
+                  autoComplete="off"
+                  name="phone"
+                  placeholder="+380000000000"
+                  disabled={!isFormEdit}
+                />
+              </InputWrap>
+              <ErrorMessage name="phone" component={ErrorText} />
 
-          <Container>
-            <Label htmlFor="phone">Phone:</Label>
-            <Input
-              id="phone"
-              autoComplete="off"
-              name="phone"
-              placeholder="+380000000000"
-              disabled={!isFormEdit}
-            />
-          </Container>
-          <ErrorMessage name="phone" component={ErrorText} />
+              <InputWrap>
+                <Label htmlFor="city"> City:</Label>
+                <Input
+                  id="city"
+                  autoComplete="off"
+                  name="city"
+                  placeholder="Kyiv"
+                  disabled={!isFormEdit}
+                />
+              </InputWrap>
+              <ErrorMessage name="city" component={ErrorText} />
 
-          <Container>
-            <Label htmlFor="city"> City:</Label>
-            <Input
-              id="city"
-              autoComplete="off"
-              name="city"
-              placeholder="Kyiv"
-              disabled={!isFormEdit}
-            />
-          </Container>
-          <ErrorMessage name="city" component={ErrorText} />
+              {!isFormEdit ? <LogoutB /> : <button type="submit">Save</button>}
 
-          {!isFormEdit ? <LogoutB /> : <button type="submit">Save</button>}
-
-          {/* <Logout /> */}
+              {/* <Logout /> */}
+            </div>
+          </Div>
         </Form>
       </Formik>
       <ToastContainer
@@ -313,6 +339,6 @@ export const UserForm = () => {
         closeOnClick
         pauseOnHover
       />
-    </Div>
+    </>
   );
 };
