@@ -15,7 +15,8 @@ export const updateUserSchema = yup.object().shape({
     .max(16)
     // .required('Field is required!')
     .matches(
-      /^[a-zA-Zа-яіїєА-ЯІЇЄ][a-zA-Zа-яіїєА-ЯІЇЄ'-\s]{1,15}$/,
+      // /^[a-zA-Zа-яіїєА-ЯІЇЄ][a-zA-Zа-яіїєА-ЯІЇЄ'-\s]{1,15}$/,
+      /^[\p{L}]{2,16}$/u,
       'Only alphabetic characters are allowed'
     ),
 

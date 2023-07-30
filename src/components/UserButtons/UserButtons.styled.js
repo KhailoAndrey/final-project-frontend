@@ -1,8 +1,35 @@
 import styled from 'styled-components';
 // import { Field } from 'formik';
 
-export const LogoutBtn = styled.button`
+export const Button = styled.button`
+  position: absolute;
+  bottom: 490px;
+  right: 0px;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+
+  transition: transform 250ms linear;
+  &:hover,
+  :focus {
+    transform: scale(1.3);
+  }
+  @media screen and (min-width: 768px) {
+    bottom: 280px;
+    right: 0px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    bottom: 540px;
+    right: 0px;
+  }
+`;
+
+export const LogoutButton = styled.button`
   display: flex;
+  gap: 12px;
   align-items: center;
   padding: 0;
   border: none;
@@ -21,6 +48,11 @@ export const LogoutBtn = styled.button`
   &:hover {
     transform: scale(1.2);
   }
+`;
+
+export const AvatarBtn = styled.div`
+  position: absolute;
+  top: 200px;
 `;
 
 export const LogoutIcon = styled.div`
@@ -43,7 +75,7 @@ export const LogoutIcon = styled.div`
 
 export const SaveBtn = styled.button`
   border: none;
-  background-color: var(--main-clr-blue);
+  background-color: var(--main-clr-yellow);
   margin-top: 21px;
   transition: background-color var(--fast-animation);
   @media screen and (min-width: 768px) {
@@ -52,13 +84,11 @@ export const SaveBtn = styled.button`
 
   &:focus,
   &:hover {
-    background-color: var(--main-clr-gr_blue);
+    background-color: var(--main-clr-blue);
   }
 `;
 
 export const EditFotoBtn = styled.button`
-  position: absolute;
-  top: 0;
   display: flex;
   align-items: center;
   padding: 0;

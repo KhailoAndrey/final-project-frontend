@@ -8,6 +8,7 @@ const {
   delFromFavorite,
   addOwnPet,
   deleteOwnPet,
+  updateUser,
 } = require('./authOperations');
 
 const initialState = {
@@ -119,6 +120,15 @@ const authSlice = createSlice({
         state.user.pets.splice(index, 1);
       })
       .addCase(deleteOwnPet.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(updateUser.pending, state => {
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
         state.error = action.payload;
       });
   },
