@@ -83,9 +83,9 @@
   "del_text_2": "? You can't undo this action.",
   "my_info": "My information:",
   "my_pets": "My pets:",
-  "": "",
-  "": "",
-  "": "",
-  "": "",
+  "add_pet_form": "Add pet",
+  "add_pet_sell": "Add pet for sale",
+  "add_pet_lost": "Add lost pet",
+  "add_my_pet": "Add my pet",
   "": ""
 }

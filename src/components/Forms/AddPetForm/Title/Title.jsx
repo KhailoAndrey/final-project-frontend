@@ -1,18 +1,21 @@
-import { AddPetTitle } from './Title.styled';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { AddPetTitle } from './Title.styled';
 
 export const Title = ({ picked, stage }) => {
-  let title = 'Add pet';
+  const { t } = useTranslation();
+
+  let title = t('add_pet_form');
   if (stage !== 1) {
     switch (picked) {
       case 'sell':
-        title = 'Add pet for sale';
+        title = t('add_pet_sell');
         break;
       case 'lost/found':
-        title = 'Add lost pet';
+        title = t('add_pet_lost');
         break;
       default:
-        title = 'Add my pet';
+        title = t('add_my_pet');
     }
   }
   return (
