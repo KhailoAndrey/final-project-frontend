@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
   Stage,
@@ -7,23 +8,25 @@ import {
 } from './StageIndicator.styled';
 
 export const StageIndicator = ({ stage, category }) => {
+  const { t } = useTranslation();
+
   return (
     <Wrapper data-category={category}>
       <StageWrapper>
         <Stage stage={stage} datastage={1}>
-          Choose option
+          {t('choose_option')}
         </Stage>
         <Indicator stage={stage} datastage={1}></Indicator>
       </StageWrapper>
       <StageWrapper>
         <Stage stage={stage} datastage={2}>
-          Personal details
+          {t('details')}
         </Stage>
         <Indicator stage={stage} datastage={2}></Indicator>
       </StageWrapper>
       <StageWrapper>
         <Stage stage={stage} datastage={3}>
-          More info
+          {t('more_info')}
         </Stage>
         <Indicator stage={stage} datastage={3}></Indicator>
       </StageWrapper>
