@@ -71,7 +71,7 @@ export const AddPetForm = () => {
 
   const { token } = useAuth();
   const dispatch = useDispatch();
-  
+
   const statuses = [
     [t('your_pet'), 'my pet'],
     [t('sell'), 'sell'],
@@ -202,7 +202,7 @@ export const AddPetForm = () => {
 
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
-    resetForm({});
+    resetForm();
     SetStage(1);
     SetEmulTouch([]);
   };

@@ -11,7 +11,7 @@ export const Title = ({ picked, stage }) => {
       case 'sell':
         title = t('add_pet_sell');
         break;
-      case 'lost/found':
+      case 'lost-found':
         title = t('add_pet_lost');
         break;
       default:
