@@ -3,7 +3,7 @@ import * as yup from 'yup';
 export const updateUserSchema = yup.object().shape({
   file: yup
     .mixed()
-    .required('Upload your avatar')
+    // .required('Upload your avatar')
     .test(
       'fileType',
       'Only image files are allowed',
