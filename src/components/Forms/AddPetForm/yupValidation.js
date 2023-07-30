@@ -7,8 +7,8 @@ export const addPetFormSchema = yup.object().shape({
     then: () =>
       yup
         .string()
-        .min(2, t('text_min_4'))
-        .max(50, t('text_max_30'))
+        .min(4, t('text_min_4'))
+        .max(30, t('text_max_30'))
         .required(t('title_enter')),
     otherwise: () => yup.string(),
   }),
@@ -17,11 +17,13 @@ export const addPetFormSchema = yup.object().shape({
     .string('Must be a string')
     .min(2, t('text_min_3'))
     .max(16, t('text_max_16'))
+    .matches(/^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,16}$/, t('name_regexp'))
     .required(t('type_type')),
   name: yup
     .string()
     .min(2, t('text_min_3'))
     .max(16, t('text_max_16'))
+    .matches(/^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,16}$/, t('name_regexp'))
     .required(t('name_enter')),
   location: yup.string().when('category', {
     is: value => value !== 'my pet',
@@ -38,7 +40,7 @@ export const addPetFormSchema = yup.object().shape({
       yup.number().moreThan(0, t('price_err')).required(t('price_enter')),
     otherwise: () => yup.number(),
   }),
-  comments: yup.string().min(8, t('text_min_8')).max(120, t('text_max_120')),
+  comments: yup.string().min(4, t('text_min_4')).max(120, t('text_max_120')),
   sex: yup.string().when('category', {
     is: value =>
       value === 'sell' || value === 'lost-found' || value === 'for-free',
