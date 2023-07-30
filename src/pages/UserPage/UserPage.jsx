@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
 import { UserData } from 'components/UserData/UserData';
@@ -15,6 +16,7 @@ import {
 
 const UserPage = () => {
   const { newUser, user } = useAuth();
+  const { t } = useTranslation();
 
   const pets = user.pets;
 
@@ -31,7 +33,7 @@ const UserPage = () => {
       {newUser && <ModalCongrats />}
       <UserPageContainer>
         <UserContainer>
-          <ProfileTitle> My information: </ProfileTitle>
+          <ProfileTitle>{t('my_info')}</ProfileTitle>
           <UserInfo>
             <UserData />
           </UserInfo>
@@ -39,7 +41,7 @@ const UserPage = () => {
 
         <PetsContainer>
           <Container>
-            <ProfileTitle>My pets:</ProfileTitle>
+            <ProfileTitle>{t('my_pets')}</ProfileTitle>
             <AddPetBtn />
           </Container>
           {pets.length > 0 && <PetsList pets={pets} />}

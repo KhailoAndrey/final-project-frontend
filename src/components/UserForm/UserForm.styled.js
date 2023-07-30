@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
-import temp from '../../images/UserPageImg/userPhotoDefault.png';
+// import temp from '../../images/UserPageImg/userPhotoDefault.png';
 
 export const Container = styled.div`
   display: flex;

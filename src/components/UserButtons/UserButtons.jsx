@@ -4,7 +4,7 @@ import {
   // Edit,
   EditFotoBtn,
   LogoutButton,
-  LogoutIcon,
+  // LogoutIcon,
 } from './UserButtons.styled';
 
 export const LogoutB = () => {

@@ -17,7 +17,6 @@ const Logout = ({ showButton, closeModal }) => {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(isModalOpen);
   const handleLogout = () => {
     setIsModalOpen(true);
   };
