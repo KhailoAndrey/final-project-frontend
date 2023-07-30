@@ -9,7 +9,6 @@ import {
   Label,
   ErrorText,
   Div,
-  DataWrap,
   AvatarContainer,
   ImgWrapper,
   PhotoWrapper,
