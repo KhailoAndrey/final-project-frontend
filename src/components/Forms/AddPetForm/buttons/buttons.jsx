@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import icons from '../../../../images/Icons/sprite.svg';
 import paw from '../../../../images/Icons/symbol-defs.svg';
 
@@ -129,7 +130,7 @@ export const BtnDone = () => {
   return (
     <>
       <PetFormBtn type="submit">
-        Done
+        {t('done')}
         <SvgPawprint />
       </PetFormBtn>
     </>
@@ -139,7 +140,7 @@ export const BtnNext = ({ onClick }) => {
   return (
     <>
       <PetFormBtn type="button" onClick={onClick}>
-        Next
+        {t('next')}
         <SvgPawprint />
       </PetFormBtn>
     </>
@@ -150,7 +151,7 @@ export const BtnCancel = ({ onClick }) => {
     <>
       <BtnCancelArrow type="button" onClick={onClick}>
         <SvgCancel />
-        Cancel
+        {t('cancel')}
       </BtnCancelArrow>
     </>
   );
@@ -160,7 +161,7 @@ export const BtnBack = ({ onClick }) => {
     <>
       <BtnBackArrow type="button" onClick={onClick}>
         <SvgCancel />
-        Back
+        {t('back')}
       </BtnBackArrow>
     </>
   );
