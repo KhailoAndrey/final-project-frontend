@@ -8,7 +8,6 @@ export const Button = styled.button`
   height: 35px;
   justify-content: center;
   align-items: center;
-  /* gap: 8px; */
   border: 0;
   outline: 0;
   text-decoration: none;

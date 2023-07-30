@@ -27,7 +27,7 @@ export const Card = styled.li`
     /* animation: moveRotate var(--slow-animation) forwards ; */
 
 
-  @keyframes moveRotate {
+  /* @keyframes moveRotate {
     0% {
       opacity: 0;
       transform: scale(0);
@@ -37,7 +37,7 @@ export const Card = styled.li`
       opacity: 1;
       transform: scale(1);
     }    
-  }
+  } */
 `;
 
 export const ImgContainer = styled.div`
@@ -180,6 +180,7 @@ export const LearnMoreBtn = styled.button`
   font-weight: 600;
   margin-left: auto;
   margin-right: auto;
+  outline: 0;
 
   &:hover,
   &:focus {

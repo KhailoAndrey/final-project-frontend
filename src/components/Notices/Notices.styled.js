@@ -30,3 +30,18 @@ export const NoticeNavContainer = styled.div`
     }    
   }
 `;
+
+export const NoNotice = styled.div`
+  width: 320px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1248px;
+  }
+`;
