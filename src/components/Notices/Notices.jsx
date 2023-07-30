@@ -15,6 +15,8 @@ import AppPagination from 'components/Pagination/Pagination';
 import { NoticeNavContainer, NoNotice, LoaderDiv } from './Notices.styled';
 import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
+// import fetchTestFilter from 'fetch/noticeTestFilter';
+// import NoticesDropFilter from './NoticesFilter/NoticesDropFilter';
 // import overview from '../../images/NoNotice/overview.gif'
 
 const Notices = () => {
@@ -23,6 +25,9 @@ const Notices = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
+  // const [petsSex, setPetsSex] = useState('');
+  // const [petsAge, setPetsAge] = useState('');
+
   const [totalPageCount, setTotalPageCount] = useState(0);
   const [rerender, setRerender] = useState(false);
   const { t } = useTranslation();
@@ -72,6 +77,9 @@ const Notices = () => {
         setTotalPageCount(result.totalPages);
         setNoticeLoading(false);
       }
+
+    //   const test = await fetchTestFilter();
+    //   console.log("test:",test);
     }
   }, [
     page,
@@ -100,6 +108,9 @@ const Notices = () => {
           />
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
+        {/* her here here----------------------- */}
+        {/* <NoticesDropFilter setPetsSex={setPetsSex} setPetaAge={setPetsAge} /> */}
+
         <LoaderDiv>{notiseLoading && <LoaderPaws />}</LoaderDiv>
 
         {noticeArticles && (

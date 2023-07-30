@@ -17,6 +17,7 @@ async function fetchAddNotices(formData, token) {
     const response = await fetch(`${API_URL}`, options);
     if (!response.ok) throw new Error('Sorry. Try again later :(');
     const data = await response.json();
+    console.log("pet added");
     return data;
   } catch (error) {
     console.log(error.message);
