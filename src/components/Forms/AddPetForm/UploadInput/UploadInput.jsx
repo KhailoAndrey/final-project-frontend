@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFormikContext } from 'formik';
 import { PlusIcon } from '../Icon/Icon';
 import {
@@ -14,6 +15,7 @@ import PropTypes from 'prop-types';
 export const UploadInput = ({ errors, touched, category }) => {
   const [photoPreview, SetPhotoPreview] = useState(null);
   const { setFieldValue } = useFormikContext();
+  const { t } = useTranslation();
 
   const handleUploadFile = e => {
     const uploadFile = e.currentTarget.files[0];
@@ -26,7 +28,7 @@ export const UploadInput = ({ errors, touched, category }) => {
 
   return (
     <UploadFileLabel data-category={category}>
-      Add photo
+      {t('add_photo')}
       <UploadFile
         type="file"
         name="file"

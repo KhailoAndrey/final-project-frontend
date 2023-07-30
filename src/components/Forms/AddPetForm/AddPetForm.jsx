@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+// import { t } from 'i18next';
 import { addOwnPet } from 'redux/auth/authOperations';
 import { useAuth } from 'redux/auth/selectors';
 import { useDispatch } from 'react-redux';
@@ -42,16 +44,16 @@ const initialsValues = {
   // notice: '',
   file: '',
 };
-const statuses = [
-  ['your pet', 'my pet'],
-  ['sell', 'sell'],
-  ['lost/found', 'lost-found'],
-  ['in good hands', 'for-free'],
-];
-const sexes = [
-  ['Female', 'female'],
-  ['Male', 'male'],
-];
+// const statuses = [
+//   ['your pet', 'my pet'],
+//   ['sell', 'sell'],
+//   ['lost/found', 'lost-found'],
+//   ['in good hands', 'for-free'],
+// ];
+// const sexes = [
+//   [t('female'), 'female'],
+//   [t('male'), 'male'],
+// ];
 
 const formTempValues = localStorage.getItem('formValues');
 const initialsFormState = formTempValues
@@ -65,9 +67,22 @@ export const AddPetForm = () => {
   const [stage, SetStage] = useState(() => initialsStage);
   const [emulTouch, SetEmulTouch] = useState([]);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { token } = useAuth();
   const dispatch = useDispatch();
+  
+  const statuses = [
+    [t('your_pet'), 'my pet'],
+    [t('sell'), 'sell'],
+    [t('lost_found'), 'lost-found'],
+    [t('in_good_hands'), 'for-free'],
+  ];
+
+  const sexes = [
+    [t('female'), 'female'],
+    [t('male'), 'male'],
+  ];
 
   const handleOnNextClick = async (values, errors, validateForm) => {
     let formIsValid;
@@ -233,7 +248,7 @@ export const AddPetForm = () => {
                     <SexUploadWrapper>
                       {category !== 'my pet' && (
                         <GroupSexWrapper role="group" aria-labelledby="sex">
-                          <GroupTitle id="sex">The sex</GroupTitle>
+                          <GroupTitle id="sex">{t('sex')}</GroupTitle>
                           <SexWrapper>
                             {sexes.map((option, index) => {
                               const iconLabel =
@@ -277,8 +292,8 @@ export const AddPetForm = () => {
                       <InputField
                         type="text"
                         name="title"
-                        label={'Title of add'}
-                        placeholder={'Title of add'}
+                        label={t('title_add')}
+                        placeholder={t('title_add')}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}
@@ -289,8 +304,8 @@ export const AddPetForm = () => {
                       <InputField
                         type="text"
                         name="name"
-                        label={"Pet's name"}
-                        placeholder={"Type your pet's name "}
+                        label={t('pet_name')}
+                        placeholder={t('pn_placeholder')}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}
@@ -301,8 +316,8 @@ export const AddPetForm = () => {
                       <InputField
                         type="date"
                         name="date"
-                        label={'Date of birth'}
-                        placeholder={'Choose a date of birth'}
+                        label={t('date_of_birth')}
+                        placeholder={t('db_pholder')}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}
@@ -313,8 +328,8 @@ export const AddPetForm = () => {
                       <InputField
                         type="text"
                         name="type"
-                        label={'Type'}
-                        placeholder={'Type type'}
+                        label={t('type')}
+                        placeholder={t('type_enter')}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}
@@ -325,8 +340,8 @@ export const AddPetForm = () => {
                       <InputField
                         type="text"
                         name="location"
-                        label={'Location'}
-                        placeholder={'Type your location'}
+                        label={t('location')}
+                        placeholder={t('loc_enter')}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}
@@ -337,8 +352,8 @@ export const AddPetForm = () => {
                       <InputField
                         type="number"
                         name="price"
-                        label={'Price'}
-                        placeholder={'Type price'}
+                        label={t('price')}
+                        placeholder={t('price_enter')}
                         errors={errors}
                         touched={touched}
                         emulTouch={emulTouch}

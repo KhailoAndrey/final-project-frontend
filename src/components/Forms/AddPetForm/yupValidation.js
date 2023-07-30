@@ -1,4 +1,7 @@
+import { t } from 'i18next';
 import * as yup from 'yup';
+
+
 
 export const addPetFormSchema = yup.object().shape({
   title: yup.string().when('category', {
@@ -6,32 +9,32 @@ export const addPetFormSchema = yup.object().shape({
     then: () =>
       yup
         .string()
-        .min(2, 'Minimum 2 characters')
-        .max(50, 'Maximum 50 characters')
-        .required('Enter a title'),
+        .min(2, t('text_min_2'))
+        .max(50, t('text_max_50'))
+        .required(t('title_enter')),
     otherwise: () => yup.string(),
   }),
   date: yup
     .date()
-    .max(new Date(), 'Must be less than "now"')
-    .required('Choose a date of birth'),
+    .max(new Date(), t('date_max'))
+    .required(t('db_pholder')),
   type: yup
     .string('Must be a string')
-    .min(2, 'Minimum 2 characters')
-    .max(16, 'Maximum 16 characters')
-    .required('Enter a pet`s type '),
+    .min(2, t('text_min_2'))
+    .max(16, t('text_max_16'))
+    .required(t('type_type')),
   name: yup
     .string()
-    .min(2, 'Minimum 2 characters')
-    .max(16, 'Maximum 16 characters')
-    .required('Enter a pet`s name'),
+    .min(2, t('text_min_2'))
+    .max(16, t('text_max_16'))
+    .required(t('name_enter')),
   location: yup.string().when('category', {
     is: value => value !== 'my pet',
     then: () =>
       yup
         .string()
-        .matches(/^[A-Z][A-Za-z ]+$/, 'Starts with capitalize character')
-        .required('Enter your location'),
+        .matches(/^[A-Z][A-Za-z ]+$/, t('loc_with'))
+        .required(t('loc_enter')),
     otherwise: () => yup.string(),
   }),
   price: yup.number().when('category', {
@@ -39,19 +42,19 @@ export const addPetFormSchema = yup.object().shape({
     then: () =>
       yup
         .number()
-        .moreThan(0, 'Price must be greater than 0')
-        .required('Enter a price'),
+        .moreThan(0, t('price_err'))
+        .required(t('price_enter')),
     otherwise: () => yup.number(),
   }),
   comments: yup
     .string()
-    .min(8, 'Minimum 8 characters')
-    .max(120, 'Maximum 120 characters'),
+    .min(8, t('text_min_8'))
+    .max(120, t('text_max_120')),
   sex: yup.string().when('category', {
     is: value =>
       value === 'sell' || value === 'lost-found' || value === 'for-free',
     then: () =>
-      yup.string().oneOf(['female', 'male']).required('Choose a pet`s sex'),
+      yup.string().oneOf(['female', 'male']).required(t('pet_sex')),
     otherwise: () => yup.string(),
   }),
   category: yup
@@ -60,16 +63,16 @@ export const addPetFormSchema = yup.object().shape({
     .required(),
   file: yup
     .mixed()
-    .required('Upload pet`s photo')
+    .required(t('file_upload'))
     .test(
       'fileType',
-      'Only image files are allowed',
+      t('file_type'),
       value =>
         !value || ['image/jpg', 'image/jpeg', 'image/png'].includes(value.type)
     )
     .test(
       'fileSize',
-      'File size is too large',
+      t('file_size'),
       value => value?.size <= 3145728
     ),
 });

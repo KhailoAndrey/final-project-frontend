@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { CommentsLabel, CommentInput, ErrWrapper } from './CommentField.styled';
 import PropTypes from 'prop-types';
 
@@ -15,13 +16,13 @@ export const CommentField = ({
     (errors.comments && emulTouch.includes('comments'));
   return (
     <CommentsLabel>
-      Comments
+      {t('comment')}
       <CommentInput
         name="comments"
         onChange={onChange}
         onBlur={onBlur}
         value={value}
-        placeholder="Type your comments here..."
+        placeholder={t('comment_ph')}
         data-invalid={isFieldInvalid}
         data-category={category}
       />
