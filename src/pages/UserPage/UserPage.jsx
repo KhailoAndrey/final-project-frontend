@@ -44,7 +44,7 @@ const UserPage = () => {
             <ProfileTitle>{t('my_pets')}</ProfileTitle>
             <AddPetBtn />
           </Container>
-          {/* {pets.length > 0 && <PetsList pets={pets} />} */}
+          {pets.length > 0 && <PetsList pets={pets} />}
         </PetsContainer>
       </UserPageContainer>
       {/* {user.newUser && <ModalCongrats />} */}
