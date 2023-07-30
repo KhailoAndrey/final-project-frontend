@@ -6,8 +6,9 @@ import PublicRoute from 'utils/PublicRoute';
 import { useAuth } from 'redux/auth/selectors';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperations';
-import Loader from 'components/Loader/Loader';
+// import Loader from 'components/Loader/Loader';
 import { LanguageProvider } from 'utils/LanguageContext';
+import LoaderPaws from './Loader/LoaderPaws';
 
 const Layout = lazy(() => import('./Layout/Layout'));
 const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
@@ -29,7 +30,8 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader />
+    // <Loader />
+    <LoaderPaws/>
   ) : (
     <LanguageProvider>
       <Routes>

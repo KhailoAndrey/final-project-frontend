@@ -12,7 +12,10 @@ import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCa
 import NoticesFilter from 'components/Notices/NoticesSearch/NoticesSearch';
 import { Title } from 'components/Title/title';
 import AppPagination from 'components/Pagination/Pagination';
-import { NoticeNavContainer } from './Notices.styled';
+import { NoticeNavContainer, NoNotice } from './Notices.styled';
+import pets from '../../images/NoNotice/pets.gif';
+import LoaderPaws from 'components/Loader/LoaderPaws';
+// import overview from '../../images/NoNotice/overview.gif'
 
 const Notices = () => {
   const [showAlertModal, setAlertShowModal] = useState(false);
@@ -30,16 +33,14 @@ const Notices = () => {
   useEffect(() => {
     setRerender(true);
   }, []);
-  
-    useEffect(() => {
+
+  useEffect(() => {
     if (params.categoryName) {
       setCategory(params.categoryName);
     } else {
       setCategory('sell');
     }
   }, [params.categoryName]);
-
- 
 
   useEffect(() => {
     foo(page, category, query, token);
@@ -64,7 +65,6 @@ const Notices = () => {
         setNoticeArticles(result.notices);
         setRerender(false);
         setTotalPageCount(result.totalPages);
-
       }
     }
   }, [page, category, query, token, rerender, noticeArticles]);
@@ -82,27 +82,40 @@ const Notices = () => {
           />
           <AddPetBtn setAlertShowModal={setAlertShowModal} />
         </NoticeNavContainer>
+
+        {noticeArticles && (
+          <NoticesCategoriesList
+            articles={noticeArticles}
+            setAlertShowModal={setAlertShowModal}
+            setRerender={setRerender}
+            category={category}
+          />
+        )}
+
+        {totalPageCount > 1 && (
+          <AppPagination
+            setPage={setPage}
+            page={page}
+            totalPageCount={totalPageCount}
+            setRerender={setRerender}
+          />
+        )}
+
+        <LoaderPaws />
+
+        {noticeArticles.length === 0 && (
+          <NoNotice>
+            <p>No notices (there will be a pretty pet soon...)</p>
+            <img src={pets} alt="" styled={'background: transparent'} />
+          </NoNotice>
+        )}
+
+        
       </div>
-      {noticeArticles && (
-        <NoticesCategoriesList
-          articles={noticeArticles}
-          setAlertShowModal={setAlertShowModal}
-          setRerender={setRerender}
-          category={category}
-        />
-      )}
 
       {showAlertModal && (
         <AttentionModal setAlertShowModal={setAlertShowModal} />
       )}
-
-      {totalPageCount>1 && <AppPagination
-        setPage={setPage}
-        page={page}
-        totalPageCount={totalPageCount}
-        setRerender={setRerender}
-      />}
-      
     </>
   );
 };
