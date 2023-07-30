@@ -149,3 +149,16 @@ export const deleteOwnPet = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.put(`/api/users`, credentials);
+      return res.data;
+    } catch ({ response }) {
+      // getMessage(response);
+      return thunkAPI.rejectWithValue(getMessage(response));
+    }
+  }
+);

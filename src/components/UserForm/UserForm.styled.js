@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import temp from '../../images/UserPageImg/userPhotoDefault.png';
 
 export const Container = styled.div`
   display: flex;
@@ -54,14 +55,6 @@ export const Label = styled.label`
   }
 `;
 
-// export const Button = styled.span`
-//   padding: 0;
-//   border: none;
-//   background-color: transparent;
-//   position: absolute;
-//   right: 12px;
-// `;
-
 export const ErrorText = styled.p`
   color: var(--form-error-red);
 `;
@@ -79,3 +72,47 @@ export const Div = styled.div`
     flex-direction: column;
   }
 `;
+
+export const PhotoWrapper = styled.div`
+  width: 182px;
+  height: 182px;
+  border-radius: 40px;
+  background-color: var(--main-bckg-clr);
+
+  overflow: hidden;
+
+  display: block;
+  justify-content: center;
+`;
+
+export const AvatarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ImgWrapper = styled.div`
+  position: relative;
+  width: 182px;
+  height: 182px;
+  border-radius: 40px;
+
+  margin-bottom: 60px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 64px;
+  }
+`;
+
+// ==================================
+// нижче видалити?
+
+// export const Button = styled.span`
+//   padding: 0;
+//   border: none;
+//   background-color: transparent;
+//   position: absolute;
+//   right: 12px;
+// `;

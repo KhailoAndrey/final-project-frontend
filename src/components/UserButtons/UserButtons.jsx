@@ -1,23 +1,23 @@
-import svg from '../../../images/Icons/symbol-defs.svg';
+import svg from '../../images/Icons/symbol-defs.svg';
 import {
   CameraIcon,
   // Edit,
   EditFotoBtn,
-  LogoutBtn,
+  LogoutButton,
   LogoutIcon,
-} from './UserPageButtons.styled';
+} from './UserButtons.styled';
 
-export const Logout = () => {
+export const LogoutB = () => {
   return (
     <>
-      <LogoutBtn type="button" onClick={() => console.log('LogoutBtn')}>
-        <LogoutIcon>
-          <svg width={24} height={24}>
-            <use href={`${svg}#icon-logout`} />
-          </svg>
-        </LogoutIcon>
+      <LogoutButton type="button" onClick={() => console.log('LogoutBtn')}>
+        {/* <LogoutIcon> */}
+        <svg width={24} height={24} stroke={'var(--main-clr-blue)'}>
+          <use href={`${svg}#icon-logout`} />
+        </svg>
+        {/* </LogoutIcon> */}
         Log Out
-      </LogoutBtn>
+      </LogoutButton>
     </>
   );
 };
@@ -25,13 +25,13 @@ export const Logout = () => {
 export const EditFoto = () => {
   return (
     <>
-      <EditFotoBtn>
+      <EditFotoBtn type="button">
         <CameraIcon>
-          <svg width={24} height={24}>
+          <svg width={24} height={24} stroke={'var(--main-clr-blue)'}>
             <use href={`${svg}#icon-camera`} />
           </svg>
         </CameraIcon>
-        Edit foto
+        Edit photo
       </EditFotoBtn>
     </>
   );
@@ -39,7 +39,7 @@ export const EditFoto = () => {
 
 export const LogoutIcon1 = () => {
   return (
-    <svg width={24} height={24}>
+    <svg width={24} height={24} stroke={'var(--main-clr-blue)'}>
       <use href={`${svg}#icon-logout`} />
     </svg>
   );
@@ -47,7 +47,7 @@ export const LogoutIcon1 = () => {
 
 export const CameraIcon1 = () => {
   return (
-    <svg width={24} height={24}>
+    <svg width={24} height={24} stroke={'var(--main-clr-blue)'}>
       <use href={`${svg}#icon-camera`} />
     </svg>
   );
@@ -63,8 +63,8 @@ export const EditIcon = () => {
 
 export const CloseIcon = () => {
   return (
-    <svg width={24} height={24}>
-      <use href={`${svg}#icon-cross`} />
+    <svg width={24} height={24} stroke={'var(--main-clr-blue)'}>
+      <use href={`${svg}#icon-cross`} width={24} height={24} />
     </svg>
   );
 };

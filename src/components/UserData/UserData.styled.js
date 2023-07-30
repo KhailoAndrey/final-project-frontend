@@ -1,21 +1,5 @@
 import styled from 'styled-components';
 
-// export const Section = styled.section`
-//   margin-top: 40px;
-
-//   @media screen and (min-width: 768px) {
-//     margin-top: 60px;
-//   }
-// `;
-
-export const UserTitle = styled.h3`
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 24px;
-    font-weight: 500;
-    font-size: 28px;
-  }
-`;
-
 export const UserCard = styled.div`
   position: relative;
   background: var(--white-bckg-clr);
@@ -42,6 +26,22 @@ export const UserCard = styled.div`
   }
 `;
 
+export const DataWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 25px;
+  }
+`;
+// Перенести в buttons?
+
+// ==============================================
+// нижче не потрібне?
 export const Img = styled.img`
   width: 182px;
   height: 182px;
@@ -58,28 +58,6 @@ export const DataWrapperUser = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-  }
-`;
-
-export const StyledWrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    margin: 0;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-right: 32px;
-  }
-`;
-
-export const DataWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-
-  @media screen and (min-width: 768px) {
-    margin: 0;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-top: 25px;
   }
 `;
 
@@ -101,32 +79,6 @@ export const DataField = styled.div`
   &:focus,
   &:hover {
     box-shadow: 2px 2px 4px #456a8e84;
-  }
-`;
-
-export const Button = styled.button`
-  position: absolute;
-  bottom: 490px;
-  right: 0px;
-  width: 28px;
-  height: 28px;
-  background-color: transparent;
-  padding: 0;
-
-  border: none;
-  transition: transform 250ms linear;
-  &:hover,
-  :focus {
-    transform: scale(1.2);
-  }
-  @media screen and (min-width: 768px) {
-    bottom: 280px;
-    right: 0px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    bottom: 540px;
-    right: 0px;
   }
 `;
 
@@ -192,3 +144,19 @@ export const CameraIcon = styled.img`
   margin-right: 8px;
   outline: none;
 `;
+
+// export const Section = styled.section`
+//   margin-top: 40px;
+
+//   @media screen and (min-width: 768px) {
+//     margin-top: 60px;
+//   }
+// `;
+
+// export const UserTitle = styled.h3`
+//   @media screen and (min-width: 1280px) {
+//     margin-bottom: 24px;
+//     font-weight: 500;
+//     font-size: 28px;
+//   }
+// `;

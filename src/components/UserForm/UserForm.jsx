@@ -3,39 +3,47 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import { useAuth } from 'redux/auth/selectors';
 
-// import { toast, ToastContainer } from 'react-toastify';
 import { Container, Input, Label, ErrorText, Div } from './UserForm.styled.js';
-import { Button } from 'components/UserData/UserData.styled.js';
+
 import {
+  CameraIcon1,
   CloseIcon,
+  EditFoto,
   EditIcon,
-  Logout,
-} from 'components/Buttons/UserPageButtons/UserPageButtons.jsx';
-import { SaveBtn } from 'components/Buttons/UserPageButtons/UserPageButtons.styled.js';
+  LogoutB,
+} from 'components/UserButtons/UserButtons.jsx';
+import {
+  AvatarBtn,
+  Button,
+  LogoutButton,
+  SaveBtn,
+} from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
 
 import {
-  AvatarBtn,
   AvatarContainer,
   ImgWrapper,
   PhotoWrapper,
-} from 'components/AvatarCard/AvatarCard.styled.js';
+} from '../UserForm/UserForm.styled.js';
 
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
+import { updateUser } from 'redux/auth/authOperations.js';
 // import { getCurrentUser, updateUser } from 'fetch/user.js';
 
 export const UserForm = () => {
   const { user } = useAuth();
   // const [user, setUser] = useState(null);
-  // const { token } = useAuth();
-  // const dispatch = useDispatch();
+  const { token } = useAuth();
+  const dispatch = useDispatch();
 
   // Можливість редагування форми
-  const [isEdit, setIsEdit] = useState(false);
-  console.log(`isEdit=${isEdit}`);
+  const [isFormEdit, setIsFormEdit] = useState(false);
+  console.log(`isFormEdit=${isFormEdit}`);
 
-  // Можливість редагування зображення
-  const [editing, setEditing] = useState(false);
+  // Можливість редагування аватар
+  const [isAvatarEdit, setIsAvatarEdit] = useState(false);
+  console.log(`isAvatarEdit=${isAvatarEdit}`);
   // Стани полів форми
   const [file, setFile] = useState(null);
   const [imageUrl, setImageURL] = useState(null);
@@ -86,114 +94,87 @@ export const UserForm = () => {
     setImageURL(file ? imageUrl : user.avatarURL);
   }, [user, file, imageUrl, values.avatar]);
 
-  const handleSubmit = async values => {
-    if (file && !values.avatar) {
-      errorMessage('Press confirm or cancel your new photo');
-      return;
-    }
-    setIsEdit(false);
-    try {
-      const formData = new FormData();
-      // const entries = Object.entries(values);
+  const handleSubmit = values => {
+    console.log('Submit!');
+    // if (file && !values.avatar) {
+    //   toast.error('Press confirm or cancel your new photo');
+    //   return;
+    // }
 
-      // let validationObject = {};
+    // setIsFormEdit(false);
+    // const formData = new FormData();
 
-      // entries.forEach(entry => {
-      //   if (entry[1]) {
-      //     formData.append(entry[0], entry[1]);
-      //     validationObject = {
-      //       ...validationObject,
-      //       [entry[0]]: entry[1],
-      //     };
-      //   }
-      // });
-      // !!!!!!!!!!!!!======= переробити форм дату без емайл ======!!!!!!!!!!!!!!
-      formData.append('avatar', values.imgUrl);
-      formData.append('name', values.name);
-      formData.append('birthday', values.birthday);
-      formData.append('phone', values.phone);
-      formData.append('city', values.city);
-      console.log(values);
-      // dispatch(updateUser(formData));
+    // if (values.imgUrl) {
+    //   formData.append('avatar', values.imgUrl);
+    // }
+    // if (values.name) {
+    //   formData.append('name', values.name);
+    // }
+    // if (values.birthday) {
+    //   formData.append('birthday', values.birthday);
+    // }
+    // if (values.phone) {
+    //   formData.append('phone', values.phone);
+    // }
+    // if (values.city) {
+    //   formData.append('city', values.city);
+    // }
 
-      //   const formDataObject = {
-      //   avatar: fileInputElement.files[0],
-      //  name: Groucho
-
-      //   });
-
-      // const formDataObject = {};
-      // formData.forEach((value, key) => {
-      //   formDataObject[key] = value;
-      // });
-      // ===========================================<<<<<<<<<<<
-
-      // await updateUserSchema.validate(validationObject);
-      // console.log(`formData:${{ formData }}`);
-      // updateUser(formData);
-      successMessage('Changes saved successfully');
-    } catch (error) {
-      if (error.name === 'ValidationError') {
-        errorMessage(error.errors[0]);
-      }
-    }
+    // console.log(`formData:${{ formData }}`);
+    // dispatch(updateUser(formData));
+    // toast.success('Changes saved successfully');
   };
 
   const handleClick = () => {
-    setIsEdit(!isEdit);
+    setIsFormEdit(true);
   };
 
   const removeChanges = () => {
-    setIsEdit(!isEdit);
+    setIsFormEdit(false);
     setFile(null);
-    setEditing(true);
+    setIsAvatarEdit(false);
   };
 
   // >>>>>>=============== для Aватару====================
 
   const handleFileChange = evt => {
+    const fileSize = 3000000;
     const file = evt.target.files[0];
-    if (file) {
+    if (file && file.size <= fileSize) {
       setFile(file);
       setImageURL(URL.createObjectURL(file));
 
-      setEditing(true);
-      console.log('Is file');
-      console.log(editing);
+      setIsAvatarEdit(true);
+
+      console.log(`Is file: ${{ file }}`);
+      console.log(`editing: ${isAvatarEdit}`);
     } else {
-      // setEditing(true);
+      setIsAvatarEdit(false);
       setImageURL(user && user.avatarURL);
+      toast.error('File size must be less than 3MB');
       console.log('No file');
+      console.log(values);
     }
   };
 
   const handleConfirm = () => {
     setValues({ ...values, avatar: file });
-    setIsEdit(true);
-    setEditing(true);
+    console.log(`values after confirm ${values}`);
+    setIsFormEdit(true);
+    setIsAvatarEdit(false);
     console.log('Image saved:', values.imageUrl);
   };
 
   const handleRemove = () => {
     setImageURL('imageUrl', '');
-    setIsEdit(true);
-    setEditing(false);
+    setIsFormEdit(true);
+    setIsAvatarEdit(false);
+    console.log(`editing: ${isAvatarEdit}`);
     setFile(null);
   };
   // <<<<<<=============== для аватару====================
-  // Повідомлення
-  const errorMessage = message => {
-    toast.error(message);
-  };
-
-  const successMessage = message => {
-    toast.success(message);
-  };
-
   return (
     <Div>
-      {/* <AvatarCard isEdit={isEdit} /> */}
-
       <Formik
         validationSchema={updateUserSchema}
         initialValues={values}
@@ -201,13 +182,13 @@ export const UserForm = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          {!isEdit ? (
+          {!isFormEdit ? (
             <Button type="button" onClick={handleClick}>
               <EditIcon />
             </Button>
           ) : (
             <Button type="button" onClick={removeChanges}>
-              <CloseIcon /> X
+              <CloseIcon />
             </Button>
           )}
 
@@ -237,7 +218,7 @@ export const UserForm = () => {
                 )}
               </PhotoWrapper>
 
-              {isEdit && !editing ? (
+              {isFormEdit && !isAvatarEdit ? (
                 <AvatarBtn>
                   <input
                     type="file"
@@ -247,16 +228,22 @@ export const UserForm = () => {
                     name="file"
                     onChange={handleFileChange}
                   />
-                  <label htmlFor="fileInput">Edit foto</label>
+
+                  <label htmlFor="fileInput">
+                    <CameraIcon1 />
+                    Edit foto
+                  </label>
                 </AvatarBtn>
               ) : null}
 
-              {isEdit && file ? (
+              {isFormEdit && isAvatarEdit ? (
                 <AvatarBtn>
                   <button type="button" onClick={handleConfirm}>
                     Confirm
                   </button>
-                  <button onClick={handleRemove}>Remove</button>
+                  <button type="button" onClick={handleRemove}>
+                    Remove
+                  </button>
                 </AvatarBtn>
               ) : null}
             </ImgWrapper>
@@ -268,16 +255,16 @@ export const UserForm = () => {
               id="name"
               autoComplete="off"
               name="name"
-              disabled={!isEdit}
+              disabled={!isFormEdit}
             />
-            <ErrorMessage name="name" component={ErrorText} />
           </Container>
+          <ErrorMessage name="name" component={ErrorText} />
 
           <Container>
             <Label htmlFor="email">Email:</Label>
             <Input id="email" autoComplete="off" name="email" disabled={true} />
-            <ErrorMessage name="email" component={ErrorText} />
           </Container>
+          <ErrorMessage name="email" component={ErrorText} />
 
           <Container>
             <Label htmlFor="birthday">Birthday:</Label>
@@ -286,10 +273,10 @@ export const UserForm = () => {
               autoComplete="off"
               name="birthday"
               placeholder="00-00-0000"
-              disabled={!isEdit}
+              disabled={!isFormEdit}
             />
-            <ErrorMessage name="birthday" component={ErrorText} />
           </Container>
+          <ErrorMessage name="birthday" component={ErrorText} />
 
           <Container>
             <Label htmlFor="phone">Phone:</Label>
@@ -298,24 +285,26 @@ export const UserForm = () => {
               autoComplete="off"
               name="phone"
               placeholder="+380000000000"
-              disabled={!isEdit}
+              disabled={!isFormEdit}
             />
-            <ErrorMessage name="phone" component={ErrorText} />
           </Container>
+          <ErrorMessage name="phone" component={ErrorText} />
 
           <Container>
-            <Label htmlFor="city">City:</Label>
+            <Label htmlFor="city"> City:</Label>
             <Input
               id="city"
               autoComplete="off"
               name="city"
               placeholder="Kyiv"
-              disabled={!isEdit}
+              disabled={!isFormEdit}
             />
-            <ErrorMessage name="city" component={ErrorText} />
           </Container>
+          <ErrorMessage name="city" component={ErrorText} />
 
-          {!isEdit ? <Logout /> : <SaveBtn type="submit">Save</SaveBtn>}
+          {!isFormEdit ? <LogoutB /> : <button type="submit">Save</button>}
+
+          {/* <Logout /> */}
         </Form>
       </Formik>
       <ToastContainer

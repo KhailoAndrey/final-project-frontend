@@ -18,26 +18,6 @@ export const UserInfo = styled.div`
   }
 `;
 
-export const PetsInfo = styled.div`
-  width: 280px;
-  height: 517px;
-  /* border-radius: 20px;
-  background-color: lightseagreen; */
-  margin-top: 31px;
-
-  @media screen and (min-width: 768px) {
-    width: 704px;
-    /* height: 268px; */
-    margin-top: 24px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 821px;
-    height: 520px;
-    margin-top: 24px;
-  }
-`;
-
 export const Container = styled.div`
   display: flex;
   width: 280px;
@@ -52,6 +32,17 @@ export const Container = styled.div`
   @media screen and (min-width: 1280px) {
     width: 821px;
     margin-bottom: 24px;
+  }
+`;
+
+export const ProfileTitle = styled.h2`
+  font-family: Manrope;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
   }
 `;
 
@@ -84,13 +75,24 @@ export const UserPageContainer = styled.div`
   }
 `;
 
-export const ProfileTitle = styled.h2`
-  font-family: Manrope;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0.8px;
+// ===============================
+// Нижче видалити?
+export const PetsInfo = styled.div`
+  width: 280px;
+  height: 517px;
+  /* border-radius: 20px;
+  background-color: lightseagreen; */
+  margin-top: 31px;
 
   @media screen and (min-width: 768px) {
-    font-size: 28px;
+    width: 704px;
+    /* height: 268px; */
+    margin-top: 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 821px;
+    height: 520px;
+    margin-top: 24px;
   }
 `;
