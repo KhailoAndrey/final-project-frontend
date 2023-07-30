@@ -29,17 +29,19 @@ import {
   // SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-// import { useDispatch } from 'react-redux';
 // import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
-// import { updateUser } from 'redux/auth/authOperations.js';
+import { updateUser } from 'redux/auth/authOperations.js';
 // import { getCurrentUser, updateUser } from 'fetch/user.js';
 
 export const UserForm = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   // const [user, setUser] = useState(null);
   // const { token } = useAuth();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // Можливість редагування форми
   const [isFormEdit, setIsFormEdit] = useState(false);
@@ -100,17 +102,17 @@ export const UserForm = () => {
 
   const handleSubmit = values => {
     console.log('Submit!');
-    // if (file && !values.avatar) {
-    //   toast.error('Press confirm or cancel your new photo');
-    //   return;
-    // }
+    if (file && !values.avatar) {
+      toast.error('Press confirm or cancel your new photo');
+      return;
+    }
 
-    // setIsFormEdit(false);
-    // const formData = new FormData();
+    setIsFormEdit(false);
+    const formData = new FormData();
 
-    // if (values.imgUrl) {
-    //   formData.append('avatar', values.imgUrl);
-    // }
+    if (values.imgUrl) {
+      formData.append('avatar', values.imgUrl);
+    }
 
     // переводимо дату у формат беку
     const rowDate = values.birthday;
@@ -119,29 +121,29 @@ export const UserForm = () => {
       7
     )}-${rowDate.slice(0, 4)}`;
 
-    // if (values.name) {
-    //   formData.append('name', values.name);
-    // }
+    if (values.name) {
+      formData.append('name', values.name);
+    }
 
-    // if (values.birthday) {
-    //   formData.append('birthday', newDate);
-    // }
+    if (values.birthday) {
+      formData.append('birthday', newDate);
+    }
     // =========Старий варіант дати==>>>>>
     // if (values.birthday) {
     //   formData.append('birthday', values.birthday);
     // }
     // <<<<<<=================================
-    // if (values.phone) {
-    //   formData.append('phone', values.phone);
-    // }
-    // if (values.city) {
-    //   formData.append('city', values.city);
-    // }
+    if (values.phone) {
+      formData.append('phone', values.phone);
+    }
+    if (values.city) {
+      formData.append('city', values.city);
+    }
 
-    // console.log(`formData:${{ formData }}`);
-    // dispatch(updateUser(formData));
-    // toast.success('Changes saved successfully');
-    // navigate(`/user`);
+    console.log(`formData:${{ formData }}`);
+    dispatch(updateUser(formData));
+    toast.success('Changes saved successfully');
+    navigate(`/user`);
   };
 
   const handleClick = () => {
