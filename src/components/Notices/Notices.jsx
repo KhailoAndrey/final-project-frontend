@@ -73,7 +73,11 @@ const Notices = () => {
     <>
       <div>
         <Title text={t('notice_page_title')} />
-        <NoticesFilter setQuery={setQuery} setPage={setPage} />
+        <NoticesFilter
+          setQuery={setQuery}
+          setPage={setPage}
+          setRerender={setRerender}
+        />
         <NoticeNavContainer>
           <NoticesCatagoriesNav
             setCategory={setCategory}
@@ -109,8 +113,6 @@ const Notices = () => {
             <img src={pets} alt="" styled={'background: transparent'} />
           </NoNotice>
         )}
-
-        
       </div>
 
       {showAlertModal && (

@@ -9,7 +9,7 @@ import {
   ClearButton,
 } from './NoticesSearch.styled';
 
-const NoticesFilter = ({ setQuery, setPage }) => {
+const NoticesFilter = ({ setQuery, setPage, setRerender }) => {
   const [localInput, setLocalInput] = useState('');
   const { t } = useTranslation();
 
@@ -26,6 +26,7 @@ const NoticesFilter = ({ setQuery, setPage }) => {
       console.log('query :>> ', query);
       setPage(1);
       setQuery(query);
+      setRerender(true);
     }
   };
 
@@ -33,6 +34,7 @@ const NoticesFilter = ({ setQuery, setPage }) => {
     e.preventDefault();
     setLocalInput('');
     setQuery('');
+    setRerender(true);
   };
 
   return (
