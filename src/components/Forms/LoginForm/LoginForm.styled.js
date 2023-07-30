@@ -22,18 +22,18 @@ export const FormContainer = styled.div`
   padding: 40px 12px;
   @media screen and (min-width: 768px) {
     width: 608px;
-    margin-top: 60px;
+    margin-top: 80px;
     padding: 60px 75px;
   }
 `;
 
-export const FormInput = styled.input`
+export const FormInputEmail = styled.input`
   box-sizing: border-box;
   outline: none;
   display: flex;
   margin-bottom: 14px;
   width: 256px;
-  padding: 12px 16px;
+  padding: 12px 60px 12px 16px;
   border: 1px var(--main-clr-blue) solid;
   border-radius: 40px;
 
@@ -52,6 +52,42 @@ export const FormInput = styled.input`
   }
   &.input-success {
     border-color: green;
+  }
+  :-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 0 1000px white inset;
+  }
+`;
+
+export const FormInput = styled.input`
+  box-sizing: border-box;
+  outline: none;
+  display: flex;
+  margin-bottom: 14px;
+  width: 256px;
+  padding: 12px 85px 12px 16px;
+  border: 1px var(--main-clr-blue) solid;
+  border-radius: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 458px;
+    margin-bottom: 32px;
+  }
+  &::placeholder {
+    font-family: Manrope, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.64px;
+    font-size: 16px;
+  }
+  &.input-error {
+    border-color: red;
+  }
+  &.input-success {
+    border-color: green;
+  }
+  :-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 0 1000px white inset;
   }
 `;
 
@@ -167,7 +203,7 @@ export const FormSuccessPassword = styled.p`
 export const IconsContainer = styled.div`
   position: absolute;
   display: flex;
-  background-color: var(--white-bckg-clr);
+ 
   gap: 12px;
   top: 50%;
   right: 16px;
@@ -179,5 +215,5 @@ export const EmailIcon = styled.div`
   top: 50%;
   right: 16px;
   transform: translateY(-50%);
-  background-color: var(--white-bckg-clr);
+
 `;

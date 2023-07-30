@@ -9,6 +9,7 @@ import { logIn } from 'redux/auth/authOperations';
 import {
   FormContainer,
   FormInput,
+  FormInputEmail,
   FormHeader,
   FormText,
   FormLink,
@@ -93,7 +94,7 @@ export const LoginForm = () => {
       <FormHeader>{t('login_form')}</FormHeader>
       <form onSubmit={formik.handleSubmit}>
         <EmailDiv>
-          <FormInput
+          <FormInputEmail
             id="email"
             name="email"
             value={formik.values.email}
