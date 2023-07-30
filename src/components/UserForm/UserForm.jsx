@@ -34,10 +34,13 @@ import {
 } from 'components/UserButtons/UserButtons.styled.js';
 import { updateUserSchema } from './updateUserSchema.js';
 import { updateUser } from 'redux/auth/authOperations.js';
+import { formatPhoneNumber } from 'helpers/phoneInput.js';
 
 // import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
 
 export const UserForm = () => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+
   const { user } = useAuth();
   // const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -165,6 +168,15 @@ export const UserForm = () => {
     setFile(null);
   };
   // <<<<<<============= дії з Аватаром ====================
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    if (name === 'phone') {
+      // Устанавливаем предзаполненное значение поля телефона
+      const formattedValue = formatPhoneNumber(value);
+      setValues({ ...values, phone: value });
+      setPhoneNumber(formattedValue);
+    } 
+  };
   return (
     <>
       <Formik
@@ -282,8 +294,10 @@ export const UserForm = () => {
                   id="phone"
                   autoComplete="off"
                   name="phone"
-                  placeholder="+380000000000"
+                  placeholder="+38 (XXX) XXX-XX-XX"
                   disabled={!isFormEdit}
+                  value={phoneNumber} // Добавьте это свойство для предзаполнения поля телефона
+                  onChange={handleInputChange}
                 />
               </InputWrap>
               <ErrorMessage name="phone" component={ErrorText} />
