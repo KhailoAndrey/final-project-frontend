@@ -45,3 +45,15 @@ export const NoNotice = styled.div`
     width: 1248px;
   }
 `;
+
+export const LoaderDiv = styled.div`
+  z-index: 1;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  /* width: 150px;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  } */
+`;

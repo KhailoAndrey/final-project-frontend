@@ -164,6 +164,9 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
         <Title>{title}</Title>
         <LearnMoreBtn type="button" onClick={() => setShowLearMore(true)}>
           {t('learn_more')}
+          <svg width={24} height={24}>
+            <use href={`${svg}#icon-paw`} width={24} height={24} />
+          </svg>
         </LearnMoreBtn>
       </BottomContainer>
       {showLearMore && (
