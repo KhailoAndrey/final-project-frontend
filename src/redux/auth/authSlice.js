@@ -149,14 +149,14 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.pending, state => {
         state.error = null;
-        state.isLoading = true;
+        // state.isLoading = true;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        return { ...state, user: action.payload, isLoading: false };
+        return { ...state, user: action.payload };
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.error = action.payload;
-        state.isLoading = false;
+        // state.isLoading = false;
       });
   },
 });
