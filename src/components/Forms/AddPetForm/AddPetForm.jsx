@@ -119,11 +119,12 @@ export const AddPetForm = () => {
 
   // фетч-запит для створення оголошення
   async function foo(formData, token) {
-    await fetchAddNotices(formData, token);
+    const result = fetchAddNotices(formData, token);
+    return result;
   }
 
   // кнопка сабміт
-  const handleOnSubmit = (values, { resetForm }) => {
+  const handleOnSubmit = async (values, { resetForm }) => {
     // console.log('values.category - ', values.category);
 
     const formData = new FormData();
@@ -176,11 +177,14 @@ export const AddPetForm = () => {
       }
 
       // викликаємо функцію фетч-запиту
-      foo(formData, token);
+      await foo(formData, token);
+
+      console.log('before relocate');
       navigate(`/notices/${values.category}`);
     }
 
     // загальні процеси після запиту
+
     localStorage.removeItem('formValues');
     localStorage.removeItem('stage');
     resetForm({});
