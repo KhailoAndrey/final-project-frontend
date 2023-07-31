@@ -62,6 +62,24 @@ export const AvatarBtn = styled.div`
   }
 `;
 
+export const AvatarBtnNext = styled.div`
+  position: absolute;
+  justify-self: center;
+  top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 28px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 216;
+  }
+`;
+
 export const LogoutIcon = styled.div`
   padding-right: 12px;
 `;
