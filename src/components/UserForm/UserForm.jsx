@@ -59,7 +59,9 @@ const { t } = useTranslation();
   const [values, setValues] = useState({
     name: user && user.name ? user.name : '',
     email: user && user.email ? user.email : '',
-    birthday: user ? user.birthday : '',
+    birthday: user
+      ? `${user.birthday.slice(6, user.birthday.length)}-${user.birthday.slice(3,5)}-${user.birthday.slice(0, 2)}`
+      : '',
     phone: user ? user.phone : '',
     city: user ? user.city : '',
   });
@@ -86,19 +88,27 @@ const { t } = useTranslation();
     if (user === null) {
       return;
     }
-
+// const inputDate = user.birthday;
+// const date = new Date(user.birthday);
+// const formattedDate = `${new Date(user.birthday).getFullYear()}-${String(new Date(user.birthday).getMonth() + 1).padStart(2, '0')}-${String(new Date(user.birthday).getDate()).padStart(2, '0')}`;
     // const date = newDefDate();
     
     setValues({
       name: user && user.name ? user.name : '',
       email: user && user.email ? user.email : '',
-      birthday: user ? user.birthday : '',
+      birthday: user
+        ? `${user.birthday.slice(
+            6,
+            user.birthday.length
+          )}-${user.birthday.slice(3, 5)}-${user.birthday.slice(0, 2)}`
+        : '',
       phone: user ? user.phone : '',
       city: user ? user.city : '',
       avatar: values.avatar || '',
       avatarURL: user ? user.avatarURL : '',
     });
-
+      console.log("values---->", values)
+      
     setImageURL(file ? imageUrl : user.avatarURL);
   }, [user, file, imageUrl, values.avatar]);
 
@@ -132,7 +142,7 @@ const { t } = useTranslation();
         5,
         7
       )}-${rowDate.slice(0, 4)}`;
-      // console.log('newDate :>> ', newDate);
+      console.log('newDate :>> ', newDate);
       formData.append('birthday', newDate);
     }
 
@@ -143,7 +153,7 @@ const { t } = useTranslation();
       formData.append('city', values.city);
     }
 
-    console.log(formData.get('avatar'));
+    // console.log(formData.get('avatar'));
     dispatch(updateUser(formData));
     toast.success('Changes saved successfully');
     // navigate(`/user`);
