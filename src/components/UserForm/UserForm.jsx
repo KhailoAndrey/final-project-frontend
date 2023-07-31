@@ -58,12 +58,13 @@ export const UserForm = () => {
   const [values, setValues] = useState({
     name: user && user.name ? user.name : '',
     email: user && user.email ? user.email : '',
-    birthday: user
-      ? `${user.birthday.slice(6, user.birthday.length)}-${user.birthday.slice(
-          3,
-          5
-        )}-${user.birthday.slice(0, 2)}`
-      : '',
+    birthday:
+      user.birthday.length > 0
+        ? `${user.birthday.slice(
+            6,
+            user.birthday.length
+          )}-${user.birthday.slice(3, 5)}-${user.birthday.slice(0, 2)}`
+        : '',
     phone: user ? user.phone : '',
     city: user ? user.city : '',
   });

@@ -109,7 +109,7 @@ export const ModalLearMore = ({
           </Image>
           <ContactInfo>
             <Description>
-              {data.description || 'Cute dog looking for a home'}
+              {data.title}
             </Description>
             <Contact>
               <Contactheader>
