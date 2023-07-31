@@ -86,8 +86,13 @@ export const FormInput = styled.input`
   &::placeholder {
     font-family: Manrope, sans-serif;
     font-weight: 400;
+    font-size: 14px;
     letter-spacing: 0.64px;
     color: var(--main-form-clr);
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
   }
 `;
 

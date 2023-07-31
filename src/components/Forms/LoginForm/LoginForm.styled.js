@@ -16,7 +16,7 @@ export const FormContainer = styled.div`
   margin-right: auto;
   width: 280px;
 
-  border-radius: 40px;
+  border-radius: 20px;
   background-color: var(--white-bckg-clr);
 
   box-shadow: 7px 4px 14px rgba(136, 198, 253, 0.19);
@@ -26,6 +26,7 @@ export const FormContainer = styled.div`
     width: 608px;
     margin-top: 80px;
     padding: 60px 75px;
+    border-radius: 40px;
   }
 `;
 
@@ -72,6 +73,7 @@ export const FormInputEmail = styled.input`
   display: flex;
   margin-bottom: 14px;
   width: 256px;
+  line-height: 1.4;
   padding: 12px 60px 12px 16px;
   border: 1px var(--main-clr-blue) solid;
   border-radius: 40px;
@@ -104,6 +106,7 @@ export const FormInput = styled.input`
   display: flex;
   margin-bottom: 14px;
   width: 256px;
+  line-height: 1.4;
   padding: 12px 85px 12px 16px;
   border: 1px var(--main-clr-blue) solid;
   border-radius: 40px;
@@ -205,9 +208,9 @@ export const EmailDiv = styled.div`
 
 export const FormErrorPassword = styled.p`
   position: absolute;
-  font-size: 9px;
+  font-size: 8px;
   color: var(--red-form-clr);
-  top: 44px;
+  top: 48px;
   left: 16px;
 
   @media screen and (min-width: 768px) {
@@ -216,10 +219,10 @@ export const FormErrorPassword = styled.p`
 `;
 
 export const FormErrorEmail = styled.p`
-  font-size: 9px;
+  font-size: 8px;
   position: absolute;
   color: var(--red-form-clr);
-  top: 44px;
+  top: 48px;
   left: 16px;
 
   @media screen and (min-width: 768px) {
@@ -228,10 +231,10 @@ export const FormErrorEmail = styled.p`
 `;
 
 export const FormSuccessPassword = styled.p`
-  font-size: 9px;
+  font-size: 8px;
   position: absolute;
   color: var(--green-form-clr);
-  top: 44px;
+  top: 48px;
   left: 16px;
 
   @media screen and (min-width: 768px) {
