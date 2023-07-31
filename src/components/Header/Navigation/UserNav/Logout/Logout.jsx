@@ -5,6 +5,7 @@ import { logOut } from 'redux/auth/authOperations';
 import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 import svg from '../../../../../images/Icons/symbol-defs.svg';
 import { LogoutBtn } from './Logout.styled';
+import clearAllCookies from 'utils/clearCookies';
 
 const Logout = ({ showButton, closeModal }) => {
   const dispatch = useDispatch();
@@ -22,8 +23,10 @@ const Logout = ({ showButton, closeModal }) => {
   };
 
   const handleLogoutUser = () => {
+    clearAllCookies();
     dispatch(logOut());
     closeModal();
+    
   };
 
   return (
