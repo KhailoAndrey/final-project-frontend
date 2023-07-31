@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import { LoginBtn } from 'components/Header/Navigation/AuthNav/Login/loginBtn';
 import { RegistrationBtn } from 'components/Header/Navigation/AuthNav/Registration/registrBtn';
@@ -28,6 +28,7 @@ const ModalBurger = ({ closeModal, showModal }) => {
         closeModal();
       }
     };
+
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -66,6 +67,7 @@ const ModalBurger = ({ closeModal, showModal }) => {
 
 export default ModalBurger;
 
-// ModalBurger.propTypes = {
-//   setShowModal: PropTypes.func.isRequired,
-// };
+ModalBurger.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+};

@@ -56,21 +56,39 @@ export const CategoryContent = styled.span`
 
 export const FilterBtn = styled.button`
   border-radius: 40px;
-  background: var(--main-clr-blue);
+  background: var(--btn-clr-fon);
   display: flex;
   min-width: 110px;
   height: 35px;
   justify-content: center;
   align-items: center;
-  border: 0;
+  border: 2px solid var(--main-clr-blue);
   outline: 0;
   text-decoration: none;
   svg {
-    stroke: var(--btn-clr-fon);
+    stroke: var(--main-clr-blue);
   }
   padding: 8px 0;
-  color: var(--btn-clr-fon);
+  color: var(--main-clr-blue);
   font-family: Manrope;
   font-size: 16px;
   font-weight: 700;
+
+  @media screen and (min-width: 768px) {
+    gap: 8px;
+    font-size: 16px;
+    height: 40px;
+    min-width: 152px;
+  }
+
+  &:hover,
+  &:focus {
+    background: var(--main-clr-gr_blue);
+    color: var(--btn-clr-fon);
+    border: 0;
+
+    svg {
+      stroke: var(--btn-clr-fon);
+    }
+  }
 `;

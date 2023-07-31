@@ -13,10 +13,10 @@ import {
 } from './ModalCongrats.styled';
 
 const ModalCongrats = () => {
+  const [isOpenCongratsModal, setIsOpenCongratsModal] = useState(true);
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  const [isOpenCongratsModal, setIsOpenCongratsModal] = useState(true);
 
   const onClose = useCallback(() => {
     setIsOpenCongratsModal(false);
@@ -37,7 +37,6 @@ const ModalCongrats = () => {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };

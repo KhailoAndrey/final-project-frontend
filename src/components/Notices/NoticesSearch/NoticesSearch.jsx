@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnContainer,
@@ -20,10 +21,9 @@ const NoticesFilter = ({ setQuery, setPage, setRerender }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const query = localInput;
-    if (query.trim() === '' || query.length < 3) {
+    if (query.trim() === '' || query.length < 2) {
       console.log('Enter correct query');
     } else {
-      console.log('query :>> ', query);
       setPage(1);
       setQuery(query);
       setRerender(true);
@@ -61,9 +61,15 @@ const NoticesFilter = ({ setQuery, setPage, setRerender }) => {
             </ClearButton>
           )}
         </BtnContainer>
-      </SearchForm>{' '}
+      </SearchForm>
     </>
   );
 };
 
 export default NoticesFilter;
+
+NoticesFilter.propTypes = {
+  setQuery: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  setRerender: PropTypes.func.isRequired,
+};

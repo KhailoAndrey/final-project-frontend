@@ -2,15 +2,14 @@ import NoticeItem from 'components/Notices/NoticesCategories/NoticesCategoryItem
 import { ListContainer } from 'components/Notices/NoticesCategories/NoticesCategoriesList/NoticesCategoriesList.styled';
 import { useEffect, useState } from 'react';
 import { useAuth } from 'redux/auth/selectors';
-
+import PropTypes from 'prop-types';
 
 const NoticesCategoriesList = ({
   articles,
   setAlertShowModal,
   setRerender,
-  category
+  category,
 }) => {
-  // console.log('articles :>> ', articles);
   const { user } = useAuth();
   const [crutch, setCrutch] = useState(false);
 
@@ -37,4 +36,12 @@ const NoticesCategoriesList = ({
     </>
   );
 };
+
 export default NoticesCategoriesList;
+
+NoticesCategoriesList.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setAlertShowModal: PropTypes.func.isRequired,
+  setRerender: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
+};

@@ -20,6 +20,7 @@ export const AttentionModal = ({ setAlertShowModal }) => {
     const handleKeyDown = e => {
       setAlertShowModal(false);
     };
+
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);

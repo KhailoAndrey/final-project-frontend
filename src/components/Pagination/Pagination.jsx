@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Container, CustomPagination } from './Pagination.styled';
 
 const AppPagination = ({
@@ -44,3 +45,10 @@ const AppPagination = ({
 };
 
 export default AppPagination;
+
+AppPagination.propTypes = {
+  setPage: PropTypes.func.isRequired,
+  totalPageCount: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  setRerender: PropTypes.func,
+};

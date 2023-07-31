@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from 'redux/auth/selectors';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import fetchNoticesById from 'fetch/noticeModalLearnMore';
 import { correctCategory } from 'components/Notices/NoticesCategories/NoticesCategoryItem/NoticeItemUtils';
@@ -30,7 +31,6 @@ export const ModalLearMore = ({
   onFavBtnClick,
   setRerender,
 }) => {
-  // ________________________________
   const { t } = useTranslation();
 
   const [data, setNoticeData] = useState({});
@@ -39,12 +39,10 @@ export const ModalLearMore = ({
   const { isLoggedIn } = useAuth();
   const location = useLocation();
 
-  // запит за даними
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchNoticesById(id);
-
         setNoticeData(data);
       } catch (error) {
         console.error('Error fetching notice:', error);
@@ -54,13 +52,11 @@ export const ModalLearMore = ({
     fetchData();
   }, [id]);
 
-  // перехід на телефон для дзвінка
   const handleContactClick = phoneNumber => {
     if (!phoneNumber) return;
     window.location.href = `tel:${phoneNumber}`;
   };
 
-  // закриття при кліку на бекдроп
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
       if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
@@ -70,14 +66,14 @@ export const ModalLearMore = ({
       handler(false);
     }
   };
-  // закриття по хрестику
+
   const onClick = () => {
     if (isLoggedIn & favChange & location.pathname.includes('favorite')) {
       setRerender(true);
     }
     handler(false);
   };
-  // розмонтування і відміна слухача
+
   useEffect(() => {
     const handleEsc = event => {
       if (event.keyCode === 27) {
@@ -98,7 +94,6 @@ export const ModalLearMore = ({
     <ModalContainer onClick={handleBackdropClick}>
       <ModalWindow>
         <CloseButton onClick={() => onClick()}>
-
           <svg width={24} height={24}>
             <use href={`${svg}#icon-cross`} width={24} height={24} />
           </svg>
@@ -108,9 +103,7 @@ export const ModalLearMore = ({
             <Category> {correctCategory(data.category, t)}</Category>
           </Image>
           <ContactInfo>
-            <Description>
-              {data.title}
-            </Description>
+            <Description>{data.title}</Description>
             <Contact>
               <Contactheader>
                 <div>{t('name')}:</div>
@@ -139,9 +132,17 @@ export const ModalLearMore = ({
           <b>{t('comment')}:</b> {data.comments}
         </Comment>
         <ContactButtons>
-          <ContactButtonAdd onClick={() => {onFavBtnClick(); setFavChange(true);}}>
-            
-            {isFavorite ? (<span>{t('remove')}</span>) : (<span>{t('add_to')}</span>)}
+          <ContactButtonAdd
+            onClick={() => {
+              onFavBtnClick();
+              setFavChange(true);
+            }}
+          >
+            {isFavorite ? (
+              <span>{t('remove')}</span>
+            ) : (
+              <span>{t('add_to')}</span>
+            )}
 
             <svg width="24" height="24">
               <use href={`${svg}#icon-heart`} width={24} height={24} />
@@ -158,4 +159,11 @@ export const ModalLearMore = ({
       </ModalWindow>
     </ModalContainer>
   );
+};
+
+ModalLearMore.propTypes = {
+  handler: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  onFavBtnClick: PropTypes.func.isRequired,
 };

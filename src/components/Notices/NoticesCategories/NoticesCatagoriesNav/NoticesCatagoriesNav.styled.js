@@ -8,6 +8,15 @@ export const CatContainer = styled.div`
   font-size: 14px;
   font-weight: 500;
   max-width: 100%;
+
+  @media screen and (min-width: 768px) {
+    max-width: 330px;
+    gap: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 export const Label = styled.label`

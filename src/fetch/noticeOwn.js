@@ -1,7 +1,7 @@
 const API_URL =
   'https://final-project-backend-4o0r.onrender.com/api/notices/owner';
 
-async function fetchOwnNotices(page, query, token) {
+async function fetchOwnNotices(page, query, token, petsSex) {
   const options = {
     method: 'GET',
     headers: {
@@ -11,7 +11,7 @@ async function fetchOwnNotices(page, query, token) {
   };
   try {
     const response = await fetch(
-      `${API_URL}?page=${page}&query=${query}`,
+      `${API_URL}?page=${page}&query=${query}&sex=${petsSex}`,
       options
     );
     if (!response.ok) throw new Error('Sorry. Try again later :(');

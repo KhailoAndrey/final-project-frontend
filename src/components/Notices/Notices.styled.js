@@ -32,11 +32,16 @@ export const NoticeNavContainer = styled.div`
 `;
 
 export const BtnContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-gap: 8px;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+flex-direction: row;
+align-items: flex-start;
+}
+`;
 
 export const NoNotice = styled.div`
   width: 320px;
