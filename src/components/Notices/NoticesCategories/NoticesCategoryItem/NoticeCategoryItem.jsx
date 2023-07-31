@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
+import PropTypes from 'prop-types';
 import { calculateAge, cutSity, correctCategory } from './NoticeItemUtils';
 import svg from '../../../../images/Icons/symbol-defs.svg';
 import { ModalLearMore } from 'components/Modals/ModalNotice/ModalLearnMore';
@@ -25,10 +26,11 @@ import DeleteModal from 'components/Modals/ModalApproveAction/DeleteModal';
 const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
   const [showLearMore, setShowLearMore] = useState(false);
   const [showDelModal, setShowDelModal] = useState(false);
+
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
   const { user, isLoggedIn, token } = useAuth();
+
   const { _id, title, category, date, file, sex, location, owner } = article;
 
   const age = calculateAge(date);
@@ -44,7 +46,6 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
   };
 
   useEffect(() => {
-    // console.log('showLearMore', showLearMore);
     setCrutch(showLearMore);
   }, [showLearMore, setCrutch]);
 
@@ -190,3 +191,18 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
 };
 
 export default NoticeItem;
+
+NoticeItem.propTypes = {
+  article: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    file: PropTypes.string.isRequired,
+    sex: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+  }).isRequired,
+  setAlertShowModal: PropTypes.func.isRequired,
+  setCrutch: PropTypes.func.isRequired,
+};

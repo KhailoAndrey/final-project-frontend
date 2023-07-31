@@ -174,6 +174,7 @@ export const LearnMoreBtn = styled.button`
   margin-left: auto;
   margin-right: auto;
   outline: 0;
+  background-color: var(--white-bckg-clr);
 
   svg {
     fill: var(--main-clr-blue);

@@ -12,11 +12,16 @@ import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCa
 import NoticesFilter from 'components/Notices/NoticesSearch/NoticesSearch';
 import { Title } from 'components/Title/title';
 import AppPagination from 'components/Pagination/Pagination';
-import { NoticeNavContainer, NoNotice, LoaderDiv, BtnContainer } from './Notices.styled';
+import {
+  NoticeNavContainer,
+  NoNotice,
+  LoaderDiv,
+  BtnContainer,
+} from './Notices.styled';
 import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
 // import fetchTestFilter from 'fetch/noticeTestFilter';
-// import NoticesDropFilter from './NoticesFilter/NoticesDropFilter';
+import NoticesDropFilter from './NoticesFilter/NoticesDropFilter';
 // import overview from '../../images/NoNotice/overview.gif'
 
 const Notices = () => {
@@ -25,15 +30,14 @@ const Notices = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('sell');
   const [page, setPage] = useState(1);
-  // const [petsSex, setPetsSex] = useState('');
-  // const [petsAge, setPetsAge] = useState('');
-
+  const [petsSex, setPetsSex] = useState('');
+  const [petsAge, setPetsAge] = useState(['']);
   const [totalPageCount, setTotalPageCount] = useState(0);
   const [rerender, setRerender] = useState(false);
-  const { t } = useTranslation();
-  const params = useParams();
   const [notiseLoading, setNoticeLoading] = useState(false);
 
+  const { t } = useTranslation();
+  const params = useParams();
   const { token } = useAuth();
 
   useEffect(() => {
@@ -49,37 +53,50 @@ const Notices = () => {
   }, [params.categoryName]);
 
   useEffect(() => {
-    foo(page, category, query, token);
+    foo(page, category, query, token, petsSex, petsAge);
 
-    async function foo(page, category, query, token) {
+    const clearFetch = result => {
+      setNoticeArticles(result.notices);
+      setRerender(false);
+      setTotalPageCount(result.totalPages);
+      setNoticeLoading(false);
+    };
+
+    async function foo(page, category, query, token, petsSex, petsAge) {
       if (category === 'favorite' && rerender) {
         setNoticeLoading(true);
-        const result = await fetchFavoriteNotices(page, query, token);
-        setNoticeArticles(result.notices);
-        setRerender(false);
-        setTotalPageCount(result.totalPages);
-        setNoticeLoading(false);
+        const result = await fetchFavoriteNotices(
+          page,
+          query,
+          token,
+          petsSex,
+          petsAge
+        );
+        clearFetch(result);
       } else if (category === 'my-ads' && rerender) {
         setNoticeLoading(true);
-        const result = await fetchOwnNotices(page, query, token);
-        setNoticeArticles(result.notices);
-        setRerender(false);
-        setTotalPageCount(result.totalPages);
-        setNoticeLoading(false);
+        const result = await fetchOwnNotices(
+          page,
+          query,
+          token,
+          petsSex,
+          petsAge
+        );
+        clearFetch(result);
       } else if (
         (category === 'sell' || 'lost-found' || 'for-free') &&
         rerender
       ) {
         setNoticeLoading(true);
-        const result = await fetchNotices(page, category, query);
-        setNoticeArticles(result.notices);
-        setRerender(false);
-        setTotalPageCount(result.totalPages);
-        setNoticeLoading(false);
+        const result = await fetchNotices(
+          page,
+          category,
+          query,
+          petsSex,
+          petsAge
+        );
+        clearFetch(result);
       }
-
-      //   const test = await fetchTestFilter();
-      //   console.log("test:",test);
     }
   }, [
     page,
@@ -89,6 +106,8 @@ const Notices = () => {
     rerender,
     noticeArticles,
     setNoticeLoading,
+    petsSex,
+    petsAge,
   ]);
 
   return (
@@ -107,13 +126,14 @@ const Notices = () => {
             setRerender={setRerender}
           />
           <BtnContainer>
-            {/* <NoticesDropFilter /> */}
+            <NoticesDropFilter
+              setPetsSex={setPetsSex}
+              setPetsAge={setPetsAge}
+              setRerender={setRerender}
+            />
             <AddPetBtn setAlertShowModal={setAlertShowModal} />
           </BtnContainer>
         </NoticeNavContainer>
-        {/* her here here----------------------- */}
-        {/* <NoticesDropFilter setPetsSex={setPetsSex} setPetaAge={setPetsAge} /> */}
-
         <LoaderDiv>{notiseLoading && <LoaderPaws />}</LoaderDiv>
 
         {noticeArticles && (
@@ -136,7 +156,6 @@ const Notices = () => {
 
         {!notiseLoading && noticeArticles.length === 0 && (
           <NoNotice>
-            {/* <p>No notices (there will be a pretty pet soon...)</p> */}
             <img src={pets} alt="" styled={'background: transparent'} />
           </NoNotice>
         )}

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import svg from '../../images/Icons/symbol-defs.svg';
 import { Button } from './AddPetBtn.styled';
 
@@ -32,6 +32,6 @@ const AddPetBtn = ({ setAlertShowModal = null }) => {
 
 export default AddPetBtn;
 
-// AddPetBtn.propTypes = {
-//   setAlertShowModal: PropTypes.func,
-// };
+AddPetBtn.propTypes = {
+  setAlertShowModal: PropTypes.func,
+};

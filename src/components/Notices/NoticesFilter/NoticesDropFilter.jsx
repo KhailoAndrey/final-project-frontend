@@ -1,9 +1,10 @@
 import { useState } from 'react';
 // import FilterBySex from './FilterBySex';
+import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg'
 import { FilterBtn } from './NoticesDropFilter.styled';
 
-const NoticesDropFilter = ({ setPetsSex, setPetsAge }) => {
+const NoticesDropFilter = ({ setPetsSex, setPetsAge, setRerender }) => {
   const [showFilters, setShowFilters] = useState(false);
 
   const onBtnClick = () => {
@@ -26,3 +27,9 @@ const NoticesDropFilter = ({ setPetsSex, setPetsAge }) => {
 };
 
 export default NoticesDropFilter;
+
+NoticesDropFilter.propTypes = {
+  setPetsSex: PropTypes.func.isRequired,
+  setPetsAge: PropTypes.func.isRequired,
+  setRerender: PropTypes.func.isRequired,
+};

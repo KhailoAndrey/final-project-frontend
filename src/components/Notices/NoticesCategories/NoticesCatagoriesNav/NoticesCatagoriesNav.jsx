@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
+import PropTypes from 'prop-types';
 import { CatContainer, Input, Label } from './NoticesCatagoriesNav.styled';
 
 const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
+  const [selectedValue, setSelectedValue] = useState('sell');
+
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
-
-
-  const [selectedValue, setSelectedValue] = useState('sell');
   const params = useParams();
 
   useEffect(() => {
@@ -98,3 +98,9 @@ const NoticesCatagoriesNav = ({ setCategory, setPage, setRerender }) => {
 };
 
 export default NoticesCatagoriesNav;
+
+NoticesCatagoriesNav.propTypes = {
+  setCategory: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  setRerender: PropTypes.func.isRequired,
+};

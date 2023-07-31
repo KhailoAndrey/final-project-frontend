@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
@@ -19,6 +20,7 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
       onClose(false);
     }
   };
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.keyCode === 27) {
@@ -27,7 +29,6 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
@@ -63,3 +64,13 @@ const DeleteModal = ({ onClose, handleDelete, data }) => {
 };
 
 export default DeleteModal;
+
+DeleteModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+  }).isRequired,
+};
