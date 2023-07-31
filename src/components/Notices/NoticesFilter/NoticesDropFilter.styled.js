@@ -41,12 +41,36 @@ export const CategoryInput = styled.input`
   }
 
   &:checked + label::before {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='54ADFF' d='M20.0001 7L9.0001 18L4 13'/%3e%3c/svg%3e");
-  fill: red;
+    background-color: black;
+    /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='54ADFF' d='M20.0001 7L9.0001 18L4 13'/%3e%3c/svg%3e");
+  fill: red; */
   }
 `;
 
 
 export const CategoryContent = styled.span`
 
+`;
+
+// main button
+
+export const FilterBtn = styled.button`
+  border-radius: 40px;
+  background: var(--main-clr-blue);
+  display: flex;
+  min-width: 110px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  svg {
+    stroke: var(--btn-clr-fon);
+  }
+  padding: 8px 0;
+  color: var(--btn-clr-fon);
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
 `;
