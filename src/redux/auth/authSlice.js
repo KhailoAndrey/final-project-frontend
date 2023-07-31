@@ -9,6 +9,7 @@ const {
   addOwnPet,
   deleteOwnPet,
   updateUser,
+  googleAuth,
 } = require('./authOperations');
 
 const initialState = {
@@ -31,6 +32,23 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(googleAuth.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+        state.newUser = false;
+        state.isLoading = true;
+      })
+      .addCase(googleAuth.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(googleAuth.rejected, state => {
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
       .addCase(register.pending, (state, action) => {
         state.error = null;
         state.newUser = false;

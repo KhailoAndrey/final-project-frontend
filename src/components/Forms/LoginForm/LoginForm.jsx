@@ -92,6 +92,19 @@ export const LoginForm = () => {
   return (
     <FormContainer>
       <FormHeader>{t('login_form')}</FormHeader>
+      <a
+        style={{ marginBottom: '30px' }}
+        href={`${'https://final-project-backend-4o0r.onrender.com'}/api/users/google`}
+      >
+        googleAuth
+      </a>
+      {/* <a
+        style={{ marginBottom: '30px' }}
+        href={`${'http://localhost:3001'}/api/users/google`}
+      >
+        googleAuth
+      </a> */}
+
       <form onSubmit={formik.handleSubmit}>
         <EmailDiv>
           <FormInputEmail
