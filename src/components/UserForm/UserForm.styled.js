@@ -1,20 +1,5 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
-// import temp from '../../images/UserPageImg/userPhotoDefault.png';
-
-export const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
-    gap: 71px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    flex-direction: column;
-    gap: 0px;
-  }
-`;
 
 export const InputWrap = styled.div`
   display: flex;
@@ -42,7 +27,7 @@ export const Input = styled(Field)`
   height: 32px;
   border: 1px solid #54adff;
   border-radius: 20px;
-  width: 190px;
+  width: 175px;
 
   @media screen and (min-width: 768px) {
     min-width: 240px;
@@ -74,16 +59,18 @@ export const ErrorText = styled.p`
   color: var(--form-error-red);
 `;
 
-export const PhotoWrapper = styled.div`
-  width: 182px;
-  height: 182px;
-  border-radius: 40px;
-  background-color: var(--main-bckg-clr);
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    gap: 71px;
+  }
 
-  overflow: hidden;
-
-  display: block;
-  justify-content: center;
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+    gap: 0px;
+  }
 `;
 
 export const AvatarContainer = styled.div`
@@ -92,14 +79,11 @@ export const AvatarContainer = styled.div`
   align-items: center;
 `;
 
-export const AvatarLabel = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const ImgWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 182px;
   height: 182px;
   border-radius: 40px;
@@ -113,13 +97,20 @@ export const ImgWrapper = styled.div`
   }
 `;
 
-// ==================================
-// нижче видалити?
+export const PhotoWrapper = styled.div`
+  width: 182px;
+  height: 182px;
+  border-radius: 40px;
+  background-color: var(--main-bckg-clr);
 
-// export const Button = styled.span`
-//   padding: 0;
-//   border: none;
-//   background-color: transparent;
-//   position: absolute;
-//   right: 12px;
-// `;
+  overflow: hidden;
+
+  display: block;
+  justify-content: center;
+`;
+
+export const AvatarLabel = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
