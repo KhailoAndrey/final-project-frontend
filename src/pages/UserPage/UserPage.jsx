@@ -33,7 +33,9 @@ const UserPage = () => {
       {newUser && <ModalCongrats />}
       <UserPageContainer>
         <UserContainer>
-          <ProfileTitle>{t('my_info')}</ProfileTitle>
+          <div>
+            <ProfileTitle>{t('my_info')}</ProfileTitle>
+          </div>
           <UserInfo>
             <UserData />
           </UserInfo>
