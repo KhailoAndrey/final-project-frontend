@@ -107,7 +107,7 @@ const { t } = useTranslation();
       avatar: values.avatar || '',
       avatarURL: user ? user.avatarURL : '',
     });
-      console.log("values---->", values)
+      // console.log("values---->", values)
       
     setImageURL(file ? imageUrl : user.avatarURL);
   }, [user, file, imageUrl, values.avatar]);
