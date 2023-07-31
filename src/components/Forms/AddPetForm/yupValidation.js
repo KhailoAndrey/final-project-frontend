@@ -31,10 +31,9 @@ export const addPetFormSchema = yup.object().shape({
       yup
         .string()
         .matches(
-          /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+(?:,\s[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+)$/,
+          /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+(?:,\s*[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+)*$/,
           t('loc_with')
         )
-        // .matches(/^[A-Z][A-Za-z ]+$/, t('loc_with'))
         .required(t('loc_enter')),
     otherwise: () => yup.string(),
   }),
