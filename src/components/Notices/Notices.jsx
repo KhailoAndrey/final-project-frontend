@@ -12,7 +12,7 @@ import NoticesCatagoriesNav from 'components/Notices/NoticesCategories/NoticesCa
 import NoticesFilter from 'components/Notices/NoticesSearch/NoticesSearch';
 import { Title } from 'components/Title/title';
 import AppPagination from 'components/Pagination/Pagination';
-import { NoticeNavContainer, NoNotice, LoaderDiv } from './Notices.styled';
+import { NoticeNavContainer, NoNotice, LoaderDiv, BtnContainer } from './Notices.styled';
 import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
 // import fetchTestFilter from 'fetch/noticeTestFilter';
@@ -78,8 +78,8 @@ const Notices = () => {
         setNoticeLoading(false);
       }
 
-    //   const test = await fetchTestFilter();
-    //   console.log("test:",test);
+      //   const test = await fetchTestFilter();
+      //   console.log("test:",test);
     }
   }, [
     page,
@@ -106,7 +106,10 @@ const Notices = () => {
             setPage={setPage}
             setRerender={setRerender}
           />
-          <AddPetBtn setAlertShowModal={setAlertShowModal} />
+          <BtnContainer>
+            {/* <NoticesDropFilter /> */}
+            <AddPetBtn setAlertShowModal={setAlertShowModal} />
+          </BtnContainer>
         </NoticeNavContainer>
         {/* her here here----------------------- */}
         {/* <NoticesDropFilter setPetsSex={setPetsSex} setPetaAge={setPetsAge} /> */}

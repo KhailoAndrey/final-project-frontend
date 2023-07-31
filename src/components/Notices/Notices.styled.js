@@ -31,6 +31,13 @@ export const NoticeNavContainer = styled.div`
   }
 `;
 
+export const BtnContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 8px;
+`
+
 export const NoNotice = styled.div`
   width: 320px;
   display: flex;

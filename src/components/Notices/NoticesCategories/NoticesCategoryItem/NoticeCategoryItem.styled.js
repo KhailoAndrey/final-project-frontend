@@ -11,7 +11,12 @@ export const Card = styled.li`
   font-size: 14px;
   font-weight: 500;
   transition: var(--default-animation);
+  margin-right: auto;
+  margin-left: auto;
+  
   @media screen and (min-width: 768px) {
+    margin-right: 0;
+    margin-left: 0;
     width: 336px;
   }
 
@@ -22,7 +27,7 @@ export const Card = styled.li`
   &:hover,
   &:focus {
     box-shadow: 3px 8px 14px 0px var(--big-shadow);
-  }  
+  }
 `;
 
 export const ImgContainer = styled.div`
