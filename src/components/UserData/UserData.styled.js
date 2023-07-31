@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// position: relative;
+
 export const UserCard = styled.div`
   background: var(--white-bckg-clr);
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);

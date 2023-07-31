@@ -30,7 +30,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 821px;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
   }
 `;
 
@@ -56,16 +56,30 @@ export const UserContainer = styled.div`
     margin-top: 0;
   }
 `;
-
+// display: flex;
+// margin: 0 auto;
+// justify-content: space-between;
+// align-items: center;
 export const PetsContainer = styled.div`
+  width: 280px;
+
   margin-top: 40px;
 
+  @media screen and (min-width: 768px) {
+    width: 704px;
+  }
+
   @media screen and (min-width: 1280px) {
+    width: 821px;
     margin-top: 0;
+    margin-bottom: 24px;
   }
 `;
 
 export const UserPageContainer = styled.div`
+  display: block;
+  margin: 0 auto;
+
   @media screen and (min-width: 1280px) {
     display: flex;
     gap: 32px;

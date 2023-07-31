@@ -13,7 +13,7 @@ export const List = styled.ul`
   }
 
   @media screen and (min-width: 1280px) {
-    max-height: 520px;
+    // max-height: 520px;
     /*overflow: auto; */
     /* background-color: aqua; */
   }
