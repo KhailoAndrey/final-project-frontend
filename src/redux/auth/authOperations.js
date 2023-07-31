@@ -3,6 +3,7 @@ import axios from 'axios';
 import getMessage from 'utils/messages';
 
 axios.defaults.baseURL = 'https://final-project-backend-4o0r.onrender.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -13,6 +14,26 @@ const setAuthHeader = token => {
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
+
+export const googleAuth = createAsyncThunk(
+  'auth/google',
+  async (token, thunkAPI) => {
+    const persistedToken = token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get('/api/users/current');
+      const userData = { ...res.data, token };
+
+      return userData;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 // Create a new user
 /*
