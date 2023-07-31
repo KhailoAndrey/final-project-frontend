@@ -13,7 +13,7 @@ export const updateUserSchema = yup.object().shape({
     .min(2, 'Too Short!')
     .max(16)
     .matches(
-      /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,16}$/,
+      /^([A-Za-zА-Яа-яЁёІіЇїЄєҐґ]+\s?){2,26}$/,
       'Only alphabetic characters are allowed'
     ),
 
