@@ -14,7 +14,7 @@ export const updateUserSchema = yup.object().shape({
   name: yup
     .string()
     .min(2, t('text_min_2'))
-    .max(16)
+    .max(26, t('name_max'))
     .matches(
       /^([A-Za-zА-Яа-яЁёІіЇїЄєҐґ]+\s?){2,26}$/,
       t('user_name_err')
