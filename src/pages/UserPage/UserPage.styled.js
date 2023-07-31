@@ -74,8 +74,6 @@ export const UserPageContainer = styled.div`
   }
 `;
 
-// ===============================
-// Нижче видалити?
 export const PetsInfo = styled.div`
   width: 280px;
   height: 517px;
