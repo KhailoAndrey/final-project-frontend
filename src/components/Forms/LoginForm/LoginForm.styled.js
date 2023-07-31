@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
+
 
 export const FormContainer = styled.div`
   position: relative;
@@ -27,7 +29,15 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const GoogleIcon = styled(FcGoogle)`
+display: block;
+width: 36px;
+height: 36px;
+`
+
 export const GoogleAuth = styled.a`
+display: flex;
+gap: 8px;
   font-family: Manrope, sans-serif;
   text-decoration: none;
   font-weight: 400;
@@ -41,7 +51,8 @@ export const GoogleAuth = styled.a`
   margin-bottom: 8px;
   padding: 10px 28px;
   border-radius: 40px;
-  text-align: center;
+  text-align: left;
+  align-items: center;
 
   :hover {
     background: var(--main-clr-gr_blue);

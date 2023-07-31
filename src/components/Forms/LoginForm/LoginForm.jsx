@@ -22,6 +22,7 @@ import {
   IconsContainer,
   EmailIcon,
   GoogleAuth,
+  GoogleIcon,
 } from './LoginForm.styled';
 
 const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-z.-]+.[a-z]{2,}$/;
@@ -96,11 +97,11 @@ export const LoginForm = () => {
     <FormContainer>
       <FormHeader>{t('login_form')}</FormHeader>
       <div>
-        
         <GoogleAuth href={`${googleAuthUrl}`} type="button">
+          <GoogleIcon />
           {t('googleAuth')}
-        </GoogleAuth>    
-     </div>
+        </GoogleAuth>
+      </div>
 
       <form onSubmit={formik.handleSubmit}>
         <EmailDiv>
