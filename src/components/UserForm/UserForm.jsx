@@ -11,7 +11,7 @@ import {
   CloseIcon,
   // EditFoto,
   EditIcon,
-  LogoutB,
+  LogoutUser,
   RemoveIcon,
 } from 'components/UserButtons/UserButtons.jsx';
 import { updateUserSchema } from './updateUserSchema.js';
@@ -29,17 +29,15 @@ import {
 } from './UserForm.styled.js';
 import {
   AvatarBtn,
+  AvatarBtnNext,
   Button,
   // LogoutButton,
   SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
-// import { formatPhoneNumber } from 'helpers/phoneInput.js';
-
-// import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
 
 export const UserForm = () => {
   // const [phoneNumber, setPhoneNumber] = useState('');
-const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const { user } = useAuth();
   // const navigate = useNavigate();
@@ -49,9 +47,10 @@ const { t } = useTranslation();
   const [isFormEdit, setIsFormEdit] = useState(false);
   // console.log(`isFormEdit=${isFormEdit}`);
 
-  // Можливість редагування аватар
+  // Можливість редагування аватару
   const [isAvatarEdit, setIsAvatarEdit] = useState(false);
   // console.log(`isAvatarEdit=${isAvatarEdit}`);
+
   // Стани полів форми
   const [file, setFile] = useState(null);
   const [imageUrl, setImageURL] = useState(null);
@@ -59,43 +58,22 @@ const { t } = useTranslation();
   const [values, setValues] = useState({
     name: user && user.name ? user.name : '',
     email: user && user.email ? user.email : '',
-    birthday: user.birthday.length > 0
-      ? `${user.birthday.slice(6, user.birthday.length)}-${user.birthday.slice(
-          3,
-          5
-        )}-${user.birthday.slice(0, 2)}`
-      : '',
+    birthday:
+      user.birthday.length > 0
+        ? `${user.birthday.slice(
+            6,
+            user.birthday.length
+          )}-${user.birthday.slice(3, 5)}-${user.birthday.slice(0, 2)}`
+        : '',
     phone: user ? user.phone : '',
     city: user ? user.city : '',
   });
 
-  // const newDefDate = () => {
-  //     const reduxDate = user.birthday;
-  //     console.log('reduxDate :>> ', reduxDate);
-  //     if (reduxDate.length > 0) {
-  //       console.log('user have birthday');
-  //       return `${reduxDate.slice(
-  //         6,
-  //         reduxDate.length
-  //       )}-${reduxDate.slice(3, 5)}-${reduxDate.slice(0, 2)}`;
-  //       // console.log('newDefDate', newDefDate);
-  //     } else {
-  //       console.log('user don`t have birthday');
-  //       const date = new Date();
-  //       return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-  //       // console.log('newDefDate', newDefDate);
-  //     }
-  //   }
-
-    useEffect(() => {
+  useEffect(() => {
     if (user === null) {
       return;
     }
-// const inputDate = user.birthday;
-// const date = new Date(user.birthday);
-// const formattedDate = `${new Date(user.birthday).getFullYear()}-${String(new Date(user.birthday).getMonth() + 1).padStart(2, '0')}-${String(new Date(user.birthday).getDate()).padStart(2, '0')}`;
-    // const date = newDefDate();
-    
+
     setValues({
       name: user && user.name ? user.name : '',
       email: user && user.email ? user.email : '',
@@ -110,14 +88,13 @@ const { t } = useTranslation();
       avatar: values.avatar || '',
       avatarURL: user ? user.avatarURL : '',
     });
-      // console.log("values---->", values)
-      
+    // console.log("values", values)
+
     setImageURL(file ? imageUrl : user.avatarURL);
   }, [user, file, imageUrl, values.avatar]);
 
   // сабміт форми------------------------
   const handleSubmit = values => {
-
     if (file && isAvatarEdit) {
       toast.error('Press confirm or cancel your new photo');
       return;
@@ -136,7 +113,6 @@ const { t } = useTranslation();
       formData.append('name', values.name);
     }
     // переводимо дату у формат беку
-
     if (values.birthday) {
       console.log('birthday changed');
       const rowDate = values.birthday;
@@ -159,7 +135,7 @@ const { t } = useTranslation();
     // console.log(formData.get('avatar'));
     dispatch(updateUser(formData));
     toast.success('Changes saved successfully');
-    // navigate(`/user`);
+
     // after submit-----------------------
   };
 
@@ -183,17 +159,15 @@ const { t } = useTranslation();
       console.log('ok size');
       setFile(file);
       setImageURL(URL.createObjectURL(file));
-      console.log('URL.createObjectURL(file) :>> ', URL.createObjectURL(file));
+      // console.log('URL.createObjectURL(file) :>> ', URL.createObjectURL(file));
 
       setIsAvatarEdit(true);
-
-      // console.log(`Is file: ${{ file }}`);
     } else {
       setIsAvatarEdit(false);
       setImageURL(user && user.avatarURL);
       toast.error('File size must be less than 3MB');
-      console.log('No file');
-      console.log(values);
+      // console.log('No file');
+      // console.log(values);
     }
   };
 
@@ -201,29 +175,20 @@ const { t } = useTranslation();
   const handleConfirm = () => {
     console.log('confirm avatar handle');
     setValues({ ...values, avatar: file });
-    console.log('values after confirm', values);
+    // console.log('values after confirm', values);
     // setIsFormEdit(true);
     setIsAvatarEdit(false);
-    console.log('Image saved:', values.avatarURL);
+    // console.log('Image saved:', values.avatarURL);
   };
 
   const handleRemove = () => {
     setImageURL('imageUrl', '');
     // setIsFormEdit(true);
     setIsAvatarEdit(false);
-    console.log(`editing: ${isAvatarEdit}`);
+    // console.log(`editing: ${isAvatarEdit}`);
     setFile(null);
   };
   // <<<<<<============= дії з Аватаром ====================
-  // const handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   if (name === 'phone') {
-  //     // Устанавливаем предзаполненное значение поля телефона
-  //     const formattedValue = formatPhoneNumber(value);
-  //     setValues({ ...values, phone: value });
-  //     setPhoneNumber(formattedValue);
-  //   }
-  // };
 
   return (
     <>
@@ -245,7 +210,7 @@ const { t } = useTranslation();
           )}
           <Div>
             <AvatarContainer>
-              {isFormEdit ? (
+              {isFormEdit && !isAvatarEdit ? (
                 <AvatarBtn>
                   <input
                     type="file"
@@ -288,15 +253,16 @@ const { t } = useTranslation();
                 </PhotoWrapper>
 
                 {isFormEdit && isAvatarEdit ? (
-                  <AvatarBtn>
-                    <button type="button" onClick={handleConfirm}>
+                  <AvatarBtnNext>
+                    <div onClick={handleConfirm}>
                       <CheckIcon />
-                      <span>{t('confirm')}</span>
-                    </button>
-                    <button type="button" onClick={handleRemove}>
+                      {t('confirm')}
+                    </div>
+
+                    <div onClick={handleRemove}>
                       <RemoveIcon />
-                    </button>
-                  </AvatarBtn>
+                    </div>
+                  </AvatarBtnNext>
                 ) : null}
               </ImgWrapper>
             </AvatarContainer>
@@ -330,8 +296,6 @@ const { t } = useTranslation();
                   type="date"
                   autoComplete="off"
                   name="birthday"
-                  // value={values.birthday}
-                  // placeholder="00.00.0000"
                   disabled={!isFormEdit}
                 />
               </InputWrap>
@@ -345,8 +309,6 @@ const { t } = useTranslation();
                   name="phone"
                   placeholder="+380441234567"
                   disabled={!isFormEdit}
-                  // value={phoneNumber} // Добавьте это свойство для предзаполнения поля телефона
-                  // onChange={handleInputChange}
                 />
               </InputWrap>
               <ErrorMessage name="phone" component={ErrorText} />
@@ -364,12 +326,10 @@ const { t } = useTranslation();
               <ErrorMessage name="city" component={ErrorText} />
 
               {!isFormEdit ? (
-                <LogoutB />
+                <LogoutUser />
               ) : (
                 <SaveBtn type="submit">{t('save')}</SaveBtn>
               )}
-
-              {/* <Logout /> */}
             </div>
           </Div>
         </Form>
