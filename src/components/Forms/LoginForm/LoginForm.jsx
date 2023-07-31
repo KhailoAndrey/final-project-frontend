@@ -21,10 +21,13 @@ import {
   FormSuccessPassword,
   IconsContainer,
   EmailIcon,
+  GoogleAuth,
 } from './LoginForm.styled';
 
 const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-z.-]+.[a-z]{2,}$/;
 const passwordRegexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/;
+const googleAuthUrl =
+  'https://final-project-backend-4o0r.onrender.com/api/users/google';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -92,18 +95,12 @@ export const LoginForm = () => {
   return (
     <FormContainer>
       <FormHeader>{t('login_form')}</FormHeader>
-      <a
-        style={{ marginBottom: '30px' }}
-        href={`${'https://final-project-backend-4o0r.onrender.com'}/api/users/google`}
-      >
-        googleAuth
-      </a>
-      {/* <a
-        style={{ marginBottom: '30px' }}
-        href={`${'http://localhost:3001'}/api/users/google`}
-      >
-        googleAuth
-      </a> */}
+      <div>
+        
+        <GoogleAuth href={`${googleAuthUrl}`} type="button">
+          {t('googleAuth')}
+        </GoogleAuth>    
+     </div>
 
       <form onSubmit={formik.handleSubmit}>
         <EmailDiv>

@@ -27,6 +27,34 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const GoogleAuth = styled(Link)`
+  font-family: Manrope, sans-serif;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  font-size: 16px;
+  color: var(--white-bckg-clr);
+  background-color: var(--main-clr-blue);
+  border: transparent;
+  margin-bottom: 8px;
+  padding: 10px 28px;
+  border-radius: 40px;
+  text-align: center;
+
+  :hover {
+    background: var(--main-clr-gr_blue);
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+  }
+`
+
 export const FormInputEmail = styled.input`
   box-sizing: border-box;
   outline: none;
