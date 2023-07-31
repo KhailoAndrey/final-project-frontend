@@ -1,10 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
 // import { useNavigate } from 'react-router-dom';
 import { Form, Formik, ErrorMessage } from 'formik';
-import { toast, ToastContainer } from 'react-toastify';
 import { useAuth } from 'redux/auth/selectors';
-
+import {
+  CameraIcon1,
+  CheckIcon,
+  CloseIcon,
+  // EditFoto,
+  EditIcon,
+  LogoutB,
+  RemoveIcon,
+} from 'components/UserButtons/UserButtons.jsx';
+import { updateUserSchema } from './updateUserSchema.js';
+import { updateUser } from 'redux/auth/authOperations.js';
 import {
   InputWrap,
   Input,
@@ -16,30 +27,19 @@ import {
   PhotoWrapper,
   AvatarLabel,
 } from './UserForm.styled.js';
-
-import {
-  CameraIcon1,
-  CheckIcon,
-  CloseIcon,
-  // EditFoto,
-  EditIcon,
-  LogoutB,
-  RemoveIcon,
-} from 'components/UserButtons/UserButtons.jsx';
 import {
   AvatarBtn,
   Button,
   // LogoutButton,
   SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
-import { updateUserSchema } from './updateUserSchema.js';
-import { updateUser } from 'redux/auth/authOperations.js';
 // import { formatPhoneNumber } from 'helpers/phoneInput.js';
 
 // import Logout from 'components/Header/Navigation/UserNav/Logout/Logout.jsx';
 
 export const UserForm = () => {
   // const [phoneNumber, setPhoneNumber] = useState('');
+const { t } = useTranslation();
 
   const { user } = useAuth();
   // const navigate = useNavigate();
@@ -245,7 +245,7 @@ export const UserForm = () => {
 
                   <AvatarLabel htmlFor="fileInput">
                     <CameraIcon1 />
-                    Edit foto
+                    {t('edit_photo')}
                   </AvatarLabel>
                 </AvatarBtn>
               ) : null}
@@ -278,7 +278,7 @@ export const UserForm = () => {
                   <AvatarBtn>
                     <button type="button" onClick={handleConfirm}>
                       <CheckIcon />
-                      <span>Confirm</span>
+                      <span>{t('confirm')}</span>
                     </button>
                     <button type="button" onClick={handleRemove}>
                       <RemoveIcon />
@@ -289,7 +289,7 @@ export const UserForm = () => {
             </AvatarContainer>
             <div>
               <InputWrap>
-                <Label htmlFor="name">Name:</Label>
+                <Label htmlFor="name">{t('name')}:</Label>
                 <Input
                   id="name"
                   autoComplete="off"
@@ -300,7 +300,7 @@ export const UserForm = () => {
               <ErrorMessage name="name" component={ErrorText} />
 
               <InputWrap>
-                <Label htmlFor="email">Email:</Label>
+                <Label htmlFor="email">{t('email')}:</Label>
                 <Input
                   id="email"
                   autoComplete="off"
@@ -311,7 +311,7 @@ export const UserForm = () => {
               <ErrorMessage name="email" component={ErrorText} />
 
               <InputWrap>
-                <Label htmlFor="birthday">Birthday:</Label>
+                <Label htmlFor="birthday">{t('birthday')}:</Label>
                 <Input
                   id="birthday"
                   type="date"
@@ -325,7 +325,7 @@ export const UserForm = () => {
               <ErrorMessage name="birthday" component={ErrorText} />
 
               <InputWrap>
-                <Label htmlFor="phone">Phone:</Label>
+                <Label htmlFor="phone">{t('phone')}:</Label>
                 <Input
                   id="phone"
                   autoComplete="off"
@@ -339,7 +339,7 @@ export const UserForm = () => {
               <ErrorMessage name="phone" component={ErrorText} />
 
               <InputWrap>
-                <Label htmlFor="city"> City:</Label>
+                <Label htmlFor="city">{t('city')}:</Label>
                 <Input
                   id="city"
                   autoComplete="off"
@@ -353,7 +353,7 @@ export const UserForm = () => {
               {!isFormEdit ? (
                 <LogoutB />
               ) : (
-                <SaveBtn type="submit">Save</SaveBtn>
+                <SaveBtn type="submit">{t('save')}</SaveBtn>
               )}
 
               {/* <Logout /> */}

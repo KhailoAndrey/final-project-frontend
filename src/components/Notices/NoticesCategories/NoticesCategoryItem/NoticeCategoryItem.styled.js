@@ -123,7 +123,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const Information = styled.div`
-  width: 80px;
+  min-width: 80px;
   height: 28px;
   background-color: var(--main-clr-blue-light);
   border-radius: 16px;
