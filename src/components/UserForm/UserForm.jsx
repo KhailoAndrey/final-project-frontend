@@ -47,11 +47,11 @@ export const UserForm = () => {
 
   // Можливість редагування форми
   const [isFormEdit, setIsFormEdit] = useState(false);
-  console.log(`isFormEdit=${isFormEdit}`);
+  // console.log(`isFormEdit=${isFormEdit}`);
 
   // Можливість редагування аватар
   const [isAvatarEdit, setIsAvatarEdit] = useState(false);
-  console.log(`isAvatarEdit=${isAvatarEdit}`);
+  // console.log(`isAvatarEdit=${isAvatarEdit}`);
   // Стани полів форми
   const [file, setFile] = useState(null);
   const [imageUrl, setImageURL] = useState(null);
@@ -64,11 +64,31 @@ export const UserForm = () => {
     city: user ? user.city : '',
   });
 
-  useEffect(() => {
+  // const newDefDate = () => {
+  //     const reduxDate = user.birthday;
+  //     console.log('reduxDate :>> ', reduxDate);
+  //     if (reduxDate.length > 0) {
+  //       console.log('user have birthday');
+  //       return `${reduxDate.slice(
+  //         6,
+  //         reduxDate.length
+  //       )}-${reduxDate.slice(3, 5)}-${reduxDate.slice(0, 2)}`;
+  //       // console.log('newDefDate', newDefDate);
+  //     } else {
+  //       console.log('user don`t have birthday');
+  //       const date = new Date();
+  //       return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  //       // console.log('newDefDate', newDefDate);
+  //     }
+  //   }
+
+    useEffect(() => {
     if (user === null) {
       return;
     }
 
+    // const date = newDefDate();
+    
     setValues({
       name: user && user.name ? user.name : '',
       email: user && user.email ? user.email : '',
@@ -78,12 +98,14 @@ export const UserForm = () => {
       avatar: values.avatar || '',
       avatarURL: user ? user.avatarURL : '',
     });
+
     setImageURL(file ? imageUrl : user.avatarURL);
   }, [user, file, imageUrl, values.avatar]);
 
+  // сабміт форми------------------------
   const handleSubmit = values => {
-    console.log('Submit!');
-    if (file && !values.avatar) {
+
+    if (file && isAvatarEdit) {
       toast.error('Press confirm or cancel your new photo');
       return;
     }
@@ -91,21 +113,26 @@ export const UserForm = () => {
     setIsFormEdit(false);
     const formData = new FormData();
 
-    if (values.imgUrl) {
-      formData.append('avatar', values.imgUrl);
+    if (file) {
+      // console.log('we have new avatar');
+      formData.append('avatar', file);
     }
 
     if (values.name) {
+      // console.log('name changed');
       formData.append('name', values.name);
     }
     // переводимо дату у формат беку
-    const rowDate = values.birthday;
-    const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
-      5,
-      7
-    )}-${rowDate.slice(0, 4)}`;
 
     if (values.birthday) {
+      console.log('birthday changed');
+      const rowDate = values.birthday;
+      // console.log('rowDate :>> ', rowDate);
+      const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
+        5,
+        7
+      )}-${rowDate.slice(0, 4)}`;
+      // console.log('newDate :>> ', newDate);
       formData.append('birthday', newDate);
     }
 
@@ -115,10 +142,12 @@ export const UserForm = () => {
     if (values.city) {
       formData.append('city', values.city);
     }
-    console.log(formData);
+
+    console.log(formData.get('avatar'));
     dispatch(updateUser(formData));
     toast.success('Changes saved successfully');
     // navigate(`/user`);
+    // after submit-----------------------
   };
 
   const handleClick = () => {
@@ -136,14 +165,16 @@ export const UserForm = () => {
   const handleFileChange = evt => {
     const fileSize = 3000000;
     const file = evt.target.files[0];
+    console.log('file :>> ', file);
     if (file && file.size <= fileSize) {
+      console.log('ok size');
       setFile(file);
       setImageURL(URL.createObjectURL(file));
+      console.log('URL.createObjectURL(file) :>> ', URL.createObjectURL(file));
 
       setIsAvatarEdit(true);
 
-      console.log(`Is file: ${{ file }}`);
-      console.log(`editing: ${isAvatarEdit}`);
+      // console.log(`Is file: ${{ file }}`);
     } else {
       setIsAvatarEdit(false);
       setImageURL(user && user.avatarURL);
@@ -153,12 +184,14 @@ export const UserForm = () => {
     }
   };
 
+  // avatars confirm
   const handleConfirm = () => {
+    console.log('confirm avatar handle');
     setValues({ ...values, avatar: file });
-    console.log(`values after confirm ${values}`);
+    console.log('values after confirm', values);
     // setIsFormEdit(true);
     setIsAvatarEdit(false);
-    console.log('Image saved:', values.imageUrl);
+    console.log('Image saved:', values.avatarURL);
   };
 
   const handleRemove = () => {
@@ -178,6 +211,7 @@ export const UserForm = () => {
   //     setPhoneNumber(formattedValue);
   //   }
   // };
+
   return (
     <>
       <Formik
@@ -283,7 +317,8 @@ export const UserForm = () => {
                   type="date"
                   autoComplete="off"
                   name="birthday"
-                  placeholder="00.00.0000"
+                  // value={values.birthday}
+                  // placeholder="00.00.0000"
                   disabled={!isFormEdit}
                 />
               </InputWrap>
