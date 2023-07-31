@@ -27,7 +27,7 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const GoogleAuth = styled(Link)`
+export const GoogleAuth = styled.a`
   font-family: Manrope, sans-serif;
   text-decoration: none;
   font-weight: 400;
