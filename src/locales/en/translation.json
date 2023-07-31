@@ -133,5 +133,6 @@
   "user_name_err": "Only alphabetic characters are allowed",
   "phone_valid": "Phone should be in format +380441234567",
   "city_valid": "Only in format 'City'",
-  "googleAuth": "Enter with Google"
+  "googleAuth": "Enter with Google",
+  "no_news": "No posts for your query"
 }

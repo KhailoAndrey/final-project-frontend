@@ -1,13 +1,17 @@
-import NewsItem from '../NewsItem/NewsItem';
+import { useTranslation } from 'react-i18next';
 import { nanoid } from 'nanoid';
+import NewsItem from '../NewsItem/NewsItem';
+
 import { Container, List, Notification, NItem } from './NewsList.styled';
 
 const NewsList = ({ news }) => {
+  const { t } = useTranslation();
+
   if (!news || news.length === 0) {
     return (
       <Container>
         <Notification>
-          <p>No posts for your query</p>
+          <p>{t('no_news')}</p>
         </Notification>
       </Container>
     );
