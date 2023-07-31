@@ -137,7 +137,7 @@ export const SaveBtn = styled.button`
     margin-right: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 255px;
+    width: 240px;
   }
 
   :hover,
