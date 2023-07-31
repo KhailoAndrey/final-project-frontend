@@ -45,7 +45,7 @@ export const Input = styled(Field)`
   width: 190px;
 
   @media screen and (min-width: 768px) {
-    min-width: 255px;
+    min-width: 240px;
   }
 
   &:focus,

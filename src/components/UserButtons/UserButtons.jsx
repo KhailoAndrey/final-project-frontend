@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import svg from '../../images/Icons/symbol-defs.svg';
 import {
   CameraIcon,
@@ -8,6 +9,8 @@ import {
 } from './UserButtons.styled';
 
 export const LogoutB = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <LogoutButton type="button" onClick={() => console.log('LogoutBtn')}>
@@ -16,7 +19,7 @@ export const LogoutB = () => {
           <use href={`${svg}#icon-logout`} />
         </svg>
         {/* </LogoutIcon> */}
-        Log Out
+        {t('logout')}
       </LogoutButton>
     </>
   );

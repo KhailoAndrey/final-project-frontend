@@ -45,16 +45,16 @@ const PetsItem = ({ pet }) => {
         <Content>
           <ListPets>
             <Title>
-              Name: <Span>{name}</Span>
+              {t('name')}: <Span>{name}</Span>
             </Title>
             <Title>
-              Date of birth: <Span> {date} </Span>
+              {t('date_of_birth')}: <Span> {date} </Span>
             </Title>
             <Title>
-              Breed:<Span> {type} </Span>
+              {t('breed')}:<Span> {type} </Span>
             </Title>
             <Title>
-              Comments: <Span>{comments} </Span>
+              {t('comment')}: <Span>{comments} </Span>
             </Title>
           </ListPets>
 
