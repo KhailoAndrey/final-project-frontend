@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   FilterBtn,
   Thumb,
-  // FilterBackdrop,
   FilterContent,
   FilterCategoryBtn,
   CategorytDiv,
@@ -19,6 +19,8 @@ const NoticesDropFilter = ({ setPetsSex, setPetsAge, setRerender }) => {
   const [showSexFilters, setShowSexFilters] = useState(false);
   const [sex, setSex] = useState('');
   const [age, setAge] = useState([]);
+
+  const { t } = useTranslation();
 
   const onBtnClick = () => {
     showFilters ? setShowFilters(false) : setShowFilters(true);
@@ -41,73 +43,69 @@ const NoticesDropFilter = ({ setPetsSex, setPetsAge, setRerender }) => {
     <>
       <Thumb>
         <FilterBtn type="button" onClick={() => onBtnClick()}>
-          Filter
+          {t('filter')}
           <svg width={24} height={24}>
             <use href={`${svg}#icon-filter`} width={24} height={24} />
           </svg>
         </FilterBtn>
       </Thumb>
 
-      {
-        showFilters && (
-          // <FilterBackdrop>
-          <FilterContent>
-            <p>Filters</p>
+      {showFilters && (
+        <FilterContent>
+          <p>{t('filters')}</p>
 
-            <CategorytDiv>
-              <FilterCategoryBtn
-                type="button"
-                onClick={() => {
-                  toggle(showAgeFilters, setShowAgeFilters);
-                }}
-              >
-                {!showAgeFilters && (
-                  <svg width={24} height={24}>
-                    <use
-                      href={`${svg}#icon-chevron-down`}
-                      width={24}
-                      height={24}
-                    />
-                  </svg>
-                )}
-                By age
-              </FilterCategoryBtn>
-              {showAgeFilters && <FilterByAge age={age} setAge={setAge} />}
-            </CategorytDiv>
-
-            <CategorytDiv>
-              <FilterCategoryBtn
-                type="button"
-                onClick={() => {
-                  toggle(showSexFilters, setShowSexFilters);
-                }}
-              >
-                {!showSexFilters && (
-                  <svg width={24} height={24}>
-                    <use
-                      href={`${svg}#icon-chevron-down`}
-                      width={24}
-                      height={24}
-                    />
-                  </svg>
-                )}
-                By gender
-              </FilterCategoryBtn>
-              {showSexFilters && <FilterBySex sex={sex} setSex={setSex} />}
-            </CategorytDiv>
-
-            {(sex || age.length > 0) && (
-              <FilterApplyBtn type="button" onClick={onApplyFilter}>
-                <svg width={20} height={20}>
-                  <use href={`${svg}#icon-paw`} width={20} height={20} />
+          <CategorytDiv>
+            <FilterCategoryBtn
+              type="button"
+              onClick={() => {
+                toggle(showAgeFilters, setShowAgeFilters);
+              }}
+            >
+              {!showAgeFilters && (
+                <svg width={24} height={24}>
+                  <use
+                    href={`${svg}#icon-chevron-down`}
+                    width={24}
+                    height={24}
+                  />
                 </svg>
-                Apply
-              </FilterApplyBtn>
-            )}
-          </FilterContent>
-        )
-        // </FilterBackdrop>
-      }
+              )}
+              {t('by_age')}
+            </FilterCategoryBtn>
+            {showAgeFilters && <FilterByAge age={age} setAge={setAge} />}
+          </CategorytDiv>
+
+          <CategorytDiv>
+            <FilterCategoryBtn
+              type="button"
+              onClick={() => {
+                toggle(showSexFilters, setShowSexFilters);
+              }}
+            >
+              {!showSexFilters && (
+                <svg width={24} height={24}>
+                  <use
+                    href={`${svg}#icon-chevron-down`}
+                    width={24}
+                    height={24}
+                  />
+                </svg>
+              )}
+              {t('by_gender')}
+            </FilterCategoryBtn>
+            {showSexFilters && <FilterBySex sex={sex} setSex={setSex} />}
+          </CategorytDiv>
+
+          {(sex || age.length > 0) && (
+            <FilterApplyBtn type="button" onClick={onApplyFilter}>
+              <svg width={20} height={20}>
+                <use href={`${svg}#icon-paw`} width={20} height={20} />
+              </svg>
+              {t('apply')}
+            </FilterApplyBtn>
+          )}
+        </FilterContent>
+      )}
     </>
   );
 };

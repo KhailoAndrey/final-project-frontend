@@ -213,10 +213,6 @@ export const DeleteBtn = styled.button`
 
   &:hover {
     box-shadow: 3px 8px 14px 0px var(--big-shadow);
-
-    /* svg {
-      fill: var(--btn-clr-fon);
-    }*/
   }
 `;
 
@@ -229,16 +225,17 @@ export const FilterBtnContainer = styled.div`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    max-width: 100%;
+    /* хто відкоригує щось тут - уб'ю!!!!!!!!!!!! */
+    width: 380px;
     position: absolute;
     top: 40px;
     right: 0;
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 100%;
+    width: 380px;
     top: -4px;
-    right: 300px;
+    right: 295px;
   }
 `;
 
@@ -263,4 +260,3 @@ export const ClearFilterBtn = styled.button`
     box-shadow: 3px 8px 14px 0px var(--big-shadow);
   }
 `;
-/* export const FilterBackdrop = styled.div``; */

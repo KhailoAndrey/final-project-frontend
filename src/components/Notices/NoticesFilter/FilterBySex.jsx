@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
   CategoryInput,
@@ -6,6 +7,9 @@ import {
 } from './NoticesDropFilter.styled';
 
 const FilterBySex = ({ sex, setSex }) => {
+  const { t } = useTranslation();
+
+
   const handleFilterChange = e => {
     const { value } = e.target;
     setSex(value);
@@ -20,7 +24,7 @@ const FilterBySex = ({ sex, setSex }) => {
         checked={sex === 'male'}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor="male">male</CategoryLabel>
+      <CategoryLabel htmlFor="male">{t('male')}</CategoryLabel>
       <CategoryInput
         type="radio"
         value="female"
@@ -28,7 +32,7 @@ const FilterBySex = ({ sex, setSex }) => {
         checked={sex === 'female'}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor="female">female</CategoryLabel>
+      <CategoryLabel htmlFor="female">{t('female')}</CategoryLabel>
     </CategoryTextDiv>
   );
 };
