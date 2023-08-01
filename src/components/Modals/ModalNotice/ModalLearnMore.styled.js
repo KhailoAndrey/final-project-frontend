@@ -222,3 +222,20 @@ export const CloseButton = styled.button`
     right: 17px;
   }
 `;
+
+export const LinkEmail = styled.a`
+text-decoration: none;
+color: inherit;
+&:hover {
+    color: var(--main-clr-yellow);
+    scale: 1.1;
+  }
+`
+export const LinkPhone = styled.a`
+text-decoration: none;
+color: inherit;
+&:hover {
+  color: var(--main-clr-yellow);
+  scale: 1.1;
+  }
+`

@@ -4,6 +4,7 @@ import { useAuth } from 'redux/auth/selectors';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import fetchNoticesById from 'fetch/noticeModalLearnMore';
+import convertDateFormat from 'utils/formatDate';
 import { correctCategory } from 'components/Notices/NoticesCategories/NoticesCategoryItem/NoticeItemUtils';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
@@ -22,6 +23,8 @@ import {
   Image,
   Category,
   CloseButton,
+  LinkEmail,
+  LinkPhone,
 } from './ModalLearnMore.styled';
 
 export const ModalLearMore = ({
@@ -43,6 +46,8 @@ export const ModalLearMore = ({
     const fetchData = async () => {
       try {
         const data = await fetchNoticesById(id);
+        const formattedDate = convertDateFormat(data.date);
+        data.date = formattedDate;
         setNoticeData(data);
       } catch (error) {
         console.error('Error fetching notice:', error);
@@ -122,8 +127,8 @@ export const ModalLearMore = ({
                 <div>{data.location}</div>
                 <div>{t(`${data.sex}`)}</div>
                 <div>{data.owner?.name}</div>
-                {data.owner?.email && <div>{data.owner?.email}</div>}
-                {data.owner?.phone && <div>{data.owner?.phone}</div>}
+                {data.owner?.email && <LinkEmail href={`mailto:${data.owner.email}`}>{data.owner?.email}</LinkEmail>}
+                {data.owner?.phone && <LinkPhone href={`tel:${data.owner.phone}`}>{data.owner?.phone}</LinkPhone>}
               </ContactContent>
             </Contact>
           </ContactInfo>

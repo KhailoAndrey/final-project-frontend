@@ -36,9 +36,14 @@ export const Wrapper = styled.div`
   box-shadow: 3px 8px 14px var(--small-shadow);
   border-radius: 40px;
   font-style: normal;
+  margin-top: 20px;
 
   @media screen and (min-width: 768px) {
     padding: 20px 32px;
+    margin-top: 60px;
+  }
+  @media screen and (min-width: 1280px){
+   margin-top: 40px; 
   }
 `;
 
