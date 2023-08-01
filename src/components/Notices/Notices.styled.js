@@ -16,9 +16,9 @@ export const NoticeNavContainer = styled.div`
   @media screen and (min-width: 1280px) {
     width: 1248px;
   }
-  animation: moveRotate var(--slow-animation) forwards ;
+  /* animation: moveRotate var(--slow-animation) forwards ; */
 
-  @keyframes moveRotate {
+  /* @keyframes moveRotate {
     0% {
       opacity: 0;
       transform: scale(0);
@@ -28,10 +28,11 @@ export const NoticeNavContainer = styled.div`
       opacity: 1;
       transform: scale(1);
     }    
-  }
+  } */
 `;
 
 export const BtnContainer = styled.div`
+position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -69,3 +70,4 @@ export const LoaderDiv = styled.div`
     width: 300px;
   } */
 `;
+

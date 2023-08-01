@@ -14,7 +14,7 @@ export const UserCard = styled.div`
     flex-direction: row-reverse;
     justify-content: space-between;
     width: 704px;
-    margin-top: 24px;
+    margin-top: 32px;
     padding: 20px 76px 20px 20px;
   }
 
