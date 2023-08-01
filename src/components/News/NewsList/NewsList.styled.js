@@ -17,6 +17,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin-top: 60px;
   position: relative;
+  margin-bottom: 68px;
 `;
 
 export const List = styled.ul`

@@ -5,6 +5,7 @@ export const ListContainer = styled.ul`
   flex-direction: column;
   gap: 24px;
   margin-top: 24px;
+  margin-bottom: 68px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
