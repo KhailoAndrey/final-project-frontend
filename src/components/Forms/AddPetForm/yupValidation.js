@@ -1,5 +1,6 @@
 import { t } from 'i18next';
 import * as yup from 'yup';
+import { nameRegex, cityRegex } from 'utils/Regex';
 
 export const addPetFormSchema = yup.object().shape({
   title: yup.string().when('category', {
@@ -22,15 +23,19 @@ export const addPetFormSchema = yup.object().shape({
   name: yup
     .string()
     .min(2, t('text_min_2'))
-    .max(16, t('text_max_16'))
-    .matches(/^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,16}$/, t('name_regexp'))
+    .max(26, t('text_max_26'))
+    .matches(
+      nameRegex,
+      t('Starts with capitalize character, the name must contain only letters')
+    )
     .required(t('name_enter')),
   location: yup.string().when('category', {
     is: value => value !== 'my pet',
     then: () =>
       yup
         .string()
-        .matches(/^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+(?:,\s*[A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s]+)*$/, t('loc_with'))
+        .min(3, t('text_min_3'))
+        .matches(cityRegex, t('loc_with'))
         .required(t('loc_enter')),
     otherwise: () => yup.string(),
   }),
@@ -40,7 +45,7 @@ export const addPetFormSchema = yup.object().shape({
       yup.number().moreThan(0, t('price_err')).required(t('price_enter')),
     otherwise: () => yup.number(),
   }),
-  comments: yup.string().min(4, t('text_min_4')).max(120, t('text_max_120')),
+  comments: yup.string().min(2, t('text_min_2')).max(120, t('text_max_120')),
   sex: yup.string().when('category', {
     is: value =>
       value === 'sell' || value === 'lost-found' || value === 'for-free',
