@@ -1,6 +1,6 @@
 import { t } from 'i18next';
 import * as yup from 'yup';
-import { nameRegex, cityRegex } from 'utils/Regex';
+import { nameRegex, cityRegex } from 'const/Regex';
 
 export const addPetFormSchema = yup.object().shape({
   title: yup.string().when('category', {
@@ -23,11 +23,8 @@ export const addPetFormSchema = yup.object().shape({
   name: yup
     .string()
     .min(2, t('text_min_2'))
-    .max(26, t('text_max_26'))
-    .matches(
-      nameRegex,
-      t('Starts with capitalize character, the name must contain only letters')
-    )
+    .max(26, t('name_max'))
+    .matches(nameRegex, t('pets_name_error'))
     .required(t('name_enter')),
   location: yup.string().when('category', {
     is: value => value !== 'my pet',
