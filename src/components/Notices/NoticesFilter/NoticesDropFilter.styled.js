@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 // import svg from '../../../images/Icons/symbol-defs.svg';
 
-export const CategoryDiv = styled.div`
+// text content--------------------
+export const CategoryTextDiv = styled.div`
   width: 136px;
   background-color: var(--main-clr-blue-light);
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  padding: 14px;
+  padding: 7px 14px 14px 14px;
   gap: 14px;
 `;
 
@@ -17,6 +18,13 @@ export const CategoryTitle = styled.p`
   font-style: normal;
   font-weight: 400;
   color: var(--main-clr-blue);
+`;
+
+export const CategoryLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
 `;
 
 export const CategoryInput = styled.input`
@@ -39,7 +47,7 @@ export const CategoryInput = styled.input`
   }
 
   &:checked + label::before {
-    background-color: black;
+    background-color: var(--main-clr-blue);
     /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='54ADFF' d='M20.0001 7L9.0001 18L4 13'/%3e%3c/svg%3e");
   fill: red; */
   }
@@ -47,7 +55,7 @@ export const CategoryInput = styled.input`
 
 export const CategoryContent = styled.span``;
 
-// main button-----------------------
+// main button @filter@-------------------
 
 export const FilterBtn = styled.button`
   border-radius: 40px;
@@ -58,7 +66,7 @@ export const FilterBtn = styled.button`
   justify-content: center;
   align-items: center;
   border: 2px solid var(--main-clr-blue);
-  outline: none;
+  outline: 0;
   text-decoration: none;
   svg {
     stroke: var(--main-clr-blue);
@@ -76,8 +84,7 @@ export const FilterBtn = styled.button`
     min-width: 152px;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: var(--main-clr-gr_blue);
     color: var(--btn-clr-fon);
 
@@ -88,7 +95,6 @@ export const FilterBtn = styled.button`
 `;
 
 export const Thumb = styled.div`
-  /* background-color: red; */
   position: relative;
 `;
 
@@ -97,8 +103,8 @@ export const Thumb = styled.div`
 export const FilterContent = styled.div`
   position: absolute;
   z-index: 20;
-  left: 0;
-  top: 40px;
+  right: 0;
+  top: 35px;
   width: 152px;
   background-color: aqua;
   padding: 8px;
@@ -111,6 +117,16 @@ export const FilterContent = styled.div`
   color: var(--main-clr-blue);
   background-color: var(--white-bckg-clr);
   border-radius: 20px;
+
+  @media screen and (min-width: 768px) {
+    left: 0;
+    top: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    left: 0;
+    top: 40px;
+  }
 `;
 
 export const FilterCategoryBtn = styled.button`
@@ -118,6 +134,7 @@ export const FilterCategoryBtn = styled.button`
   align-items: center;
   gap: 10px;
   min-height: 32px;
+  min-width: 136px;
   border-radius: 20px;
   background: var(--main-clr-blue-light);
   padding: 4px 12px;
@@ -126,12 +143,54 @@ export const FilterCategoryBtn = styled.button`
   text-decoration: none;
   color: var(--main-clr-blue);
   font-family: Manrope;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-
   svg {
     stroke: var(--main-clr-blue);
   }
 `;
+
+export const FilterApplyBtn = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  min-width: 136px;
+  border-radius: 20px;
+  background: var(--main-clr-blue-light);
+  padding: 4px 14px;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  color: var(--main-clr-blue);
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 400;
+  svg {
+    fill: var(--main-clr-blue);
+  }
+
+  &:hover {
+    background: var(--main-clr-gr_blue);
+    color: var(--btn-clr-fon);
+
+    svg {
+      fill: var(--btn-clr-fon);
+    }
+  }
+`;
+
+// one filters category---------------------
+export const CategorytDiv = styled.div`
+  width: 136px;
+  /* background-color: red; */
+  background-color: var(--main-clr-blue-light);
+  /* display: flex; */
+  /* flex-direction: column; */
+  border-radius: 20px;
+  /* padding: 14px; */
+  /* gap: 14px; */ 
+`;
+
 
 /* export const FilterBackdrop = styled.div``; */

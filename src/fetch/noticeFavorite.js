@@ -1,11 +1,7 @@
 const API_URL =
   'https://final-project-backend-4o0r.onrender.com/api/notices/favorite';
 
-async function fetchFavoriteNotices(page, query, token, petsSex) {
-  // console.log('fetch favorite:');
-  // console.log('page :>> ', page);
-  // console.log('query :>> ', query);
-  // console.log('token :>> ', token);
+async function fetchFavoriteNotices(page, query, token, petsSex, petsAge) {
 
   const options = {
     method: 'GET',
@@ -16,7 +12,7 @@ async function fetchFavoriteNotices(page, query, token, petsSex) {
   };
   try {
     const response = await fetch(
-      `${API_URL}?page=${page}&query=${query}&sex=${petsSex}`,
+      `${API_URL}?page=${page}&query=${query}&sex=${petsSex}&age=${petsAge}`,
       options
     );
     if (!response.ok) throw new Error('Sorry. Try again later :(');
