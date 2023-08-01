@@ -7,7 +7,13 @@ display: flex;
   justify-content: center;
   align-items: center;
   margin-top :68px;
-
+margin-bottom: 40px;
+@media screen and (min-width: 768px){
+margin-bottom: 56px;  
+}
+@media screen and (min-width: 768px){
+margin-bottom: 60px;  
+}
 `;
 
 export const CustomPagination = styled(Pagination)`
