@@ -144,6 +144,6 @@
   "by_age": "By age",
   "by_gender": "By gender",
   "filter": "Filter",
-  "apply": "Apply"
+  "apply": "Apply",
   "pets_name_error": "Starts with capitalize character and the name must contain only letters"
 }
