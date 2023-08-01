@@ -194,7 +194,6 @@ export const AddPetForm = () => {
       // викликаємо функцію фетч-запиту
       await foo(formData, token);
 
-      console.log('before relocate');
       navigate(`/notices/${values.category}`);
     }
 

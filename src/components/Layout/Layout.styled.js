@@ -13,7 +13,7 @@ export const Section = styled.section`
   margin: 0;
   padding: 0 20px 20px;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   background-repeat: repeat;
   background-image: url(${bg_mob});
   overflow: auto;
