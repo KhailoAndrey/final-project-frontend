@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
   CategoryInput,
@@ -6,6 +7,9 @@ import {
 } from './NoticesDropFilter.styled';
 
 const FilterByAge = ({ age, setAge }) => {
+  const { t } = useTranslation();
+
+
   const handleFilterChange = e => {
     const { value, checked } = e.target;
     if (checked) {
@@ -14,7 +18,6 @@ const FilterByAge = ({ age, setAge }) => {
       setAge(prevFilters => prevFilters.filter(filter => filter !== value));
     }
   };
-  // console.log('age :>> ', age);
 
   return (
     <CategoryTextDiv>
@@ -25,7 +28,7 @@ const FilterByAge = ({ age, setAge }) => {
         checked={age.includes('3-12m')}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor="3-12m">3-12 month</CategoryLabel>
+      <CategoryLabel htmlFor="3-12m">{t('age_young')}</CategoryLabel>
       <CategoryInput
         type="checkbox"
         value="1-2y"
@@ -33,7 +36,7 @@ const FilterByAge = ({ age, setAge }) => {
         checked={age.includes('1-2y')}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor="1-2y">ut to 1 year</CategoryLabel>
+      <CategoryLabel htmlFor="1-2y">{t('age_middle')}</CategoryLabel>
       <CategoryInput
         type="checkbox"
         value=">2y"
@@ -41,7 +44,7 @@ const FilterByAge = ({ age, setAge }) => {
         checked={age.includes('>2y')}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor=">2y">up to 2 year</CategoryLabel>
+      <CategoryLabel htmlFor=">2y">{t('age_Old')}</CategoryLabel>
     </CategoryTextDiv>
   );
 };

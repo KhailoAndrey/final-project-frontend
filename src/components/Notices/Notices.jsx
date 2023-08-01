@@ -21,6 +21,7 @@ import {
 import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
 import NoticesDropFilter from './NoticesFilter/NoticesDropFilter';
+import DropFilterButtons from './NoticesFilter/DropFilterButtons';
 // import overview from '../../images/NoNotice/overview.gif'
 
 const Notices = () => {
@@ -126,14 +127,24 @@ const Notices = () => {
           />
           <BtnContainer>
             <NoticesDropFilter
-              // showFilters={showFilters}
-              // setShowFilters={setShowFilters}
               setPetsSex={setPetsSex}
               setPetsAge={setPetsAge}
               setRerender={setRerender}
             />
+
             <AddPetBtn setAlertShowModal={setAlertShowModal} />
           </BtnContainer>
+
+          {(petsSex.length > 0 ||
+            (petsAge.length > 0 && petsAge[0] !== '')) && (
+            <DropFilterButtons
+              petsSex={petsSex}
+              petsAge={petsAge}
+              setPetsSex={setPetsSex}
+              setPetsAge={setPetsAge}
+              setRerender={setRerender}
+            />
+          )}
         </NoticeNavContainer>
         <LoaderDiv>{notiseLoading && <LoaderPaws />}</LoaderDiv>
 

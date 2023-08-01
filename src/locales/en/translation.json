@@ -137,5 +137,13 @@
   "city_valid": "Only in format 'City'",
   "googleAuth": "Enter with Google",
   "no_news": "No posts for your query",
+  "age_young": "3-12 month",
+  "age_middle": "up to 1 year",
+  "age_Old": "up to 2 year",
+  "filters": "Filters",
+  "by_age": "By age",
+  "by_gender": "By gender",
+  "filter": "Filter",
+  "apply": "Apply"
   "pets_name_error": "Starts with capitalize character and the name must contain only letters"
 }

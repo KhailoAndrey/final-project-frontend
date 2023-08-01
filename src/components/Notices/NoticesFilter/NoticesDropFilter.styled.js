@@ -183,14 +183,80 @@ export const FilterApplyBtn = styled.button`
 // one filters category---------------------
 export const CategorytDiv = styled.div`
   width: 136px;
-  /* background-color: red; */
   background-color: var(--main-clr-blue-light);
-  /* display: flex; */
-  /* flex-direction: column; */
   border-radius: 20px;
-  /* padding: 14px; */
-  /* gap: 14px; */ 
 `;
 
+// delete buttons--------------------
+export const DeleteBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  max-height: 32px;
+  /* min-width: 86px; */
+  border-radius: 20px;
+  background: var(--white-bckg-clr);
+  padding: 8px 16px;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  color: var(--main-clr-blue);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 400;
+  box-shadow: 3px 8px 14px 0px var(--small-shadow);
 
-/* export const FilterBackdrop = styled.div``; */
+  svg {
+    stroke: var(--main-clr-blue);
+  }
+
+  &:hover {
+    box-shadow: 3px 8px 14px 0px var(--big-shadow);
+  }
+`;
+
+export const FilterBtnContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    /* хто відкоригує щось тут - уб'ю!!!!!!!!!!!! */
+    width: 380px;
+    position: absolute;
+    top: 40px;
+    right: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 380px;
+    top: -4px;
+    right: 295px;
+  }
+`;
+
+export const ClearFilterBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 32px;
+  height: 32px;
+  background: var(--white-bckg-clr);
+  outline: 0;
+  text-decoration: none;
+  border: 1px solid var(--main-clr-blue-light);
+  box-shadow: 3px 8px 14px 0px var(--small-shadow);
+
+  svg {
+    stroke: var(--main-clr-blue);
+  }
+
+  &:hover {
+    box-shadow: 3px 8px 14px 0px var(--big-shadow);
+  }
+`;
