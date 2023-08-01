@@ -9,7 +9,7 @@ export const NavBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* width: 328px; */
+    gap: 40px;
   }
 `;
 export const StyledNavLink = styled(Link)`

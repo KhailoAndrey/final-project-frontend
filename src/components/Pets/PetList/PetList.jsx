@@ -1,7 +1,7 @@
-import LoaderPaws from 'components/Loader/LoaderPaws';
+// import LoaderPaws from 'components/Loader/LoaderPaws';
 import PetsItem from '../PetItem/PetItem';
 import { List } from './PetList.styled';
-import { useAuth } from 'redux/auth/selectors';
+// import { useAuth } from 'redux/auth/selectors';
 
 const PetsList = ({pets}) => {
   // const { user, isLoading } = useAuth();
