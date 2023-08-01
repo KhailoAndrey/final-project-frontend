@@ -2,14 +2,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { UserCard, DataWrapper } from './UserData.styled';
 import { UserForm } from 'components/UserForm/UserForm';
-import { useAuth } from 'redux/auth/selectors';
-import LoaderPaws from 'components/Loader/LoaderPaws';
+// import { useAuth } from 'redux/auth/selectors';
+// import LoaderPaws from 'components/Loader/LoaderPaws';
 
 export const UserData = () => {
-  const { isLoading } = useAuth();
+  // const { isLoading } = useAuth();
   return (
     <>
-      {isLoading && <LoaderPaws />}
+      {/* {isLoading && <LoaderPaws />} */}
       <UserCard>
         <DataWrapper>
           <UserForm />

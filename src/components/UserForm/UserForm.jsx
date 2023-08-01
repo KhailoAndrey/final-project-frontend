@@ -137,7 +137,7 @@ export const UserForm = () => {
   const handleFileChange = evt => {
     const fileSize = 3000000;
     const file = evt.target.files[0];
-    console.log('file :>> ', file);
+    // console.log('file :>> ', file);
     if (file && file.size <= fileSize) {
       setFile(file);
       setImageURL(URL.createObjectURL(file));

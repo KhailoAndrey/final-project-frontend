@@ -5,8 +5,8 @@ import {
   CategoryTitle,
 } from './NoticesDropFilter.styled';
 
-const FilterBySex = () => {
-  const [sex, setSex] = useState([]);
+const FilterBySex = ({ sex, setSex }) => {
+  // const [sex, setSex] = useState([]);
 
   const handleFilterChange = e => {
     const { value, checked } = e.target;

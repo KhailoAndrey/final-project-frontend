@@ -20,7 +20,6 @@ import {
 } from './Notices.styled';
 import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
-// import fetchTestFilter from 'fetch/noticeTestFilter';
 import NoticesDropFilter from './NoticesFilter/NoticesDropFilter';
 // import overview from '../../images/NoNotice/overview.gif'
 
@@ -127,6 +126,8 @@ const Notices = () => {
           />
           <BtnContainer>
             <NoticesDropFilter
+              // showFilters={showFilters}
+              // setShowFilters={setShowFilters}
               setPetsSex={setPetsSex}
               setPetsAge={setPetsAge}
               setRerender={setRerender}

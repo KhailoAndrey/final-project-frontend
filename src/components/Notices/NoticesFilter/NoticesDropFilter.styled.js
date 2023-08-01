@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 // import svg from '../../../images/Icons/symbol-defs.svg';
-
 
 export const CategoryDiv = styled.div`
   width: 136px;
@@ -19,7 +18,6 @@ export const CategoryTitle = styled.p`
   font-weight: 400;
   color: var(--main-clr-blue);
 `;
-
 
 export const CategoryInput = styled.input`
   position: absolute;
@@ -47,12 +45,9 @@ export const CategoryInput = styled.input`
   }
 `;
 
+export const CategoryContent = styled.span``;
 
-export const CategoryContent = styled.span`
-
-`;
-
-// main button
+// main button-----------------------
 
 export const FilterBtn = styled.button`
   border-radius: 40px;
@@ -63,7 +58,7 @@ export const FilterBtn = styled.button`
   justify-content: center;
   align-items: center;
   border: 2px solid var(--main-clr-blue);
-  outline: 0;
+  outline: none;
   text-decoration: none;
   svg {
     stroke: var(--main-clr-blue);
@@ -85,10 +80,58 @@ export const FilterBtn = styled.button`
   &:focus {
     background: var(--main-clr-gr_blue);
     color: var(--btn-clr-fon);
-    border: 0;
 
     svg {
       stroke: var(--btn-clr-fon);
     }
   }
 `;
+
+export const Thumb = styled.div`
+  /* background-color: red; */
+  position: relative;
+`;
+
+// filters category----------------
+
+export const FilterContent = styled.div`
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  top: 40px;
+  width: 152px;
+  background-color: aqua;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--main-clr-blue);
+  background-color: var(--white-bckg-clr);
+  border-radius: 20px;
+`;
+
+export const FilterCategoryBtn = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  border-radius: 20px;
+  background: var(--main-clr-blue-light);
+  padding: 4px 12px;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+  color: var(--main-clr-blue);
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 400;
+
+  svg {
+    stroke: var(--main-clr-blue);
+  }
+`;
+
+/* export const FilterBackdrop = styled.div``; */

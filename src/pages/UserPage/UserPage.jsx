@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from 'redux/auth/selectors';
 import AddPetBtn from 'helpers/AddPetButton/AddPetBtn';
@@ -7,30 +6,26 @@ import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
 import PetsList from 'components/Pets/PetList/PetList';
 import {
   UserInfo,
-  Container,
+  TitleContainer,
   ProfileTitle,
   UserContainer,
   PetsContainer,
   UserPageContainer,
+  UserLoaderDiv,
 } from './UserPage.styled';
+import LoaderPaws from 'components/Loader/LoaderPaws';
 
 const UserPage = () => {
-  const { newUser, user } = useAuth();
+  const { newUser, user, isLoading } = useAuth();
+
   const { t } = useTranslation();
 
   const pets = user.pets;
 
-  useEffect(() => {
-    // console.log('оновлення петсів у сторі');
-  }, [pets]);
-
-  useEffect(() => {
-    // console.log('оновлення юзера у сторі');
-  }, [user]);
-
   return (
     <>
       {newUser && <ModalCongrats />}
+
       <UserPageContainer>
         <UserContainer>
           <div>
@@ -42,15 +37,15 @@ const UserPage = () => {
         </UserContainer>
 
         <PetsContainer>
-          <Container>
+          <TitleContainer>
             <ProfileTitle>{t('my_pets')}</ProfileTitle>
             <AddPetBtn />
-          </Container>
+          </TitleContainer>
           {pets && <PetsList pets={pets} />}
         </PetsContainer>
       </UserPageContainer>
-      {/* {user.newUser && <ModalCongrats />} */}
-      {/* {user.newUser && <AttentionModal />} */}
+
+      <UserLoaderDiv>{isLoading && <LoaderPaws />}</UserLoaderDiv>
     </>
   );
 };

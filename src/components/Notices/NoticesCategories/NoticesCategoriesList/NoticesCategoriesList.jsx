@@ -21,6 +21,7 @@ const NoticesCategoriesList = ({
 
   return (
     <>
+    <div>
       <ListContainer>
         {articles.length > 0 &&
           articles.map(article => (
@@ -33,6 +34,7 @@ const NoticesCategoriesList = ({
             />
           ))}
       </ListContainer>
+    </div>
     </>
   );
 };
