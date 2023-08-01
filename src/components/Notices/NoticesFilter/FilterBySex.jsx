@@ -10,7 +10,6 @@ const FilterBySex = ({ sex, setSex }) => {
     const { value } = e.target;
     setSex(value);
   };
-  // console.log('sex :>> ', sex);
 
   return (
     <CategoryTextDiv>

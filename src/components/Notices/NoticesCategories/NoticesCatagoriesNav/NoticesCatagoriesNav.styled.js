@@ -7,15 +7,17 @@ export const CatContainer = styled.div`
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
-  max-width: 100%;
+  max-width: 150px;
 
   @media screen and (min-width: 768px) {
-    max-width: 330px;
+    max-width: 400px;
     gap: 12px;
   }
 
-  @media screen and (min-width: 768px) {
-    max-width: 100%;
+  @media screen and (min-width: 1280px) {
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
   }
 `;
 

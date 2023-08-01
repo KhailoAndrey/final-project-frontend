@@ -14,7 +14,6 @@ const FilterByAge = ({ age, setAge }) => {
       setAge(prevFilters => prevFilters.filter(filter => filter !== value));
     }
   };
-  // console.log('age :>> ', age);
 
   return (
     <CategoryTextDiv>
@@ -33,7 +32,7 @@ const FilterByAge = ({ age, setAge }) => {
         checked={age.includes('1-2y')}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor="1-2y">ut to 1 year</CategoryLabel>
+      <CategoryLabel htmlFor="1-2y">up to 1 year</CategoryLabel>
       <CategoryInput
         type="checkbox"
         value=">2y"

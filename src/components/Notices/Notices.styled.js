@@ -7,6 +7,8 @@ export const NoticeNavContainer = styled.div`
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+  flex-wrap: wrap;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -15,6 +17,7 @@ export const NoticeNavContainer = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 1248px;
+    /* position: relative; */
   }
   /* animation: moveRotate var(--slow-animation) forwards ; */
 
@@ -31,17 +34,22 @@ export const NoticeNavContainer = styled.div`
   } */
 `;
 
+export const ContainerTablet = styled.div`
+  @media screen and (min-width: 768px) {
+    background-color: red;
+  }
+`;
 export const BtnContainer = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
 
   @media screen and (min-width: 768px) {
-flex-direction: row;
-align-items: flex-start;
-}
+    flex-direction: row;
+    align-items: flex-start;
+  }
 `;
 
 export const NoNotice = styled.div`
@@ -70,4 +78,3 @@ export const LoaderDiv = styled.div`
     width: 300px;
   } */
 `;
-
