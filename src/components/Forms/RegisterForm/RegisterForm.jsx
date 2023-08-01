@@ -23,8 +23,10 @@ import {
   SuccessText,
   WrapperInput,
 } from './RegisterForm.styled';
+import { GoogleAuth, GoogleIcon } from '../LoginForm/LoginForm.styled';
 
-
+const googleAuthUrl =
+  'https://final-project-backend-4o0r.onrender.com/api/users/google';
 const RegisterForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -119,8 +121,14 @@ const RegisterForm = () => {
 
   return (
     <FormContainer>
-      <form onSubmit={formik.handleSubmit}>
         <FormHeader>{t('registration')}</FormHeader>
+        <div>
+        <GoogleAuth href={`${googleAuthUrl}`} type="button">
+          <GoogleIcon />
+          {t('googleAuth')}
+        </GoogleAuth>
+      </div>
+      <form onSubmit={formik.handleSubmit}>
         <FormInputWrapper>
           <div>
             <label htmlFor="name" hidden>

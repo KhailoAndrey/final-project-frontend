@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-
+margin-bottom: 40px;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
@@ -22,6 +22,7 @@ export const FormContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 608px;
     margin-top: 80px;
+    margin-bottom: 80px;
     padding: 60px 75px;
     border-radius: 40px;
   }

@@ -10,7 +10,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-
+margin-bottom: 80px;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
@@ -25,15 +25,20 @@ export const FormContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 608px;
     margin-top: 80px;
+    margin-bottom: 100px;
+
     padding: 60px 75px;
     border-radius: 40px;
-  }
-`;
+  }  
+  `;
 
 export const GoogleIcon = styled(FcGoogle)`
 display: block;
 width: 36px;
 height: 36px;
+&:hover{
+  transform: scale(1.3);
+}
 `
 
 export const GoogleAuth = styled.a`
@@ -54,9 +59,13 @@ gap: 8px;
   border-radius: 40px;
   text-align: left;
   align-items: center;
-
   :hover {
     background: var(--main-clr-gr_blue);
+    &:hover {
+    ${GoogleIcon} {
+      transform: scale(1.3); 
+    }
+  }
   }
 
   @media screen and (min-width: 768px) {
