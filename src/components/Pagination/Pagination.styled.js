@@ -6,13 +6,12 @@ export const Container = styled.div`
 display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top :68px; */
-margin-bottom: 40px;
+margin-bottom: 60px;
 @media screen and (min-width: 768px){
-margin-bottom: 56px;  
+margin-bottom: 112px;  
 }
-@media screen and (min-width: 768px){
-margin-bottom: 60px;  
+@media screen and (min-width: 1280px){
+margin-bottom: 112px;  
 }
 `;
 
