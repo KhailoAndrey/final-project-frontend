@@ -40,8 +40,8 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
   const isOwner = user._id === owner;
 
   const data = {
-    title: 'Delete advertisment?',
-    text: `Are you sure you want to delete "${title}"? You can't undo this action.`,
+    title: t('delete'),
+    text: `${t('del_text_1')}"${title}"${t('del_text_2')}`,
     icon: 'icon-trash',
   };
 
