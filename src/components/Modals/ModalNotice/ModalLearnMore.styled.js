@@ -17,23 +17,24 @@ export const ModalContainer = styled.div`
 
 export const ModalWindow = styled.div`
   overflow: auto;
-  width: 680px;
   position: relative;
-  padding: 32px;
   height: auto;
   max-height: calc(100vh - 40px);
-  background-color: #fff;
-  border-radius: 40px;
-
-  @media (max-width: 767px) {
-    width: 280px;
-    padding: 20px;
-    border-radius: 20px;
+  background-color: var(--white-bckg-clr);
+  width: 280px;
+  padding: 20px;
+  border-radius: 20px;
+  
+  @media (min-width: 768px) {
+    border-radius: 40px;
+    width: 680px;
+    padding: 32px;
+    min-height: 540px;
   }
 `;
 
 export const Info = styled.div`
-  height: 300px;
+  height: auto;
   display: flex;
   align-items: flex-start;
   gap: 24px;
@@ -152,13 +153,13 @@ export const ContactButtonContact = styled.button`
   /* min-width: 129px; */
   padding: 8px 20px;
   background-color: var(--btn-clr-fon);
-  color: #54adff;
+  color: var(--main-clr-blue);
   border-radius: 40px;
-  border: 1px solid #54adff;
+  border: 1px solid var(--main-clr-blue);
   :hover,
   :focus {
     background: var(--main-clr-gr_blue);
-    color: #fff;
+    color: var(--white-bckg-clr);
   }
 
   @media (max-width: 767px) {
@@ -208,7 +209,7 @@ export const CloseButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  background-color: #fff;
+  background-color: var(--white-bckg-clr);
   color: var(--main-clr-blue);
   border: none;
   stroke: currentColor;
