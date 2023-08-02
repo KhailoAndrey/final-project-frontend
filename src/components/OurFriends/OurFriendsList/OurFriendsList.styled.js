@@ -5,6 +5,7 @@ export const OFWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 68px;
 
   @media screen and (min-width: 768px) {
     gap: 32px;
