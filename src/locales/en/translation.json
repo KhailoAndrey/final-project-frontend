@@ -119,6 +119,7 @@
   "name_enter": "Enter a pet`s name",
   "location": "Location",
   "price": "Price",
+  "price_name": "UAH",
   "loc_with": "Starts with capitalize character",
   "loc_enter": "Enter your location",
   "price_err": "Price must be greater than 0",

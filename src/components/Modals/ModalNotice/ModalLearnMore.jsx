@@ -37,6 +37,7 @@ export const ModalLearMore = ({
   const { t } = useTranslation();
 
   const [data, setNoticeData] = useState({});
+  console.log('data--->', data);
   const [favChange, setFavChange] = useState(false);
 
   const { isLoggedIn } = useAuth();
@@ -116,6 +117,7 @@ export const ModalLearMore = ({
                 <div>{t('type')}:</div>
                 <div>{t('place')}:</div>
                 <div>{t('sex')}:</div>
+                {data.price && <div>{t('price')}:</div>}
                 <div>{t('owner')}:</div>
                 {data.owner?.email && <div>{t('email')}:</div>}
                 {data.owner?.phone && <div>{t('phone')}:</div>}
@@ -126,9 +128,18 @@ export const ModalLearMore = ({
                 <div>{t(`${data.type}`)}</div>
                 <div>{data.location}</div>
                 <div>{t(`${data.sex}`)}</div>
+                {data.price && <div>{data.price} {t('price_name')} </div>}
                 <div>{data.owner?.name}</div>
-                {data.owner?.email && <LinkEmail href={`mailto:${data.owner.email}`}>{data.owner?.email}</LinkEmail>}
-                {data.owner?.phone && <LinkPhone href={`tel:${data.owner.phone}`}>{data.owner?.phone}</LinkPhone>}
+                {data.owner?.email && (
+                  <LinkEmail href={`mailto:${data.owner.email}`}>
+                    {data.owner?.email}
+                  </LinkEmail>
+                )}
+                {data.owner?.phone && (
+                  <LinkPhone href={`tel:${data.owner.phone}`}>
+                    {data.owner?.phone}
+                  </LinkPhone>
+                )}
               </ContactContent>
             </Contact>
           </ContactInfo>
