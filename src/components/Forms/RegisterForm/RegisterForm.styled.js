@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-margin-bottom: 40px;
+  margin-bottom: 40px;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
@@ -91,9 +91,9 @@ export const FormInput = styled.input`
     letter-spacing: 0.64px;
     color: var(--main-form-clr);
 
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -185,7 +185,7 @@ export const ErrorText = styled.p`
   left: 16px;
   top: 48px;
   font-family: Manrope, sans-serif;
-  font-size: 8px;
+  font-size: 7px;
   font-weight: 400;
   font-style: normal;
   line-height: normal;
@@ -202,7 +202,7 @@ export const SuccessText = styled.p`
   left: 16px;
   top: 48px;
   font-family: Manrope, sans-serif;
-  font-size: 8px;
+  font-size: 7px;
   font-weight: 400;
   font-style: normal;
   line-height: normal;
