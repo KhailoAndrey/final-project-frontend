@@ -197,7 +197,7 @@ export const DeleteBtn = styled.button`
   /* min-width: 86px; */
   border-radius: 20px;
   background: var(--white-bckg-clr);
-  padding: 8px 10px;
+  padding: 8px 12px;
   border: 0;
   outline: 0;
   text-decoration: none;
