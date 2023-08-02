@@ -23,12 +23,12 @@ const FilterByAge = ({ age, setAge }) => {
     <CategoryTextDiv>
       <CategoryInput
         type="checkbox"
-        value="3-12m"
-        id="3-12m"
-        checked={age.includes('3-12m')}
+        value="0-12m"
+        id="0-12m"
+        checked={age.includes('0-12m')}
         onChange={handleFilterChange}
       />
-      <CategoryLabel htmlFor="3-12m">{t('age_young')}</CategoryLabel>
+      <CategoryLabel htmlFor="0-12m">{t('age_young')}</CategoryLabel>
       <CategoryInput
         type="checkbox"
         value="1-2y"

@@ -2,8 +2,6 @@ import { t } from 'i18next';
 import * as yup from 'yup';
 import { nameRegex, cityRegex } from 'const/Regex';
 
-
-
 export const updateUserSchema = yup.object().shape({
   file: yup
     .mixed()
@@ -33,6 +31,7 @@ export const updateUserSchema = yup.object().shape({
   //   /^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$/,
   //   'Please enter a valid date: dd.mm.yyyy'
   // ),
+
   phone: yup.string().matches(/^\+380\d{9}$/, t('phone_valid')),
   city: yup
     .string()
