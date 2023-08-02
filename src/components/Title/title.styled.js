@@ -20,11 +20,6 @@ export const ContainerTitle = styled.div`
   margin-top: 40px;
 
   @media screen and (min-width: 768px) {
-    /* width: 704px; */
     margin-top: 80px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    /* width: 100%; */
   }
 `;

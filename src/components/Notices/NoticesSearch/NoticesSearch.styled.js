@@ -45,14 +45,6 @@ export const BtnContainer = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
-
-  /* @media screen and (min-width: 768px) {
-    right: 60px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    right: 330px;
-  } */
 `;
 
 export const FormButton = styled.button`

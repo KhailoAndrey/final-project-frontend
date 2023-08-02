@@ -48,8 +48,6 @@ export const CategoryInput = styled.input`
 
   &:checked + label::before {
     background-color: var(--main-clr-blue);
-    /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='54ADFF' d='M20.0001 7L9.0001 18L4 13'/%3e%3c/svg%3e");
-  fill: red; */
   }
 `;
 
@@ -194,7 +192,6 @@ export const DeleteBtn = styled.button`
   justify-content: center;
   gap: 4px;
   max-height: 32px;
-  /* min-width: 86px; */
   border-radius: 20px;
   background: var(--white-bckg-clr);
   padding: 8px 12px;
@@ -225,7 +222,6 @@ export const FilterBtnContainer = styled.div`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    /* хто відкоригує щось тут - уб'ю!!!!!!!!!!!! */
     width: 390px;
     position: absolute;
     top: 40px;

@@ -45,8 +45,6 @@ export const ImgContainer = styled.div`
 `;
 
 export const PetPhoto = styled.img`
-  /* position: relative; */
-
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -87,9 +87,6 @@ export const Contactheader = styled.div`
 
 export const ContactContent = styled.div`
   display: flex;
-  /* position: absolute;
-  right: 0;
-  top: 0; */
   flex-direction: column;
   align-items: left;
   gap: 5px;
@@ -123,7 +120,6 @@ export const ContactButtons = styled.div`
 `;
 
 export const ContactButtonAdd = styled.button`
-  /* min-width: 129px; */
   padding: 6px 20px;
   color: var(--btn-clr-fon);
   background-color: var(--main-clr-blue);
@@ -150,7 +146,6 @@ export const ContactButtonAdd = styled.button`
 `;
 
 export const ContactButtonContact = styled.button`
-  /* min-width: 129px; */
   padding: 8px 20px;
   background-color: var(--btn-clr-fon);
   color: var(--main-clr-blue);

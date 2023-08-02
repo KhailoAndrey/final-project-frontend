@@ -44,7 +44,6 @@ const Logout = ({ showButton, closeModal }) => {
           data={data}
         />
       )}
-      {/* <DeleteModal/> */}
     </>
   );
 };

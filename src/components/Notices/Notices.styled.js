@@ -17,21 +17,7 @@ export const NoticeNavContainer = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 1248px;
-    /* position: relative; */
   }
-  /* animation: moveRotate var(--slow-animation) forwards ; */
-
-  /* @keyframes moveRotate {
-    0% {
-      opacity: 0;
-      transform: scale(0);
-    }
-    
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }    
-  } */
 `;
 
 export const ContainerTablet = styled.div`
@@ -72,9 +58,4 @@ export const LoaderDiv = styled.div`
   position: fixed;
   top: 40%;
   left: 40%;
-  /* width: 150px;
-
-  @media screen and (min-width: 768px) {
-    width: 300px;
-  } */
 `;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const PetItem = styled.li`
-  /* width: 280px; */
   width: 100%;
   padding: 16px 20px 40px 20px;
   box-shadow: 3px 8px 14px var(--small-shadow);
@@ -10,8 +9,6 @@ export const PetItem = styled.li`
 
   @media screen and (min-width: 768px) {
     height: 100%;
-    // max-width: 704px;
-
     display: flex;
     align-items: flex-start;
     padding: 20px;
@@ -20,7 +17,6 @@ export const PetItem = styled.li`
   }
 
   @media screen and (min-width: 1280px) {
-    /* width: 821px; */
     padding: 20px;
     gap: 32px;
   }
