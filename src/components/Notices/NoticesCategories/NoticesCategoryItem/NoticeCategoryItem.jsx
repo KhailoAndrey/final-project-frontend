@@ -157,7 +157,7 @@ const NoticeItem = ({ article, setAlertShowModal, setRerender, setCrutch }) => {
                 />
               </svg>
             )}
-            <p>{t(sex === 'male' ? 'male' : 'female')}</p>
+            <p>{t(sex === 'male' ? 'male_short' : 'female_short')}</p>
           </Information>
         </InfoContainer>
       </ImgContainer>

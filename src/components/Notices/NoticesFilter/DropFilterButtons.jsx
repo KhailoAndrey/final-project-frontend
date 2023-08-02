@@ -49,8 +49,8 @@ const DropFilterButtons = ({
           >
             {(btn === 'male' || btn === 'female')
               ? btn === 'male'
-                ? t('male')
-                : t('female')
+                ? t('male_short')
+                : t('female_short')
               : btn}
             <svg width={16} height={16}>
               <use href={`${svg}#icon-cross-small`} width={16} height={16} />
