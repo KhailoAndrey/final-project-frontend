@@ -45,7 +45,6 @@ export const ProfileTitle = styled.h2`
 `;
 
 export const UserContainer = styled.div`
-
   margin-top: 40px;
 
   @media screen and (min-width: 768px) {
@@ -73,14 +72,18 @@ export const PetsContainer = styled.div`
 `;
 
 export const UserPageContainer = styled.div`
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 0 auto 68px auto;
 
   @media screen and (min-width: 1280px) {
-    display: flex;
+    flex-direction: row;
     gap: 32px;
     margin-top: 62px;
-    justify-content: center;
+    align-items: flex-start;
   }
 `;
 
@@ -89,9 +92,4 @@ export const UserLoaderDiv = styled.div`
   position: fixed;
   top: 30%;
   left: 30%;
-  /* width: 150px;
-
-  @media screen and (min-width: 768px) {
-    width: 300px;
-  } */
 `;
