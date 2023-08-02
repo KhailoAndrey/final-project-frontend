@@ -30,7 +30,6 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    // <Loader />
     <LoaderPaws/>
   ) : (
     <LanguageProvider>
