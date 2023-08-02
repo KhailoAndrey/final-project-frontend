@@ -103,7 +103,6 @@ export const UserForm = () => {
     }
     // ========= переводимо дату у формат беку ========
     if (values.birthday) {
-      console.log('birthday changed');
       const rowDate = values.birthday;
       const newDate = `${rowDate.slice(8, rowDate.length)}-${rowDate.slice(
         5,
