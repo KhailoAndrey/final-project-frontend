@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
@@ -13,6 +14,9 @@ const DropFilterButtons = ({
   setPetsSex,
   setPetsAge,
 }) => {
+
+  const { t } = useTranslation();
+
   const filter = petsSex ? [...petsAge, petsSex] : [...petsAge];
 
   const onFilterDeleteBtn = e => {
@@ -43,7 +47,11 @@ const DropFilterButtons = ({
             value={btn}
             onClick={onFilterDeleteBtn}
           >
-            {btn}
+            {(btn === 'male' || btn === 'female')
+              ? btn === 'male'
+                ? t('male')
+                : t('female')
+              : btn}
             <svg width={16} height={16}>
               <use href={`${svg}#icon-cross-small`} width={16} height={16} />
             </svg>

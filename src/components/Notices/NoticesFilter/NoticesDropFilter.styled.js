@@ -197,7 +197,7 @@ export const DeleteBtn = styled.button`
   /* min-width: 86px; */
   border-radius: 20px;
   background: var(--white-bckg-clr);
-  padding: 8px 16px;
+  padding: 8px 10px;
   border: 0;
   outline: 0;
   text-decoration: none;
@@ -218,7 +218,7 @@ export const DeleteBtn = styled.button`
 
 export const FilterBtnContainer = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 6px;
   justify-content: flex-end;
   flex-wrap: wrap;
   margin-top: 8px;
@@ -226,14 +226,14 @@ export const FilterBtnContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     /* хто відкоригує щось тут - уб'ю!!!!!!!!!!!! */
-    width: 380px;
+    width: 390px;
     position: absolute;
     top: 40px;
     right: 0;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 380px;
+    width: 390px;
     top: -4px;
     right: 295px;
   }

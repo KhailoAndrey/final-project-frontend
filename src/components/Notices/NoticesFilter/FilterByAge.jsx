@@ -9,7 +9,6 @@ import {
 const FilterByAge = ({ age, setAge }) => {
   const { t } = useTranslation();
 
-
   const handleFilterChange = e => {
     const { value, checked } = e.target;
     if (checked) {
