@@ -24,9 +24,8 @@ import {
   GoogleAuth,
   GoogleIcon,
 } from './LoginForm.styled';
+import { emailRegex, passwordRegex } from 'const/Regex';
 
-const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-z.-]+.[a-z]{2,}$/;
-const passwordRegexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/;
 const googleAuthUrl =
   'https://final-project-backend-4o0r.onrender.com/api/users/google';
 
@@ -34,13 +33,13 @@ const validationSchema = Yup.object({
   email: Yup.string()
     .email(t('email_registered'))
     .required(t('requried_email_field'))
-    .matches(emailRegexp, t('email_regexp')),
+    .matches(emailRegex, t('email_regexp')),
   password: Yup.string()
     .trim()
     .required(t('requried_password_field'))
     .min(6, t('password_min'))
     .max(16, t('password_max'))
-    .matches(passwordRegexp, t('password_regexp')),
+    .matches(passwordRegex, t('password_regexp')),
 });
 
 export const LoginForm = () => {

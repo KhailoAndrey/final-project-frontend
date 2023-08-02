@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
 import { Form, Formik, ErrorMessage } from 'formik';
 import { useAuth } from 'redux/auth/selectors';
 import { updateUser } from 'redux/auth/authOperations.js';
 import { updateUserSchema } from './updateUserSchema.js';
+import Notiflix from 'notiflix';
 
 import {
   CameraIcon,
@@ -35,6 +35,19 @@ import {
   IconDiv,
   SaveBtn,
 } from 'components/UserButtons/UserButtons.styled.js';
+
+Notiflix.Notify.init({
+  width: '280px',
+  position: 'center-top',
+  distance: '15px',
+  timeout: 5000,
+  opacity: 1,
+  warning: {
+    background: 'var(--main-clr-blue)',
+    textColor: 'var(--main-accent-text-clr)',
+    notiflixIconColor: 'var(--main-clr-yellow)',
+  },
+});
 
 export const UserForm = () => {
   const { t } = useTranslation();
@@ -89,7 +102,7 @@ export const UserForm = () => {
   // ========= сабміт форми ==================
   const handleSubmit = values => {
     if (file && isAvatarEdit) {
-      toast.error('Press confirm or cancel your new photo');
+      Notiflix.Notify.warning('Press confirm or cancel your new photo');
       return;
     }
     setIsFormEdit(false);
@@ -119,7 +132,7 @@ export const UserForm = () => {
     }
 
     dispatch(updateUser(formData));
-    toast.success('Changes saved successfully');
+    Notiflix.Notify.success('Changes saved successfully');
   };
 
   const handleClick = () => {
@@ -144,7 +157,7 @@ export const UserForm = () => {
     } else {
       setIsAvatarEdit(false);
       setImageURL(user && user.avatarURL);
-      toast.error('File size must be less than 3MB');
+      Notiflix.Notify.warning('File size must be less than 3MB');
     }
   };
 
@@ -305,12 +318,6 @@ export const UserForm = () => {
           </Div>
         </Form>
       </Formik>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        closeOnClick
-        pauseOnHover
-      />
     </>
   );
 };

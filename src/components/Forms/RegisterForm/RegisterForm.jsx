@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { register } from 'redux/auth/authOperations';
 import getMessage from 'utils/messages';
 import { validationSchema } from './ValidationRegister';
-import { IconSvgClose, IconSvgOpen,IconSvgSuccess  } from './RegisterFormIcons';
+import { IconSvgClose, IconSvgOpen, IconSvgSuccess } from './RegisterFormIcons';
 
 import svg from '../../../images/Icons/symbol-defs.svg';
 
@@ -27,6 +27,7 @@ import { GoogleAuth, GoogleIcon } from '../LoginForm/LoginForm.styled';
 
 const googleAuthUrl =
   'https://final-project-backend-4o0r.onrender.com/api/users/google';
+
 const RegisterForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -121,8 +122,8 @@ const RegisterForm = () => {
 
   return (
     <FormContainer>
-        <FormHeader>{t('registration')}</FormHeader>
-        <div>
+      <FormHeader>{t('registration')}</FormHeader>
+      <div>
         <GoogleAuth href={`${googleAuthUrl}`} type="button">
           <GoogleIcon />
           {t('googleAuth')}
