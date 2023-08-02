@@ -1,6 +1,5 @@
 import { t } from 'i18next';
 import * as yup from 'yup';
-import { nameRegex, cityRegex } from 'const/Regex';
 
 export const updateUserSchema = yup.object().shape({
   file: yup
