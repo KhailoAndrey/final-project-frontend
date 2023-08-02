@@ -1,12 +1,13 @@
 import * as Yup from 'yup';
 import { t } from 'i18next';
+import { nameRegex } from 'const/Regex';
 
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
     .required(t('requried_name_field'))
     .min(2, t('name_min'))
     .max(26, t('name_max'))
-    .matches(/^([A-Za-zА-Яа-яЁёІіЇїЄєҐґ]+\s?){2,26}$/, t('name_regexp')),
+    .matches(nameRegex, t('name_regexp')),
   email: Yup.string()
     .email(t('email_description'))
     .required(t('requried_email_field'))
