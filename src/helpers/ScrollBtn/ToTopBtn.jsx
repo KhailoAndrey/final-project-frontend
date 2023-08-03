@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ScrollBtn } from './ToTopBtn.styled';
+import { useTranslation } from 'react-i18next';
 
 const ToTopButton = () => {
+  const { t } = useTranslation();
   const [isBtnShow, setIsBtnShow] = useState(false);
 
   const handleScroll = () => {
@@ -14,7 +16,7 @@ const ToTopButton = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      left: 0,
+      // left: 0,
       behavior: 'smooth',
     });
   };
@@ -28,7 +30,7 @@ const ToTopButton = () => {
     <div>
       {isBtnShow && (
         <ScrollBtn type="button" onClick={scrollToTop}>
-          Up
+          {t('btn_up')}
         </ScrollBtn>
       )} 
     </div>
