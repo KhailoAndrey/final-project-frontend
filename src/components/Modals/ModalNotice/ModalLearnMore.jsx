@@ -37,7 +37,6 @@ export const ModalLearMore = ({
   const { t } = useTranslation();
 
   const [data, setNoticeData] = useState({});
-  console.log('data--->', data);
   const [favChange, setFavChange] = useState(false);
 
   const { isLoggedIn } = useAuth();
