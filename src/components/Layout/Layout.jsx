@@ -8,13 +8,16 @@ import ToTopButton from 'helpers/ScrollBtn/ToTopBtn';
 const Layout = () => {
   return (
     <>
+      {/* <Suspense fallback={<LoaderPaws />}> */}
+      {/* <Suspense fallback={<LoaderPaws />}> */}
+      <Header />
       <Suspense fallback={<LoaderPaws />}>
-        <Header />
         <Section>
           <Outlet />
         </Section>
-        <ToTopButton/>
       </Suspense>
+
+      <ToTopButton />
     </>
   );
 };
