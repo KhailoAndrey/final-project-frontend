@@ -40,7 +40,7 @@ Notiflix.Notify.init({
   width: '280px',
   position: 'center-top',
   distance: '15px',
-  timeout: 5000,
+  timeout: 3000,
   opacity: 1,
   warning: {
     background: 'var(--main-clr-blue)',
@@ -102,7 +102,7 @@ export const UserForm = () => {
   // ========= сабміт форми ==================
   const handleSubmit = values => {
     if (file && isAvatarEdit) {
-      Notiflix.Notify.warning('Press confirm or cancel your new photo');
+      Notiflix.Notify.warning(t('new_photo'));
       return;
     }
     setIsFormEdit(false);
@@ -132,7 +132,7 @@ export const UserForm = () => {
     }
 
     dispatch(updateUser(formData));
-    Notiflix.Notify.success('Changes saved successfully');
+    Notiflix.Notify.success(t('update_user_success'));
   };
 
   const handleClick = () => {
@@ -149,7 +149,7 @@ export const UserForm = () => {
   const handleFileChange = evt => {
     const fileSize = 3000000;
     const file = evt.target.files[0];
-    // console.log('file :>> ', file);
+
     if (file && file.size <= fileSize) {
       setFile(file);
       setImageURL(URL.createObjectURL(file));
@@ -259,8 +259,9 @@ export const UserForm = () => {
                   name="name"
                   disabled={!isFormEdit}
                 />
+
+                <ErrorMessage name="name" component={ErrorText} />
               </InputWrap>
-              <ErrorMessage name="name" component={ErrorText} />
 
               <InputWrap>
                 <Label htmlFor="email">{t('email')}:</Label>
@@ -270,8 +271,8 @@ export const UserForm = () => {
                   name="email"
                   disabled={true}
                 />
+                <ErrorMessage name="email" component={ErrorText} />
               </InputWrap>
-              <ErrorMessage name="email" component={ErrorText} />
 
               <InputWrap>
                 <Label htmlFor="birthday">{t('birthday')}:</Label>
@@ -282,8 +283,8 @@ export const UserForm = () => {
                   name="birthday"
                   disabled={!isFormEdit}
                 />
+                <ErrorMessage name="birthday" component={ErrorText} />
               </InputWrap>
-              <ErrorMessage name="birthday" component={ErrorText} />
 
               <InputWrap>
                 <Label htmlFor="phone">{t('phone')}:</Label>
@@ -294,8 +295,8 @@ export const UserForm = () => {
                   placeholder="+380441234567"
                   disabled={!isFormEdit}
                 />
+                <ErrorMessage name="phone" component={ErrorText} />
               </InputWrap>
-              <ErrorMessage name="phone" component={ErrorText} />
 
               <InputWrap>
                 <Label htmlFor="city">{t('city')}:</Label>
@@ -306,8 +307,8 @@ export const UserForm = () => {
                   placeholder="Kyiv"
                   disabled={!isFormEdit}
                 />
+                <ErrorMessage name="city" component={ErrorText} />
               </InputWrap>
-              <ErrorMessage name="city" component={ErrorText} />
 
               {!isFormEdit ? (
                 <LogoutUser />

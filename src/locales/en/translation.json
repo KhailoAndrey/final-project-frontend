@@ -149,5 +149,8 @@
   "pets_name_error": "Starts with capitalize character and the name must contain only letters",
   "female_short": "female",
   "male_short": "male",
+  "new_photo": "Press confirm or cancel your new photo",
+  "update_user_success": "Changes saved successfully",
+  "user_avatar": "File size must be less than 3MB",
   "btn_up": "Up"
 }

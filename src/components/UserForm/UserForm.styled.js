@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 
 export const InputWrap = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 12px;
   justify-content: space-between;
-  position: relative;
   width: 264px;
 
   @media screen and (min-width: 768px) {
@@ -56,7 +56,15 @@ export const Label = styled.label`
 `;
 
 export const ErrorText = styled.p`
+  position: absolute;
+  top: 32px;
+  right: 8px;
   color: var(--form-error-red);
+  font-size: 8px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const Div = styled.div`
