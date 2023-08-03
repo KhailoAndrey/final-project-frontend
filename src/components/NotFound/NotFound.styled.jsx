@@ -38,7 +38,7 @@ export const NFText = styled.p`
   line-height: 130%;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #000000;
+  color: var(--main-accent-text-clr);
 
   @media (min-width: 768px) {
     width: 100%;
