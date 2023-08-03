@@ -13,14 +13,14 @@ export const Section = styled.section`
   background-color: var(--main-bckg-clr);
   margin: 0;
   padding: 0 20px 20px;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-repeat: repeat;
   background-image: url(${bg_mob});
   /* overflow: auto; */
   display: block;
   justify-content: center;
-  
+
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${bg_mob_retina});
   }
@@ -28,8 +28,6 @@ export const Section = styled.section`
   @media screen and (min-width: 768px) {
     padding: 0 32px 24px;
     background-image: url(${bg_tab});
-      
-
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       background-image: url(${bg_tab_retina});
@@ -46,4 +44,3 @@ export const Section = styled.section`
     }
   }
 `;
-

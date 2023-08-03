@@ -7,6 +7,10 @@ export const Container = styled.div`
   height: 48px;
   padding: 0 20px;
   background-color: var(--main-bckg-clr);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
 
   @media screen and (min-width: 768px) {
     height: 68px;
