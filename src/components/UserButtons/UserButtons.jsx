@@ -42,13 +42,7 @@ export const EditIcon = () => {
 export const LogoutUser = ({ showButton }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  // const [showModal, setShowModal] = useState(false);
-  // console.log(showModal);
-
-  // const closeModal = () => {
-  //   setShowModal(false);
-  // };
-
+ 
   const data = {
     title: t('leaving'),
     text: '',
@@ -63,7 +57,6 @@ export const LogoutUser = ({ showButton }) => {
   const handleLogoutUser = () => {
     clearAllCookies();
     dispatch(logOut());
-    // closeModal();
   };
 
   return (

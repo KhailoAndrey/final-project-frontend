@@ -1,19 +1,5 @@
 import styled from 'styled-components';
 
-// export const NWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   gap: 20px;
-
-//   @media screen and (min-width: 768px) {
-//     gap: 32px;
-//     max-width: 1280px;
-//     margin-left: auto;
-//     margin-right: auto;
-//   }
-// `;
-
 export const Container = styled.div`
   margin-top: 60px;
   position: relative;

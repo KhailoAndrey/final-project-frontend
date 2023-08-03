@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// import { t } from 'i18next';
 import { addOwnPet } from 'redux/auth/authOperations';
 import { useAuth } from 'redux/auth/selectors';
 import { useDispatch } from 'react-redux';
@@ -41,19 +40,8 @@ const initialsValues = {
   comments: '',
   sex: '',
   category: 'my pet',
-  // notice: '',
   file: '',
 };
-// const statuses = [
-//   ['your pet', 'my pet'],
-//   ['sell', 'sell'],
-//   ['lost/found', 'lost-found'],
-//   ['in good hands', 'for-free'],
-// ];
-// const sexes = [
-//   [t('female'), 'female'],
-//   [t('male'), 'male'],
-// ];
 
 const formTempValues = localStorage.getItem('formValues');
 const initialsFormState = formTempValues
@@ -140,7 +128,6 @@ export const AddPetForm = () => {
 
   // кнопка сабміт
   const handleOnSubmit = async (values, { resetForm }) => {
-    // console.log('values.category - ', values.category);
 
     const formData = new FormData();
 

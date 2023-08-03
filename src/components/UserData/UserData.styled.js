@@ -147,19 +147,3 @@ export const CameraIcon = styled.img`
   margin-right: 8px;
   outline: none;
 `;
-
-// export const Section = styled.section`
-//   margin-top: 40px;
-
-//   @media screen and (min-width: 768px) {
-//     margin-top: 60px;
-//   }
-// `;
-
-// export const UserTitle = styled.h3`
-//   @media screen and (min-width: 1280px) {
-//     margin-bottom: 24px;
-//     font-weight: 500;
-//     font-size: 28px;
-//   }
-// `;

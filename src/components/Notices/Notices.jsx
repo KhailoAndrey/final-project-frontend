@@ -22,7 +22,6 @@ import pets from '../../images/NoNotice/pets.gif';
 import LoaderPaws from 'components/Loader/LoaderPaws';
 import NoticesDropFilter from './NoticesFilter/NoticesDropFilter';
 import DropFilterButtons from './NoticesFilter/DropFilterButtons';
-// import overview from '../../images/NoNotice/overview.gif'
 
 const Notices = () => {
   const [showAlertModal, setAlertShowModal] = useState(false);
