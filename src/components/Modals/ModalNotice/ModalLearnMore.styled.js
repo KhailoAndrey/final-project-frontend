@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(97, 97, 97, 0.6);
+  background: var(--modal-backdrop);
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;

@@ -52,8 +52,8 @@ export const Notification = styled.div`
 export const NItem = styled.li`
   position: relative;
   height: 578px;
-  background-color: #ffffff;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  background-color: var(--white-bckg-clr);
+  box-shadow: 3px 8px 14px var(--small-shadow);
   border-radius: 20px;
   transition: var(--default-animation);
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const UserCard = styled.div`
   background: var(--white-bckg-clr);
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  box-shadow: 3px 8px 14px var(--small-shadow);
   border-radius: 40px;
   padding: 20px 8px;
   width: 280px;
@@ -94,7 +94,7 @@ export const CloseBtnWrapper = styled.button`
   position: absolute;
   padding: 0;
   border-radius: 20px;
-  border-color: white;
+  border-color: var(--white-bckg-clr);
   transition: transform 250ms linear;
   &:hover,
   :focus {
