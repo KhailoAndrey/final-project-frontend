@@ -33,7 +33,7 @@ export const CloseIcon = () => {
 
 export const EditIcon = () => {
   return (
-    <svg width={24} height={24}>
+    <svg width={24} height={24} fill={'var(--main-clr-blue)'}>
       <use href={`${svg}#icon-edit`} />
     </svg>
   );
