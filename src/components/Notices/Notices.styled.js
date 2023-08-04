@@ -22,7 +22,7 @@ export const NoticeNavContainer = styled.div`
 
 export const ContainerTablet = styled.div`
   @media screen and (min-width: 768px) {
-    background-color: red;
+    background-color: var(--red-form-clr);
   }
 `;
 export const BtnContainer = styled.div`

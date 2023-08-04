@@ -124,8 +124,6 @@ export const PetCategory = ({ text, onClick }) => {
   );
 };
 
-//
-
 export const BtnDone = () => {
   return (
     <>

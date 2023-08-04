@@ -9,7 +9,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(39, 39, 39, 0.6);
+  background-color: var(--modal-backdrop);
   z-index: 10;
 `;
 
@@ -21,8 +21,8 @@ export const ModalWindow = styled.div`
   width: 280px;
   height: 287px;
   padding: 68px 16px 60px;
-  background-color: #fff;
-  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  background-color: var(--white-bckg-clr);
+  box-shadow: 3px 8px 14px 0px var(--small-shadow);
   border-radius: 20px;
 
   @media screen and (min-width: 320px) {
@@ -78,7 +78,7 @@ export const BtnCongrats = styled.button`
   font-size: 16px;
   line-height: 1.36;
   letter-spacing: 0.04em;
-  color: #fff;
+  color: var(--white-bckg-clr);
 
   :hover,
   :focus {

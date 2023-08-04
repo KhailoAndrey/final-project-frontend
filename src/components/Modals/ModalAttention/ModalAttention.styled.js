@@ -4,7 +4,7 @@ export const ModalBackdrop = styled.div`
   z-index: 200;
   width: 100vw;
   height: 100vh;
-  background: rgba(97, 97, 97, 0.6);
+  background: var(--modal-backdrop);
   backdrop-filter: blur(4px);
   position: fixed;
   top: 0;
@@ -22,7 +22,7 @@ height: auto;
   z-index: 200;
   width: 280px;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: var(--white-bckg-clr);
   padding: 60px 20px;
   position: relative;
   display: flex;
@@ -41,7 +41,7 @@ export const ModalBtn = styled.button`
   border: 0;
   text-decoration: none;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--white-bckg-clr);
   top: 16px;
   right: 16px;
 

@@ -38,7 +38,6 @@ const MainPage = () => {
           />
           <source
             srcSet={`${mainImg.home_desk} 1x, ${mainImg.home_desk2} 2x`}
-            // width="985"
             media="(min-width: 1280px)"
             type="image/webp"
           />
