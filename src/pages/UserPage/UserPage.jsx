@@ -14,6 +14,7 @@ import {
   UserLoaderDiv,
 } from './UserPage.styled';
 import LoaderPaws from 'components/Loader/LoaderPaws';
+import { NoPetsContainer } from 'components/NoPetsContainer/NoPetsContainer';
 
 const UserPage = () => {
   const { newUser, user, isLoading } = useAuth();
@@ -41,7 +42,11 @@ const UserPage = () => {
             <ProfileTitle>{t('my_pets')}</ProfileTitle>
             <AddPetBtn />
           </TitleContainer>
-          {pets && <PetsList pets={pets} />}
+          {pets && pets.length > 0 ? (
+            <PetsList pets={pets} />
+          ) : (
+            <NoPetsContainer />
+          )}
         </PetsContainer>
       </UserPageContainer>
 
