@@ -13,5 +13,7 @@ export const ScrollBtn = styled.button`
   background-color: transparent;
   &:hover {
     background-color: var(--main-bckg-clr);
+    color: var(--main-clr-blue);
+    border-color: var(--main-clr-blue);
   }
 `;
