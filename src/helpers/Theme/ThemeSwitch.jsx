@@ -27,7 +27,6 @@ export const ThemeSwitch = () => {
         checked={isDarkMode}
         isDarkMode={isDarkMode}
         size="50px"
-        speed='1.5'
       />
     </SwitchContainer>
   );
