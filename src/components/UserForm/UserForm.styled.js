@@ -25,7 +25,7 @@ export const Input = styled(Field)`
   align-items: center;
   padding: 4px 12px;
   height: 32px;
-  border: 1px solid #54adff;
+  border: 1px solid var(--main-clr-blue);
   border-radius: 20px;
   width: 175px;
 
@@ -35,7 +35,7 @@ export const Input = styled(Field)`
 
   &:focus,
   &:hover {
-    box-shadow: 2px 2px 4px #456a8e84;
+    box-shadow: 2px 2px 4px var(--big-shadow);
   }
 `;
 
@@ -51,7 +51,7 @@ export const Label = styled.label`
   @media screen and (min-width: 768px) {
     font-weight: 600;
     font-size: 18px;
-    line-height: calc(25 / 18);
+    line-height: 1.38em;
   }
 `;
 
@@ -70,6 +70,7 @@ export const ErrorText = styled.p`
 export const Div = styled.div`
   display: flex;
   flex-direction: column;
+
   @media screen and (min-width: 768px) {
     flex-direction: row-reverse;
     gap: 71px;

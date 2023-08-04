@@ -40,10 +40,13 @@ export const ModalBtn = styled.button`
   position: absolute;
   border: 0;
   text-decoration: none;
-  cursor: pointer;
   background-color: var(--white-bckg-clr);
   top: 16px;
   right: 16px;
+  cursor: pointer;
+  Svg {
+    stroke: var(--main-clr-blue);
+  }
 
   &:hover,
   &:focus {

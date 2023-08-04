@@ -34,7 +34,6 @@ export const AttentionModal = ({ setAlertShowModal }) => {
           <svg width={24} height={24}>
             <use
               href={`${svg}#icon-cross`}
-              style={{ stroke: '#54ADFF' }}
               width={24}
               height={24}
             />
