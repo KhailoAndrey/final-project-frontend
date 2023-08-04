@@ -19,7 +19,7 @@ margin-bottom: 80px;
   border-radius: 20px;
   background-color: var(--white-bckg-clr);
 
-  box-shadow: 7px 4px 14px rgba(136, 198, 253, 0.19);
+  box-shadow: 7px 4px 14px var(--small-shadow);
 
   padding: 40px 12px;
   @media screen and (min-width: 768px) {
@@ -98,10 +98,10 @@ export const FormInputEmail = styled.input`
     font-size: 16px;
   }
   &.input-error {
-    border-color: red;
+    border-color: var(--red-form-clr);
   }
   &.input-success {
-    border-color: green;
+    border-color: var(--green-form-clr);
   }
   :-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;
@@ -131,10 +131,10 @@ export const FormInput = styled.input`
     font-size: 16px;
   }
   &.input-error {
-    border-color: red;
+    border-color: var(--red-form-clr);
   }
   &.input-success {
-    border-color: green;
+    border-color: var(--green-form-clr);
   }
   :-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;

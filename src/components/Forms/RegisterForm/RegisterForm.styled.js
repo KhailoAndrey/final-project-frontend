@@ -34,7 +34,7 @@ export const FormInputWrapper = styled.div`
   gap: 14px;
 
   &.error .form-input {
-    border-color: red;
+    border-color: var(--red-form-clr);
   }
 
   @media screen and (min-width: 768px) {

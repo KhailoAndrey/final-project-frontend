@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-// import svg from '../../../images/Icons/symbol-defs.svg';
 
-// text content--------------------
 export const CategoryTextDiv = styled.div`
   width: 136px;
   background-color: var(--main-clr-blue-light);

@@ -3,7 +3,6 @@ import axios from 'axios';
 import getMessage from 'utils/messages';
 
 axios.defaults.baseURL = 'https://final-project-backend-4o0r.onrender.com';
-// axios.defaults.baseURL = 'http://localhost:3001';
 
 // Utility to add JWT
 const setAuthHeader = token => {

@@ -2,7 +2,6 @@ const API_URL =
   'https://final-project-backend-4o0r.onrender.com/api/notices/owner';
 
 async function fetchAddNotices(formData, token) {
-  // console.log('formData', formData.get('date'));
   const options = {
     method: 'POST',
     headers: {

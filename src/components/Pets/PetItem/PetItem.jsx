@@ -15,7 +15,6 @@ import {
   PetPhoto,
   Span,
 } from './PetItem.styled';
-// import { deletePet } from 'redux/pets/operations';
 
 const PetsItem = ({ pet }) => {
   const [showDelModal, setShowDelModal] = useState(false);
