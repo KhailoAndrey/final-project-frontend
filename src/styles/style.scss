@@ -46,10 +46,7 @@ html[data-theme='dark'] {
 
   --btn-clr-fon: #c8ae5e;
 
-  --main-clr-gr_blue: linear-gradient(90deg,
-      rgba(155, 208, 255, 1),
-      rgba(65, 158, 241, 1));
-
+  --main-clr-gr_blue: linear-gradient(90deg, rgb(48 63 77), rgb(44 88 131));
   --menu-clr-green: darkblue;
 
   --form-error-red: #f43f5e;
@@ -63,13 +60,12 @@ html[data-theme='dark'] {
   --fast-animation: 250ms ease-in-out;
   --slow-animation: 600ms ease-in-out;
 
-
   --white-bckg-clr: #afafaf;
   --green-form-clr: green;
   --red-form-clr: red;
-  --main-form-clr: #888888;
+  --main-form-clr: darkblue;
   &:active,
-  &:hover{
+  &:hover {
     transition: color var(--slow-animation);
     transition: background-color var(--slow-animation);
   }
@@ -85,9 +81,11 @@ html[data-theme='light'] {
 
   --btn-clr-fon: #fef9f9;
 
-  --main-clr-gr_blue: linear-gradient(90deg,
-      rgba(155, 208, 255, 1),
-      rgba(65, 158, 241, 1));
+  --main-clr-gr_blue: linear-gradient(
+    90deg,
+    rgba(155, 208, 255, 1),
+    rgba(65, 158, 241, 1)
+  );
 
   --menu-clr-green: #00c3ad;
 
@@ -102,15 +100,12 @@ html[data-theme='light'] {
   --fast-animation: 250ms ease-in-out;
   --slow-animation: 600ms ease-in-out;
 
-
   --white-bckg-clr: #ffffff;
 
   --green-form-clr: #00ff00;
   --red-form-clr: #ff0000;
-  --main-form-clr:#888888;
+  --main-form-clr: #888888;
 }
-
-
 
 *,
 ::after,

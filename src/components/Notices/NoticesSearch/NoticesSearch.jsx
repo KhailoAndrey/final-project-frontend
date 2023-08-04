@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import Notiflix from 'notiflix';
 import svg from '../../../images/Icons/symbol-defs.svg';
 import {
   BtnContainer,
@@ -9,6 +10,19 @@ import {
   SearchForm,
   ClearButton,
 } from './NoticesSearch.styled';
+
+Notiflix.Notify.init({
+  width: '280px',
+  position: 'center-top',
+  distance: '15px',
+  timeout: 3000,
+  opacity: 1,
+  warning: {
+    background: 'var(--main-clr-blue)',
+    textColor: 'var(--main-accent-text-clr)',
+    notiflixIconColor: 'var(--main-clr-yellow)',
+  },
+});
 
 const NoticesFilter = ({ setQuery, setPage, setRerender }) => {
   const [localInput, setLocalInput] = useState('');
@@ -22,7 +36,7 @@ const NoticesFilter = ({ setQuery, setPage, setRerender }) => {
     e.preventDefault();
     const query = localInput;
     if (query.trim() === '' || query.length < 2) {
-      console.log('Enter correct query');
+    Notiflix.Notify.warning(t('search_min'));
     } else {
       setPage(1);
       setQuery(query);

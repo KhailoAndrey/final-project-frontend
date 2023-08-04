@@ -6,6 +6,7 @@ export const InputLabel = styled.label`
   justify-content: center;
   align-items: center;
   gap: 16px;
+  box-shadow: 3px 8px 14px 0px var(--small-shadow);
   padding: ${props => {
     if (props.name === 'category') {
       return '8px 16px';
@@ -20,6 +21,7 @@ export const InputLabel = styled.label`
       return '16px';
     }
   }};
+
   line-height: 1.35;
   letter-spacing: 0.04em;
 
@@ -30,6 +32,7 @@ export const InputLabel = styled.label`
       return props.selected ? `var(--menu-clr-green)` : `var(--main-form-clr)`;
     }
   }};
+
   background: ${props => {
     if (props.name === 'category') {
       return props.selected
@@ -37,11 +40,16 @@ export const InputLabel = styled.label`
         : `var(--main-clr-blue-light)`;
     }
   }};
+
   border-radius: ${props => {
     if (props.name === 'category') {
       return '40px';
     }
   }};
+
+  &:hover {
+    box-shadow: 3px 8px 14px 0px var(--big-shadow);
+  }
 
   cursor: pointer;
 `;

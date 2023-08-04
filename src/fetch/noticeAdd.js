@@ -5,8 +5,6 @@ async function fetchAddNotices(formData, token) {
   const options = {
     method: 'POST',
     headers: {
-      // це не треба!!! не розкоментовувати!!!
-      // 'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${token}`,
     },
     body: formData,

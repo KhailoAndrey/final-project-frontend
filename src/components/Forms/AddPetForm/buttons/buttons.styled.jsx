@@ -18,15 +18,20 @@ export const PetFormBtn = styled.button`
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   cursor: pointer;
-  :hover,
-  :focus {
-    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  svg {
+    fill: var(--white-bckg-clr);
+  }
+
+  :hover {
+    svg {
+      fill: var(--white-bckg-clr);
+    }
+    background: var(--main-clr-gr_blue);
     border: none;
   }
 `;
 
 export const Pawprint = styled.svg`
-  fill: var(--main-bckg-clr);
   margin-left: 12px;
 `;
 export const BtnCancelArrow = styled.button`
@@ -109,7 +114,7 @@ export const BtnAdd = styled.button`
   cursor: pointer;
   :hover,
   :focus {
-    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    background: var(--main-clr-gr_blue);
   }
 `;
 
