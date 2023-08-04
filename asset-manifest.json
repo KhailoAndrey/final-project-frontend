@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/final-project-frontend/static/css/main.de0ea925.css",
-    "main.js": "/final-project-frontend/static/js/main.a5380e83.js",
+    "main.js": "/final-project-frontend/static/js/main.db6add96.js",
     "static/js/647.0df1f4b2.chunk.js": "/final-project-frontend/static/js/647.0df1f4b2.chunk.js",
     "static/js/389.f833ad3a.chunk.js": "/final-project-frontend/static/js/389.f833ad3a.chunk.js",
     "static/js/382.fb18339a.chunk.js": "/final-project-frontend/static/js/382.fb18339a.chunk.js",
     "static/js/618.4827b17a.chunk.js": "/final-project-frontend/static/js/618.4827b17a.chunk.js",
     "static/js/833.109fbc49.chunk.js": "/final-project-frontend/static/js/833.109fbc49.chunk.js",
-    "static/js/186.a71e3d47.chunk.js": "/final-project-frontend/static/js/186.a71e3d47.chunk.js",
+    "static/js/186.e564843b.chunk.js": "/final-project-frontend/static/js/186.e564843b.chunk.js",
     "static/js/172.2fefc23e.chunk.js": "/final-project-frontend/static/js/172.2fefc23e.chunk.js",
-    "static/js/65.0c7b8942.chunk.js": "/final-project-frontend/static/js/65.0c7b8942.chunk.js",
+    "static/js/65.04f08506.chunk.js": "/final-project-frontend/static/js/65.04f08506.chunk.js",
     "static/js/730.3cf78968.chunk.js": "/final-project-frontend/static/js/730.3cf78968.chunk.js",
     "static/js/265.5cbe4629.chunk.js": "/final-project-frontend/static/js/265.5cbe4629.chunk.js",
     "static/js/568.778757c9.chunk.js": "/final-project-frontend/static/js/568.778757c9.chunk.js",
@@ -30,7 +30,6 @@
     "static/media/home_desk.webp": "/final-project-frontend/static/media/home_desk.35d364b3d29179e0f2c2.webp",
     "static/media/home_mob_2x.webp": "/final-project-frontend/static/media/home_mob_2x.25dad947fdd2287061f3.webp",
     "static/media/home_mob.png": "/final-project-frontend/static/media/home_mob.7eeff67bb90b6d5f1e38.png",
-    "static/media/pets.gif": "/final-project-frontend/static/media/pets.b05f42bc16233332bfac.gif",
     "static/media/Manrope-ExtraBold.ttf": "/final-project-frontend/static/media/Manrope-ExtraBold.5b0ae7100ad1d12e53c9.ttf",
     "static/media/Manrope-SemiBold.ttf": "/final-project-frontend/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
     "static/media/Manrope-Medium.ttf": "/final-project-frontend/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
@@ -38,6 +37,7 @@
     "static/media/Manrope-Bold.ttf": "/final-project-frontend/static/media/Manrope-Bold.47f6d7143da9d8c0e480.ttf",
     "static/media/Manrope-Light.ttf": "/final-project-frontend/static/media/Manrope-Light.2bf511c25636c7d7a4ce.ttf",
     "static/media/Manrope-ExtraLight.ttf": "/final-project-frontend/static/media/Manrope-ExtraLight.d0721272b8d9dd2d2d0f.ttf",
+    "static/media/pets.gif": "/final-project-frontend/static/media/pets.44f85fc6f12f9b990260.gif",
     "static/media/home_mob.webp": "/final-project-frontend/static/media/home_mob.14e536764507cf6c4f10.webp",
     "static/media/404_mob_2x.png": "/final-project-frontend/static/media/404_mob_2x.ce72ade5b79607de2541.png",
     "static/media/bg_tab_2x.png": "/final-project-frontend/static/media/bg_tab_2x.69d9928f1455344e68e3.png",
@@ -56,15 +56,15 @@
     "static/media/logo_small.webp": "/final-project-frontend/static/media/logo_small.d72ab246a62b689973d3.webp",
     "static/media/getFetch.cjs": "/final-project-frontend/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.de0ea925.css.map": "/final-project-frontend/static/css/main.de0ea925.css.map",
-    "main.a5380e83.js.map": "/final-project-frontend/static/js/main.a5380e83.js.map",
+    "main.db6add96.js.map": "/final-project-frontend/static/js/main.db6add96.js.map",
     "647.0df1f4b2.chunk.js.map": "/final-project-frontend/static/js/647.0df1f4b2.chunk.js.map",
     "389.f833ad3a.chunk.js.map": "/final-project-frontend/static/js/389.f833ad3a.chunk.js.map",
     "382.fb18339a.chunk.js.map": "/final-project-frontend/static/js/382.fb18339a.chunk.js.map",
     "618.4827b17a.chunk.js.map": "/final-project-frontend/static/js/618.4827b17a.chunk.js.map",
     "833.109fbc49.chunk.js.map": "/final-project-frontend/static/js/833.109fbc49.chunk.js.map",
-    "186.a71e3d47.chunk.js.map": "/final-project-frontend/static/js/186.a71e3d47.chunk.js.map",
+    "186.e564843b.chunk.js.map": "/final-project-frontend/static/js/186.e564843b.chunk.js.map",
     "172.2fefc23e.chunk.js.map": "/final-project-frontend/static/js/172.2fefc23e.chunk.js.map",
-    "65.0c7b8942.chunk.js.map": "/final-project-frontend/static/js/65.0c7b8942.chunk.js.map",
+    "65.04f08506.chunk.js.map": "/final-project-frontend/static/js/65.04f08506.chunk.js.map",
     "730.3cf78968.chunk.js.map": "/final-project-frontend/static/js/730.3cf78968.chunk.js.map",
     "265.5cbe4629.chunk.js.map": "/final-project-frontend/static/js/265.5cbe4629.chunk.js.map",
     "568.778757c9.chunk.js.map": "/final-project-frontend/static/js/568.778757c9.chunk.js.map",
@@ -75,6 +75,6 @@
   },
   "entrypoints": [
     "static/css/main.de0ea925.css",
-    "static/js/main.a5380e83.js"
+    "static/js/main.db6add96.js"
   ]
 }
