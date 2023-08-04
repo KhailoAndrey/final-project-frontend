@@ -58,10 +58,9 @@ const PetsItem = ({ pet }) => {
           </ListPets>
 
           <DeleteButton type="button" onClick={() => setShowDelModal(true)}>
-            <svg width={24} height={24}>
+            <svg width={24} height={24} stroke={'var(--main-clr-blue)'}>
               <use
                 href={`${svg}#icon-trash`}
-                style={{ stroke: '#54ADFF' }}
                 width={24}
                 height={24}
               />
