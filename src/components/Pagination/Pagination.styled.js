@@ -20,14 +20,14 @@ export const CustomPagination = styled(Pagination)`
 
     .MuiPaginationItem-page.Mui-selected {
         background-color: var(--main-clr-blue); 
-        color: white; 
+        color: var(--white-bckg-clr); 
          padding: 10px;
          border:none;
      
       }
       .MuiPaginationItem-page:not(.Mui-selected) {
         background-color:  transparent; 
-        color: #111111; 
+        color: var(--main-accent-text-clr); 
         border: 1px solid var(--main-clr-blue); 
         padding: 10px;
         

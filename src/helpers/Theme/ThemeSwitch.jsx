@@ -26,7 +26,8 @@ export const ThemeSwitch = () => {
         onChange={toggleDarkMode}
         checked={isDarkMode}
         isDarkMode={isDarkMode}
-        size="60px"
+        size="50px"
+        speed='1.5'
       />
     </SwitchContainer>
   );

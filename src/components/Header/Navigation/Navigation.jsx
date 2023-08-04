@@ -16,7 +16,6 @@ const Navigation = () => {
     setShowModal(true);
   };
 
-  // Функция для закрытия модального окна
   const closeModal = () => {
     setShowModal(false);
   };

@@ -41,7 +41,7 @@ export const NTitle = styled.h2`
   font-size: 24px;
   line-height: 33px;
   letter-spacing: -0.01em;
-  color: #111111;
+  color: var(--main-accent-text-clr);
 `;
 export const NText = styled.p`
   margin-top: 16px;
@@ -51,7 +51,7 @@ export const NText = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #111111;
+  color: var(--main-accent-text-clr);
 `;
 export const NflexContainer = styled.div`
   display: flex;
@@ -63,7 +63,7 @@ export const NDate = styled.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #888888;
+  color: var(--main-form-clr);
 `;
 export const NUrl = styled.a`
   text-decoration: none;

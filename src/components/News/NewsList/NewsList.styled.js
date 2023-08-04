@@ -1,19 +1,5 @@
 import styled from 'styled-components';
 
-// export const NWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   gap: 20px;
-
-//   @media screen and (min-width: 768px) {
-//     gap: 32px;
-//     max-width: 1280px;
-//     margin-left: auto;
-//     margin-right: auto;
-//   }
-// `;
-
 export const Container = styled.div`
   margin-top: 60px;
   position: relative;
@@ -52,8 +38,8 @@ export const Notification = styled.div`
 export const NItem = styled.li`
   position: relative;
   height: 578px;
-  background-color: #ffffff;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  background-color: var(--white-bckg-clr);
+  box-shadow: 3px 8px 14px var(--small-shadow);
   border-radius: 20px;
   transition: var(--default-animation);
 
